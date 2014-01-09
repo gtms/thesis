@@ -7,12 +7,12 @@
 #+LaTeX_HEADER: \usepackage{courier}
 #+TITLE:     Differentiation and Proliferation in Cancer
 #+AUTHOR:    Gil Tomás
-#+EMAIL:     gil.tms@gmail.com
-#+DATE:      2013-04-01 Mon
+#+EMAIL:     gil.tomas@ulb.ac.be
+#+DATE:      \today
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE:  en
-#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   H:4 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:nil skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
@@ -21,24 +21,177 @@
 #+LINK_HOME:
 
 * Introduction
-** life
-A brief recapitulation on the canonical perspective of the evolutionary history of life. From unicellular to multicellular organisms. Focus on the concepts of evolution and adaptation, homeostasis (homeodynamics), high level structural tissular integration, response to stimuli and cell-to-cell communication.
+** Life
+A brief recapitulation on the canonical perspective of the evolutionary history
+of life, starting from the central dogma of mollecular biology and then from
+unicellular to multicellular levels of integration and complexity. Introduces
+the concepts of evolution and adaptation, homeostasis (homeodynamics),
+developmental biology, high level structural tissular integration, response to
+stimuli and cell-to-cell communication.
 
-This section of the introduction will provide the reader with some of the core concepts around which the discussion will be framed.
-** cancer
-*** cancer: as an exception to the order of life
-Cancer is first introduced as a fundamental disruption of homeostatic processes and a consequence of the complexity of biological systems. Inasmuch, a first conceptual argument is made for the better understanding of life through a more thorough comprehension of cancer as a failure to sustain homeostatic equilibrium in an organisms.
-using a better understanding cancer as a way of better understanding life.
-*** cancer: a clinical perspective
-Cancer is one
-**** incidence of cancers
-A global analysis of the most recent WHO cancer incidence data is presented here.
+This section of the introduction will provide the reader with some of the core
+concepts around which the discussion will be framed.
+
+** Cancer
+Cancer is first portrayed as a by-product of the complexity of biological
+systems resulting in a disruption of homeostatic processes. Inasmuch, a first
+conceptual motivation for a better understanding of cancer is a further
+elucidation of the mechanisms governing the normal functioning of multicellular
+life. Cancer is thus primarily introduced as departure from sustained
+homeodynamic equilibrium in organisms.
+*** Cancer: a clinical perspective
+Study of cancer is then motivated from a clinical perspective and discussed as a
+global public health issue. This section will cover the epidemiology of cancer,
+possible causes, generic methods of diagnosis and treatment.
+**** Incidence of cancers
+A summary of the most recent WHO cancer incidence data will be presented here.
 *** The biology of cancer
+This section reviews the biological capabilities acquired during the multistep
+development of human tumors. It frames cancer as a disease of genomic
+instability and discusses its mollecular origin and evolutionary dynamics.
 
-*** dedifferentiation in cancer
-*** proliferation in cancer
-** microarrays
-** goals of the thesis
+Discusses the major mollecular pathways linked with cancer. Introduces the
+concepts of cell transformation, apoptosis, necrosis, tumour angiogenesis,
+epithelial-to-mesenchymal transition (EMT), immune detection, invasion and
+metastasis.
+*** Differentiation in cancer
+Once transformed, cancer cells incur in a gradual deregulation of the patterns
+of gene expression associated with their tissue of origin.
+
+Discusses the concept of /grade/ in cytopathology and the clinical, diagnostic
+and mollecular implications of dedifferentiation in cancer.
+*** Proliferation in cancer
+Cancer is a disease of uncontrolled cell division and thus proliferation is a
+prime hallmark of cancer.
+
+Discusses the clinical assessments of proliferation in cancer and their
+mollecular underpinnings.
+
+** Microarrays
+*** A short history
+Provides a short introduction to microarrays starting from the early 1990's as
+an evolution from Southern blotting to measure genome-wide gene expression.
+
+Discusses what are microarrays; two-channel /vs/ one-channel detection;
+experimental designs.
+*** Microarrays and cancer
+Provides the reader with a perspective on the impact of microarray technology in
+the cancer research field. Discusses the prospectives of technology
+raised in the early 2000's. Some discussed major achievements include:
+- discovery of cancer-specific mollecular subtypes and their relationships with
+  previously described histological subtypes (breast and medullobalstoma
+  examples);
+- use of microarrays in diagnosis and prognosis of cancer;
+- insights on eventual biological mechanisms driving cancer.
+
+Introduces the reader to survival analysis.
+*** Microarray data analysis and bioinformatics
+Discusses the analytical bottlenecks raised by the sheer volume of data
+genereated by microarray technology. Covers the concepts of class discovery &
+class prediction analysis; hipothesis-driven statistical analysis and discusses
+the relation between probe and gene. Introduces the Gene Expression Omnibus.
+** Motivation and main contributions of this thesis
+*** Main goals
+The motivation of this thesis is two-fold:
+1. To explore the use of differentiation metagenes as markers of the progression
+   of cancers, both from the perspective of their loss of differentiation as
+   well as of their concomitant increased aggressivity.
+2. To dissect the genetic programs contributing to the prognostic content of
+   expression profiles of patients of distinct types of cancer, as assessed by
+   survival analysis. To ascertain the impact of proliferation genetic programes
+   in the extent of these prognostic signals.
+
+This research program was carried making use of publicly available gene
+expression profiles, open source software and by implementing data analysis
+methodologies in reproducible computational routines. The findings obtained
+during this thesis are then examined in the discussion section from the
+perspective of the use of microarray technology both to diagnose and
+prognosticate cancer, as well as acquire insight in the biology of cancer.
+*** Contributions
+1. We developed tools to derive gene expression signatures (metagenes)
+   from expression profiles of healthy tissues.
+2. We showed that such metagenes are able to discriminate between
+   cancer subtypes of distinct agressivity.
+3. We highlighted the heterogeneity of the prognostic content of distinct
+   cohorts of breast cancer expression profiles and characterized the range of
+   biological and technical variables that could account for it.
+4. We reassessed the extent by which proliferation genetic programs could impact
+   global expression profiles in breast cancer and therefore account for the
+   majority of prognostic signals therein.
+5. We offer a critical re-evaluation of the impact of the microarray technology
+   in the field of cancer research in the last 15 years. This discussion is
+   guided by the potentials of differentiation signatures to increase the
+   diagnostic value of cancer expression profiles and by providing a breakdown
+   of the intricate mix of integrated genetic programs and technical factors
+   that could account for the heterogeneous degree of prognostic contents of
+   distinct cohorts of expression profiles of breast cancer.
+**** Publications
+***** Principal papers
+1. oncogene paper
+2. breast cancer cohorts paper, to be submitted
+***** Collaborative papers
+1. 5-aza
+2. Epac
+3. others (need to check that)
 * Material and methods
+** Data analysis
+Discusses from a conceptual point of view: supervised /vs/ unsupervised
+analysis; challenges associated with of high-throughput technology outputs; open
+source software for data analysis
+
+Key concepts: bioinformatics; trustworthy software (Prime Directive);
+reproducible research and its challenges
+** Data collection
+A description of the Gene Expression Onmibus and other online repositories of
+microarray data resources.
+** Microarray analysis
+Introduces from a technical point of view: data preprocessing; dimensionality
+reduction; clustering; heatmap; principal component analysis; censoring data and
+survival analysis
 * Results
-* Disscussion
+Focus on introducing the main results of each paper in a sequential way:
+- motivation (question addressed)
+- methods (data analysis techniques employed)
+- results (graphical or tabular output)
+- findings (brief description of conclusions drawn)
+Reviews supplementary data of each paper in the same terms. PDF copies go in
+appendix.
+* Discussion
+** Biological insights
+Discusses the contributions of this thesis from a biological point of
+view, namely:
+- cancer as a reversion of a differentiation program (examines cancer stem
+  cells);
+- an eventual pan-transcriptomic impact of genetic programs linked to
+  cell dievision and proliferation;
+- how to discretize transcriptomic signals from distinct cellular types (/e.g./,
+  how to quantify immune response of inflammatory response with microarrays)
+** Technical insights
+Discusses the contributions of this thesis from the technical point of view,
+namely:
+- strengths and limitations of microarrays
+- strengths and limitations of methodological statistical tools employed
+- eventual ways of addressing technological and methodological limitations
+** Impact of microarrays on cancer research
+Discusses how microarray technology impacted and reshaped cancer research,
+from the diagnosis to prognosis; from enhancing our understanding of the
+pathways disrupted in cancer to validation of new therapeutic targets.
+
+Confronts the expectations raised by the technology the early 2000's with the
+current state-of-the-art understanding of cancer, now at the dawn of another
+technological wave. Concludes with an epistemological note on the scientific
+process ([[http://www.newyorker.com/reporting/2010/12/13/101213fa_fact_lehrer][the decline effect]], Ioannidis' research)
+** Prospects in cancer research
+Provides a brief account of new mainstream technologies employed in cancer
+research, including next-generation sequencing and bead arrays. These
+technologies have largely replaced microarray technology as the prime tool to
+investigate gene expression patterns in cancer. Discusses how the lessons drawn
+from 15 years of microarray-driven cancer research and the insights discussed in
+this thesis may benefit the
+
+* Conclusion
+Wraps up with a broader perspective on cancer by framing its progression through
+the perspective of evolutionary life history. Covers concepts such as cellular
+Darwinism, tumour heterogeneity, tumour dormancy and aggressivity. Proposes a
+reinterpretation of the findings of this thesis through this point of view,
+contextualized by the limitations of microarray technology discussed above.
