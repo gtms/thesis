@@ -1,5 +1,10 @@
 ## files
 *.pdf
 *.html
+*.aux
+*.log
+*.odt
+*.tns
 
 ## directories
+org/auto/
