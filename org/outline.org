@@ -5,7 +5,7 @@
 #+LaTeX_HEADER: \usepackage{mathptmx}
 #+LaTeX_HEADER: \usepackage[scaled=.90]{helvet}
 #+LaTeX_HEADER: \usepackage{courier}
-#+TITLE:     Differentiation and Proliferation in Cancer
+#+TITLE:     Gene Expression Markers of Proliferation and Differentiation in Cancer and the Extent of Prognostic Signals in the Cancer Transcriptome
 #+AUTHOR:    Gil Tomás
 #+EMAIL:     gil.tomas@ulb.ac.be
 #+DATE:      \today
@@ -107,32 +107,13 @@ methodologies in reproducible computational routines. The findings obtained
 during this thesis are then examined in the discussion section from the
 perspective of the use of microarray technology both to diagnose and
 prognosticate cancer, as well as acquire insight in the biology of cancer.
-*** Contributions
-1. We developed tools to derive gene expression signatures (metagenes)
-   from expression profiles of healthy tissues.
-2. We showed that such metagenes are able to discriminate between
-   cancer subtypes of distinct agressivity.
-3. We highlighted the heterogeneity of the prognostic content of distinct
-   cohorts of breast cancer expression profiles and characterized the range of
-   biological and technical variables that could account for it.
-4. We reassessed the extent by which proliferation genetic programs could impact
-   global expression profiles in breast cancer and therefore account for the
-   majority of prognostic signals therein.
-5. We offer a critical re-evaluation of the impact of the microarray technology
-   in the field of cancer research in the last 15 years. This discussion is
-   guided by the potentials of differentiation signatures to increase the
-   diagnostic value of cancer expression profiles and by providing a breakdown
-   of the intricate mix of integrated genetic programs and technical factors
-   that could account for the heterogeneous degree of prognostic contents of
-   distinct cohorts of expression profiles of breast cancer.
-**** Publications
+* Publications
 ***** Principal papers
 1. oncogene paper
 2. breast cancer cohorts paper, to be submitted
 ***** Collaborative papers
 1. 5-aza
 2. Epac
-3. others (need to check that)
 * Material and methods
 ** Data analysis
 Discusses from a conceptual point of view: supervised /vs/ unsupervised
@@ -149,6 +130,21 @@ Introduces from a technical point of view: data preprocessing; dimensionality
 reduction; clustering; heatmap; principal component analysis; censoring data and
 survival analysis
 * Results
+** Methods to extract differentiation signatures
+We developed tools to derive gene expression signatures (metagenes) from
+expression profiles of healthy tissues.
+** Differentiation signatures have diagnostic potential in cancer
+We showed that such metagenes are able to discriminate between cancer subtypes
+of distinct agressivity.
+** Prognostic content is heterogeneous across distinct cohorts of breast cancer
+We highlighted the heterogeneity of the prognostic content of distinct cohorts
+of breast cancer expression profiles and characterized the range of biological
+and technical variables that could account for it.
+** Proliferation captures most of the prognostic content of cancer transcriptomes
+We reassessed the extent by which proliferation genetic programs could impact
+global expression profiles in breast cancer and therefore account for the
+majority of prognostic signals therein.
+
 Focus on introducing the main results of each paper in a sequential way:
 - motivation (question addressed)
 - methods (data analysis techniques employed)
