@@ -1,10 +1,12 @@
 ## files
-*.pdf
+## *.pdf
 *.html
 *.aux
 *.log
 *.odt
 *.tns
+*.idx
+*.out
 
 ## directories
 org/auto/
