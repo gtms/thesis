@@ -8,6 +8,8 @@
 *.idx
 *.out
 *.el
+*.bbl
+*.blg
 
 ## directories
 org/auto/
