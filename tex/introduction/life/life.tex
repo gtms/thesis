@@ -27,7 +27,9 @@
   \ifinlist{#1}{\@tufte@old@bibkeys}{%
     \citealp{#1}% print short entry
   }{%
-    \bibentry{#1}% print full entry
+    % !ALWAYS PRINT SHORT ENTRY
+    \citealp{#1}% print short entry
+    % \bibentry{#1}% print full entry
   }%
   % add bibkey to the old bibkeys list
   \listgadd{\@tufte@old@bibkeys}{#1}%
