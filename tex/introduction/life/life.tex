@@ -1,27 +1,92 @@
 \documentclass{tufte-book}
-\usepackage{fontspec}
+
+% \usepackage{natbib}
+\usepackage{xltxtra}
+\usepackage{microtype}
+\usepackage{booktabs}
+
 \defaultfontfeatures{Ligatures=TeX}
 \setmainfont{Minion Pro}
 \setsansfont[Scale=MatchLowercase]{Gill Sans MT}
 \setmonofont[Scale=MatchLowercase]{Consolas}
-\usepackage{booktabs}
+
+\usepackage{etoolbox}% provides some support for comma-separated lists
+
+% code from:
+% http://tex.stackexchange.com/questions/45868/can-i-automatically-generate-abbreviated-citations-in-tufte-documents-after-the
+% Can I automatically generate abbreviated citations in Tufte documents after the first occurrence?
+
+\makeatletter
+% We'll keep track of the old/seen bibkeys here.
+\def\@tufte@old@bibkeys{}
+
+% This macro prints the full citation if it's the first time it's been used
+% and a shorter citation if it's been used before.
+\newcommand{\@tufte@print@margin@citation}[1]{%
+  % print full citation if bibkey is not in the old bibkeys list
+  \ifinlist{#1}{\@tufte@old@bibkeys}{%
+    \citealp{#1}% print short entry
+  }{%
+    \bibentry{#1}% print full entry
+  }%
+  % add bibkey to the old bibkeys list
+  \listgadd{\@tufte@old@bibkeys}{#1}%
+}
+
+% We've modified this Tufte-LaTeX macro to call \@tufte@print@margin@citation
+% instead of \bibentry.
+\renewcommand{\@tufte@normal@cite}[2][0pt]{%
+  % Snag the last bibentry in the list for later comparison
+  \let\@temp@last@bibkey\@empty%
+  \@for\@temp@bibkey:=#2\do{\let\@temp@last@bibkey\@temp@bibkey}%
+  \sidenote[][#1]{%
+    % Loop through all the bibentries, separating them with semicolons and spaces
+    \normalsize\normalfont\@tufte@citation@font%
+    \setcounter{@tufte@num@bibkeys}{0}%
+    \@for\@temp@bibkeyx:=#2\do{%
+      \ifthenelse{\equal{\@temp@last@bibkey}{\@temp@bibkeyx}}{%
+        \ifthenelse{\equal{\value{@tufte@num@bibkeys}}{0}}{}{and\ }%
+        \@tufte@trim@spaces\@temp@bibkeyx% trim spaces around bibkey
+        \@tufte@print@margin@citation{\@temp@bibkeyx}%
+      }{%
+        \@tufte@trim@spaces\@temp@bibkeyx% trim spaces around bibkey
+        \@tufte@print@margin@citation{\@temp@bibkeyx};\space
+      }%
+      \stepcounter{@tufte@num@bibkeys}%
+    }%
+  }%
+}
+
+
+% Calling this macro will reset the list of remembered citations. This is
+% useful if you want to revert to full citations at the beginning of each
+% chapter.
+\newcommand{\resetcitations}{%
+  \gdef\@tufte@old@bibkeys{}%
+}
+\makeatother
 
 \newenvironment{docspec}{\begin{quotation}\ttfamily\parskip0pt\parindent0pt\ignorespaces}{\end{quotation}}
 % command specification environment
-
 
 \begin{document}
 
 \section{Life}
 
-\newthought{Life is a wonder} of its own.  It conceivably struck this planet some
-3.5~billion years ago [citation], arguably as the consequence of a phospholipidic
-layer-bound \emph{quantum leap} in a soup of organic precursors
-[citation].  From that singular moment on, little has been spared in guise of
-amazement.
+\newthought{Life is a wonder} of its own.  It conceivably struck this
+planet at least some 3.7~billion years ago,\cite{schopf_evidence_2007}
+arguably the consequence of a phospholipidic \mbox{layer-bound}
+\emph{quantum leap} in a soup of organic
+precursors.\cite{ohtomo_evidence_2014,miller_organic_1959} From that
+singular moment on, little has been spared in guise of
+amazement.\footnote{\citepalias{ohtomo_evidence_2014}}
 
-The first factual evidence of life on Earth appears inscribed in the fossil
-record some 3.4~billion years ago.  It consists mainly
+The first factual evidence of life on Earth appears inscribed in the
+fossil record some 3.5~billion years ago.  It consists mainly of
+microfossils and ancient rock structures in Greenland and Australia
+called
+stromatolites,\cite{ohtomo_evidence_2014,noffke_microbially_2013} the
+product of the metabolism of photosynthesizing cyanobacteria.
 
 \begin{quotation}
   There is grandeur in this view of life, with its several powers, having been
@@ -35,5 +100,12 @@ How ironic that one of the best models to understand this order of things is
 actually one of its most harrowing violations: cancer.
 
 \section{Cancer}
+
+\backmatter
+
+\bibliography{life}
+\bibliographystyle{plainnat}
+% \bibliographystyle{abbrvnat}
+% \bibliographystyle{unsrtnat}
 
 \end{document}
