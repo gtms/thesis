@@ -1,8 +1,7 @@
 \documentclass{tufte-book}
 
-% \usepackage{natbib}
-\usepackage{xltxtra}
-\usepackage{microtype}
+\usepackage{fontspec}
+\usepackage{soul}
 \usepackage{booktabs}
 
 \defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
@@ -75,20 +74,110 @@
 
 \section{Life}
 
-\newthought{Life is a wonder} of its own.  It conceivably struck this
-planet at least some 3.7~billion years ago,\cite{schopf_evidence_2007}
-arguably the consequence of a phospholipidic \mbox{layer-bound}
-\emph{quantum leap} in a soup of organic
-precursors.\cite{miller_organic_1959} From that
-singular moment on, little has been spared in guise of
-amazement.
+\newthought{Life is a wonder} of its own.  It conceivably struck this planet at
+least some 3.8~billion years ago,\cite{mojzsis_evidence_1996} arguably the
+consequence of a phospholipidic \mbox{layer-bound} \emph{quantum leap} in a soup
+of organic precursors.\cite{miller_organic_1959} From that singular moment on,
+little has been spared in guise of amazement.\bigskip
 
-The first factual evidence of life on Earth appears inscribed in the
-fossil record some 3.5~billion years ago.  It consists mainly of
-microfossils and ancient rock structures in Greenland and Australia
-called
-stromatolites,\cite{ohtomo_evidence_2014,noffke_microbially_2013} the
-product of the metabolism of photosynthesizing cyanobacteria.
+The first factual evidence of life on Earth appears inscribed in the fossil
+record some 3.5~billion years ago.  It consists mainly of microfossils and
+ancient rock structures in Greenland and Australia called
+stromatolites,\cite{ohtomo_evidence_2014,noffke_microbially_2013} the product of
+the metabolism of photosynthesizing cyanobacteria.
+
+While the fine details of the abiogenic model\footnote{From the Greek
+  ``spontaneous generation'', this model posits that autocatalytic polymers able
+  to function as simple molecular replicators are at the origin of life.
+  Alternative models exist, most notably panspermia---the extraterrestrial
+  origin of life.} for the origin of life\footnote{Much debate has been stirred
+  around the definition of life itself, see for instance
+  \citealp{benner_defining_2010}.} remain to be chalked, a wider consensus
+exists to depict its primed instances as \mbox{self-replicating} units able to
+regulate their own chemical processes within the confinement of a cellular
+membrane.  Such primeval unicellular organisms were most likely composed of some
+form of nucleic acid secluded from its external environment by a bilayer of
+phospholipids.
+
+Nucleic acids, \textsc{rna} and \textsc{dna}, are the sole organic
+molecules fit to direct their own replication and to act as genetic
+material.  \textsc{rna} was proposed as the original genetic system
+since it was shown to be able to catalize a variety of chemical
+reactions, notably the polymerization of
+nucleotides.\cite{bass_specific_1984} However, as the genetic load
+stored within cells increased, the lesser stability and reliability of
+\textsc{rna} molecules rendered them unsuitable for the
+furtherance of genetic systems, and \textsc{dna} eventually took over
+as universal hereditary material.
+
+These very simple and \mbox{self-organized} systems emerged in seas
+densely enriched in organic molecules and therefore didn't require
+sophisticated toolkits for intake of food or generation of energy.
+Only when systematic interactions between \textsc{rna} and specific
+amino~acids became enshrined in the genetic code\footnote{The central
+  dogma of molecular biology, postulated by Francis Crick in 1958 and
+  reasserted in 1970
+  (\citealp{crick_protein_1958,crick_central_1970}), pertains to the
+  rules that govern the sequential flow of genetic information between
+  \textsc{dna}, \textsc{rna} and proteins. It can be summarized as
+  ``\textsc{dna} makes \textsc{rna} makes protein'', which provides
+  the template for the enactment of hereditary information for all
+  living organisms and frames the scope of evolutionary forces on
+  genetic systems.} did evolution start to shape concerted molecular
+reactions between proteins that animated cells with metabolic
+activity.  Among the first tinkered metabolic pathways are likely to
+have been some simpler form of \mbox{modern-day} glycolysis, the
+anaerobic breakdown of glucose to lactic acid, which provided cells
+with their universal source of energy, \textsc{atp}.
+
+and later when
+\textsc{dna} took over the role of hereditary material
+
+later replaced by \textsc{dna} as the holder of
+hereditary information.  These very simple systems emerged in a rich.  Ordered
+interactions between RNA and amino acids then evolved into the present-day
+genetic code, and DNA eventually replaced RNA as the genetic material. The
+central dogma of biology.
+
+\footnote{RNA, later
+  eventually replaced by DNA.}
+
+evolved from the
+first instances of unicellular organisms. These primeval \mbox{self-replicating}
+units able to regulate their own chemical processes within the confinement of a
+cellular membrane might well have of \mbox{modern-day} prokaryotes.
+
+Such primeval cells might well resemble modern day
+prokaryotes, defined by their lack of membrane-bound organelles, most
+particularly a nuclear envelop secluding their genetic material.  Whether
+representants of the Eubacteria phyla (defined by) or the Archea phyla (defined
+by), these first cells (metabolism).  Change of atmospheric conditions.
+Evolution of Eukaryotic cells, definition, timing.  Specific acquired features,
+metabolism, endosymbiotic model.  Multicellular life, dramatic consequences for
+the establishment of genetic programs controlling differentiation and
+proliferation.  Concept of embryogenesis.  Cellular interdependence. Concept of
+totipotency.  Concept of natural evolution as an over-reching common thread to
+interpret and understand the evolution of life.  Darwin's quotation.  Colonial
+organisms.  Modularity in biology.
+
+
+
+endosymbiosis
+
+multicellularity
+
+Research on how life might have emerged from non-living chemicals focuses on
+three possible starting points: self-replication, an organism's ability to
+produce offspring that are very similar to itself; metabolism, its ability to
+feed and repair itself; and external cell membranes, which allow food to enter
+and waste products to leave, but exclude unwanted substances.
+
+% http://en.wikipedia.org/wiki/Evolutionary_history_of_life
+
+Life can be considered to have emerged when RNA chains began to express the
+basic conditions necessary for natural selection to operate as conceived by
+Darwin: heritability, variation of type, and differential transmission of
+genetic traits constrained by competition for limited resources.
 
 \begin{quotation}
   There is grandeur in this view of life, with its several powers, having been
@@ -99,9 +188,13 @@ product of the metabolism of photosynthesizing cyanobacteria.
 \end{quotation}
 
 How ironic that one of the best models to understand this order of things is
-actually one of its most harrowing violations: cancer.
+actually one of its most harrowing violations: cancer.\bigskip
 
 \section{Cancer}
+
+\newthought{Cancer is a dysfunction of}\bigskip
+
+\section{Microarrays}
 
 \backmatter
 
