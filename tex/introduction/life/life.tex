@@ -12,6 +12,13 @@
 \usepackage{etoolbox}% provides some support for comma-separated lists
 
 % code from:
+% http://www.techques.com/question/31-18947/Letterspacing,-Minion-Pro,-and-Tufte-LaTeX-(problem-with-running-header)
+
+% Set up the spacing using fontspec features
+\renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
+\renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
+
+% code from:
 % http://tex.stackexchange.com/questions/45868/can-i-automatically-generate-abbreviated-citations-in-tufte-documents-after-the
 % Can I automatically generate abbreviated citations in Tufte documents after the first occurrence?
 
@@ -86,59 +93,60 @@ ancient rock structures in Greenland and Australia called
 stromatolites,\cite{ohtomo_evidence_2014,noffke_microbially_2013} the product of
 the metabolism of photosynthesizing cyanobacteria.
 
-While the fine details of the abiogenic model\footnote{From the Greek
-  ``spontaneous generation'', this model posits that autocatalytic polymers able
-  to function as simple molecular replicators are at the origin of life.
-  Alternative models exist, most notably panspermia---the extraterrestrial
-  origin of life.} for the origin of life\footnote{Much debate has been stirred
-  around the definition of life itself, see for instance
-  \citealp{benner_defining_2010}.} remain to be chalked, its primed instances
-are often depicted as \mbox{self-replicating} units able to regulate their own
-chemical processes within the confinement of a cellular membrane.  Such primeval
-unicellular organisms were most likely composed of some form of nucleic acid
-secluded from its external environment by a bilayer of phospholipids.
+While the fine details of the abiogenic\footnote{From the Greek ``spontaneous
+  generation'', this model posits that autocatalytic polymers able to function
+  as simple molecular replicators are at the origin of life.  Alternative models
+  exist, most notably panspermia---the extraterrestrial origin of life.} model
+for the origin of life\footnote{Much debate has been stirred around the
+  definition of life itself, see for instance \citealp{benner_defining_2010}.}
+remain unclear, its primed instances are often depicted as
+\mbox{self-replicating} units able to regulate their own chemical processes
+within the confinement of a cellular membrane.  Such primeval unicellular
+organisms were most likely composed of some form of nucleic acid secluded from
+its external environment by a bilayer of phospholipids.
 
-Nucleic acids, \textsc{rna} and \textsc{dna}, are the sole organic molecules fit
-to direct their own replication and to act as genetic material.  \textsc{rna}
+Nucleic acids, \smallcaps{rna} and \smallcaps{dna}, are the sole organic molecules fit
+to direct their own replication and to act as genetic material.  \smallcaps{rna}
 was proposed as the original genetic system since it was shown to be able to
 catalize a variety of chemical reactions, notably the polymerization of
 nucleotides.\cite{bass_specific_1984} However, as the genetic load stored within
-cells increased, the lesser stability and reliability of \textsc{rna} molecules
+cells increased, the lesser stability and reliability of \smallcaps{rna} molecules
 rendered them unsuitable for the furtherance of genetic systems, a stage at
-which \textsc{dna} eventually took over as universal hereditary material.
+which \smallcaps{dna} eventually took over as universal hereditary material.
 
 These very simple and \mbox{self-organized} systems emerged in seas densely
 enriched in organic molecules and therefore didn't require sophisticated
 toolkits for intake of food or generation of energy.  Only when systematic
-interactions between \textsc{rna} and specific amino~acids became enshrined in
+interactions between \smallcaps{rna} and specific amino~acids became enshrined in
 the genetic code\footnote{The central dogma of molecular biology, postulated by
   Francis Crick in 1958 and reasserted in 1970
   (\citealp{crick_protein_1958,crick_central_1970}), pertains to the rules that
-  govern the sequential flow of genetic information between \textsc{dna},
-  \textsc{rna} and proteins. It can be summarized as ``\textsc{dna} makes
-  \textsc{rna} makes protein'', which provides the template for the enactment of
+  govern the sequential flow of genetic information between \smallcaps{dna},
+  \smallcaps{rna} and proteins. It can be summarized as ``\smallcaps{dna} makes
+  \smallcaps{rna} makes protein'', which provides the template for the enactment of
   hereditary information for all living organisms and frames the scope of
   evolutionary forces on genetic systems.} did evolution start to shape
 concerted molecular reactions between proteins that animated cells with
 metabolic activity.
 
-Among the first tinkered metabolic pathways are likely to have been some simpler
-form of \mbox{modern-day} glycolysis, the anaerobic breakdown of glucose to
-lactic acid.  Glycolysis is a fixture of all \mbox{present-day} cells and drives
-the generation of \textsc{atp} molecules, their universal source of energy.
-This in turn enabled cellular life to fuel ever more complex metabolic
+Among the first elaborations of metabolic pathways are likely to have been some
+simpler form of \mbox{modern-day} glycolysis, the anaerobic breakdown of glucose
+to lactic acid.  Glycolysis is a fixture of all \mbox{present-day} cells and
+drives the generation of \smallcaps{atp} molecules, their universal source of
+energy.  This in turn enabled cellular life to fuel ever more complex metabolic
 reactions, prime among which was photosynthesis.
 
 Photosynthesis is a metabolic reaction that gathers energy from sunlight to
 synthesize organic molecules, at the expense of carbon dioxide and water, and
-generating free oxygen as a \mbox{by-product}.  The emergence of photosynthesis
-in cellular life had two major impacts in the course of evolution.  Firstly, it
-liberated cells from the need to directly access preformed organic molecules to
-sustain their metabolism; and, secondly, it biologically enriched the content of
-Earth's atmosphere in oxygen,\footnote{This so called ``Great Oxygenation
-  Event'', dated to 2.3~billion years ago, was arguably caused by
-  photosynthesizing organisms whose presence was tracked long before it occurred
-  (\citealp{flannery_archean_2012}). The \textsc{goe} likely had a catalytic
+generating free oxygen as a \mbox{by-product}.  The emergence of
+\mbox{oxygen-forming} photosynthesis in cellular life, some 2.5~billion years
+ago, had two major impacts in the course of evolution.  Firstly, it liberated
+cells from the need to directly access preformed organic molecules to sustain
+their metabolism; and, secondly, it biologically enriched the content of Earth's
+atmosphere in oxygen,\footnote{This so called ``Great Oxygenation Event'', dated
+  to 2.3~billion years ago, was arguably caused by photosynthesizing organisms
+  whose presence was tracked long before it occurred
+  (\citealp{flannery_archean_2012}). The \smallcaps{goe} likely had a catalytic
   effect in the evolution of life also through the oxidation of exposed rocks,
   liberating phosphorus and iron that flew into the oceans, there acting as
   fertilizer (\citealp{zimmer_mystery_2013}).} which is thought to have been a
@@ -154,58 +162,135 @@ Earth's atmosphere in oxygen,\footnote{This so called ``Great Oxygenation
 
 Up to that stage, all forms of life on Earth could still be modeled from the
 blueprint of modern Prokaria: a \mbox{single-celled} organism devoid of any
-\mbox{membrane-bound} organelles, capable of lateral \textsc{dna} transfer and
-that usually reproduces itself through binary fission.  This phylogenetic taxon
-accommodates both Archae (e.g., \mbox{\emph{Thermoplasma}-like} organisms) and
+\mbox{membrane-bound} organelles, capable of lateral \smallcaps{dna} transfer and
+that mainly reproduces itself through binary fission.  The Prokaria taxon
+comprises both Archae (e.g., \mbox{\emph{Thermoplasma}-like} organisms) and
 Eubacteria (e.g., \mbox{\emph{Spirochaeta}-like} organisms), which fundamentally
 differ at the level of the chemical composition of their cell walls; the lipidic
 composition of their plasma membranes; and the number of subunits in their
-\textsc{rna} polymerases.  An hypothetical permanent \mbox{whole-cell} fusion
-between members of Archaea and Eubacteria has been proposed to be at the origin
-of the earliest anaerobic Eukarya.\cite{margulis_archaeal-eubacterial_1996} A
-fossil record of highly organized and spatially discrete colonial living
-structures found in a formation of black shales in Gabon dating from 2.1~billion
-years ago could well be the oldest fossil evidence of such
-entities.\cite{albani_large_2010}
+\smallcaps{rna} polymerases.
 
-Eukaryotes are defined by the presence of specialized organelles enclosed
-within membranes, namely the presence of a discrete nucleus wherein all genetic
-material is confined.  The endosymbiotic theory proposes that organelles, such
-like chloroplasts and mitochondria, evolved from certain types of bacteria that
-early eukaryotic cells engulfed through endophagocytosis and retained in a
-mutualistically beneficial relationship.  The emergence eukaryotes marks compose
-a phylogenetic taxa characterized.  Origin.  Competitive advantage.  Evolution
-of sex.
+An hypothetical permanent \mbox{whole-cell} fusion between members of Archaea
+and Eubacteria has been proposed to be at the origin of the earliest anaerobic
+Eukarya,\cite{margulis_archaeal-eubacterial_1996} of which the first fossil
+record evidence could date from a 2.1~billion year black shale formation found
+in Gabon.\cite{albani_large_2010} Eukarya\footnote{From the Greek,
+  ``\emph{eu}''---true---and ``\emph{karyon}''---kernel.} are thus defined by
+the presence of specialized organelles enclosed within membranes, namely the
+presence of a discrete nucleus wherein all genetic material is confined.
 
+The evolution of aerobic respiration, now a possibility in an oxygen rich
+environment, is thought to have occurred about 2.2~billion years ago in
+prokaryotic cells.  The endosymbiotic theory proposes that eukaryotic
+organelles, such like chloroplasts and mitochondria, evolved from certain types
+of bacteria that early eukaryotic cells engulfed through endophagocytosis and
+retained in a mutualistically beneficial relationship.
 
-evolved from the
-first instances of unicellular organisms. These primeval \mbox{self-replicating}
-units able to regulate their own chemical processes within the confinement of a
-cellular membrane might well have of \mbox{modern-day} prokaryotes.
+The appearance of the integrated eukaryotic cell set the stage for a vast
+collection of evolutionary experiments that propelled a remarkable
+diversification of life forms.  Two critical features were behind this
+radiation: the advent of sexual reproduction and of multicellular life.
 
-Such primeval cells might well resemble modern day
-prokaryotes, defined by their lack of membrane-bound organelles, most
-particularly a nuclear envelop secluding their genetic material.  Whether
-representants of the Eubacteria phyla (defined by) or the Archea phyla (defined
-by), these first cells (metabolism).  Change of atmospheric conditions.
-Evolution of Eukaryotic cells, definition, timing.  Specific acquired features,
-metabolism, endosymbiotic model.  Multicellular life, dramatic consequences for
-the establishment of genetic programs controlling differentiation and
-proliferation.  Concept of embryogenesis.  Cellular interdependence. Concept of
-totipotency.  Concept of natural evolution as an over-reching common thread to
-interpret and understand the evolution of life.  Darwin's quotation.  Colonial
-organisms.  Modularity in biology.
+Sexual reproduction is a feature
 
-endosymbiosis
+Multicellularity.
 
-multicellularity
+Natural selection.
+
+% The simplest definitions of "multicellular", for example "having multiple
+% cells", could include colonial cyanobacteria like Nostoc. Even a professional
+% biologist's definition such as "having the same genome but different types of
+% cell" would still include some genera of the green alga Volvox, which have
+% cells that specialize in reproduction.  Multicellularity evolved independently
+% in organisms as diverse as sponges and other animals, fungi, plants, brown
+% algae, cyanobacteria, slime moulds and myxobacteria.  For the sake of brevity
+% this article focuses on the organisms that show the greatest specialization of
+% cells and variety of cell types, although this approach to the evolution of
+% complexity could be regarded as "rather anthropocentric".
+
+% A slime mold solves a maze.  The mold (yellow) explored and filled the maze
+% (left).  When the researchers placed sugar (red) at two separate points, the
+% mold concentrated most of its mass there and left only the most efficient
+% connection between the two points (right).  The initial advantages of
+% multicellularity may have included: more efficient sharing of nutrients that
+% are digested outside the cell, increased resistance to predators, many of
+% which attacked by engulfing; the ability to resist currents by attaching to a
+% firm surface; the ability to reach upwards to filter-feed or to obtain
+% sunlight for photosynthesis; the ability to create an internal environment
+% that gives protection against the external one; and even the opportunity for a
+% group of cells to behave ``intelligently'' by sharing information.  These
+% features would also have provided opportunities for other organisms to
+% diversify, by creating more varied environments than flat microbial mats
+% could.
+
+% Multicellularity with differentiated cells is beneficial to the organism as a
+% whole but disadvantageous from the point of view of individual cells, most of
+% which lose the opportunity to reproduce themselves.  In an asexual
+% multicellular organism, rogue cells which retain the ability to reproduce may
+% take over and reduce the organism to a mass of undifferentiated cells. Sexual
+% reproduction eliminates such rogue cells from the next generation and
+% therefore appears to be a prerequisite for complex multicellularity.
+
+% The available evidence indicates that eukaryotes evolved much earlier but
+% remained inconspicuous until a rapid diversification around 1 Ga.  The only
+% respect in which eukaryotes clearly surpass bacteria and archaea is their
+% capacity for variety of forms, and sexual reproduction enabled eukaryotes to
+% exploit that advantage by producing organisms with multiple cells that
+% differed in form and function.
+
+% Fossil evidence for multicellularity and sexual reproduction[edit] The
+% Francevillian Group Fossil, dated to 2.1 Ga, is the earliest known fossil
+% organism that is clearly multicellular.[23] This may have had differentiated
+% cells.[122] Another early multicellular fossil, Qingshania,[note 1] dated to
+% 1.7 Ga, appears to consist of virtually identical cells. The red alga called
+% Bangiomorpha, dated at 1.2 Ga, is the earliest known organism that certainly
+% has differentiated, specialized cells, and is also the oldest known sexually
+% reproducing organism.[121] The 1.43 billion-year-old fossils interpreted as
+% fungi appear to have been multicellular with differentiated cells.[100] The
+% "string of beads" organism Horodyskia, found in rocks dated from 1.5 Ga to 900
+% Ma, may have been an early metazoan;[8] however it has also been interpreted
+% as a colonial foraminiferan.[113]
+
+% Notes
+
+% A fossil record of highly organized and spatially discrete colonial living
+% structures found in a formation of black shales in Gabon dating from 2.1~billion
+% years ago could well be the oldest fossil evidence of such
+% entities.
+
+% The endosymbiotic theory proposes that organelles, such
+% like chloroplasts and mitochondria, evolved from certain types of bacteria that
+% early eukaryotic cells engulfed through endophagocytosis and retained in a
+% mutualistically beneficial relationship.  The emergence eukaryotes marks compose
+% a phylogenetic taxa characterized.  Origin.  Competitive advantage.  Evolution
+% of sex.
+
+% evolved from the
+% first instances of unicellular organisms. These primeval \mbox{self-replicating}
+% units able to regulate their own chemical processes within the confinement of a
+% cellular membrane might well have of \mbox{modern-day} prokaryotes.
+
+% Such primeval cells might well resemble modern day prokaryotes, defined by
+% their lack of membrane-bound organelles, most particularly a nuclear envelop
+% secluding their genetic material.  Whether representants of the Eubacteria
+% phyla (defined by) or the Archea phyla (defined by), these first cells
+% (metabolism).  Change of atmospheric conditions.  Evolution of Eukaryotic
+% cells, definition, timing.  Specific acquired features, metabolism,
+% endosymbiotic model.  Multicellular life, dramatic consequences for the
+% establishment of genetic programs controlling differentiation and
+% proliferation.  Concept of embryogenesis.  Cellular interdependence. Concept
+% of totipotency.  Concept of natural evolution as an over-reching common thread
+% to interpret and understand the evolution of life.  Darwin's quotation.
+% Colonial organisms.  Modularity in biology.
+
+% multicellularity
 
 % http://en.wikipedia.org/wiki/Evolutionary_history_of_life
 
-Life can be considered to have emerged when RNA chains began to express the
-basic conditions necessary for natural selection to operate as conceived by
-Darwin: heritability, variation of type, and differential transmission of
-genetic traits constrained by competition for limited resources.
+% Life can be considered to have emerged when RNA chains began to express the
+% basic conditions necessary for natural selection to operate as conceived by
+% Darwin: heritability, variation of type, and differential transmission of
+% genetic traits constrained by competition for limited resources.
 
 \begin{quotation}
   There is grandeur in this view of life, with its several powers, having been
