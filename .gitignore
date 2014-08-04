@@ -10,6 +10,7 @@
 *.el
 *.bbl
 *.blg
+*.pdf
 
 ## directories
 org/auto/
