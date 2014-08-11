@@ -1,0 +1,30 @@
+* First point
+What is cancer?
+Open up with a definition.  "Imprecise definition . . . " according to Emmanuel
+Farber.
+
+* Second point
+It is important to note that cancer is not an end stage, but a /step/ in an
+/evolutionary history./
+
+** concepts
+- progression
+- dynamics
+
+* Third point
+These dynamics are bound by:
+1. genetic and epigenetic context (which are themselves in flux during cancer
+   progression)
+2. ecological context of the neoplams defined by the cellular and tissue
+   integration and response
+
+* Fourth point
+Thus, phenotypically, neoplastic cells are defined by:
+- proliferation
+- dedifferentiation
+
+* Fifth point
+Causes of cancer (cancer etiology)
+
+* Sixth point
+Dynamics of cancer.  Modifiable program.
