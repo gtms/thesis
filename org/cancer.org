@@ -6,7 +6,6 @@ Farber.
 *** Cancer as an evolutionary history
 It is important to note that cancer is not an end stage, but a /step/ in an
 /evolutionary history./
-
 **** concepts
 - progression
 - dynamics
@@ -32,7 +31,7 @@ cancer.
   discussed in this context
 - redundancy of the major pathways associated with cancer
 - redundancy of hallmarks of cancer
-** Second point: clinical perspective
+** Second section: clinical perspective
 *** Cancer as a global health issue
 Study of cancer is then motivated from a clinical perspective and discussed as a
 global public health issue. This section will cover the epidemiology of cancer,
