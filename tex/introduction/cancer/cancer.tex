@@ -12,6 +12,14 @@
 \usepackage{morefloats}
 \usepackage{siunitx}
 
+% from
+% http://tex.stackexchange.com/questions/46831/why-does-manually-loading-hyperref-change-the-font-size-for-captions-in-tufte-do
+% 05Sep2014
+\makeatletter
+\let\tufte@caption\@caption
+\usepackage[hyperfootnotes=false]{hyperref}
+\let\@caption\tufte@caption
+
 \defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
 \setmainfont{Minion Pro}
 \setsansfont[Scale=MatchLowercase]{Gill Sans MT}
@@ -78,35 +86,533 @@
 somatic lineage of multicellular organisms.  This defection is caused by a
 collection of critical failures of the genetic systems evolved to ensure the
 correct and timely integration of the cellular unit's physiology at the tissue
-and organism's level.\footnote{Homeostasis, is the property of a system in which
-  variables are regulated so that internal conditions remain stable and
-  relatively constant.}
+and organism's level.  Neoplastic cells are operationally defined by their
+ability to sustain chronic proliferation, to invade tissues and to set up
+satellite growths in other organs.  When left unchecked, these features can
+compromise the host organism's ability to sustain homeostatic
+balance,\footnote{While the concept of homeostasis emphasises the stability of
+  the internal milieu toward perturbation, perhaps a more accurate formulation
+  could be that of \mbox{\emph{homeodynamics}}---a concept that seeks to account
+  for the diverse behaviour exhibited by biological systems, including all its
+  emergent characteristics, i.e., bistable switches, thresholds, waves,
+  gradients, mutual entrainment, and periodic as well as chaotic behaviour
+  (\citealp{lloyd_why_2001}).} and eventually lead to its systemic failure---and
+death.
 
 \bigskip
 
-Cells of the neoplastic lineage are defined by their ability to sustain chronic
-proliferation, irrespectively of the social cues conveyed by its tissular
-context.  At the morphological level, however, the most conspicuous feature of
-cancer has to be the diversity of shapes and forms these proliferating masses
-can take when departing from the neatly organized architectural tissue types
-they arise from.  An integrative framework to apprehend this remarkable
-phenotypic plasticity has been proposed by Hanahan and
-Weinberg,\cite{hanahan_hallmarks_2000,hanahan_hallmarks_2011} who proposed six
-essential and complementary capabilities for tumour growth and metastatic
-dissemination.  These include self-suficiency in growth signals, insensitivity
-to growth-inhibitory signals, evasion of programmed cell-death, limitless
-replicative potential, sustained angiogenesis, and tissue invasion and
-metastasis.
+% defining attributes of cancer; functional and morphological features;
+% conceptual framework to understand cancer
 
-Cellular transformation, the process through which the neoplastic phenotype
-arises, is caused by genetic and epigenetic alterations in somatic cells.  Under
-regular circumstances, most somatic cells exhibiting behaviours beyond
-physiological ranges end up being singled out and targeted for removal, either
-by eliciting an immune response or by triggering self-induced cellular death
-(\emph{note about apoptosis here}).  In order for a neoplasm to become
-clinically relevant, it has thus to acquire a number of alterations that consign
-it with the capacity to evade its host organisms' regulatory control mechanisms
-against unicellular defection.
+% Quoting Emmanuel Farber in his 1973 address to the American Cancer Society:
+% \begin{quotation}
+%   ``Cancer'' is an imprecise descriptive term to encompass all the many conditions
+%   in which cells proliferate for whatever reason in a more or less uncontrolled
+%   manner, invade tissues, and set up satellite growths in other organs.  The
+%   overall result of such a process, if left undisturbed, is almost always the
+%   death of the host.\cite{farber_carcinogenesiscellular_1973}
+% \end{quotation}
+
+Far from a static physiological state specified by a particular set of cellular
+dysfunctions, cancer is rather a progression along the course of a dynamic
+evolutionary history.  Sixty years ago, Armitage and
+Doll\cite{armitage_age_1954} developed a multistage theory to analyze rates of
+cancer progression.  That theory rested on the premise that cancer builds upon a
+sequence of cellular systems' cumulative failures.  Each such failure, for
+instance the abrogation of a critical \smallcaps{dna} repair pathway or the loss
+of control over cellular death, moves the system one step along the progression
+to disease.\cite{frank_dynamics_2007}
+
+Models of neoplasia evolution historically identify the seminal transforming
+event with an alteration on a single somatic cell\footnote{\emph{Ominis cellula
+    e cellula}---every cell originates from a cell alike---, is the epigram
+  popularized by Rudolph Carl Virchow, stating a shift from the tenet of
+  spontaneous generation that dominated the 19\textsuperscript{th} century
+  school of thought concerning cancer's origins.} that triggers cancer
+progression.  Initiation events contributing to the early stages of neoplastic
+transition are caused by mutations in specific genes whose output is either
+enhanced (oncogenes) or repressed (tumour supressor genes).\footnote{Alterations
+  in nearly 500 of such genes have been linked to cancer initiation and
+  progression (\citealp{forbes_catalogue_2008}).}  Such genetic mutations can be
+structural, including nucleotide substitutions or mutations resulting from gene
+fusion,\cite{konopka_cell_1985} juxtaposition to enhancer
+elements,\cite{tsujimoto_t14;18_1985} or by amplification.  Alterations that
+imply a discrete change of output in gene expression, such as translocations or
+other structural mutations, can occur as initiating
+events\cite{finger_common_1986} or during tumour progression, whereas
+amplification usually occurs during progression.\cite{croce_oncogenes_2008}
+
+However, a single genetic change is rarely sufficient for the development of a
+neoplasia.  Since the term \emph{neoplasia} is generally used to refer to any
+new, abnormal growth of tissue,\footnote{Concomitantly, \emph{malignant}
+  neoplasia is defined by the acquired capacity of neoplastic cells to invade
+  locally and metastasize.} the original oncogenic hit is usually associated
+with a mutation disrupting the balance between proliferation and cell death.
+From then on, cancer progression is modeled as a reiterative process of clonal
+expansion, with sequential subclonal
+selection.\cite{nowell_clonal_1976,greaves_clonal_2012} The dynamics of this
+evolution are dictated by successive genetic and epigenetic\footnote{In this
+  text, \emph{epigenetics} will refer to the range of global modifications in
+  gene expression that are not under control of the genetic code itself.  The
+  modifiable and reversible nature of certain cancer programs can largely be
+  explained by epigenetics.} changes in the neoplasm, and are constrained by the
+ecological context in which the tumour is developing.
+
+The prevailing mode of clonal evolution is through the gradual emergence of
+selectively advantageous ``driver'' genetic injuries against a complex
+background of mostly deleterious and selectively neutral ``passenger'' lesions.
+Alternatively, or perhaps concurrently, another mode of tumoural evolution
+contemplates the possibility of a few drastic events generating multiple lesions
+at once across the genome.  These dramatic punctuated changes can be prompted by
+an acute insult or a single catastrophic pan-genomic event---of which
+chromothripsis, at the chromosome level, is an
+example.\cite{stephens_massive_2011}\footnote{The argument of gradualism versus
+  punctuated equilibrium (\citealp{gould_punctuated_1993}) is a longstanding
+  debate in species evolution and is another example of how much our current
+  conceptualization of cancer progression owes to the developments of the theory
+  of evolution in the second half of the 20\textsuperscript{th} century.}
+
+The time frame of somatic evolution is a function of the mutational rate of
+neoplasms.  While events like chromothripsis and
+kataegis\footnote{\emph{Kataegis}, a term derived from the ancient Greek word
+  for ``thunder'', refers to a pattern of localized hypermutation identified in
+  some cancer genomes (\mbox{\citealp{nik-zainal_mutational_2012}}).} have the
+potential to provide nearly instant triggers for the onset of disease, the high
+frequency of clinically covert \mbox{pre-maligant}
+lesions\cite{sakr_frequency_1993} suggests that transformation of somatic cells
+is a far more frequent event than advised by incidence curves.  Furthermore, the
+fact that the majority of cancers only become clinically relevant at old age is
+a testament to both the prevalence of cancer-suppressing mechanisms as to the
+relatively slow rates of mutational accretion in neoplasms.  Intriguingly, the
+rate of epigenetic change has been reported to be orders of magnitude higher
+than that of genetic change,\cite{siegmund_inferring_2009} but its role in
+clonal evolution is not yet completely understood.
+
+% The interaction of a tumour with its milieu is a complex, dynamic and
+% reciprocal affair.
+
+While the evolution of neoplasms is driven by their underlying genetic and
+epigenetic lability, it is their tissue ecosystems that provide the adaptive
+landscape for clonal fitness selection.\cite{greaves_clonal_2012} Systemic
+regulators, such as hormones, growth factors, immune and inflammatory cells as
+well as cytokines may conspire either to counteract or promote neoplastic
+growth.\cite{bierie_tumour_2006,hanahan_hallmarks_2011} Architectural
+constraints, in the form of physical compartments, basement membranes and
+confined metastatic niches, restrict the growth of tumoural masses and set a
+boundary for neoplastic microevolution.  But perhaps most striking is the
+ability of tumours to remodel tissue micro-environments to their competitive
+advantage---illustrated by the capacity of transformed cells to promote
+neovascularization in response to anoxia or to incite malignant phenotypes in
+their adjacent stromal cells.\cite{lathia_deadly_2011}
+
+At the phenotipic level, the course of neoplastic evolution is tagged along two
+major defining axis: one concerning increasing proliferation rates and another
+reporting the loss of morphological and physiological differentiation at the
+cellular level.\cite{tarabichi_systems_2013}  The paradox resides then in
+explaining how transformed genomes, torn by their karyotypic instability and
+ragged by waves of disrupting mutations, are able to cope with the formidable
+challenges evolved by multicellular organisms to control cellular defection.
+
+In order to become clinically conspicuous, endogenously proliferating neoplastic
+masses must be able to effectively evade sophisticated \mbox{built-in} genetic
+programs evolved during the establishment of multicellularity precisely to
+enforce compliance with societal rules.  These include programs designed to
+erradicate deviant phenotypes, such as apoptosis, senescence and necrosis; a
+range of \mbox{cell-to-cell} signaling programs designed to control and supress
+unwarranted growth; and, perhaps most challenging, cancer cells must dynamically
+and persistently deceive the ever adapting propositions of the host organism's
+immune system.
+
+% self-reliant and highly resilient neoplasms
+
+In addition, neoplasms can also acquire the astonishing capacity to invade
+surrounding tissues and to disseminate the organism, a feature responsible for
+most cancer-related deaths.  This complex process, termed the
+\mbox{invasion-metastasis} cascade,\cite{valastyan_tumor_2011} requires an array
+of well coordinated genetic and epigenetic adaptions.  It can be schematized as
+a sequence of discrete steps, starting with local invasion, followed by
+intravasion by cancer cells into nearby blood and lymphatic vessels.  Tumour
+cells in transit through the lymphatic and hematogenous systems then escape
+the lumina of these vessels into the parenchyma of distant tissues (extravasion)
+and eventually establish micrometastatic lesions that may fully develop into
+macroscopic tumours.
+
+To reconcile the outstanding increase in phenotypic resilience and plasticity of
+neoplastic cells---in spite of their degrading genomic integrity---with the
+canonical multistep model of cancer
+progression,\cite{land_cellular_1983,vogelstein_multistep_1993} carcinogenesis
+is conventionally portrayed as a linear Darwinian evolutionary
+process.\cite{merlo_cancer_2006,polyak_tumor_2014} According to this
+view,\cite{podlaha_evolution_2012} inheritance, environmental factors and
+spontaneous errors in \smallcaps{dna} replication cause mutations or
+epimutations in critical caretaker genes, fomenting genetic and epigenetic
+instability.  This, in turn, promotes mutations or epimutations in specific
+gatekeeper genes\footnote{Among \mbox{cancer-susceptibility} genes, the
+  distinction between \emph{caretaker} and \emph{gatekeeper} genes is a subtle
+  yet conceptually important one.  While the former are responsible for
+  maintaining the integrity of the genome, the latter directly control cellular
+  proliferation.  This is epitomized by the \mbox{breast-cancer-susceptibility}
+  genes \smallcaps{\emph{brca1}} and \smallcaps{\emph{brca2}}, that can
+  functionally play both roles at different points of breast cancer progression
+  (\citealp{kinzler_gatekeepers_1997}).}  (oncogenes or tumour supressor genes),
+triggering uncontrolled growth.  The ensuing genomic instability creates a
+feedback loop that increases evolutionary and proliferation
+rates.\cite{sieber_genomic_2003} This results in heritable variation in the form
+of clonal diversity, upon which Darwinian selection operates.  Clones that
+progressively acquire the biological hallmark capabilities of
+cancer\footnote{These include sustaining proliferative signaling; evading growth
+  suppressors; resisting cell death; enabling replicative immortality; inducing
+  angiogenesis; and activating invasion and metastasis
+  (\citealp{hanahan_hallmarks_2011}).} gain a competitive edge and become more
+dominant and aggressive, promoting a form of neoplastic progression that, at the
+macroscopic level, is consistent with a multistep
+development.\footnote{Interestingly, this modern consensus on tumoural evolution
+  is thus not very distant from what Peter Nowell proposed in his 1976 landmark
+  paper (\citealp{nowell_clonal_1976}) postulating that ``neosplasms arise from
+  a single cell of origin, and tumour progression results from acquired genetic
+  variability within the original clone allowing sequential selection of more
+  aggressive sublines.''}
+
+This prevailing reasoning is supported by the observed \mbox{step-wise}
+progression of most solid tumours.  For instance, the gradual evolution of colon
+cancer is well documented.\cite{vogelstein_multistep_1993} Here, the first
+manifestations of neoplasia occur in the colorectal epithelium, in the form of
+small benign adenomas.  Such tumours are reasonably confined and are almost
+normal in their intra- and intercellular organisation.  With time, adenomas
+start to grow (proliferation) and become morphologically and physiologically
+disorganized (dedifferentiation).  Eventually the tumour evolves into an
+aggressive neoplasia (carcinoma), presumably because one of the cells in the
+adenoma has acquired a sufficient number of mutations to drive the process of
+invasion and metastasis.
+
+The concept of gatekeeper gene is central to this understanding.  Consider for
+instance the \smallcaps{\emph{tp53}} gene, the first \mbox{tumour-suppressor}
+gene to be identified in 1979.  This gene encodes for the p53 protein, a master
+transcription factor with an overarching role in the maintenance of the
+integrity of the genome.\cite{efeyan_p53:_2007} Under normal circumstances, p53
+is functionally inactive due to its rapid degradation.  However, upon the
+infliction of virtually any form of cellular stress, p53 degradation is halted,
+and the protein gains full competence in transcriptional activation.  The
+regulatory networks under its control are associated with several critical
+mechanisms for cancer progression, namely apoptosis, \mbox{cell-cycle}
+inhibition, genome stability and inhibition of
+angiogenesis.\cite{vogelstein_surfing_2000} Unsurprisingly, about 50\% of all
+human cancers have lost p53 expression or express an inactive mutant of the
+protein.\cite{toledo_regulating_2006}
+
+The evolutionary origins of the \smallcaps{\emph{tp53}} gene can be inferred
+from modern-day descendants of both the single cell choanoflagellates and the
+early multicellular sea anemone.  The function of the homolog to this ancestral
+gene in the sea anemone is to protect the germ-line gametes from \smallcaps{dna}
+damage.\cite{belyi_origins_2010} Over the course of the last billion years, this
+function has not only been conserved, but enhanced through
+pleiotropy\footnote{The ability of a single gene to influence multiple,
+  seemingly unrelated phenotypic traits.} to set \smallcaps{\emph{tp53}} as a
+major enforcer of somatic conformity in multicellular organisms.
+
+Another recurrent oncogene with an established role in \mbox{cell-cycle}
+progression and apoptosis, \smallcaps{\emph{myc}}, has had its evolutionary
+roots traced back to at least 600 million years ago.\cite{hartl_stem_2010} The
+fact that many cancer-susceptibility genes are ancient, highly conserved and may
+have taken a role in the transition to
+multicellularity\cite{srivastava_amphimedon_2010} has been interpreted as
+evidence that they play a pivotal role in regulating the normal physiology of
+the somatic cell.\cite{weinberg_oncogenes_1983,weinberg_biology_2013}  Their
+disruption during carcinogenesis could then symbolize the unshackling of the
+transformed cell from its social bindings.
+
+This narrative paints the neoplastic cell as an egotistic rogue cell set free to
+thrive through uncontrolled replication in a hostile environment.  It becomes a
+metaphor for the unicellular evolutionary stage, with cancer lineages competing
+with each other and with normal cells for survival.\cite{merlo_cancer_2006} The
+success of any one lineage is dependent on its \mbox{step-wise} acquisition of
+cancer hallmarks through Darwinian evolution.  However appealing and widespread,
+this idea fails to account for a number of
+observations.\cite{davies_cancer_2011}
+
+First, it falls short to explain the rather high degree of cooperative
+organization among cancer cells.  Increasingly, tumours are being recognized as
+ecosystems with complex and dynamic interactions between neoplastic cells and
+their microenvironment.\cite{polyak_co-evolution_2009} These heterotypic
+interchanges include the stimulation via paracrine signaling of normal stromal
+cells to produce mitogenic signals; the required signaling to induce
+neoangiogenesis; and the disparate cell-to-cell interactions during the
+invasion-metastasis cascade.\cite{axelrod_evolution_2006} Clearly, a very
+specific minimal set of communication skills must be acquired from early on in
+order for cancer cells to prosper.  It is hard to conceive renegade cells
+evolving such intricate adaptations independently from the ground up; rather, a
+more prosaic explanation could involve a shift or modulation of the original set
+of rules somatic cells use to engage with their partners.
+
+Second, it fails to elucidate the quasi teleological way by which advanced
+tumours consistently resort to the same array of sophisticated
+adaptations\cite{hanahan_hallmarks_2011} to match the challenges posted by their
+host organisms.  At their end stage, malignant carcinomas could almost be taken
+for entities bestowed with a volition of their own, capable not only to evade
+the host organism's defenses, but to shrewdly overtake it.  The conventional way
+to account for this comprehensive arsenal of adaptations is to invoke a
+Darwinian evolutionary process among competing lineages of rogue
+cells.\cite{merlo_cancer_2006} However, some adaptations are particularly
+challenging to frame in this conceptual view.  Take for instance the progression
+puzzle highlighted by Bernards and Weinberg: how can mutations promoting
+invasion and metastasis add a competitive advantage to the primary tumour in its
+original ecological context?\footnote{To untie this knot, the proposed solution
+  was to invoke a ``pre-ordained'' correlation between some previously acquired
+  advantageous genes and the genes that facilitate metastasis
+  (\citealp{bernards_progression_2002}).}  Additionally, given that the majority
+of variants randomly arising on a genetic system are deleterious, the odds of
+any neoplastic cell incrementally acquiring all the required hallmark mutations
+before collapsing to a lethal one is exceptionally low.
+
+Third, it fails to properly integrate the role of genetic instability in cancer
+progression.  Because advantageous mutations are so rare, rogue cells are
+thought to promote genomic instability in order to accelerate evolutionary rates
+and increase the odds of, via Darwinian selection, produce a fully malignant
+phenotype.\cite{sieber_genomic_2003} Such mutational arms race among rogue cell
+lineages to reach the jackpot of complete neoplastic competence is riddled by a
+paradox: too few mutations in the mix and the cell won't evade genetic controls;
+too many and it dies.  Especially troublesome are the \mbox{pan-genomic}
+mutations that lead to gross structural changes, including aberrant chromosomes
+and aneuploid cells.\footnote{``If you look at most solid tumours in adults, it
+  looks like someone set off a bomb in the nucleus''---\emph{William C. Hahn}}
+Breivik proposed an elegant solution to this
+inconsistency.\cite{breivik_evolutionary_2005} Rather than postulating genomic
+instability as a pre-requisite to cancer progression, he refashioned it as a
+\mbox{by-product} of the lack of competitive fitness of reparing-phenotypes in
+the tumour environment.\footnote{``Don't stop for repairs in a war zone'' is the
+  metaphor used by Breivik to explain why a mutagenic environment would increase
+  the fitness of the non-repairing phenotype.  This conceptual reformulation
+  could have implications on other central controversies in cancer research---as
+  discussed bellow.}  Still, it remains thought-provoking to note that the
+neoplastic cells with the most deranged genomes are precisely those with the
+most competitive phenotypes.
+
+A tentative hypothesis to address these quandaries has been put forward by
+Davies and Lineweaver.\cite{davies_cancer_2011} Instead of modeling the
+transformed cell as a free-agent requiring the independent \emph{acquisition} of
+enabling properties to obtain malignant status, it seeks to explain hallmark
+adaptations as the reenactment of atavic genetic systems already embedded in the
+genomes of somatic cells.  According to this view, the disruption of high-order
+gatekeeper genes drives the neoplastic cell to reconfigure its regulatory
+networks around a \emph{pre-existing} toolkit of primitive adaptations
+reminiscent of those evolved during early transition to multicellularity.
+Although its original formulation has been either ignored\footnote{At the date
+  of this writing, Google Scholar reported a total of 36 citations of the
+  original article.} or thoroughly
+dismissed,\cite{pettit_cancer_2012,myers_aaargh!_2012} this idea is not entirely
+without merits---and could provide a basis for a reevaluation of some core
+features of cancer.
+
+Consider the Warburg effect\cite{warburg_origin_1956} for instance.  The
+majority of cancer cells favour a metabolism based on anaerobic glycolysis
+followed by lactic acid fermentation in the cytoplasm.  Because glycolysis is
+far less efficient than oxidative respiration for \smallcaps{atp} production,
+this metabolic shift has been implied to be an essential adaptation to cancer
+progression---perhaps in response to intermittent hypoxia in malignant
+lesions.\cite{gatenby_why_2004} A more economical interpretation could be that
+transformed cells, without gatekeeper genes to enforce the proper regulation of
+the high-performing metabolic mode of somatic cells, are now forced to fall back
+to a more basic, yet reliable, metabolic outlet for energy production.  While
+the former interpretation taxes neoplastic progression with another requirement
+and begs for a rationale for the selective fitness of anaerobic metabolism, the
+latter simply conceives the cancer cell as a system seeking a dynamic
+equilibrium in a novel, stressful and unstable environment.
+
+More recently, another much debated concept in cancer research has been the
+cancer stem cell (\smallcaps{csc}).\footnote{These cells are operationally
+  defined by their ``capacity for self-renewal, the potential to develop into
+  any cell in the overall tumor population, and the proliferative ability to
+  drive continued expansion of the population of malignant cells.''
+  (\citealp{jordan_cancer_2006})} While the idea of a unique, genetically
+homogeneous population of determined cancer stem cells is still
+contested,\cite{marotta_cancer_2009} the existence of a particular class of
+tumour propagating cells within neoplastic masses is well accepted.  Here, the
+crux of the matter concerns the ontology of the \smallcaps{csc} phenotype.  In
+short, \smallcaps{csc}s have been proposed to arise from mutations in either
+derivatives of developing stem or progenitor lineages, or from mutations in
+differentiated cells that acquire stem-like
+attributes.\cite{wicha_cancer_2006,lobo_biology_2007} As niche-specific stem
+cells are subjected to higher turnover rates to seed their respective tissues,
+they become prime targets for neoplastic-inducing replication defects.  The
+potential of a seeder neoplastic cell at the apex of the tumoural clonal
+hierarchy is luring both from the diagnostic and treatment perspective.
+Moreover, this conceptualization seems especially fitting for the established
+linear Darwinian clonal progression model.  However, there is evidence that
+these cells do not constitute one homogeneous population.  Alternatively, the
+\smallcaps{ctc} phenotype could represent one of many possible configurations to
+be adopted by the neoplastic cell, given the selective pressures it faces in its
+milieu, and the stochastic events that govern its internal homeodynamics.  The
+\smallcaps{ctc} would then be, rather than a deterministic, a dynamically
+reversible phenotype; and represent, instead of qualitative, a quantitative
+modulation.\cite{maenhaut_cancer_2010,tarabichi_systems_2013}
+
+Another example of the phenotypic modularity of the neoplastic cell is the
+epithelial-mesenchymal transition program (\smallcaps{emt})---and its reverse
+process, the mesenchymal-epithelial transition (\smallcaps{met}).  As with the
+\smallcaps{ctc} phenotype, this mechanism is borrowed from embryogenesis, where
+it partakes in gastrulation, neural crest formation, heart valve formation,
+palatogenesis and myogenesis.\cite{thiery_epithelial-mesenchymal_2009} This
+comprehensive genetic program globally shifts the physiology and morphology of
+the cell between an epithelial phenotype (characterized by a well defined
+polarity, tight junction of the cells and a their binding to a basal lamina) and
+a mesenchymal phenotype (characterized by a lack of polarity, spindle-shape
+morphology and loose cell-to-cell interaction).\cite{thiery_complex_2006} Under
+normal physiological circumstances, the dynamics of the \smallcaps{emt-met}
+program are under strict and orderly genetic control, even if it can be
+recruited exceptionally, for instance in response to injury.  In pathological
+conditions, the unwarranted activation of the \smallcaps{emt-met} program can
+cause organ fibrosis.  But most importantly it provides cancer cells with an
+outlet to break free from the primary tumour and embark the invasion-metastasis
+cascade under the cover of the mesenchymal phenotype.  Conversely, the
+colonization of new micrometastatic niche is facilitated by a transition back to
+an epithelial phenotype.  This constitutes the most thorough illustration yet of
+how neoplastic cells can recruit built-in genetic apparatuses to deploy complex
+adaptations.
+
+Thus, cancer cell lineages could evolve by exploiting the realm of new
+homeodynamic equilibriums made available by the breaching of higher-order
+somatic regulatory systems.  Because these regulatory circuitries are kept in
+check by gatekeeper genes, this would entail that the number of required
+breaking points for the potential emergence of full neoplastic competence is
+considerably smaller than anticipated. The acquisition of the hallmark
+adaptations could simply be the outcome of a stochastic process of readjustments
+of regulatory networks of the cell.
+
+Even Weinberg flirted with such possibility: ``Maybe the information for
+inducing cancer was already in the normal cell genome, waiting to be
+unmasked.''\footnote{\citealp{weinberg_biology_2013}, \emph{p} 79} Could this
+idea be further developed?  Consider the main criticism to the hypothesis of
+Davies and Lineweaver: their invocation of an \emph{atavistic} genetic system,
+in itself largely responsible for the cancer phenotype, already packed in our
+genomes and ready to be unleashed with the disruption of gatekeeper
+genes.\footnote{``In short, proto-metazoans, which we dub Metazoans 1.0, were
+  tumor-like neoplasms.'' (\citealp{davies_cancer_2011})} This proposition is
+perhaps too easy to caricature and to dismiss, but it does share one aspect in
+common with the linear Darwinian model for tumourigenesis: both seek to explain
+cancer almost exclusively through its genetic determinants.  The two theories
+differ, however, in the nature of the qualitative changes required for tumor
+progression.  While clonal evolution posits for an \emph{ab initio} generation
+of genetic determinants for cancer progression, the Metazoan theory
+short-circuits this precondition by allocating the required determinants in the
+genome of the somatic cell.  None of these perspectives fully addresses the
+perplexities of cancer; both seem to ignore the epigenetic determinants for
+cancer progression.
+
+In reality, the predicament of the neoplastic cell might be much more complex.
+Evolution has concocted a vast collection of modular genetic programs to provide
+the somatic cell with adaptive dynamic physiological ranges within which to
+carry its activities.  In order for the orderly integration of the somatic cell
+at the tissue and organism level, such physiological ranges must be under a
+tight genetic control of a higher-order.  The breakdown of this level of control
+leaves the somatic cell hapless on how to keep its metabolism balanced and free
+to stochastically reconfigure its genetic regulation.  This may lead to the
+co-optation of genetic programs via natural selection as they increase the
+fitness of the transformed cell in particular ecological contexts.  Because
+these programs usually end up serving an adaptive role other than the one they
+were evolved to provide, perhaps cancer adaptations ought to be better described
+as \emph{exaptations}\cite{gould_exaptation_1982}---a concept that leaves at
+rest the teleological interpretation of cancer hallmarks.
+
+But let us speculate a bit further.  The evolutionary success of the neoplastic
+cell is only bounded by its ability to self-replicate.  Consequently, with the
+exception of the genetic systems that support the cell cycle and the remaining
+context-specific hallmark adaptations, the vast majority of the transformed
+genome could be at the mercy of disruption through genetic instability.  This
+alone could explain the second major axis\footnote{The first being increased
+  proliferation.} of cancer progression: the gradual loss of morphological and
+physiological differentiation of neoplasms as they evolve through the ranks of
+malignancy.  But there is another neglected driver of cancer evolution, one that
+could prove to be the hidden iceberg upholding the shapeshifting nature of
+cancer.
+
+Very little is know about the non-genetic, or epigenetic, determinants of
+cellular metabolism.  Chromatin remodeling and \smallcaps{dna} methylation are
+known to modulate to a considerable degree patterns of gene expression;
+\smallcaps{rna} transcripts and their encoded proteins may retroactively
+modulate, direct or indirectly, the activity of certain
+genes;\footnote{\smallcaps{rna} mollecules may even directly spread directly to
+  other cells or nuclei by diffusion.} a variety of less known species of
+\smallcaps{rna} are animated with catalytic activity of their own and their
+transcriptional output has been historically
+underestimated.\cite{huttenhofer_principles_2006,ptashne_use_2007}  This family
+of non-protein-coding \smallcaps{rna}s are thought to be relics of a primordial
+``\smallcaps{rna} world'', in which \smallcaps{rna} served both as the carrier
+of genetic information and as the catalytic agent.  If cancer cells are able to
+resourcefully and adaptively tap on the genetic resources of the somatic cell to
+shape their evolution, why would they neglect the rich diversity of epigenetic
+tools at their disposal?
+
+Perhaps most provocatively, as these epigenetic systems are not necessarily
+constrained by the dynamics of Darwinian evolution\footnote{And could indeed
+  abide by the rules of Lamarckian evolution.}, their evolutionary rates could
+be orders of magnitude higher than those observed in genetic systems---even
+those riddled by genetic instability.  This could provide a potent mechanism
+driving cancer evolution, one that might potentially account for the
+extraordinary degree of resilience of advanced cancers.
+
+% These considerations could have profound implications in the way cancer
+% research, diagnostic, prognostic and treatment are conducted.
+
+\medskip
+
+Unlocking these mysteries may well require a lot of ingenuity, but without doing
+so it will be hard to elucidate the intricate nature of life---and that of
+its dark horse, cancer.
+
+% Genetic pleiotropy.  Answer: rather than a multistep progression driven by
+% linear accretion of driver mutations supporting the discrete and independent
+% acquisition of malignancy hallmarks, a global transcriptional shift encompassing
+% the activation of ldots{} Concept of Pleiotropy.  Concept of \emph{exaptations}.
+
+% \smallcaps{\emph{tp53}} and \smallcaps{\emph{myc}}.
+
+% The resilience, plasticity and insidiousness of malignant neoplastic cells is
+% eerily reminiscent of the \ldots{}
+
+% Final argument about Darwinian evolution, hallmarks of cancer, and eventual
+% atavic genetic circuitry engaged once system gateway controlers, such as p53,
+% fail.  Frame cancer as an evolutionary problem To discuss: Darwinian evolution
+% of cancers, multistep model of cancer progression, hallmarks of cancer, critics
+% of the hallmarks, oncogenes as evolutionary gatekeepers, examples centered
+% around \smallcaps{\emph{tp53}} and \smallcaps{\emph{tp53}} oncogenes,
+% integration of cancer programs, Warburg effect, a progressin puzzle: example
+% with \smallcaps{EMT} program, metastasis is a highly inefficient process,
+% similarities between cancer phenotype and early developmental stages, concept of
+% cancer stem cell, concept of \emph{exaptation}.  Example: Evolutionary history
+% of the retinoblstoma gene from rchea to eukaria.  Implications for both the
+% understanding of multicellularity from an evolutionary perspective as well as
+% for the understanding of the biology of cancer.
+
+% However these complex considerations on the biology
+
+% Cancer dynamics are bounded by genetic and epigenetic alterations.\footnote{From
+% Nowell, 1976: reversibility of transformation in certain culture systems
+% suggests that cancer initiation could result from altered gene expression rather
+% than structural mutation}
+
+% Cells of the neoplastic lineage are defined by their ability to sustain chronic
+% proliferation, irrespectively of the social cues conveyed by its tissue context.
+% At the morphological level, however, the most conspicuous feature of cancer has
+% to be the diversity of shapes and forms these proliferating masses can take when
+% departing from the neatly organized architectural tissue types they arise from.
+% An integrative framework to apprehend this remarkable phenotypic plasticity has
+% been proposed by Hanahan and
+% Weinberg,\cite{hanahan_hallmarks_2000,hanahan_hallmarks_2011} who proposed six
+% essential and complementary capabilities for tumour growth and metastatic
+% dissemination.  These include self-suficiency in growth signals, insensitivity
+% to growth-inhibitory signals, evasion of programmed cell-death, limitless
+% replicative potential, sustained angiogenesis, and tissue invasion and
+% metastasis.
+
+% Cellular transformation, the process through which the neoplastic phenotype
+% arises, is caused by genetic and epigenetic alterations in somatic cells.  Under
+% regular circumstances, most somatic cells exhibiting behaviours beyond
+% physiological ranges end up being singled out and targeted for removal, either
+% by eliciting an immune response or by triggering self-induced cellular death
+% (\emph{note about apoptosis here}).  In order for a neoplasm to become
+% clinically relevant, it has thus to acquire a number of alterations that consign
+% it with the capacity to evade its host organisms' regulatory control mechanisms
+% against unicellular defection.
 
 % an operating outside of normal physiological levels cells abnormal behaviour
 % exhibited by most early neoplastic cells may be sufficient for them to be
@@ -115,31 +621,38 @@ against unicellular defection.
 
 % Clonality; multistep model for the nature of cancer;
 
-Specific genes, termed oncogenes, have the potential to induce transformation
-when disrupted in particular circumstances.  Alterations in nearly 500 of such
-genes have been linked to cancer initiation and
-progression.\cite{forbes_catalogue_2008} The multistep model for the nature of
-cancer posits that several such alterations are cumulatively required in order
-to initiate tumorigenesis and to evolve increasingly more aggressive and
-invasive tumour phenotypes.\cite{vogelstein_multistep_1993}
+% Specific genes, termed oncogenes, have the potential to induce transformation
+% when disrupted in particular circumstances.  Alterations in nearly 500 of such
+% genes have been linked to cancer initiation and
+% progression.\cite{forbes_catalogue_2008} The multistep model for the nature of
+% cancer posits that several such alterations are cumulatively required in order
+% to initiate tumourigenesis and to evolve increasingly more aggressive and
+% invasive tumour phenotypes.\cite{vogelstein_multistep_1993}
 
 % The fundamental and defining characteristic of the cancer cell is, arguably,
 % it's ability to sustain chronic proliferation.
 
-The number and patterns of somatic alterations vary dramatically across cancer
-types.  At one extreme, childhood medulloblastomas can harbour fewer than ten
-genomic alterations, whereas over \SI{50000} somatic changes have been observed
-in primary lung adenocarcinoma samples.
+% The number and patterns of somatic alterations vary dramatically across cancer
+% types.  At one extreme, childhood medulloblastomas can harbour fewer than ten
+% genomic alterations, whereas over \SI{50000} somatic changes have been observed
+% in primary lung adenocarcinoma samples.
 
-In biological systems the instanciation of information is \smallcaps{DNA}.
+% In biological systems the instanciation of information is \smallcaps{DNA}.
 
-a phenotype eerily reminiscent of that seen in loosely cooperative unicellular
-life forms, at a time when multicellularity was still being attempted at.
+% a phenotype eerily reminiscent of that seen in loosely cooperative unicellular
+% life forms, at a time when multicellularity was still being attempted at.
+
+% From the prologue of 'The Emperor of All Maladies':
+% Malignant and normal growth are so genetically intertwined that unbraiding the
+% two might be one of the most significant scientific challenges faced by our
+% species. Cancer is built into our genomes: the genes that unmoor normal cell
+% division are not foreign to our bodies, but rather mutated, distorted versions
+% of the very genes that perform vital cellular functions.
 
 % individual alterations in oncogenes are seen as necessary but not
 % sufficient to give rise to cancer.  Considered to arise sequentially and to give
 % rise to the progressively more aggressive and invasive phenotypes observed
-% during tumorigenesis.
+% during tumourigenesis.
 
 % which these control mechanisms are compromised lead by mutations on specific genes
 % which these mechanisms are hindered is through the accumulation of somatic
@@ -263,12 +776,12 @@ life forms, at a time when multicellularity was still being attempted at.
 
 % Strangely, one fundamental characteristic of cancer cells, the loss of
 % differentiation, was not considered a distinct hallmark.  This characteristic is
-% essential because it is a primary difference between benign and malignant tumors
+% essential because it is a primary difference between benign and malignant tumours
 % (e.g., autonomous adenomas as opposed to carcinoma of the thyroid).  It is
 % supported by a measurable expression program switch that affects all gene
 % categories.  We argue that this should be another, if not the major,
 % ``hallmark'' of a cancerous cell, and it has been shown to be a robust
-% diagnostic index for thyroid tumors.
+% diagnostic index for thyroid tumours.
 
 % new hallmarks of cancer must be able
 
@@ -299,8 +812,8 @@ life forms, at a time when multicellularity was still being attempted at.
 
 \bigskip
 
-Clinical definition of cancer. A vast collection of diseases (almost 100,
-according to http://medical-dictionary.thefreedictionary.com/Cancer).
+% Clinical definition of cancer. A vast collection of diseases (almost 100,
+% according to http://medical-dictionary.thefreedictionary.com/Cancer).
 
 \backmatter
 
