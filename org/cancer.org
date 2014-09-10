@@ -40,6 +40,7 @@ possible causes, generic methods of diagnosis and treatment.
 - carcinogens
 - viruses
 *** Treatment of cancer
+*** Diagnosis of cancer
 * Microarrays
 ** Historical perspective
 ** Microarrays and cancer
