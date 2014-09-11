@@ -1,0 +1,83 @@
+\documentclass{tufte-book}
+
+\usepackage{fontspec}
+\usepackage{soul}
+\usepackage{booktabs}
+\usepackage{morefloats}
+\usepackage{siunitx}
+
+% from
+% http://tex.stackexchange.com/questions/46831/why-does-manually-loading-hyperref-change-the-font-size-for-captions-in-tufte-do
+% 05Sep2014
+\makeatletter
+\let\tufte@caption\@caption
+\usepackage[hyperfootnotes=false]{hyperref}
+\let\@caption\tufte@caption
+
+\defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
+\setmainfont{Minion Pro}
+\setsansfont[Scale=MatchLowercase]{Gill Sans MT}
+% \setsansfont[Scale=MatchLowercase]{Gill Sans Std}
+\setmonofont[Scale=MatchLowercase]{Consolas}
+
+\usepackage{etoolbox}% provides some support for comma-separated lists
+
+% Set up the spacing using fontspec features
+\renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
+\renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
+
+\makeatletter
+% We'll keep track of the old/seen bibkeys here.
+\def\@tufte@old@bibkeys{}
+
+% This macro prints the full citation if it's the first time it's been used
+% and a shorter citation if it's been used before.
+\newcommand{\@tufte@print@margin@citation}[1]{%
+  \citealp{#1}% print short entry
+  % add bibkey to the old bibkeys list
+  \listgadd{\@tufte@old@bibkeys}{#1}%
+}
+
+% We've modified this Tufte-LaTeX macro to call \@tufte@print@margin@citation
+% instead of \bibentry.
+\renewcommand{\@tufte@normal@cite}[2][0pt]{%
+  % Snag the last bibentry in the list for later comparison
+  \let\@temp@last@bibkey\@empty%
+  \@for\@temp@bibkey:=#2\do{\let\@temp@last@bibkey\@temp@bibkey}%
+  \sidenote[][#1]{%
+    % Loop through all the bibentries, separating them with semicolons and spaces
+    \normalsize\normalfont\@tufte@citation@font%
+    \setcounter{@tufte@num@bibkeys}{0}%
+    \@for\@temp@bibkeyx:=#2\do{%
+      \ifthenelse{\equal{\@temp@last@bibkey}{\@temp@bibkeyx}}{%
+        \ifthenelse{\equal{\value{@tufte@num@bibkeys}}{0}}{}{and\ }%
+        \@tufte@trim@spaces\@temp@bibkeyx% trim spaces around bibkey
+        \@tufte@print@margin@citation{\@temp@bibkeyx}%
+      }{%
+        \@tufte@trim@spaces\@temp@bibkeyx% trim spaces around bibkey
+        \@tufte@print@margin@citation{\@temp@bibkeyx};\space
+      }%
+      \stepcounter{@tufte@num@bibkeys}%
+    }%
+  }%
+}
+
+% Calling this macro will reset the list of remembered citations. This is
+% useful if you want to revert to full citations at the beginning of each
+% chapter.
+\newcommand{\resetcitations}{%
+  \gdef\@tufte@old@bibkeys{}%
+}
+\makeatother
+
+\begin{document}
+
+\input{./life/life.tex}
+\input{./cancer/cancer.tex}
+
+\backmatter
+
+\bibliography{introduction}
+\bibliographystyle{plainnat}
+
+\end{document}
