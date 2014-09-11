@@ -35,3 +35,22 @@ data however all objects appear to be sparse and dissimilar in many ways which
 prevents common data organization strategies from being efficient.  The term
 curse of dimensionality was coined by Richard E. Bellman when considering
 problems in dynamic optimization.
+
+* What is a Cox model
+A quick introduction to Cox models can be found [[http://www.medicine.ox.ac.uk/bandolier/painres/download/whatis/cox_model.pdf][here]].
+- A Cox model is a statistical technique for exploring the relationship between
+  the survival of a patient and several explanatory variables.
+- Survival analysis is concerned with studying the time between entry to a study
+  and a subsequent event (such as death).
+- A Cox model provides an estimate of the treatment effect on survival after
+  adjustment for other explanatory variables. In addition, it allows us to
+  estimate the hazard (or risk) of death for an individual, given their
+  prognostic variables.
+- A Cox model must be fitted using an appropriate computer program (such as SAS,
+  STATA or SPSS). The final model from a Cox regression analysis will yield an
+  equation for the hazard as a function of several explanatory variables.
+- Interpreting the Cox model involves examining the coefficients for each
+  explanatory variable. A positive regression coefficient for an explanatory
+  variable means that the hazard is higher, and thus the prognosis
+  worse. Conversely, a negative regression coefficient implies a better
+  prognosis for patients with higher values of that variable.
