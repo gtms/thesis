@@ -10,6 +10,8 @@
 *.bbl
 *.blg
 *.pdf
+*.png
+*.svg
 
 ## directories
 org/auto/
