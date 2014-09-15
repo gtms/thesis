@@ -109,22 +109,16 @@ key.colours <- c ("incidence-females" = "orange",
                   "incidence-males" = "skyblue",
                   "mortality-males" = "steelblue")
 
-globocan.plt <- ggplot (polygon.dfr, aes (x = x, y = y, colour = colour, fill = colour)) +
-    geom_polygon ()
+globocan.plt <- ggplot (polygon.dfr,
+                        aes (x = x,
+                             y = y,
+                             fill = colour)) +
+                                 geom_polygon ()
 
 globocan.plt <- globocan.plt +
     scale_x_continuous (limits = c (-45, 45),
                         breaks = seq (-40, 40, 10),
-                        labels = as.character (abs (seq (-40, 40, 10)))) +
-                            scale_colour_manual (values = key.colours,
-                                                 breaks = c ("incidence-males",
-                                                     "mortality-males",
-                                                     "incidence-females",
-                                                     "mortality-females"),
-                                                 labels = c ("male\nincidence",
-                                                     "male\nmortality",
-                                                     "female\nincidence",
-                                                     "female\nmortality"))
+                        labels = as.character (abs (seq (-40, 40, 10))))
 globocan.plt <- globocan.plt +
     scale_fill_manual (values = key.colours,
                        breaks = c ("incidence-males",
@@ -144,7 +138,6 @@ globocan.plt +
     theme_bw () +
         ## theme (text = element_text (family = "OfficinaSansITC", size = 14),
         theme (text = element_text (family = "OfficinaSansITC-Book", size = 14),
-        ## theme (text = element_text (family = "Myriad Pro", size = 14),
                axis.title.x = element_blank (),
                axis.title.y = element_blank (),
                axis.ticks = element_blank (),
