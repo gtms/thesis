@@ -1,0 +1,26 @@
+# WORLD: ESTIMATED CANCER MORTALITY, ALL AGES: MALE
+Cancer;Cases;Crude;ASR (W);Cum. Risk [0-74]
+All cancers excl. non-melanoma skin cancer;4653132;130.8;126.3;12.71
+Bladder;123043;3.5;3.2;0.30
+Brain, nervous system;106379;3.0;3.0;0.32
+Colorectum;373631;10.5;10.0;1.04
+Gallbladder;60334;1.7;1.6;0.17
+Hodgkin lymphoma;15464;0.4;0.4;0.04
+Kaposi sarcoma;17358;0.5;0.5;0.05
+Kidney;90782;2.6;2.5;0.26
+Larynx;73261;2.1;2.0;0.24
+Leukaemia;151317;4.3;4.1;0.39
+Lip, oral cavity;97919;2.8;2.7;0.31
+Liver;521031;14.6;14.3;1.57
+Lung;1098606;30.9;30.0;3.31
+Melanoma of skin;31393;0.9;0.9;0.09
+Multiple myeloma;43094;1.2;1.2;0.13
+Nasopharynx;35753;1.0;1.0;0.12
+Non-Hodgkin lymphoma;115384;3.2;3.2;0.33
+Oesophagus;281212;7.9;7.7;0.88
+Other pharynx;77585;2.2;2.2;0.26
+Pancreas;173812;4.9;4.7;0.53
+Prostate;307471;8.6;7.8;0.64
+Stomach;468931;13.2;12.7;1.40
+Testis;10351;0.3;0.3;0.02
+Thyroid;12627;0.4;0.3;0.04
