@@ -132,12 +132,13 @@ globocan.plt <- globocan.plt +
 globocan.plt <- globocan.plt +
     scale_y_continuous (breaks = seq (.5, 13.5, 1),
                         labels = top.cancers.srt) +
+
                             geom_vline (xintercept = 0)
 
 globocan.plt +
     theme_bw () +
         ## theme (text = element_text (family = "OfficinaSansITC", size = 14),
-        theme (text = element_text (family = "OfficinaSansITC-Book", size = 14),
+        theme (text = element_text (family = "OfficinaSansITC-Book", size = 20),
                axis.title.x = element_blank (),
                axis.title.y = element_blank (),
                axis.ticks = element_blank (),
@@ -150,6 +151,6 @@ globocan.plt +
                panel.background = element_blank (),
                plot.margin = unit (c (-0.5, 1, 0, 0.5), "lines"))
 
-ggsave (width = 11,
+ggsave (width = 13,
         height = 7,
-        "pdf/globocan.svg")
+        "img/globocan.svg")
