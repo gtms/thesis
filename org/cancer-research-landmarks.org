@@ -1,0 +1,29 @@
+| Year | Discovery or Event                                                               | Relative Survival Rate |
+|------+----------------------------------------------------------------------------------+------------------------|
+| 1863 | Cellular origin of cancer (Virchow)                                              |                        |
+| 1889 | Seed-and-soil hypothesis (Paget)                                                 |                        |
+| 1914 | Chromosomal mutations in cancer (Boveri)                                         |                        |
+| 1937 | Founding of NCI                                                                  |                        |
+| 1944 | Transmission of cellular information by DNA (Avery)                              |                        |
+| 1950 | Availability of cancer drugs through Cancer chemotherapy National Service Center |                        |
+| 1953 | Report on structure of DNA                                                       |                    35% |
+| 1961 | Breaking of the genetic code                                                     |                        |
+| 1970 | Reverse transcriptase                                                            |                        |
+| 1971 | Restriction enzymes                                                              |                        |
+|      | Passage of National Cancer Act                                                   |                        |
+| 1975 | Hybridomas and monoclonal antibodies                                             |                    50% |
+|      | Tracking of cancer statistics by SEER program                                    |                        |
+| 1976 | Cellular origin of retroviral oncogenes                                          |                        |
+| 1979 | Epidermal growth factor and receptor                                             |                        |
+| 1981 | Suppression of tumor growth by p53                                               |                        |
+| 1984 | G proteins and cell signaling                                                    |                        |
+| 1986 | Retinoblastoma gene                                                              |                        |
+| 1990 | First decrease in cancer incidence and mortality                                 |                        |
+| 1991 | Association between mutation in APC gene and colorectal cancer                   |                        |
+| 1994 | Genetic cancer syndromes                                                         |                        |
+|      | Association between BRCA1 and breast cancer                                      |                        |
+| 2000 | Sequencing of the human genome                                                   |                        |
+| 2002 | Epigenetics in cancer                                                            |                        |
+|      | MicroRNAs in cancer                                                              |                        |
+| 2005 | First decrease in total number of deaths from cancer                             |                    68% |
+| 2006 | Tumour stromal interaction                                                       |                        |
