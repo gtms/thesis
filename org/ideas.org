@@ -54,3 +54,27 @@ A quick introduction to Cox models can be found [[http://www.medicine.ox.ac.uk/b
   variable means that the hazard is higher, and thus the prognosis
   worse. Conversely, a negative regression coefficient implies a better
   prognosis for patients with higher values of that variable.
+
+* How science goes wrong (The Economist)
+Link [[http://www.economist.com/news/leaders/21588069-scientific-research-has-changed-world-now-it-needs-change-itself-how-science-goes-wrong][here]].
+
+A simple idea underpins science: "trust, but verify". Results should
+always be subject to challenge from experiment. That simple but powerful idea
+has generated a vast body of knowledge. Since its birth in the 17th century,
+modern science has changed the world beyond recognition, and overwhelmingly for
+the better.
+
+* The truth wears off (The New Yorker)
+Link [[http://www.newyorker.com/magazine/2010/12/13/the-truth-wears-off][here]].
+
+On September 18, 2007, a few dozen neuroscientists, psychiatrists, and
+drug-company executives gathered in a hotel conference room in Brussels to hear
+some startling news.  It had to do with a class of drugs known as atypical or
+second-generation antipsychotics, which came on the market in the early
+nineties.  The drugs, sold under brand names such as Abilify, Seroquel, and
+Zyprexa, had been tested on schizophrenics in several large clinical trials, all
+of which had demonstrated a dramatic decrease in the subjects' psychiatric
+symptoms.  As a result, second-generation antipsychotics had become one of the
+fastest-growing and most profitable pharmaceutical classes.  By 2001, Eli
+Lilly's Zyprexa was generating more revenue than Prozac.  It remains the
+company's top-selling drug.
