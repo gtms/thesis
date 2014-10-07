@@ -28,7 +28,7 @@ spotted with an array of microscopic droplets of \mbox{forty-five} clones of
 c\smallcaps{dna} isolated from \emph{Arabidopsis thaliana}---a small flowering
 plant with the smallest genome of any known higher eukaryote.  Before being
 scanned, the slides, or microarrays, were hybridized with a solution of
-fluorescently labeled, reverse transcribed c\smallcaps{dna}s, from
+fluorescently labeled, reverse transcribed c\smallcaps{dna}s, synthesized from
 m\smallcaps{rna} templates extracted from the plant.
 
 % , supplemented with fluorophores.
@@ -41,7 +41,7 @@ transcription patterns of the arabidopsis genome.
 With this seminal report from Stanford, Mark Schena and Patrick Brown
 demonstrated three things.  First, that microarray technology was
 \emph{sensitive} and \emph{specific} enough to discriminate between distinct
-m\smallcaps{rna} species in a solution (Figure~\ref{fig:arabidopsis-microarray},
+m\smallcaps{rna} species in solution (Figure~\ref{fig:arabidopsis-microarray},
 \textbf{A--B}).  Second, that it could \emph{quantify} discrete levels of
 m\smallcaps{rna} transcripts (Figure~\ref{fig:arabidopsis-microarray},
 \textbf{C--D}).  Third, that the technology was suited to investigate gene
@@ -87,10 +87,35 @@ The use of microarrays could thus enable a molecular classification of cancer,
 even if this landmark experimental setup could not find a multigene expression
 signature to predict response to chemotherapy.
 
-Back in Stanford, the focus was being directed towards breast cancer.  Using a
+Back in Stanford, the focus was being directed towards breast cancer.  With a
 microarray probing for \num{8102} human genes, Charles Perou, Pat Brown and
-David Botstein characterized variation in gene expression patterns of breast
-tumours from 42 patients.\cite{perou_molecular_2000}
+David Botstein studied the variation in gene expression patterns of breast
+tumours from 42 patients.\cite{perou_molecular_2000} Using an unsupervised
+hierarchical clustering algorithm, they were able to identify at least five
+distinct molecular breast cancer classes.  Two types of epithelial cell are
+found in the human mammary gland: basal (and/or myoepithelial) cells and luminal
+epithelial cells.  Cancers of luminal origin were found to cluster in two
+previously unrecognized groups, termed luminal \smallcaps{a} (of lower grade)
+and luminal \smallcaps{b} (of higher grade).  Cancers with a \mbox{basal-like}
+phenotype; \mbox{over-expressing} the \smallcaps{her2} receptor; or with a
+normal-like phenotype were each found to cluster in their own group.  However,
+the most robust distinction observed was between the transcriptome of breast
+cancers expressing the estrogen receptor (\smallcaps{ER+}) and those that did
+not (\smallcaps{ER--}).  This pioneering study showed that a new taxonomy of
+breast cancer could be based on its molecular features---a classification that
+would be challenged, extended and refined throughout the ensuing
+decade.\cite{sorlie_gene_2001,sorlie_repeated_2003,hu_molecular_2006,pusztai_molecular_2006,rakha_basal-like_2008,parker_supervised_2009,gusterson_basal-like_2009,weigelt_contribution_2010,prat_deconstructing_2011}
+
+% Distinct breast cancer genotypes were first characterized.  Multiparameter
+% gene expression assays for early-stage breast cancer.  A new taxonomy of
+% breast cancer based on their molecular features.  The gene expression
+% microarray-based class discovery studies pioneered by the Stanford group have
+% led to the identification of at least five molecular breast cancer subtypes:
+% luminal \smallcaps{A}, luminal \smallcaps{B}, normal breast-like, HER2, and
+% basal-like.  Indeed, the most robust distinction observed by microarray
+% analysis is between the transcriptome of breast cancers expressing the
+% estrogen receptor (\smallcaps{ER+}) and estrogen receptor negative
+% (\smallcaps{ER--}).
 
 \begin{marginfigure}%
   \includegraphics[width=\linewidth]{nature-the-human-genome.jpg}
@@ -99,20 +124,19 @@ tumours from 42 patients.\cite{perou_molecular_2000}
 \end{marginfigure}
 
 While these findings were being reported, Eric Lander was leading another major
-collaborative effort that would redefine the breadth and scope of microarray
-technology.  On February 2001, a \mbox{public-funded} consortium reported the
-first draft of the human genome (Figure~\ref{fig:human-genome-cover}).  Prior to
-this achievement, the estimated number of genes in our genome was around
+collaborative effort that would redefine the breadth of microarray technology.
+On February 2001, a \mbox{public-funded} consortium reported the first draft of
+the human genome (Figure~\ref{fig:human-genome-cover}).  Prior to this
+achievement, the estimated number of genes in our genome was around
 \num{100000}.\cite{cox_assessing_1994} As the genome sequence quality and gene
 finding methods improved, this figure was progressively revised down to an
 estimated \num{20000}--\num{25000} human protein coding genes.  The prospect of
-probing the expression of \emph{all} these genes in the neoplastic cell with
-microarrays was now within reach---and would soon turn into a reality.  If
-cancer was fundamentally a genetic disease,\footnote{``The revolution in cancer
-  research can be summed up in a single sentence: cancer is, in essence, a
-  genetic disease''---\emph{Bert Vogelstein}
-  (\citealp{vogelstein_cancer_2004}).} then the study of the cancer genome with
-microarrays would bring it into the genomic era.
+probing the entire transcriptome of the neoplastic cell with microarrays was now
+within reach---and would soon turn into a reality.  If cancer was fundamentally
+a genetic disease,\footnote{``The revolution in cancer research can be summed up
+  in a single sentence: cancer is, in essence, a genetic disease''---\emph{Bert
+    Vogelstein} (\citealp{vogelstein_cancer_2004}).} then the study of the
+cancer genome with microarrays would bring it into the genomic era.
 
 % First classification results using microarray data.  Several cancers were used
 % as models.  Concomitant evolution of the microarray analysis technology
@@ -132,29 +156,28 @@ analyzed a selection of primary tumours from 98 women younger than 55 who did
 not develop lymph node metastasis.\cite{vant_veer_gene_2002}
 
 When the tumours were originally collected, treatment standards did not require
-adjuvant chemotherapy after surgery.  Thirty-four patients had since then
-relapsed their cancer.  According to modern standards, approximately 95\% of the
-original patients would have received chemotherapy in the \mbox{United States},
-and 85\% would have been treated under European norms.  This entails that 55\%
-to 65\% of the patients would have needlessly undergone a form of aggressive and
-debilitating chemotherapy.
-
-To assess whether gene expression profiles could predict metastatic relapse of
-disease, the \smallcaps{nki} group profiled the tumours on a microarray
-containing approximately \num{25000} genes.  Using an unsupervised, hierarchical
-clustering algorithm on a subset of these features, they narrowed down a list of
-70 genes whose expression levels correlated with the development of distant
-metastasis.  Using the same microarray, this \mbox{70-gene} prognosis profile
-was subsequently validated as a predictor on a \smallcaps{nki} cohort of 295
-tumours of breast cancer.\cite{van_de_vijver_gene-expression_2002} Microarrays
-were now being used to stratify cancer risk among patients based on the gene
-expression profile of the tumour.\footnote{``Even though you could look under
-  the microscope and they all look the same (\ldots{}) some have built into them
-  programs to become aggressive''---\emph{Stephen Friend}} In breast cancer,
-gene expression profiles proved better prognostic factors for the likelihood of
-distant metastasis within five years than age, tumour size, status of axillary
-lymph nodes, histological type of the tumour, pathological grade and
-\mbox{hormone-receptor} status.
+adjuvant chemotherapy after surgery.  Thirty-four patients, or roughly one third
+of the women in the study, had since then relapsed their cancer.  According to
+modern guidelines, approximately 95\% of the original patients would have
+received chemotherapy in the \mbox{United States}, and 85\% would have been
+treated under European norms.  This entails that 55\% to 65\% of the patients
+would have needlessly undergone an aggressive and debilitating form of
+chemotherapy.  To assess whether gene expression profiles could predict
+metastatic relapse of disease, the \smallcaps{nki} team profiled the tumours on
+a microarray containing approximately \num{25000} genes.  Using an unsupervised,
+hierarchical clustering algorithm on a subset of these features, they narrowed
+down a list of 70 genes whose expression levels correlated with the development
+of distant metastasis.  With the same microarray, this \mbox{70-gene} prognosis
+profile was subsequently validated on a wider \smallcaps{nki} cohort of 295
+breast cancer tumours.\cite{van_de_vijver_gene-expression_2002} It was proof
+that, in breast cancer, gene expression profiles were now better prognostic
+factors for distant metastasis than age, tumour size, status of axillary lymph
+nodes, histological type of the tumour, pathological grade and
+\mbox{hormone-receptor} status.  Microarrays were now being used to stratify
+cancer risk among patients based on the gene expression profile of the
+tumour.\footnote{``Even though you could look under the microscope and they all
+  look the same (\ldots{}) some have built into them programs to become
+  aggressive''---\emph{Stephen Friend}}
 
 One of the originalities of the \smallcaps{nki} studies was the molecular
 dissection of the list of predictor genes derived from their analysis.
@@ -207,11 +230,22 @@ claiming (claims of progress here).
 % 2-cure a disease
 % 3-identify every genes that is behaving inappropriately
 
-% This microarray technology had brought cancer research from the
-% 20\textsuperscript{th} century genetics into 21\textsuperscript{th} century
-% genomics.
+% From:
+% http://en.wikipedia.org/wiki/Breast_cancer_classification#cite_ref-pmid20065178_43-0
+% Several commercially marketed DNA microarray tests analyze clusters of genes
+% and may help decide which possible treatment is most effective for a
+% particular cancer.  The use of these assays in breast cancers is supported by
+% Level II evidence or Level III evidence.  No tests have been verified by Level
+% I evidence, which is rigorously defined as being derived from a prospective,
+% randomized controlled trial where patients who used the test had a better
+% outcome than those who did not.  Acquiring extensive Level I evidence would be
+% clinically and ethically challenging.  However, several validation approaches
+% are being actively pursued.
 
-% human acetylcholine receptor
+% tying up:
+% Some evidence suggest that these assays provide comparable
+% prognostic information: Concordance among Gene-Expression-Based Predictors for
+% Breast Cancer
 
 \bigskip
 
