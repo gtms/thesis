@@ -1,1 +1,219 @@
 \section{Microarrays}
+
+\begin{marginfigure}%
+  \includegraphics{schena-brown-fig1.jpg}
+  \caption[Gene expression of \emph{Arabidopsis thaliana} monitored with
+  c\smallcaps{dna} microarrays]{Gene expression of \emph{Arabidopsis thaliana}
+    monitored with c\smallcaps{dna} microarrays. \textbf{A--F}: each panel shows
+    the hybridization intensity of a mix of fluorescently labeled
+    c\smallcaps{dna}s with a collection of \mbox{forty-five}
+    \mbox{gene-specific} probes from arabidopsis, plus three controls, under
+    each stated condition (see text).  Adjacent pairs of spots are experimental
+    duplicates.  Negative controls were spotted on positions \emph{c}(11, 12)
+    and \emph{h}(11, 12).  Positive controls were provided by adding a fixed
+    diluted quantity of m\smallcaps{rna} of the human acethylcoline receptor
+    gene to each sample before reverse transcription.  c\smallcaps{dna} probes
+    of the positive control were printed on positions \emph{a}(1, 2) Probes for
+    the \emph{\smallcaps{hat4}} gene were printed on positions \emph{e}(1, 2)
+    (reproduced from \citealp{schena_quantitative_1995}).}
+  \label{fig:arabidopsis-microarray}
+\end{marginfigure}
+
+\newthought{In October 1995,} a short report in \emph{Science} magazine caught
+the eye with a figure showing six grids of colourful stains on a dark background
+(Figure~\ref{fig:arabidopsis-microarray}).  The colour of each spot, ranging
+through the visible spectrum, captured the fluorescence emitted when a 3.5 mm by
+5.5 mm slide of glass was scanned with a laser.  Each slide had been previously
+spotted with an array of microscopic droplets of \mbox{forty-five} clones of
+c\smallcaps{dna} isolated from \emph{Arabidopsis thaliana}---a small flowering
+plant with the smallest genome of any known higher eukaryote.  Before being
+scanned, the slides, or microarrays, were hybridized with a solution of
+fluorescently labeled, reverse transcribed c\smallcaps{dna}s, from
+m\smallcaps{rna} templates extracted from the plant.
+
+% , supplemented with fluorophores.
+
+The vivid readouts from the microarrays were literally illuminating the
+transcription patterns of the arabidopsis genome.
+
+\bigskip
+
+With this seminal report from Stanford, Mark Schena and Patrick Brown
+demonstrated three things.  First, that microarray technology was
+\emph{sensitive} and \emph{specific} enough to discriminate between distinct
+m\smallcaps{rna} species in a solution (Figure~\ref{fig:arabidopsis-microarray},
+\textbf{A--B}).  Second, that it could \emph{quantify} discrete levels of
+m\smallcaps{rna} transcripts (Figure~\ref{fig:arabidopsis-microarray},
+\textbf{C--D}).  Third, that the technology was suited to investigate gene
+expression patterns in diverse tissue types
+(Figure~\ref{fig:arabidopsis-microarray}, \textbf{E--F}).  As Pat Brown would
+state later, microarrays were developed to ``enable a new method for relating
+sequence differences in genes to complex traits in people.''  And what bigger
+challenge of complexity could there be but cancer?
+
+Four years on, Todd Golub and Eric Lander, at the Broad Institute in Boston,
+reported the results of the first tackling on cancer using
+microarrays.\cite{golub_molecular_1999} As a test case, they took to Farber's
+acute leukemia, isolating m\smallcaps{rna} from 38 biological samples of
+neoplastic bone marrow and peripheral blood. Their approach was framed as a
+classification task.  Up to then, the problem of classifying cancer subtypes was
+mostly left to the expertise of the pathologist,\footnote{Clinical practice for
+  cancer classification would involve an experienced pathologist's
+  interpretation of the tumour's morphology, histochemistry, immunophenotyping,
+  and cytogenetic analysis.} and many cancers still lacked molecular markers for
+their accurate definition.  Moreover, the correct distinction between acute
+lymphoblastic leukemia (\smallcaps{all}, originating from lymphoid precursors)
+and acute myeloid leukemia (\smallcaps{aml}, originating from myeloid
+precursors) was critical for the determination of the chemotherapeutic regimen
+to be used.
+
+Using a microarray with probes reporting for 6817 human genes, they concluded
+that the patterns of expression of a subset of these genes could be used to
+accurately discriminate between \smallcaps{aml} and \smallcaps{all}.  They then
+sought to use the expression data to blindly \emph{infer} eventual tumour
+\mbox{sub-classes} among the samples.  Using a learning algorithm to build a
+classifier from the data and then testing it with a cross-validation procedure,
+they showed that the \mbox{\smallcaps{aml-all}} distinction could be
+automatically discovered and confirmed without a biological \mbox{\emph{a
+    priori}}.\footnote{These class prediction and class discovery tasks
+  illustrate the distinction between \emph{supervised} and \emph{unsupervised}
+  learning.  While the former derives a function from labeled training data
+  (thus requiring an \mbox{\emph{a priori}} knowledge of the classes it tries to
+  predict), the latter aims to produce a classification without any prior
+  knowledge of the structure in the data.}  What's more, this class discovery
+approach could be further refined to automatically detect the distinction
+between \mbox{\smallcaps{B}-cell} and \mbox{\smallcaps{T}-cell} \smallcaps{all}.
+The use of microarrays could thus enable a molecular classification of cancer,
+even if this landmark experimental setup could not find a multigene expression
+signature to predict response to chemotherapy.
+
+Back in Stanford, the focus was being directed towards breast cancer.  Using a
+microarray probing for \num{8102} human genes, Charles Perou, Pat Brown and
+David Botstein characterized variation in gene expression patterns of breast
+tumours from 42 patients.\cite{perou_molecular_2000}
+
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{nature-the-human-genome.jpg}
+  \caption{Cover of \emph{Nature} magazine of February 15, 2001.}
+  \label{fig:human-genome-cover}
+\end{marginfigure}
+
+While these findings were being reported, Eric Lander was leading another major
+collaborative effort that would redefine the breadth and scope of microarray
+technology.  On February 2001, a \mbox{public-funded} consortium reported the
+first draft of the human genome (Figure~\ref{fig:human-genome-cover}).  Prior to
+this achievement, the estimated number of genes in our genome was around
+\num{100000}.\cite{cox_assessing_1994} As the genome sequence quality and gene
+finding methods improved, this figure was progressively revised down to an
+estimated \num{20000}--\num{25000} human protein coding genes.  The prospect of
+probing the expression of \emph{all} these genes in the neoplastic cell with
+microarrays was now within reach---and would soon turn into a reality.  If
+cancer was fundamentally a genetic disease,\footnote{``The revolution in cancer
+  research can be summed up in a single sentence: cancer is, in essence, a
+  genetic disease''---\emph{Bert Vogelstein}
+  (\citealp{vogelstein_cancer_2004}).} then the study of the cancer genome with
+microarrays would bring it into the genomic era.
+
+% First classification results using microarray data.  Several cancers were used
+% as models.  Concomitant evolution of the microarray analysis technology
+% (Quackenbush and shit).  Selection bias & etc.  Public repositories for
+% microarrays.  Miame consensus.
+
+\medskip
+
+In the early 1980's, the pathologists of the Nederlands Kanker Instituut
+(\smallcaps{nki}) in Amsterdam began a frozen tissue bank of tumours from Dutch
+women breast cancers.  Twenty years on, the m\smallcaps{rna} of these samples,
+along with the patient's clinical histories, would be the subject of a page
+turning gene expression profiling experiment.  A group including
+\smallcaps{nki}'s head of molecular pathology, Laura van't Veer, head researcher
+René Bernards, and Stephen Friend, a Rosetta Inpharmatics founder in Seattle,
+analyzed a selection of primary tumours from 98 women younger than 55 who did
+not develop lymph node metastasis.\cite{vant_veer_gene_2002}
+
+When the tumours were originally collected, treatment standards did not require
+adjuvant chemotherapy after surgery.  Thirty-four patients had since then
+relapsed their cancer.  According to modern standards, approximately 95\% of the
+original patients would have received chemotherapy in the \mbox{United States},
+and 85\% would have been treated under European norms.  This entails that 55\%
+to 65\% of the patients would have needlessly undergone a form of aggressive and
+debilitating chemotherapy.
+
+To assess whether gene expression profiles could predict metastatic relapse of
+disease, the \smallcaps{nki} group profiled the tumours on a microarray
+containing approximately \num{25000} genes.  Using an unsupervised, hierarchical
+clustering algorithm on a subset of these features, they narrowed down a list of
+70 genes whose expression levels correlated with the development of distant
+metastasis.  Using the same microarray, this \mbox{70-gene} prognosis profile
+was subsequently validated as a predictor on a \smallcaps{nki} cohort of 295
+tumours of breast cancer.\cite{van_de_vijver_gene-expression_2002} Microarrays
+were now being used to stratify cancer risk among patients based on the gene
+expression profile of the tumour.\footnote{``Even though you could look under
+  the microscope and they all look the same (\ldots{}) some have built into them
+  programs to become aggressive''---\emph{Stephen Friend}} In breast cancer,
+gene expression profiles proved better prognostic factors for the likelihood of
+distant metastasis within five years than age, tumour size, status of axillary
+lymph nodes, histological type of the tumour, pathological grade and
+\mbox{hormone-receptor} status.
+
+One of the originalities of the \smallcaps{nki} studies was the molecular
+dissection of the list of predictor genes derived from their analysis.
+
+\clearpage
+
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{jci-cancer-microarrays.jpg}
+  \caption{Cover of \emph{The Journal of Clinical Investigation} of June
+1\textsuperscript{st}, 2005.}
+  \label{fig:cancer-microarray}
+\end{marginfigure}
+
+By 2005, the partnership between microarray technology and cancer research was
+in full swing (Figure~\ref{fig:cancer-microarray}).  The litany of papers
+claiming (claims of progress here).
+
+% Could it be that microarrays, that 21\textsuperscript{st} century divining
+% rod,\cite{he_microarrays21st_2001} were misleading us in the war on cancer?
+
+% 2007: Dupuy & Simon review validity and reproducibility of microarray-based
+% research with a meta-analysis on 90 studies.  Quote: ``The use of microarray
+% technology has generated great excitement for its potential to identify
+% biomarkers for cancer outcomes, but the reproducibility and validity of
+% findings based on microarray data have come under widespread challenge.''
+% (nci-dupuy-2007.pdf)
+
+% Steps to run a microarray: 1-sequence the entire genome of the organism
+% you're studying.  2-use massive amount of computing power to determine where
+% all the genes are in your sequence.  3-more computing power to design primer
+% pairs to use PCR to make copies of every gene.  4-with those primers, copy
+% every gene on the genome 5-run quality tests on all gene copies to verify
+% which PCR reactions did not work 6-separate double stranded DNA into single
+% stranded DNA.  7-use robots to place microscopic droplets of each
+% single-stranded DNA into ordered rows and columns on a glass microscopic
+% slide (microarray).
+
+% each spot contains multiple copies of a unique DNA sequence that represents a
+% single gene.
+
+% list of terms to use:
+% genetic catalog; gene expression profile.
+
+% While microarrays quantify the m\smallcaps{rna} species extracted from a given
+% tissue, they do not tell us if the subsequent protein is actually being
+% properly synthesized.
+
+% Limitations of microarrays.  They cannot:
+% 1-tell which genes went bad to cause a disease.
+% 2-cure a disease
+% 3-identify every genes that is behaving inappropriately
+
+% This microarray technology had brought cancer research from the
+% 20\textsuperscript{th} century genetics into 21\textsuperscript{th} century
+% genomics.
+
+% human acetylcholine receptor
+
+\bigskip
+
+% Cancer\footnote{``It's bad bile.  It's bad habits.  It's bad bosses.  It's bad
+% genes.''---\emph{Mel Greaves}}
