@@ -1,0 +1,25 @@
+# data retrieved from http://www.gopubmed.com/
+# 08Oct2014
+# reported publication history with query
+# "Gene Expression Profiling"[mesh] AND Cancer[mesh]
+year;count
+2012;2863
+2013;2752
+2011;2748
+2010;2730
+2009;2450
+2008;2134
+2006;1987
+2007;1980
+2005;1957
+2004;1538
+2014;1436
+2003;1128
+2002;814
+2001;489
+2000;227
+1999;69
+1998;40
+1997;38
+1996;21
+1995;10
