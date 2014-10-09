@@ -78,3 +78,13 @@ symptoms.  As a result, second-generation antipsychotics had become one of the
 fastest-growing and most profitable pharmaceutical classes.  By 2001, Eli
 Lilly's Zyprexa was generating more revenue than Prozac.  It remains the
 company's top-selling drug.
+
+* Genomic instability is not seen on non-solid tumours
+The fabric of cancer biology---weaving together the strands
+
+It is worth pointing out that the exceptions to this general description of
+cancer as a "disease of genetic instability" are the cancers, generally
+noncarcinomas, that possess single, reproducible balanced translocations of
+specific chromosomal sites (i.e., leukemias, some lymphomas, Ewing's
+sarcoma). In these cases, there is no evidence of any underlying state of
+genomic instability.

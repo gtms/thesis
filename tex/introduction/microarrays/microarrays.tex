@@ -84,7 +84,7 @@ automatically discovered and confirmed without a biological \mbox{\emph{a
 approach could be further refined to automatically detect the distinction
 between \mbox{\smallcaps{B}-cell} and \mbox{\smallcaps{T}-cell} \smallcaps{all}.
 The use of microarrays could thus enable a molecular classification of cancer,
-even if this landmark experimental setup could not find a multigene expression
+even if this landmark experimental setup failed to find a multigene expression
 signature to predict response to chemotherapy.
 
 Back in Stanford, the focus was being directed towards breast cancer.  With a
@@ -92,20 +92,21 @@ microarray probing for \num{8102} human genes, Charles Perou, Pat Brown and
 David Botstein studied the variation in gene expression patterns of breast
 tumours from 42 patients.\cite{perou_molecular_2000} Using an unsupervised
 hierarchical clustering algorithm, they were able to identify at least five
-distinct molecular breast cancer classes.  Two types of epithelial cell are
-found in the human mammary gland: basal cells (the outer layer of myoepithelial
-cells in the mammary duct) and luminal cells (at the apical surface of the
-ducts, with secretory proprieties).  Cancers of luminal origin were found to
-cluster in two previously unrecognized groups, termed luminal \smallcaps{a} (of
-lower grade) and luminal \smallcaps{b} (of higher grade).  Cancers with a
-\mbox{basal-like} phenotype; \mbox{over-expressing} the \smallcaps{her2}
-receptor; or with a normal-like phenotype were each found to cluster together in
-their respective group.  However, the most robust observed distinction was
-between the transcriptome of breast cancers expressing the estrogen receptor
-(\smallcaps{ER+}) and those that did not (\smallcaps{ER--}).  This pioneering
-study showed that a new taxonomy of breast cancer could be based on its
-molecular features---a classification that would be challenged, extended and
-refined throughout the ensuing
+distinct molecular breast cancer classes.
+
+Two types of epithelial cells are found in the human mammary gland: basal cells
+(the outer layer of myoepithelial cells in the mammary duct) and luminal cells
+(at the apical surface of the ducts, with secretory proprieties).  In Perou's
+study, cancers of luminal origin were found to cluster in two previously
+unrecognized groups, termed luminal \smallcaps{a} (of lower grade) and luminal
+\smallcaps{b} (of higher grade).  Cancers with a \mbox{basal-like} phenotype;
+\mbox{over-expressing} the \smallcaps{her2} receptor; or with a normal-like
+phenotype were each found to cluster together in their respective group.
+However, the most robust observed distinction was between the transcriptome of
+breast cancers expressing the estrogen receptor (\smallcaps{ER+}) and those that
+did not (\smallcaps{ER--}).  This pioneering study showed that a new taxonomy of
+breast cancer could be based on its molecular features---a classification that
+would be challenged, extended and refined throughout the ensuing
 decade.\cite{sorlie_gene_2001,sorlie_repeated_2003,hu_molecular_2006,pusztai_molecular_2006,rakha_basal-like_2008,parker_supervised_2009,gusterson_basal-like_2009,weigelt_contribution_2010,prat_deconstructing_2011}
 
 % Distinct breast cancer genotypes were first characterized.  Multiparameter
@@ -133,7 +134,7 @@ achievement, the estimated number of genes in our genome was around
 \num{100000}.\cite{cox_assessing_1994} As the genome sequence quality and gene
 finding methods improved, this figure was progressively revised down to an
 estimated \num{20000}--\num{25000} human protein coding genes.  The prospect of
-interrogating the \emph{entire} transcriptome of the neoplastic cell with
+measuring the \emph{entire} transcriptome of the neoplastic cell with
 microarrays was now within reach---and would soon turn into a reality.  If
 cancer was fundamentally a genetic disease,\footnote{``The revolution in cancer
   research can be summed up in a single sentence: cancer is, in essence, a
@@ -141,38 +142,66 @@ cancer was fundamentally a genetic disease,\footnote{``The revolution in cancer
   (\citealp{vogelstein_cancer_2004}).} then the study of the cancer genome with
 microarrays would bring it into the genomic era.
 
-Mass reporting of cancer transcription profiles.  Which cancers.  Which genes
-are deferentially expressed.  First public microarray databases.  Microarray
-meta-analysis.  Single cell gene expression profiling.  A compelling case was
-made.  Presently.
+It was with microarrays probing for most of the then reported human genome that
+the expression profiles of lung adenocarcinomas\cite{garber_diversity_2001},
+hepatocellular carcinomas,\cite{chen_gene_2002} and gastric
+cancers,\cite{leung_phospholipase_2002} were interrogated.  Time and again,
+unsupervised classification methods were highlighting clinical subtypes that
+recapitulated morphological categorizations, underlined tumour differentiation
+stages, or even uncovered tentative progression markers.  Each of these
+portraits revealed a wide diversity in tumour profiles, both at the \mbox{intra-
+  and} \mbox{inter-patient} sampling level, and a relatively minimal variation
+in normal tissue profiles.  While nuanced, the transcriptomes of these different
+cancers were still remarkably consistent within each malady and largely
+reminiscent of the expression profiles of the normal tissues from which they
+were derived.\cite{botstein_genomic_2003}
 
-Wide diversity in tumour profiles and relatively minimal variation in normal
-tissue profiles have been found not only for breast cancers, but also for lung,
-and gastric cancers.  While nuanced, the global patterns of gene expression of
-different cancers where still remarkably consistent within each malady
-(Botstein, Fig.4).  Furthermore, tumour samples from the same breast cancer
-patient, either by repeated surgical sampling or from lymph node metastases,
-tend to have profiles very similar to each other; similar results were reported
-in lung and liver tumours.
+The use of class discovery algorithms, mostly as descriptive techniques,
+dominated the early genomic approach to cancer
+biology.\cite{matros_genomic_2004,eschrich_dna_2004} However, the problem of
+predicting cancer progression, response to treatment or survival time, remained
+an elusive one.  In order to provide sound evidence for predictive genomic
+markers, an experimental setting with a systematic, long term follow-up of
+cancer patients would be needed.
+
+\medskip
+
+% Mass reporting of cancer transcription profiles.  Which cancers.  Which genes
+% are deferentially expressed.  First public microarray databases.  Microarray
+% meta-analysis.  Single cell gene expression profiling.  A compelling case was
+% made.  Presently.
+
+% Wide diversity in tumour profiles and relatively minimal variation in normal
+% tissue profiles have been found not only for breast cancers, but also for
+% lung, and gastric cancers.  While nuanced, the global patterns of gene
+% expression of different cancers where still remarkably consistent within each
+% malady and largely reminiscent of the transcription profiles of the normal
+% tissues from which they are derived.  (Botstein, Fig.4).  Furthermore, tumour
+% samples from the same breast cancer patient, either by repeated surgical
+% sampling or from lymph node metastases, tend to have profiles very similar to
+% each other; similar results were reported in lung and liver tumours.  Gene
+% discovery.
+
+% Concomitantly, a statistical and computational theory for the analysis of the
+% millions of data points that result from these experiments was starting to
+% take shape.\cite{quackenbush_computational_2001,irizarry_summaries_2003}
 
 % First classification results using microarray data.  Several cancers were used
 % as models.  Concomitant evolution of the microarray analysis technology
 % (Quackenbush and shit).  Selection bias & etc.  Public repositories for
 % microarrays.  Miame consensus.
 
-\medskip
-
-In the early 1980's, the pathologists of the Nederlands Kanker Instituut
-(\smallcaps{nki}) in Amsterdam began a frozen tissue bank of tumours from Dutch
-women breast cancers.  Twenty years on, the m\smallcaps{rna} of these samples,
-along with the patient's clinical histories, would be the subject of a page
-turning gene expression profiling experiment.  A group including
+\newthought{In the early 1980's}, the pathologists of the Nederlands Kanker
+Instituut (\smallcaps{nki}) in Amsterdam began a frozen tissue bank of tumours
+from Dutch women breast cancers.  Twenty years on, the m\smallcaps{rna} of these
+samples, along with the patient's clinical histories, would be the subject of a
+page turning gene expression profiling experiment.  A group including
 \smallcaps{nki}'s head of molecular pathology, Laura van't Veer, head researcher
 René Bernards, and Stephen Friend, a Rosetta Inpharmatics founder in Seattle,
 analyzed a selection of primary tumours from 98 women younger than 55 who did
 not develop lymph node metastasis.\cite{vant_veer_gene_2002}
 
-When the tumours were originally collected, treatment standards did not require
+When the tumours were originally resected, treatment standards did not require
 adjuvant chemotherapy after surgery.  Thirty-four patients, or roughly one third
 of the women in the study, had since then relapsed their cancer.  According to
 modern guidelines, approximately 95\% of the original patients would have
@@ -188,21 +217,22 @@ distant metastasis.  The robustness of this \mbox{70-gene} prognosis profile was
 subsequently validated on a wider cohort of 295 breast cancer tumours with
 either positive or negative nodal
 status.\cite{van_de_vijver_gene-expression_2002} In this study, the classifier
-predicted survival and distant metastasis in stratified univariate analyses and
-was the strongest predictor of distant metastasis in a multivariate model that
-included traditional breast cancer predictors.\footnote{Classical
-  prognosticators for breast cancer include age, tumour size, status of axillary
-  lymph nodes, histological type of the tumour, pathological grade and
-  \mbox{hormone-receptor} status.}  Microarrays were now being used to stratify
-cancer risk among patients based on the gene expression profile of the
-tumour.\footnote{``Even though you could look under the microscope and they all
-  look the same (\ldots{}) some have built into them programs to become
-  aggressive''---\emph{Stephen Friend}}
+accurately predicted overall survival and distant metastasis in stratified
+univariate analyses and was the strongest predictor of distant metastasis in a
+multivariate model that included traditional breast cancer
+predictors.\footnote{Classical prognosticators for breast cancer include age,
+  tumour size, status of axillary lymph nodes, histological type of the tumour,
+  pathological grade and \mbox{hormone-receptor} status.}  Microarrays were now
+being used to stratify cancer risk among patients based on the gene expression
+profile of the tumour.\footnote{``Even though you could look under the
+  microscope and they all look the same (\ldots{}) some have built into them
+  programs to become aggressive''---\emph{Stephen Friend}}
 
-One of the originalities of the \smallcaps{nki} studies was the molecular
-dissection of the list of predictor genes derived from their analysis.
-
-\clearpage
+This approach not only produced the first genomic predictors to inform treatment
+decisions, but, perhaps more interestingly, it also begged for their scrutiny
+their eventual role in cancer progression.underlying was now possible to query
+the biology of cancer progression by scrutinizing the biological of the lists of
+genes derived from these studies.
 
 \begin{marginfigure}%
   \includegraphics[width=\linewidth]{jci-cancer-microarrays.jpg}
