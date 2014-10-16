@@ -126,7 +126,7 @@ decade.\cite{sorlie_gene_2001,sorlie_repeated_2003,hu_molecular_2006,pusztai_mol
   \label{fig:human-genome-cover}
 \end{marginfigure}
 
-While these findings were being reported, Eric Lander was leading another major
+While these findings were being reported, Eric Lander was leading another
 collaborative effort that would redefine the breadth of microarray technology.
 On February 2001, a \mbox{public-funded} consortium reported the first draft of
 the human genome (Figure~\ref{fig:human-genome-cover}).  Prior to this
@@ -159,10 +159,10 @@ were derived.\cite{botstein_genomic_2003}
 The use of class discovery algorithms, mostly as descriptive techniques,
 dominated the early genomic approach to cancer
 biology.\cite{matros_genomic_2004,eschrich_dna_2004} However, the problem of
-predicting cancer progression, response to treatment or survival time, remained
+predicting cancer progression, response to treatment or survival time remained
 an elusive one.  In order to provide sound evidence for predictive genomic
 markers, an experimental setting with a systematic, long term follow-up of
-cancer patients would be needed.
+cancer patients was in demand.
 
 \medskip
 
@@ -224,29 +224,171 @@ predictors.\footnote{Classical prognosticators for breast cancer include age,
   tumour size, status of axillary lymph nodes, histological type of the tumour,
   pathological grade and \mbox{hormone-receptor} status.}  Microarrays were now
 being used to stratify cancer risk among patients based on the gene expression
-profile of the tumour.\footnote{``Even though you could look under the
-  microscope and they all look the same (\ldots{}) some have built into them
-  programs to become aggressive''---\emph{Stephen Friend}}
+profile of the tumour.
 
-This approach not only produced the first genomic predictors to inform treatment
-decisions, but, perhaps more interestingly, it also begged for their scrutiny
-their eventual role in cancer progression.underlying was now possible to query
-the biology of cancer progression by scrutinizing the biological of the lists of
-genes derived from these studies.
+The genes included in the predictor were scrutinized for potential ``insight
+into the underlying biological mechanism leading to rapid metastasis.''  The
+van't Veer article in \emph{Nature} reports that ``genes involved in cell cycle,
+invasion and metastasis, angiogenesis, and signal transduction are significantly
+upregulated in the poor prognosis signature.''  Not only did this work produce
+the first genomic predictor to inform treatment decisions, it also paved the way
+for an alternative to infer physiological mechanisms in human cancers.  If the
+tumour transcriptome already contained information regarding disease
+progression,\footnote{``Even though you could look under the microscope and they
+  all look the same (\ldots{}) some have built into them programs to become
+  aggressive''---\emph{Stephen Friend}} then querying for biologically motivated
+collections of genes among the predictive features could make proof of the
+implication of particular genetic programs in cancer biology.
+
+% \FloatBarrier
+
+It was with a similar reasoning in mind that the Stanford group presented the
+argument for the link between a wound healing genetic program and cancer
+progression.\cite{chang_gene_2004} The argument begins with the recognition of
+the similarities between the tumour microenvironment and normal wound healing.
+It then proceeds by characterizing a gene expression profile of fibroblast serum
+response (which physiologically only occurs in the context of a local injury),
+in a cell culture model profiled by microarray.  Finally, this signature profile
+is used to test specific hypotheses using publicly available gene expression
+data from human cancers.
+
+Accordingly, they demonstrated that, in a cohort of 51
+breast cancer patients with equal treatment, those with a higher expression of
+the core serum response signature were significantly more likely to develop
+metastasis and to die in a \mbox{5-year} \mbox{follow-up} period.  Similar
+results were obtained by segregating the \mbox{295-sample} \smallcaps{nki}
+cohort along an axis of expression of the serum response signature.  The
+signature was also shown to be predictive of outcome in a dataset of 62 patients
+with \mbox{stage \smallcaps{i}} and \mbox{stage \smallcaps{ii}} lung
+adenocarcinomas\cite{garber_diversity_2001} and a dataset of 42 patients with
+\mbox{stage \smallcaps{iii}} gastric carcinomas.\cite{leung_phospholipase_2002}
+This formulation established a novel framework to infer biological determinants
+of cancer progression based on gene expression profiles of clinical samples,
+obviating the need of experimental setups on \emph{in vivo} models.
+
+The rehashing of this strategy would prove exceptionally prolific.  In the wake
+of the Chang et al. publication, links between cancer progression and various
+biological signature markers were reported---including gene expression programs
+of stem
+\mbox{cell-ness};\cite{glinsky_microarray_2005,ben-porath_embryonic_2008}
+p53-status;\cite{miller_expression_2005} stromal
+component;\cite{west_determination_2005} response to
+hypoxia;\cite{chi_gene_2006} chromosomal
+instability;\cite{carter_signature_2006,buffa_large_2010} loss of
+\emph{\smallcaps{PTEN}} expression;\cite{saal_poor_2007} \smallcaps{EMT}
+transition;\cite{welm_macrophage-stimulating_2007,taube_core_2010}
+\emph{\smallcaps{E2F1}} perturbation;\cite{hallstrom_e2f1-dependent_2008}
+mi\smallcaps{R}-31 targets;\cite{valastyan_tumor_2011} among many more.
+% bromodomain 4;\cite{crawford_bromodomain_2008}
+% retinoic acid receptor;\cite{hua_genomic_2009} anchorage-independent
+% growth;\cite{mori_anchorage-independent_2009} among many more.
+
+% \medskip
 
 \begin{marginfigure}%
   \includegraphics[width=\linewidth]{jci-cancer-microarrays.jpg}
   \caption{Cover of \emph{The Journal of Clinical Investigation} of June
-1\textsuperscript{st}, 2005.}
+    1\textsuperscript{st}, 2005.}
   \label{fig:cancer-microarray}
 \end{marginfigure}
 
-By 2005, the partnership between microarray technology and cancer research was
-in full swing (Figure~\ref{fig:cancer-microarray}).  The litany of papers
-claiming (claims of progress here).
+By 2005, ten years after the arabidopsis report, the partnership between
+microarray technology and cancer research was in full swing
+(Figure~\ref{fig:cancer-microarray}).  Reflecting the increasing appeal of the
+technology, at least half a dozen vendors were then marketing whole genome
+microarrays, each relying on their own specifics
+(Table~\ref{tab:WholeGenomeArray}).  Among these are the probe manufacturing
+process (made \mbox{\emph{in situ}} by photolithographic or ink-jet methods, or
+by standard oligonucleotide synthesis protocols followed by attachment to
+various substrates); the probe substrates (activated glass slides, silicon
+chips, or membranes); the probe design and location (most probes are derived
+from the 3' end of the gene coding sequences to accommodate the fact that target
+labeling usually begins at the 3' end of m\smallcaps{RNA}s); probe size and
+number per array (Table~\ref{tab:WholeGenomeArray}); and the proper probe
+annotation (as sequence databases were still in state of flux, probe annotations
+were constantly being revised and did not necessarily target their designated
+gene).\cite{kawasaki_end_2006}
 
-Developments in bioinformatics microarray analysis.  New tools.  From single
-genes to pathway analysis.
+% The great majority of these studies were
+% done without internal controls or standards, which rendered comparison of
+% results in independent experimental settings difficult or impossible.
+
+\begin{table}[ht]
+  \small
+  \centering
+  % \fontfamily{ppl}%\selectfont
+  \begin{tabular}[c]{lcS[table-format=6.0]S[table-format=6.0]}
+    \toprule
+    \multicolumn{1}{c}{Vendor} & \multicolumn{1}{c}{Probe Size} &
+    \multicolumn{1}{c}{\# Probesets} & \multicolumn{1}{c}{\# Probes per array}\\
+    \midrule
+    \smallcaps{ABI} & 60mer & 33000 & 33000 \\
+    Affymetrix & 25mer & 54000 & 1000000 \\
+    Agilent & 60mer & 44000 & 44000 \\
+    \smallcaps{GE} Amersham & 30mer & 57000 & 57000 \\
+    Illumina & 50mer & 46000 & 1500000 \\
+    Microarrays, Inc. & 70mer & 49000 & 49000 \\
+    NimbleGen & 60mer & 38000 & 380000 \\
+    Phalanx Biotech & 60mer & 30000 & 30000 \\
+    ``Home brew'' & \begin{tabular}[c]
+      {@{}c@{}}
+      \vspace{-.1cm}
+      50mer--\emph{n}70mer\\or c\smallcaps{DNA}s
+    \end{tabular}&
+    40000 & 40000 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Technical attributes of the principal commercial microarray
+    platforms by 2005.  A probeset constitutes a collection of probes
+    targeting a specific gene.
+    (adapted from \citealp{kawasaki_end_2006}).}
+  \label{tab:WholeGenomeArray}
+  \vspace{0cm}
+\end{table}
+
+\medskip
+
+In addition, the expression data resulting from a microarray experiment can be
+influenced by a number of experimental factors, such like target
+c\smallcaps{dna} synthesis (linearly amplified \smallcaps{rna} may contain may
+contain biases in the original m\smallcaps{rna}s
+ratio);\cite{nygaard_options_2006} target labelling (different fluorescent dyes
+present distinct stabilities, quantum efficiencies and wavelengths for
+stimulation and emission); hybridization and washing protocols (every commercial
+platform has its own optimized method); and the imaging of the arrays (usually
+done by confocal and non-confocal scanners, yet variables like laser power,
+pixel sizes or scan time are not standardized).
+
+These sources of technical variation were making comparison of results obtained
+from different microarray platforms difficult or even impossible.  Some studies
+were reporting poor correlations between expression levels measured with
+different platforms.\cite{tan_evaluation_2003,shi_cross-platform_2005} In order
+to improve the reliability and concordance of microarray data, international
+consortia and technical study groups were assembled to determine a core set of
+\emph{Minimum Information About a Microarray Experiment} (\smallcaps{miame})
+standards\cite{brazma_minimum_2001} and, in 2006, the \emph{MicroArray Quality
+  Control} (\smallcaps{maqc}) project was
+launched.\cite{maqc_consortium_microarray_2006} In 2002, the National Center for
+Biotechnology Information in the United States created the \emph{Gene Expression
+  Omnibus} (\smallcaps{geo}),\footnote{\url{http://www.ncbi.nlm.nih.gov/geo/}
+  (\citealp{edgar_gene_2002})} an online repository for \mbox{high-throughput}
+gene expression data and, in 2003, the European Bioinformatics Institute started
+\emph{ArrayExpress},\footnote{\url{http://www.ebi.ac.uk/arrayexpress}
+  (\citealp{brazma_arrayexpress--public_2003})} a public database of microarray
+gene expression data.
+
+But by and large, the most contentious aspect of the use of microarrays in
+cancer research concerned the methodologies involved in the analysis of the raw
+experimental data.  In 2007, a critical review of ninety studies for cancer
+outcome appeared in the \emph{Journal of the National Cancer Institute} by Alain
+Dupuy and Richard Simon, from the the Hôpital Saint-Louis in Paris and the
+\smallcaps{nci} in Bethesda, \smallcaps{md}.\cite{dupuy_critical_2007}
+
+
+
+% The litany of papers claiming (claims of progress here). Developments in
+% bioinformatics microarray analysis.  New tools.  From single genes to pathway
+% analysis.
 
 % Could it be that microarrays, that 21\textsuperscript{st} century divining
 % rod,\cite{he_microarrays21st_2001} were misleading us in the war on cancer?
@@ -299,6 +441,10 @@ genes to pathway analysis.
 % Some evidence suggest that these assays provide comparable
 % prognostic information: Concordance among Gene-Expression-Based Predictors for
 % Breast Cancer
+
+% Affymetrix Achieves First FDA Clearance of Microarray-Based Gene Profiling
+% Reagents
+% http://investor.affymetrix.com/phoenix.zhtml?c=116408&p=irol-newsArticle&ID=1561100
 
 \bigskip
 
