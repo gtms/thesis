@@ -94,6 +94,12 @@ tumours from 42 patients.\cite{perou_molecular_2000} Using an unsupervised
 hierarchical clustering algorithm, they were able to identify at least five
 distinct molecular breast cancer classes.
 
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{nature-the-human-genome.jpg}
+  \caption{Cover of \emph{Nature} magazine of February 15, 2001.}
+  \label{fig:human-genome-cover}
+\end{marginfigure}
+
 Two types of epithelial cells are found in the human mammary gland: basal cells
 (the outer layer of myoepithelial cells in the mammary duct) and luminal cells
 (at the apical surface of the ducts, with secretory proprieties).  In Perou's
@@ -119,12 +125,6 @@ decade.\cite{sorlie_gene_2001,sorlie_repeated_2003,hu_molecular_2006,pusztai_mol
 % analysis is between the transcriptome of breast cancers expressing the
 % estrogen receptor (\smallcaps{ER+}) and estrogen receptor negative
 % (\smallcaps{ER--}).
-
-\begin{marginfigure}%
-  \includegraphics[width=\linewidth]{nature-the-human-genome.jpg}
-  \caption{Cover of \emph{Nature} magazine of February 15, 2001.}
-  \label{fig:human-genome-cover}
-\end{marginfigure}
 
 While these findings were being reported, Eric Lander was leading another
 collaborative effort that would redefine the breadth of microarray technology.
@@ -242,6 +242,13 @@ implication of particular genetic programs in cancer biology.
 
 % \FloatBarrier
 
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{jci-cancer-microarrays.jpg}
+  \caption{Cover of \emph{The Journal of Clinical Investigation} of June
+    1\textsuperscript{st}, 2005.}
+  \label{fig:cancer-microarray}
+\end{marginfigure}
+
 It was with a similar reasoning in mind that the Stanford group presented the
 argument for the link between a wound healing genetic program and cancer
 progression.\cite{chang_gene_2004} The argument begins with the recognition of
@@ -283,30 +290,41 @@ mi\smallcaps{R}-31 targets;\cite{valastyan_tumor_2011} among many more.
 % retinoic acid receptor;\cite{hua_genomic_2009} anchorage-independent
 % growth;\cite{mori_anchorage-independent_2009} among many more.
 
-% \medskip
+\medskip
 
-\begin{marginfigure}%
-  \includegraphics[width=\linewidth]{jci-cancer-microarrays.jpg}
-  \caption{Cover of \emph{The Journal of Clinical Investigation} of June
-    1\textsuperscript{st}, 2005.}
-  \label{fig:cancer-microarray}
-\end{marginfigure}
-
-By 2005, ten years after the arabidopsis report, the partnership between
-microarray technology and cancer research was in full swing
+\newthought{By 2005,} ten years after the arabidopsis report, the partnership
+between microarray technology and cancer research was in full swing
 (Figure~\ref{fig:cancer-microarray}).  Reflecting the increasing appeal of the
 technology, at least half a dozen vendors were then marketing whole genome
 microarrays, each relying on their own specifics
-(Table~\ref{tab:WholeGenomeArray}).  Among these are the probe manufacturing
-process (made \mbox{\emph{in situ}} by photolithographic or ink-jet methods, or
-by standard oligonucleotide synthesis protocols followed by attachment to
-various substrates); the probe substrates (activated glass slides, silicon
-chips, or membranes); the probe design and location (most probes are derived
-from the 3' end of the gene coding sequences to accommodate the fact that target
-labeling usually begins at the 3' end of m\smallcaps{RNA}s); probe size and
-number per array (Table~\ref{tab:WholeGenomeArray}); and the proper probe
-annotation (as sequence databases were still in state of flux, probe annotations
-were constantly being revised and did not necessarily target their designated
+(Table~\ref{tab:WholeGenomeArray}).
+
+Microarrays can typically be designed in a \mbox{two-colour}
+(\mbox{dual-channel}) or in a \mbox{single-colour} (\mbox{single-channel})
+setup.  In \mbox{dual-channel} microarrays, c\smallcaps{dna}s prepared from two
+samples (usually diseased \emph{versus} healthy tissue) are each labeled with
+its own fluorophore, then mixed and hybridized on the same microarray.  The
+ratios of the measurements of the fluorescence emission in the wavelength of
+each fluorophore is then used to estimate the relative abundance of individual
+transcripts in the two samples.  \mbox{Single-channel} microarrays measure the
+hybridization intensities of a single population of c\smallcaps{dna}s labeled
+with a unique fluorophore and, therefore, express the relative abundance of
+transcript expression across biological samples processed in the same
+experiment.  Oligonucleotide microarrays often carry control probes designed to
+hybridize with \smallcaps{rna} \mbox{spike-ins}.  The degree of hybridization
+between the \mbox{spike-ins} and the control probes is used to normalize the
+hybridization measurements for the target probes.
+
+Other platform specific attributes include the probe manufacturing process (made
+\mbox{\emph{in situ}} by photolithographic or ink-jet methods, or by standard
+oligonucleotide synthesis protocols followed by attachment to various
+substrates); the probe substrates (activated glass slides, silicon chips, or
+membranes); the probe design and location (most probes are derived from the 3'
+end of the gene coding sequences to accommodate the fact that target labeling
+usually begins at the 3' end of m\smallcaps{RNA}s); probe size and number per
+array (Table~\ref{tab:WholeGenomeArray}); and the proper probe annotation (as
+sequence databases were still in state of flux, probe annotations were
+constantly being revised and did not necessarily target their designated
 gene).\cite{kawasaki_end_2006}
 
 % The great majority of these studies were
@@ -350,14 +368,14 @@ gene).\cite{kawasaki_end_2006}
 
 In addition, the expression data resulting from a microarray experiment can be
 influenced by a number of experimental factors, such like target
-c\smallcaps{dna} synthesis (linearly amplified \smallcaps{rna} may contain may
-contain biases in the original m\smallcaps{rna}s
-ratio);\cite{nygaard_options_2006} target labelling (different fluorescent dyes
-present distinct stabilities, quantum efficiencies and wavelengths for
-stimulation and emission); hybridization and washing protocols (every commercial
-platform has its own optimized method); and the imaging of the arrays (usually
-done by confocal and non-confocal scanners, yet variables like laser power,
-pixel sizes or scan time are not standardized).
+c\smallcaps{dna} synthesis (linearly amplified \smallcaps{rna} may contain
+biases in the original m\smallcaps{rna}s ratio);\cite{nygaard_options_2006}
+target labelling (different fluorescent dyes present distinct stabilities,
+quantum efficiencies and wavelengths for stimulation and emission);
+hybridization and washing protocols (every commercial platform abides by its own
+methodology); and the imaging of the arrays (usually done by confocal and
+non-confocal scanners---yet variables like laser power, pixel sizes or scan time
+are not standardized).
 
 These sources of technical variation were making comparison of results obtained
 from different microarray platforms difficult or even impossible.  Some studies
@@ -368,23 +386,120 @@ consortia and technical study groups were assembled to determine a core set of
 \emph{Minimum Information About a Microarray Experiment} (\smallcaps{miame})
 standards\cite{brazma_minimum_2001} and, in 2006, the \emph{MicroArray Quality
   Control} (\smallcaps{maqc}) project was
-launched.\cite{maqc_consortium_microarray_2006} In 2002, the National Center for
-Biotechnology Information in the United States created the \emph{Gene Expression
-  Omnibus} (\smallcaps{geo}),\footnote{\url{http://www.ncbi.nlm.nih.gov/geo/}
+launched.\cite{maqc_consortium_microarray_2006} As a result of these concerted
+efforts, the National Center for Biotechnology Information in the United States
+created, in 2002, the \emph{Gene Expression Omnibus}
+(\smallcaps{geo}),\footnote{\url{http://www.ncbi.nlm.nih.gov/geo/}
   (\citealp{edgar_gene_2002})} an online repository for \mbox{high-throughput}
-gene expression data and, in 2003, the European Bioinformatics Institute started
+gene expression data.  In 2003, the European Bioinformatics Institute started
 \emph{ArrayExpress},\footnote{\url{http://www.ebi.ac.uk/arrayexpress}
   (\citealp{brazma_arrayexpress--public_2003})} a public database of microarray
 gene expression data.
 
-But by and large, the most contentious aspect of the use of microarrays in
-cancer research concerned the methodologies involved in the analysis of the raw
-experimental data.  In 2007, a critical review of ninety studies for cancer
-outcome appeared in the \emph{Journal of the National Cancer Institute} by Alain
-Dupuy and Richard Simon, from the the Hôpital Saint-Louis in Paris and the
-\smallcaps{nci} in Bethesda, \smallcaps{md}.\cite{dupuy_critical_2007}
+Gene expression profiling studies are also challenged by biological
+idiosyncrasies.  For one, gene expression patterns are a function of fluid
+cellular states in constant readjustment.  Microarray experiments consist of
+snapshots of such dynamic ranges, which may account for some of the variation
+across experiments.  Distinct synthesis and degradation rates of the probed
+m\smallcaps{rna} transcripts may further nuance expression readings and even
+traditional housekeeping genes (fundamental to the basic biology of the cell and
+thus considered gold standards) have been shown to differ across tissues and
+experimental conditions.\cite{thorrez_using_2008} What is more, biological
+heterogeneity in the biopsy sample can significantly bias reports of gene
+expression, as different cellular types may be differently represented in
+distinct samples.
 
+But by and large, the most contentious aspect of the application of microarrays
+in cancer research concerns the methodological analysis of the experimental
+data.  In 2007, a critical detailed review of \mbox{forty-two} studies for
+cancer outcome appeared in the \emph{Journal of the National Cancer Institute}
+by Alain Dupuy and Richard Simon, from the Hôpital Saint-Louis in Paris and the
+\smallcaps{nci} in Bethesda, \smallcaps{md}.\cite{dupuy_critical_2007} They
+identified three endemic analytic flaws permeating the reviewed studies.
 
+Microarray experiments typically aim for one or more of the following
+objectives: (\emph{a}) to identify individual genes (transcripts) whose
+expression is correlated with a phenotypic trait; (\emph{b}) to identify
+multiple genes interactively involved in regulatory networks and in mediating
+biological phenomena or disease pathogenesis; (\emph{c}) to discover potential
+targets for drug development; and (\emph{d}) to identify molecular markers that
+can be used as tools for disease diagnosis and prognosis or as predictors of
+clinical outcome.\cite{kim_expectations_2010} In \mbox{outcome-related}
+microarray experiments, these aims can be approached with statistical tools
+addressing three kinds of tasks: finding genes correlated with outcome, class
+discovery, and supervised prediction.
+
+For the outcome-related gene finding task, Dupuy and Simon identified a trend
+for an inadequate, unclear, or unstated method for controlling the number of
+\mbox{false-positive} deferentially expressed genes.  Because microarray
+analysis involves making inferences about each gene whose expression is made on
+the array, there is a risk that the large number of hypothesis being tested
+produces a higher than desirable proportion of false positives.  Statistical
+procedures to correct for excess of false positives in multiple testing, such
+like the false discovery rate, are thus
+necessary.\cite{benjamini_controlling_1995,noble_how_2009}
+
+Concerning the class discovery task, they recognized a tendency to credit
+expression clusters with biological meaning when the clustering procedure was
+itself based on genes selected for their correlation with outcome.  This causes
+non-independent evidence that outcome can be predicted based on expression
+levels---a statistical misconception known as feature selection
+bias.\cite{ambroise_selection_2002}
+
+For the supervised prediction task, they flagged analytic lapses causing a
+biased estimation of the prediction accuracy through incorrect cross-validation
+procedures.  The more common of these experimental design errors involved the
+violation of the principle of separation of the training and testing sets during
+the validation of the classifier, incurring the model in data
+overfitting.\footnote{Overfitting occurs when a classifier describes random
+  error or noise pertaining to the training set instead of the underlying
+  structure of the data.}
+
+With the emerging developments on the computational analysis of microarray
+data\cite{quackenbush_computational_2001} and the concomitant accrued
+sensitivity to its technical specifics, the stream of published microarray
+studies started to be tempered by a series of reviews questioning the validity,
+reproducibility and biological significance of the
+results.\cite{michiels_prediction_2005,tinker_challenges_2006,kawasaki_end_2006,cahan_meta-analysis_2007,gusnanto_identification_2007,mathoulin-pelissier_survival_2008,kim_expectations_2010}
+
+In iconic fashion, John Ioannidis, now a Professor of Medicine at Stanford,
+chastised the field with a dire assessment on the lack of reproducibility of
+some \mbox{high-profile} microarray research
+findings.\cite{ioannidis_repeatability_2009} Upon independent dissection of the
+analysis protocols of eighteen studies published in \mbox{\emph{Nature
+    Genetics}} during 2005--2006, his team concluded that ten of them could not
+be reproduced at all.  The main reason for failure to reproduce was data
+unavailability, and discrepancies were mostly due to incomplete data annotation
+or specification of data processing and analysis.
+
+In the meantime, prognostic gene expression signatures of clinical outcome of
+breast cancer were accumulating in the literature at a steady
+rate.\cite{vant_veer_gene_2002,paik_multigene_2004,ma_two-gene_2004,wang_gene-expression_2005,chang_robustness_2005,miller_expression_2005,glinsky_microarray_2005,foekens_multicenter_2006,naderi_gene-expression_2006,teschendorff_consensus_2006,sotiriou_gene_2006,liu_prognostic_2007}
+Irrespectively of the methodology used to produce each classifier, a pattern
+was starting to emerge: very few genes were showing in common across the
+different reported signatures.
+
+% In a 2009 review of that particular field of research, Christos Sotiriou and
+% Lajos Putszai, at the Institut Jules Bordet in Brussels, compiled the evidence
+% for such a discordant cacophony of
+% signatures.\cite{sotiriou_gene-expression_2009}
+
+% ioannidis, sotiriou, venet.
+
+% Other issues troubling outome-related microarray analysis include poor
+% definition of survival end points\cite{mathoulin-pelissier_survival_2008}
+
+% There's a kernel of truth
+
+% \mbox{Outcome-related} microarray analysis\footnote{\mbox{Outcome-related}
+% studies seek to establish a statistical association between gene expression
+% levels and a particular clinical outcome, such as relapse of disease, death,
+% or therapeutic response.} allows for all these and, in their review, Dupuy and
+% Simon schematized these objectives into three categories of statistical
+% analysis: finding genes correlated with outcome, class discovery, and
+% supervised prediction.
+
+% results, list of possible biases. batch specific biases.
 
 % The litany of papers claiming (claims of progress here). Developments in
 % bioinformatics microarray analysis.  New tools.  From single genes to pathway
