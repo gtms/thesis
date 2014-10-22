@@ -414,7 +414,7 @@ in cancer research concerns the methodological analysis of the experimental
 data.  In 2007, a critical detailed review of \mbox{forty-two} studies for
 cancer outcome appeared in the \emph{Journal of the National Cancer Institute}
 by Alain Dupuy and Richard Simon, from the Hôpital Saint-Louis in Paris and the
-\smallcaps{nci} in Bethesda, \smallcaps{md}.\cite{dupuy_critical_2007} They
+\smallcaps{nci} in Maryland.\cite{dupuy_critical_2007} They
 identified three endemic analytic flaws permeating the reviewed studies.
 
 Microarray experiments typically aim for one or more of the following
@@ -432,8 +432,8 @@ discovery, and supervised prediction.
 For the outcome-related gene finding task, Dupuy and Simon identified a trend
 for an inadequate, unclear, or unstated method for controlling the number of
 \mbox{false-positive} deferentially expressed genes.  Because microarray
-analysis involves making inferences about each gene whose expression is made on
-the array, there is a risk that the large number of hypothesis being tested
+analysis involves making inferences about each gene whose expression is measured
+on the array, there is a risk that the large number of hypothesis being tested
 produces a higher than desirable proportion of false positives.  Statistical
 procedures to correct for excess of false positives in multiple testing, such
 like the false discovery rate, are thus
@@ -456,10 +456,10 @@ overfitting.\footnote{Overfitting occurs when a classifier describes random
   structure of the data.}
 
 With the emerging developments on the computational analysis of microarray
-data\cite{quackenbush_computational_2001} and the concomitant accrued
-sensitivity to its technical specifics, the stream of published microarray
-studies started to be tempered by a series of reviews questioning the validity,
-reproducibility and biological significance of the
+data\cite{quackenbush_computational_2001,irizarry_summaries_2003} and the
+concomitant accrued sensitivity to its technical specifics, the stream of
+published microarray studies started to be tempered by a series of reviews
+questioning the validity, reproducibility and biological significance of the
 results.\cite{michiels_prediction_2005,tinker_challenges_2006,kawasaki_end_2006,cahan_meta-analysis_2007,gusnanto_identification_2007,mathoulin-pelissier_survival_2008,kim_expectations_2010}
 
 In iconic fashion, John Ioannidis, now a Professor of Medicine at Stanford,
@@ -467,7 +467,7 @@ chastised the field with a dire assessment on the lack of reproducibility of
 some \mbox{high-profile} microarray research
 findings.\cite{ioannidis_repeatability_2009} Upon independent dissection of the
 analysis protocols of eighteen studies published in \mbox{\emph{Nature
-    Genetics}} during 2005--2006, his team concluded that ten of them could not
+    Genetics}} during 2005 and 2006, his team concluded that ten of them could not
 be reproduced at all.  The main reason for failure to reproduce was data
 unavailability, and discrepancies were mostly due to incomplete data annotation
 or specification of data processing and analysis.
@@ -475,16 +475,65 @@ or specification of data processing and analysis.
 In the meantime, prognostic gene expression signatures of clinical outcome of
 breast cancer were accumulating in the literature at a steady
 rate.\cite{vant_veer_gene_2002,paik_multigene_2004,ma_two-gene_2004,wang_gene-expression_2005,chang_robustness_2005,miller_expression_2005,glinsky_microarray_2005,foekens_multicenter_2006,naderi_gene-expression_2006,teschendorff_consensus_2006,sotiriou_gene_2006,liu_prognostic_2007}
-Irrespectively of the methodology used to produce each classifier, a pattern
-was starting to emerge: very few genes were showing in common across the
-different reported signatures.
+Intriguingly, very few genes were showing in common among the distinct
+prognostic markers.  On a thorough review on the correspondence between these
+biomarkers and the clinicopathological features of breast cancer, Christos
+Sotiriou and Lajos Putszai, at the Institut Jules Bordet in Brussels, sought to
+form a synthesis of the evidence supporting genomic prognostic
+signals.\cite{sotiriou_gene-expression_2009} Sotiriou and Putszai reasoned that
+the absence of common markers between signatures could be a feature of complex
+gene expression systems entertaining a large number of correlated variables.
+They also identified a general tendency for prognostic signatures to perform
+better among \smallcaps{ER+} tumours, as they best discriminate between
+\mbox{low-proliferation} \mbox{luminal \smallcaps{a}} tumours from
+\mbox{high-proliferation} \mbox{luminal \smallcaps{b}} tumours, whereas they
+mostly classify \smallcaps{ER--} tumours (comprising the basal-like and
+\mbox{\smallcaps{her}-positive} phenotypes) as \mbox{high-risk}.  This could be
+explained by the ability of prognostic signatures to capture molecular features
+of tumour differentiation and tumour grade, both linked with cancer progression
+and metastatic spread.  They summed up by proposing that both genomic and
+clinical variables should be included in a common algorithm to optimize the
+accuracy of the prediction model.
 
-% In a 2009 review of that particular field of research, Christos Sotiriou and
-% Lajos Putszai, at the Institut Jules Bordet in Brussels, compiled the evidence
-% for such a discordant cacophony of
-% signatures.\cite{sotiriou_gene-expression_2009}
+% tectonic readjustments
 
-% ioannidis, sotiriou, venet.
+In 2011, David Venet and Vincent Detours, at the \smallcaps{ulb} in Brussels,
+further added to the ongoing debate concerning the biological interpretation of
+prognostic genomic signals in breast cancer.\cite{venet_most_2011} Probing the
+\mbox{295-sample} \mbox{\smallcaps{nki} cohort}, they compared the prognostic
+ability of \mbox{fourty-seven} published breast cancer outcome signatures to
+signatures made of random genes.  They showed that 60\% of them were not
+significantly better outcome predictors than random signatures of identical
+size.  Furthermore, more than 90\% of random signatures with more than 100 genes
+were significant outcome predictors.  Interestingly, they observed that
+adjusting breast cancer expression data for a proliferation marker derived in
+normal tissues abrogated most of the outcome association of published and random
+signatures.  A \mbox{decade worth} of biological inferences based on the
+transcription profiles of clinical samples was being challenged by a more
+stringent definition of negative controls.
+
+\medskip
+
+Microarrays, once hailed as the ``21\textsuperscript{st} century divining
+rod,''\cite{he_microarrays21st_2001} have highlighted exciting new avenues to
+engage the neoplastic cell.  Still, on the battlefield, cancer remained as
+deceptive a foe as ever.  Translational research with direct impact on clinical
+practice resulting from the microarray boom has proved tentative and timid at
+best.  The most significant contributions were made in the context of predicting
+a patient's prognosis by interpreting a panel of specific \mbox{tumor-related}
+genes.  The first \smallcaps{FDA} clearance of \mbox{microarray-based} gene
+profiling reagents was obtained in May
+2011.\footnote{\url{http://investor.affymetrix.com/phoenix.zhtml?c=116408&p=irol-newsArticle&ID=1561100}}
+As of 2013,\cite{kittaneh_molecular_2013} three genomic assays were commercially
+available for prognostication in early stage breast cancer: Oncotype \smallcaps{dx}
+(consisting of a \mbox{21-gene} profile narrowed down from a list of 250
+candidate genes that were analyzed in a total of 447 patients from 3 separate
+studies), MammaPrint (based on the \mbox{70-gene} \smallcaps{nki} predictor;
+\smallcaps{fda} approved in 2007) and \smallcaps{pam50} (a \mbox{50-gene} set for
+standardizing subtype classification).
+
+The wealth of data yielded by the technology has been as much a source of
+promising guidance as of humbling disillusionment.
 
 % Other issues troubling outome-related microarray analysis include poor
 % definition of survival end points\cite{mathoulin-pelissier_survival_2008}
@@ -500,13 +549,6 @@ different reported signatures.
 % supervised prediction.
 
 % results, list of possible biases. batch specific biases.
-
-% The litany of papers claiming (claims of progress here). Developments in
-% bioinformatics microarray analysis.  New tools.  From single genes to pathway
-% analysis.
-
-% Could it be that microarrays, that 21\textsuperscript{st} century divining
-% rod,\cite{he_microarrays21st_2001} were misleading us in the war on cancer?
 
 % 2007: Dupuy & Simon review validity and reproducibility of microarray-based
 % research with a meta-analysis on 90 studies.  Quote: ``The use of microarray
