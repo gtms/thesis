@@ -88,3 +88,9 @@ noncarcinomas, that possess single, reproducible balanced translocations of
 specific chromosomal sites (i.e., leukemias, some lymphomas, Ewing's
 sarcoma). In these cases, there is no evidence of any underlying state of
 genomic instability.
+
+* Methods section
+
+** For the microarray subsection
+Follow this structure:
+http://www.healthtech.com/2002/mda/index.htm
