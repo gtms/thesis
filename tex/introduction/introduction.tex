@@ -1,4 +1,9 @@
 \documentclass{tufte-book}
+% \documentclass[nohyper]{tufte-book}
+% 23Oct2014
+% [nohyper] option
+% as per instructions found on
+% http://tex.stackexchange.com/questions/134633/figure-references-in-tufte-book
 
 \usepackage{fontspec}
 \usepackage{soul}
@@ -6,6 +11,7 @@
 \usepackage{morefloats}
 \usepackage{siunitx}
 \usepackage{microtype}
+% \usepackage{bookmark} % see [nohyper] option above
 % \usepackage{marginfix}
 
 % For graphics / images
@@ -100,6 +106,7 @@
 \input{./life/life.tex}
 \input{./cancer/cancer.tex}
 \input{./microarrays/microarrays.tex}
+\input{./motivation/motivation.tex}
 
 \backmatter
 
