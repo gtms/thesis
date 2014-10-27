@@ -1,5 +1,17 @@
 \section{Microarrays}
 
+\newthought{In October 1995,} a short report in \emph{Science} magazine caught
+the eye with a figure showing six grids of colourful stains on a dark background
+(Figure~\ref{fig:arabidopsis-microarray}).  The colour of each spot, ranging
+through the visible spectrum, captured the fluorescence emitted when a 3.5 mm by
+5.5 mm slide of glass was scanned with a laser.  Each slide had been previously
+spotted with an array of microscopic droplets of \mbox{forty-five} clones of
+c\smallcaps{dna} isolated from \emph{Arabidopsis thaliana}---a small flowering
+plant with the smallest genome of any known higher eukaryote.  Before being
+scanned, the slides, or microarrays, were hybridized with a solution of
+fluorescently labeled, reverse transcribed c\smallcaps{dna}s, synthesized from
+m\smallcaps{rna} templates extracted from the plant.
+
 \begin{marginfigure}%
   \includegraphics{schena-brown-fig1.jpg}
   \caption[Gene expression of \emph{Arabidopsis thaliana} monitored with
@@ -18,20 +30,6 @@
     (reproduced from \citealp{schena_quantitative_1995}).}
   \label{fig:arabidopsis-microarray}
 \end{marginfigure}
-
-\newthought{In October 1995,} a short report in \emph{Science} magazine caught
-the eye with a figure showing six grids of colourful stains on a dark background
-(Figure~\ref{fig:arabidopsis-microarray}).  The colour of each spot, ranging
-through the visible spectrum, captured the fluorescence emitted when a 3.5 mm by
-5.5 mm slide of glass was scanned with a laser.  Each slide had been previously
-spotted with an array of microscopic droplets of \mbox{forty-five} clones of
-c\smallcaps{dna} isolated from \emph{Arabidopsis thaliana}---a small flowering
-plant with the smallest genome of any known higher eukaryote.  Before being
-scanned, the slides, or microarrays, were hybridized with a solution of
-fluorescently labeled, reverse transcribed c\smallcaps{dna}s, synthesized from
-m\smallcaps{rna} templates extracted from the plant.
-
-% , supplemented with fluorophores.
 
 The vivid readouts from the microarrays were literally illuminating the
 transcription patterns of the arabidopsis genome.
@@ -108,7 +106,7 @@ unrecognized groups, termed luminal \smallcaps{a} (of lower grade) and luminal
 \smallcaps{b} (of higher grade).  Cancers with a \mbox{basal-like} phenotype;
 \mbox{over-expressing} the \smallcaps{her2} receptor; or with a normal-like
 phenotype were each found to cluster together in their respective group.
-However, the most robust observed distinction was between the transcriptome of
+However, the most robust distinction was observed between the transcriptome of
 breast cancers expressing the estrogen receptor (\smallcaps{ER+}) and those that
 did not (\smallcaps{ER--}).  This pioneering study showed that a new taxonomy of
 breast cancer could be based on its molecular features---a classification that
@@ -197,9 +195,10 @@ from Dutch women breast cancers.  Twenty years on, the m\smallcaps{rna} of these
 samples, along with the patient's clinical histories, would be the subject of a
 page turning gene expression profiling experiment.  A group including
 \smallcaps{nki}'s head of molecular pathology, Laura van't Veer, head researcher
-René Bernards, and Stephen Friend, a Rosetta Inpharmatics founder in Seattle,
-analyzed a selection of primary tumours from 98 women younger than 55 who did
-not develop lymph node metastasis.\cite{vant_veer_gene_2002}
+René Bernards, and Stephen Friend, a Weinberg trainee turned Rosetta
+Inpharmatics founder in Seattle, analyzed a selection of primary tumours from 98
+women younger than 55 who did not develop lymph node
+metastasis.\cite{vant_veer_gene_2002}
 
 When the tumours were originally resected, treatment standards did not require
 adjuvant chemotherapy after surgery.  Thirty-four patients, or roughly one third
@@ -401,12 +400,12 @@ idiosyncrasies.  For one, gene expression patterns are a function of fluid
 cellular states in constant readjustment.  Microarray experiments consist of
 snapshots of such dynamic ranges, which may account for some of the variation
 across experiments.  Distinct synthesis and degradation rates of the probed
-m\smallcaps{rna} transcripts may further nuance expression readings and even
+m\smallcaps{rna} transcripts may further nuance expression readings.  Even
 traditional housekeeping genes (fundamental to the basic biology of the cell and
 thus considered gold standards) have been shown to differ across tissues and
 experimental conditions.\cite{thorrez_using_2008} What is more, biological
 heterogeneity in the biopsy sample can significantly bias reports of gene
-expression, as different cellular types may be differently represented in
+expression, as distinct cellular types may be differently represented in
 distinct samples.
 
 But by and large, the most contentious aspect of the application of microarrays
@@ -433,11 +432,10 @@ For the outcome-related gene finding task, Dupuy and Simon identified a trend
 for an inadequate, unclear, or unstated method for controlling the number of
 \mbox{false-positive} deferentially expressed genes.  Because microarray
 analysis involves making inferences about each gene whose expression is measured
-on the array, there is a risk that the large number of hypothesis being tested
-produces a higher than desirable proportion of false positives.  Statistical
-procedures to correct for excess of false positives in multiple testing, such
-like the false discovery rate, are thus
-necessary.\cite{benjamini_controlling_1995,noble_how_2009}
+on the array, the large number of hypothesis being tested can yield a higher
+than desirable proportion of false positives.  Statistical procedures to correct
+for excess of false positives in multiple testing, such like the false discovery
+rate, are thus necessary.\cite{benjamini_controlling_1995,noble_how_2009}
 
 Concerning the class discovery task, they recognized a tendency to credit
 expression clusters with biological meaning when the clustering procedure was
@@ -450,7 +448,7 @@ For the supervised prediction task, they flagged analytic lapses causing a
 biased estimation of the prediction accuracy through incorrect cross-validation
 procedures.  The more common of these experimental design errors involved the
 violation of the principle of separation of the training and testing sets during
-the validation of the classifier, incurring the model in data
+the validation of the classifier, incurring the derived models in data
 overfitting.\footnote{Overfitting occurs when a classifier describes random
   error or noise pertaining to the training set instead of the underlying
   structure of the data.}
@@ -461,14 +459,13 @@ concomitant accrued sensitivity to its technical specifics, the stream of
 published microarray studies started to be tempered by a series of reviews
 questioning the validity, reproducibility and biological significance of the
 results.\cite{michiels_prediction_2005,tinker_challenges_2006,kawasaki_end_2006,cahan_meta-analysis_2007,gusnanto_identification_2007,mathoulin-pelissier_survival_2008,kim_expectations_2010}
-
 In iconic fashion, John Ioannidis, now a Professor of Medicine at Stanford,
 chastised the field with a dire assessment on the lack of reproducibility of
 some \mbox{high-profile} microarray research
 findings.\cite{ioannidis_repeatability_2009} Upon independent dissection of the
 analysis protocols of eighteen studies published in \mbox{\emph{Nature
-    Genetics}} during 2005 and 2006, his team concluded that ten of them could not
-be reproduced at all.  The main reason for failure to reproduce was data
+    Genetics}} during 2005 and 2006, his team concluded that ten of them could
+not be reproduced at all.  The main reason for failure to reproduce was data
 unavailability, and discrepancies were mostly due to incomplete data annotation
 or specification of data processing and analysis.
 
@@ -478,39 +475,44 @@ rate.\cite{vant_veer_gene_2002,paik_multigene_2004,ma_two-gene_2004,wang_gene-ex
 Intriguingly, very few genes were showing in common among the distinct
 prognostic markers.  On a thorough review on the correspondence between these
 biomarkers and the clinicopathological features of breast cancer, Christos
-Sotiriou and Lajos Putszai, at the Institut Jules Bordet in Brussels, sought to
-form a synthesis of the evidence supporting genomic prognostic
-signals.\cite{sotiriou_gene-expression_2009} Sotiriou and Putszai reasoned that
-the absence of common markers between signatures could be a feature of complex
-gene expression systems entertaining a large number of correlated variables.
-They also identified a general tendency for prognostic signatures to perform
-better among \smallcaps{ER+} tumours, as they best discriminate between
-\mbox{low-proliferation} \mbox{luminal \smallcaps{a}} tumours from
-\mbox{high-proliferation} \mbox{luminal \smallcaps{b}} tumours, whereas they
-mostly classify \smallcaps{ER--} tumours (comprising the basal-like and
-\mbox{\smallcaps{her}-positive} phenotypes) as \mbox{high-risk}.  This could be
-explained by the ability of prognostic signatures to capture molecular features
-of tumour differentiation and tumour grade, both linked with cancer progression
-and metastatic spread.  They summed up by proposing that both genomic and
-clinical variables should be included in a common algorithm to optimize the
-accuracy of the prediction model.
+Sotiriou and Lajos Putszai, from the Institut Jules Bordet in Brussels and the
+University of Texas in Houston, sought to form a synthesis of the evidence
+supporting genomic prognostic signals.\cite{sotiriou_gene-expression_2009}
+Sotiriou and Putszai reasoned that the absence of common markers between
+signatures could be a feature of complex gene expression systems entertaining a
+large number of correlated variables.  They also stressed the general tendency
+for prognostic signatures to perform better among \smallcaps{ER+} tumours, as
+they best discriminate \mbox{low-proliferation} \mbox{luminal \smallcaps{a}}
+tumours from \mbox{high-proliferation} \mbox{luminal \smallcaps{b}} tumours,
+whereas they mostly classify \smallcaps{ER--} tumours (comprising the basal-like
+and \mbox{\smallcaps{her}-positive} phenotypes) as \mbox{high-risk}.  This could
+be explained by the ability of prognostic signatures to capture molecular
+features of tumour differentiation and tumour grade, both linked with cancer
+progression and metastatic spread.  They summed up by proposing that models for
+breast cancer prognostication should include both genomic and clinical variables
+for best accuracy.
 
 % tectonic readjustments
 
-In 2011, David Venet and Vincent Detours, at the \smallcaps{ulb} in Brussels,
-further added to the ongoing debate concerning the biological interpretation of
+In 2011, David Venet and Vincent Detours, at the Université Libre de Bruxelles,
+further added to the debate concerning the biological interpretation of
 prognostic genomic signals in breast cancer.\cite{venet_most_2011} Probing the
-\mbox{295-sample} \mbox{\smallcaps{nki} cohort}, they compared the prognostic
-ability of \mbox{fourty-seven} published breast cancer outcome signatures to
+\mbox{295-sample} \smallcaps{nki} reference cohort, they compared the prognostic
+ability of \mbox{fourty-seven} published breast cancer outcome signatures with
 signatures made of random genes.  They showed that 60\% of them were not
 significantly better outcome predictors than random signatures of identical
-size.  Furthermore, more than 90\% of random signatures with more than 100 genes
-were significant outcome predictors.  Interestingly, they observed that
-adjusting breast cancer expression data for a proliferation marker derived in
-normal tissues abrogated most of the outcome association of published and random
-signatures.  A \mbox{decade worth} of biological inferences based on the
-transcription profiles of clinical samples was being challenged by a more
-stringent definition of negative controls.
+size.  In addition, more than 90\% of random signatures with more than 100 genes
+were shown to be significant outcome predictors.  Interestingly, they observed
+that adjusting breast cancer expression data for a proliferation marker
+abrogated most of the outcome association of published and random signatures.
+By systematically exploring outcome associations in the \smallcaps{nki}-295
+cohort, Venet and Detours exposed a wider and more pervasive range of prognostic
+signals than previously anticipated.  They obtained similar results by
+replicating the analysis in expression profiles of an independent cohort of 380
+breast cancer patients from another study.\cite{loi_definition_2007} A
+\mbox{decade worth} of biological extrapolations based on the transcription
+profiles of clinical samples was eventually challenged by a more stringent
+formulation of experimental controls.
 
 \medskip
 
@@ -520,20 +522,20 @@ engage the neoplastic cell.  Still, on the battlefield, cancer remained as
 deceptive a foe as ever.  Translational research with direct impact on clinical
 practice resulting from the microarray boom has proved tentative and timid at
 best.  The most significant contributions were made in the context of predicting
-a patient's prognosis by interpreting a panel of specific \mbox{tumor-related}
+a patient's prognosis by interpreting a panel of specific \mbox{tumour-related}
 genes.  The first \smallcaps{FDA} clearance of \mbox{microarray-based} gene
 profiling reagents was obtained in May
 2011.\footnote{\url{http://investor.affymetrix.com/phoenix.zhtml?c=116408&p=irol-newsArticle&ID=1561100}}
 As of 2013,\cite{kittaneh_molecular_2013} three genomic assays were commercially
-available for prognostication in early stage breast cancer: Oncotype \smallcaps{dx}
-(consisting of a \mbox{21-gene} profile narrowed down from a list of 250
-candidate genes that were analyzed in a total of 447 patients from 3 separate
-studies), MammaPrint (based on the \mbox{70-gene} \smallcaps{nki} predictor;
-\smallcaps{fda} approved in 2007) and \smallcaps{pam50} (a \mbox{50-gene} set for
-standardizing subtype classification).
+available for prognostication in early stage breast cancer: Oncotype
+\smallcaps{dx} (consisting of a \mbox{21-gene} profile narrowed down from a list
+of 250 candidate genes that were analyzed in a total of 447 patients from 3
+separate studies); MammaPrint (based on the \mbox{70-gene} \smallcaps{nki}
+predictor; \smallcaps{fda} approved in 2007); and \smallcaps{pam50} (a
+\mbox{50-gene} set used for standardizing subtype classification).
 
-The wealth of data yielded by the technology has been as much a source of
-promising guidance as of humbling disillusionment.
+The mining of the wealth of data yielded by cancer expression profiling has been
+as much a source of promising guidance as of humbling reappraisal.
 
 % Other issues troubling outome-related microarray analysis include poor
 % definition of survival end points\cite{mathoulin-pelissier_survival_2008}
