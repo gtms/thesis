@@ -12,6 +12,7 @@
 *.pdf
 *.png
 *.svg
+*.RData
 
 ## directories
 org/auto/
