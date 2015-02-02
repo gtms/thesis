@@ -132,14 +132,14 @@ globocan.plt <- globocan.plt +
 globocan.plt <- globocan.plt +
     scale_y_continuous (breaks = seq (.5, 13.5, 1),
                         labels = top.cancers.srt) +
-
-                            geom_vline (xintercept = 0)
+                            geom_vline (xintercept = 0) +
+                                xlab ("Age-standardized rate per 100 000 population (2012)")
 
 globocan.plt +
     theme_bw () +
         ## theme (text = element_text (family = "OfficinaSansITC", size = 14),
         theme (text = element_text (family = "OfficinaSansITC-Book", size = 20),
-               axis.title.x = element_blank (),
+               axis.title.x = element_text (size = 16),
                axis.title.y = element_blank (),
                axis.ticks = element_blank (),
                panel.grid.major = element_line (colour = "grey60"),
