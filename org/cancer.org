@@ -1,0 +1,48 @@
+* Cancer
+** First section: biology of cancer
+*** What is cancer?
+Open up with a definition.  "Imprecise definition . . . " according to Emmanuel
+Farber.
+*** Cancer as an evolutionary history
+It is important to note that cancer is not an end stage, but a /step/ in an
+/evolutionary history./
+**** concepts
+- progression
+- dynamics
+*** Drivers and determinants of cancer evolution
+These dynamics are bound by:
+1. genetic and epigenetic context (which are themselves in flux during cancer
+   progression)
+2. ecological context of the neoplams defined by the cellular and tissue
+   integration and response
+*** Phenotypic characterization of cancer progression
+Thus, phenotypically, neoplastic cells are defined by:
+- proliferation
+- dedifferentiation
+*** The biology of cancer
+We come full circle and lay out the arguments for the metazoa 1.0 theory of
+cancer.
+- each cancer is unique, yet they all share certain hallmarks
+- while Darwinian evolution is often invoked as the engine shaping diversity in
+  clonal cancer expansions, it is hard to conceive that the mechanisms of
+  generation of such diversity are consistent with the very specific needs and
+  set of functions required for cancers to be successful in their environment
+- epithelial-to-mesenchymal (EMT) transition and concept of stem-cell are
+  discussed in this context
+- redundancy of the major pathways associated with cancer
+- redundancy of hallmarks of cancer
+** Second section: clinical perspective
+*** Cancer as a global health issue
+Study of cancer is then motivated from a clinical perspective and discussed as a
+global public health issue. This section will cover the epidemiology of cancer,
+possible causes, generic methods of diagnosis and treatment.
+*** Cancer etiology
+- carcinogens
+- viruses
+*** Treatment of cancer
+*** Diagnosis of cancer
+* Microarrays
+** Historical perspective
+** Microarrays and cancer
+** Microarrays data analysis and bioinformatics
+* Motivation and main contributions of this thesis

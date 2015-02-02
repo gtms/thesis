@@ -1,10 +1,24 @@
 ## files
-*.pdf
 *.html
 *.aux
 *.log
 *.odt
 *.tns
+*.idx
+*.out
+*.el
+*.bbl
+*.blg
+*.pdf
+*.png
+*.svg
+*.RData
+*.lof
+*.lot
+*.toc
+*.Rhistory
 
 ## directories
 org/auto/
+pdf/
+graphics/

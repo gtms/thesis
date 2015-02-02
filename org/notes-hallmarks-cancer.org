@@ -1,0 +1,235 @@
+This file contains notes taken from the article "Hallmarks of Cancer:
+Next Generation", from Hanahan and Weinberg, Cell, 2011
+([[/Users/giltomas/Dropbox/thesis/pdf/papers/cel-hanahan-2011.pdf][cel-hanahan-2011.pdf]])
+
+* Hallmark Capabilities
+** Sustaining Proliferative Signaling
+*** arguably the most fundamental trait of cancer cells
+Endogenous production of paracrine growth-promoting signals that direct entry
+and progression through the cell growth-and-division cycle.
+*** somatic mutations activate additional downstream pathways
+*** disruptions of negative-feedback mechanisms attenuate proliferative signaling
+*** excessive proliferative signalling can trigger cell senescence
+
+** Evading Growth Suppressors
+- two prototypical tumour suppressor encode the RB and TP53 proteins
+- they operate as key control nodes within two complementray cellular regulatory
+  circuits that govern the decisions of cells to proliferate or, alternatively,
+  activate senescence and apoptotic programs
+- TP53 can call a halt to cell-cycle progression if certain homeostatic
+  parameters are not met; alternatively, should distress signals be overwhelming
+  or damage perceived as irreparable, TP53 can trigger apoptosis
+- TP53 and RB seem to operate as part of a larger network that is wired for
+  functional redundancy
+
+*** mechanisms of contact inhibition and its evasion
+Cell-to-cell contact may operate to suppress cell proliferation through a number
+of signaling pathways that can also be implicated in epithelial polarity and
+organization of epithelial structures.  Mechanisms that enable cells to
+construct and maintain architecturally complex tissues could thus represent
+important means of suppressing and counterbalancing inappropriate proliferative
+signals.
+
+*** corruption of the TGF-β pathway promotes malignancy
+TGF-β is best know for its anti-proliferative effects, but its signaling can
+also activate the epithelial-to-mesenchymal transition (EMT) cellular program.
+
+** Resisting Cell Death
+Apoptosis is triggered in response to various physiologic stresses that cancer
+cells experience during the course of tumorigenesis or as a result of anticancer
+therapy.  During apoptosis, the dying cell contracts into an almost-invisible
+corpse that is soon consumed by neighbours.  The regulators are divided into two
+major circuits: one extrinsic, receiving and processing extra-cellular
+death-inducing signals, and another intrinsic, sensing and integrating a variety
+of signals of intracellular origin.
+
+ - caspases are proteases that, when activated, control the execution phase of
+   apoptosis
+ - The "apoptotic trigger" that conveys signals between the regulators and the
+   effectors is controlled by counterbalancing pro- and antiapoptotic members of
+   the Bcl-2 family of regulatory proteins
+ - TP53 is a DNA damage sensor that, in response to substantial levels of DNA
+   breaks and other chromosomal abnormalities, can trigger apoptosis
+ - autophagy mediates both tumour cell survival and death
+
+Of note, recent research has revealed intersections between the regulatory
+circuits governing autophagy, apoptosis and cellular homeostatsis.
+
+*** Necrosis has proinflammatory and tumour-promoting potential
+In contrast with apoptosis, necrotic cells become bloated and explode, releasing
+their contents into the local tissue environment, most importantly
+pro-inflammatory signals.  Immune inflammatory cells can be actively tumour
+promoting, given that such cells are capable of fostering angiogenesis, cancer
+cell proliferation and invasiveness.
+
+** Enabling Replicative Immortality
+Normal cells are able to pass through only a limited number of successive cell
+growth-and-division cycles.  This limitation has been associated with two
+distinct barriers to proliferation: senescence, a typically irreversible
+entrance into a nonproliferative but viable state, and crisis, which involves
+cell death.  On rare occasion, cells emerge from a population in crisis and
+exhibit unlimited proliferative potential.  This transition has been termed
+immortalization and is associated with teh expression at functionally
+significant levels of the telomerase.
+
+*** new functions of telomerase
+The telomerase enzime can also amplify signaling by the Wnt pathway through its
+TERT subunit; enhance cell proliferation and/or resistance to apoptosis; be
+involved in DNA-damage repair; and display an RNA-dependent RNA polymerase
+function.
+
+** Inducing Angiogenesis
+During embryogenesis, the development of the vasculature involves the birth of
+new endothelial cells and their assembly into tubes (vasculogenesis) in addition
+to the sprouting (angiogenesis) of new vessels from existing ones.  In contrast,
+during tumour progression, an "angiogenic switch" is almost always activated and
+remains on, causing normally quiescent vasculature to continually sprout new
+vessels that help sustain expanding neoplastic growths.  The well-known
+prototypes of angiogenesis inducers and inhibitors are vascular endothelial
+growth factor-A (VEGF-A) and thrombospondin-1 (TSP-1), respectively.
+
+** Activating Invasion and Metastasis
+Carcinoma cells lose expression of E-cadherin, a key cell-to-cell adhesion
+molecule.
+
+The multistep process of invasion and metastasis has been schematized as a
+sequence of discrete steps, often termed the invasion-metastasis cascade.  This
+depiction envisions a succession of cell-biologic changes, beginning with local
+invasion, then intravasation by cancer cells into nearby blood and lymphatic
+vessels, transit of cancer cells through the lymphatic and hematogenous systems,
+followed by escape of cancer cells from the lumina of such vessels into the
+parenchyma of distant tissues (extravasation), the formation of small nodules of
+cancer cells (micrometastases), and finally the growth of micrometastatic
+lesions into macroscopic tumors, this last step being termed "colonization".
+
+*** the EMT program broadly regulates invasion and metastasis
+A developmental regulatory program, referred to as the "epithelial-mesenchymal
+transition" (EMT), has become prominently implicated as a means by which
+transformed epithelial cells can acquire the abilities to invade, to resist
+apoptosis, and to disseminate.  By co-opting a process involved in various
+steps of embryonic morphogenesis and wound healing, carcinoma cells can
+concomitantly acquire multiple attributes that enable invasion and
+metastasis.  This multifaceted EMT program can be activated transiently or
+stably, and to differing degrees, by carcinoma cells during the course of
+invasion and metastasis.
+
+*** heterotypic contributions of stromal cells to invasion and metastasis
+It is increasingly apparent that crosstalk between cancer cells and cells of the
+neoplastic stroma is involved in the acquired capability for invasive growth and
+metastasis.  Macrophages at the tumor periphery can foster local invasion by
+supplying matrix-degrading enzymes such as metalloproteinases and cysteine
+cathepsin proteases.  In an experimental model of metastatic breast cancer,
+tumor-associated macrophages (TAMs) supply epidermal growth factor (EGF) to
+breast cancer cells, while the cancer cells reciprocally stimulate the
+macrophages with CSF-1; their concerted interactions facilitate intravasation
+into the circulatory system and metastatic dissemination of the cancer cells.
+
+*** plasticity in the invasive growth program
+Carcinoma cells that have undergone an EMT during initial invasion and
+metastatic dissemination may pass through the reverse process, termed the
+mesenchymal-epithelial transition (MET).  This plasticity may result in the
+formation of new tumor colonies of carcinoma cells exhibiting a histopathology
+similar to those of carcinoma cells in the primary tumor that never underwent
+an EMT.
+
+*** the daunting complexity of metastatic colonization
+Metastasis can be broken down into two major phases: the physical dissemination
+of cancer cells from the primary tumor to distant tissues, and the adaptation of
+these cells to foreign tissue microenvironments that results in successful
+colonization, i.e., the growth of micrometastases into macroscopic tumors.  The
+multiple steps of dissemination would seem to be in the purview of the EMT and
+similarly acting migratory programs.  Colonization, however, is not strictly
+coupled with physical dissemination, as evidenced by the presence in many
+patients of myriad micrometastases that have successfully disseminated but never
+progress to macroscopic metastatic tumors.  The process of colonization is
+likely to encompass a large number of cell-biological programs that are, in
+aggregate, considerably more complex and diverse than the preceding steps of
+metastatic dissemination.
+
+* Enabling Characteristics and Emerging Hallmarks
+We have defined the hallmarks of cancer as acquired functional capabilities that
+allow cancer cells to survive, proliferate, and disseminate; these functions are
+acquired in different tumor types via distinct mechanisms and at various times
+during the course of multistep tumorigenesis.  Their acquisition is made
+possible by two enabling characteristics.  Most prominent is the development of
+genomic instability in cancer cells, which generates random mutations including
+chromosomal rearrangements; among these are the rare genetic changes that can
+orchestrate hallmark capabilities.  A second enabling characteristic involves
+the inflammatory state of premalignant and frankly malignant lesions that is
+driven by cells of the immune system, some of which serve to promote tumor
+progression through various means.
+
+** Enabling Characteristic: Genome Instability and Mutation
+Acquisition of the multiple hallmarks enumerated above depends in large part on
+a succession of alterations in the genomes of neoplastic cells.  Simply
+depicted, certain mutant genotypes confer selective advantage on subclones of
+cells, enabling their outgrowth and eventual dominance in a local tissue
+environment.  Accordingly, multistep tumor progression can be portrayed as a
+succession of clonal expansions, each of which is triggered by the chance
+acquisition of an enabling mutant genotype.  Because heritable phenotypes, e.g.,
+inactivation of tumor suppressor genes, can also be acquired through epigenetic
+mechanisms such as DNA methylation and histone modifications, some clonal
+expansions may well be triggered by nonmutational changes affecting the
+regulation of gene expression.
+
+Although the specifics of genome alteration vary dramatically between different
+tumor types, the large number of genome maintenance and repair defects that have
+already been documented in human tumors, together with abundant evidence of
+widespread destabilization of gene copy number and nucleotide sequence, persuade
+us that instability of the genome is inherent to the great majority of human
+cancer cells.  This leads, in turn, to the conclusion that the defects in genome
+maintenance and repair are selectively advantageous and therefore instrumental
+for tumor progression, if only because they accelerate the rate at which
+evolving premalignant cells can accumulate favorable genotypes.  As such, genome
+instability is clearly an enabling characteristic that is causally associated
+with the acquisition of hallmark capabilities.
+
+** Enabling Characteristic: Tumour-Promoting Inflammation
+The tumor-associated inflammatory response has the unanticipated, paradoxical
+effect of enhancing tumorigenesis and progression, in effect helping incipient
+neoplasias to acquire hallmark capabilities.  Inflammation can contribute to
+multiple hallmark capabilities by supplying bioactive molecules to the tumour
+microenvironment, including growth factors that sustain proliferative signaling,
+survival factors that limit cell death, proangiogenic factors, extracellular
+matrix-modifying enzymes that facilitate angiogenesis, invasion, and metastasis,
+and inductive signals that lead to activation of EMT and other
+hallmark-facilitating programs.
+
+** Emerging Hallmark: Reprogramming Energy Metabolism
+The chronic and often uncontrolled cell proliferation that represents the
+essence of neoplastic disease involves not only deregulated control of cell
+proliferation but also corresponding adjustments of energy metabolism in order
+to fuel cell growth and division.  Under aerobic conditions, normal cells
+process glucose, first to pyruvate via glycolysis in the cytosol and thereafter
+to carbon dioxide in the mitochondria; under anaerobic conditions, glycolysis is
+favored and relatively little pyruvate is dispatched to the oxygen-consuming
+mitochondria.  Otto Warburg first observed an anomalous characteristic of cancer
+cell energy metabolism: even in the presence of oxygen, cancer cells can
+reprogram their glucose metabolism, and thus their energy production, by
+limiting their energy metabolism largely to glycolysis, leading to a state that
+has been termed "aerobic glycolysis".
+
+In fact, the redirection of energy metabolism is largely orchestrated by
+proteins that are involved in one way or another in programming the core
+hallmarks of cancer.  When viewed in this way, aerobic glycolysis is simply
+another phenotype that is programmed by proliferation-inducing oncogenes.
+
+** Emerging Hallmark: Evading Immune Detection
+
+* The Tumour Microenvironment
+
+** Cancer Stem Cells
+- defined operationally through their ability to effectively seed new tumours
+  upon inoculation into recipient host mice.
+
+** Endothelial Cells
+
+** Pericytes
+
+** Immune Inflammatory Cells
+
+** Cancer-Associated Fibroblasts
+
+** Stem and Progenitor Cells of the Tutor Stroma
+
+** Heterotypic Signaling Orchestrates the Cells of the Tumor Microenvironment

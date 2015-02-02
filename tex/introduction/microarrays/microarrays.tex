@@ -1,0 +1,619 @@
+\section{Microarrays}
+
+\newthought{In October 1995,} a short report in \emph{Science} magazine caught
+the eye with a figure showing six grids of colourful stains on a dark background
+(Figure~\ref{fig:arabidopsis-microarray}).  The colour of each spot, ranging
+through the visible spectrum, captured the fluorescence emitted when a 3.5 mm by
+5.5 mm slide of glass was scanned with a laser.  Each slide had been previously
+spotted with an array of microscopic droplets of \mbox{forty-five} clones of
+c\smallcaps{dna} isolated from \emph{Arabidopsis thaliana}---a small flowering
+plant with the smallest genome of any known higher eukaryote.  Before being
+scanned, the slides, or microarrays, were hybridized with a solution of
+fluorescently labeled, reverse transcribed c\smallcaps{dna}s, synthesized from
+m\smallcaps{rna} templates extracted from the plant.
+
+\begin{marginfigure}%
+  \includegraphics{schena-brown-fig1.jpg}
+  \caption[Gene expression of \emph{Arabidopsis thaliana} monitored with
+  c\smallcaps{dna} microarrays]{Gene expression of \emph{Arabidopsis thaliana}
+    monitored with c\smallcaps{dna} microarrays. \textbf{A--F}: each panel shows
+    the hybridization intensity of a mix of fluorescently labeled
+    c\smallcaps{dna}s with a collection of \mbox{forty-five}
+    \mbox{gene-specific} probes from arabidopsis, plus three controls, under
+    each stated condition (see text).  Adjacent pairs of spots are experimental
+    duplicates.  Negative controls were spotted on positions \emph{c}(11, 12)
+    and \emph{h}(11, 12).  Positive controls were provided by adding a fixed
+    diluted quantity of m\smallcaps{rna} of the human acethylcoline receptor
+    gene to each sample before reverse transcription.  c\smallcaps{dna} probes
+    of the positive control were printed on positions \emph{a}(1, 2) Probes for
+    the \emph{\smallcaps{hat4}} gene were printed on positions \emph{e}(1, 2)
+    (reproduced from \citealp{schena_quantitative_1995}).}
+  \label{fig:arabidopsis-microarray}
+\end{marginfigure}
+
+The vivid readouts from the microarrays were literally illuminating the
+transcription patterns of the arabidopsis genome.
+
+\bigskip
+
+With this seminal report from Stanford, Mark Schena and Patrick Brown
+demonstrated three things.  First, that microarray technology was
+\emph{sensitive} and \emph{specific} enough to discriminate between distinct
+m\smallcaps{rna} species in solution (Figure~\ref{fig:arabidopsis-microarray},
+\textbf{A--B}).  Second, that it could \emph{quantify} discrete levels of
+m\smallcaps{rna} transcripts (Figure~\ref{fig:arabidopsis-microarray},
+\textbf{C--D}).  Third, that the technology was suited to investigate gene
+expression patterns in diverse tissue types
+(Figure~\ref{fig:arabidopsis-microarray}, \textbf{E--F}).  As Pat Brown would
+state later, microarrays were developed to ``enable a new method for relating
+sequence differences in genes to complex traits in people.''  And what bigger
+challenge of complexity could there be but cancer?
+
+Four years on, Todd Golub and Eric Lander, at the Broad Institute in Boston,
+reported the results of the first tackling on cancer using
+microarrays.\cite{golub_molecular_1999} As a test case, they took to Farber's
+acute leukemia, isolating m\smallcaps{rna} from 38 biological samples of
+neoplastic bone marrow and peripheral blood. Their approach was framed as a
+classification task.  Up to then, the problem of classifying cancer subtypes was
+mostly left to the expertise of the pathologist,\footnote{Clinical practice for
+  cancer classification would involve an experienced pathologist's
+  interpretation of the tumour's morphology, histochemistry, immunophenotyping,
+  and cytogenetic analysis.} and many cancers still lacked molecular markers for
+their accurate definition.  Moreover, the correct distinction between acute
+lymphoblastic leukemia (\smallcaps{all}, originating from lymphoid precursors)
+and acute myeloid leukemia (\smallcaps{aml}, originating from myeloid
+precursors) was critical for the determination of the chemotherapeutic regimen
+to be used.
+
+Using a microarray with probes reporting for 6817 human genes, they concluded
+that the patterns of expression of a subset of these genes could be used to
+accurately discriminate between \smallcaps{aml} and \smallcaps{all}.  They then
+sought to use the expression data to blindly \emph{infer} eventual tumour
+\mbox{sub-classes} among the samples.  Using a learning algorithm to build a
+classifier from the data and then testing it with a cross-validation procedure,
+they showed that the \mbox{\smallcaps{aml-all}} distinction could be
+automatically discovered and confirmed without a biological \mbox{\emph{a
+    priori}}.\footnote{These class prediction and class discovery tasks
+  illustrate the distinction between \emph{supervised} and \emph{unsupervised}
+  learning.  While the former derives a function from labeled training data
+  (thus requiring an \mbox{\emph{a priori}} knowledge of the classes it tries to
+  predict), the latter aims to produce a classification without any prior
+  knowledge of the structure in the data.}  What's more, this class discovery
+approach could be further refined to automatically detect the distinction
+between \mbox{\smallcaps{B}-cell} and \mbox{\smallcaps{T}-cell} \smallcaps{all}.
+The use of microarrays could thus enable a molecular classification of cancer,
+even if this landmark experimental setup failed to find a multigene expression
+signature to predict response to chemotherapy.
+
+Back in Stanford, the focus was being directed towards breast cancer.  With a
+microarray probing for \num{8102} human genes, Charles Perou, Pat Brown and
+David Botstein studied the variation in gene expression patterns of breast
+tumours from 42 patients.\cite{perou_molecular_2000} Using an unsupervised
+hierarchical clustering algorithm, they were able to identify at least five
+distinct molecular breast cancer classes.
+
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{nature-the-human-genome.jpg}
+  \caption[Cover of \emph{Nature} magazine of February 15, 2001]{Cover of
+    \emph{Nature} magazine of February 15, 2001.}
+  \label{fig:human-genome-cover}
+\end{marginfigure}
+
+Two types of epithelial cells are found in the human mammary gland: basal cells
+(the outer layer of myoepithelial cells in the mammary duct) and luminal cells
+(at the apical surface of the ducts, with secretory proprieties).  In Perou's
+study, cancers of luminal origin were found to cluster in two previously
+unrecognized groups, termed luminal \smallcaps{a} (of lower grade) and luminal
+\smallcaps{b} (of higher grade).  Cancers with a \mbox{basal-like} phenotype;
+\mbox{over-expressing} the \smallcaps{her2} receptor; or with a normal-like
+phenotype were each found to cluster together in their respective group.
+However, the most robust distinction was observed between the transcriptome of
+breast cancers expressing the estrogen receptor (\smallcaps{ER+}) and those that
+did not (\smallcaps{ER--}).  This pioneering study showed that a new taxonomy of
+breast cancer could be based on its molecular features---a classification that
+would be challenged, extended and refined throughout the ensuing
+decade.\cite{sorlie_gene_2001,sorlie_repeated_2003,hu_molecular_2006,pusztai_molecular_2006,rakha_basal-like_2008,parker_supervised_2009,gusterson_basal-like_2009,weigelt_contribution_2010,prat_deconstructing_2011}
+
+% Distinct breast cancer genotypes were first characterized.  Multiparameter
+% gene expression assays for early-stage breast cancer.  A new taxonomy of
+% breast cancer based on their molecular features.  The gene expression
+% microarray-based class discovery studies pioneered by the Stanford group have
+% led to the identification of at least five molecular breast cancer subtypes:
+% luminal \smallcaps{A}, luminal \smallcaps{B}, normal breast-like, HER2, and
+% basal-like.  Indeed, the most robust distinction observed by microarray
+% analysis is between the transcriptome of breast cancers expressing the
+% estrogen receptor (\smallcaps{ER+}) and estrogen receptor negative
+% (\smallcaps{ER--}).
+
+While these findings were being reported, Eric Lander was leading another
+collaborative effort that would redefine the breadth of microarray technology.
+On February 2001, a \mbox{public-funded} consortium reported the first draft of
+the human genome (Figure~\ref{fig:human-genome-cover}).  Prior to this
+achievement, the estimated number of genes in our genome was around
+\num{100000}.\cite{cox_assessing_1994} As the genome sequence quality and gene
+finding methods improved, this figure was progressively revised down to an
+estimated \num{20000}--\num{25000} human protein coding genes.  The prospect of
+measuring the \emph{entire} transcriptome of the neoplastic cell with
+microarrays was now within reach---and would soon turn into a reality.  If
+cancer was fundamentally a genetic disease,\footnote{``The revolution in cancer
+  research can be summed up in a single sentence: cancer is, in essence, a
+  genetic disease''---\emph{Bert Vogelstein}
+  (\citealp{vogelstein_cancer_2004}).} then the study of the cancer genome with
+microarrays would bring it into the genomic era.
+
+It was with microarrays probing for most of the then reported human genome that
+the expression profiles of lung adenocarcinomas\cite{garber_diversity_2001},
+hepatocellular carcinomas,\cite{chen_gene_2002} and gastric
+cancers,\cite{leung_phospholipase_2002} were interrogated.  Time and again,
+unsupervised classification methods were highlighting clinical subtypes that
+recapitulated morphological categorizations, underlined tumour differentiation
+stages, or even uncovered tentative progression markers.  Each of these
+portraits revealed a wide diversity in tumour profiles, both at the \mbox{intra-
+  and} \mbox{inter-patient} sampling level, and a relatively minimal variation
+in normal tissue profiles.  While nuanced, the transcriptomes of these different
+cancers were still remarkably consistent within each disease and largely
+reminiscent of the expression profiles of the normal tissues from which they
+were derived.\cite{botstein_genomic_2003}
+
+The use of class discovery algorithms, mostly as descriptive techniques,
+dominated the early genomic approach to cancer
+biology.\cite{matros_genomic_2004,eschrich_dna_2004} However, the problem of
+predicting cancer progression, response to treatment or survival time remained
+an elusive one.  In order to provide sound evidence for predictive genomic
+markers, an experimental setting with a systematic, long term follow-up of
+cancer patients was in demand.
+
+\medskip
+
+% Mass reporting of cancer transcription profiles.  Which cancers.  Which genes
+% are deferentially expressed.  First public microarray databases.  Microarray
+% meta-analysis.  Single cell gene expression profiling.  A compelling case was
+% made.  Presently.
+
+% Wide diversity in tumour profiles and relatively minimal variation in normal
+% tissue profiles have been found not only for breast cancers, but also for
+% lung, and gastric cancers.  While nuanced, the global patterns of gene
+% expression of different cancers where still remarkably consistent within each
+% malady and largely reminiscent of the transcription profiles of the normal
+% tissues from which they are derived.  (Botstein, Fig.4).  Furthermore, tumour
+% samples from the same breast cancer patient, either by repeated surgical
+% sampling or from lymph node metastases, tend to have profiles very similar to
+% each other; similar results were reported in lung and liver tumours.  Gene
+% discovery.
+
+% Concomitantly, a statistical and computational theory for the analysis of the
+% millions of data points that result from these experiments was starting to
+% take shape.\cite{quackenbush_computational_2001,irizarry_summaries_2003}
+
+% First classification results using microarray data.  Several cancers were used
+% as models.  Concomitant evolution of the microarray analysis technology
+% (Quackenbush and shit).  Selection bias & etc.  Public repositories for
+% microarrays.  Miame consensus.
+
+\newthought{In the early 1980's}, the pathologists of the Nederlands Kanker
+Instituut (\smallcaps{nki}) in Amsterdam began a frozen tissue bank of tumours
+from Dutch women breast cancers.  Twenty years on, the m\smallcaps{rna} of these
+samples, along with the patient's clinical histories, would be the subject of a
+page turning gene expression profiling experiment.  A group including
+\smallcaps{nki}'s head of molecular pathology, Laura van't Veer, head researcher
+René Bernards, and Stephen Friend, a Weinberg trainee turned Rosetta
+Inpharmatics founder in Seattle, analyzed a selection of primary tumours from 98
+women younger than 55 who did not develop lymph node
+metastasis.\cite{vant_veer_gene_2002}
+
+When the tumours were originally resected, treatment standards did not require
+adjuvant chemotherapy after surgery.  Thirty-four patients, or roughly one third
+of the women in the study, had since then relapsed their cancer.  According to
+modern guidelines, approximately 95\% of the original patients would have
+received chemotherapy in the \mbox{United States}, and 85\% would have been
+treated under European norms.  This entails that 55\% to 65\% of the patients
+would have needlessly undergone an aggressive and debilitating form of
+chemotherapy.  To assess whether gene expression profiles could predict
+metastatic relapse of disease, the \smallcaps{nki} team profiled the tumours on
+a microarray containing approximately \num{25000} genes.  Using a supervised
+iterative learning procedure on a subset of these features, they narrowed down a
+list of 70 genes whose expression levels correlated with the development of
+distant metastasis.  The robustness of this \mbox{70-gene} prognosis profile was
+subsequently validated on a wider cohort of 295 breast cancer tumours with
+either positive or negative nodal
+status.\cite{van_de_vijver_gene-expression_2002} In this study, the classifier
+accurately predicted overall survival and distant metastasis in stratified
+univariate analyses and was the strongest predictor of distant metastasis in a
+multivariate model that included traditional breast cancer
+predictors.\footnote{Classical prognosticators for breast cancer include age,
+  tumour size, status of axillary lymph nodes, histological type of the tumour,
+  pathological grade and \mbox{hormone-receptor} status.}  Microarrays were now
+being used to stratify cancer risk among patients based on the gene expression
+profile of the tumour.
+
+The genes included in the predictor were scrutinized for potential ``insight
+into the underlying biological mechanism leading to rapid metastasis.''  The
+van't Veer article in \emph{Nature} reports that ``genes involved in cell cycle,
+invasion and metastasis, angiogenesis, and signal transduction are significantly
+upregulated in the poor prognosis signature.''  Not only did this work produce
+the first genomic predictor to inform treatment decisions, it also paved the way
+for an alternative to infer physiological mechanisms in human cancers.  If the
+tumour transcriptome already contained information regarding disease
+progression,\footnote{``Even though you could look under the microscope and they
+  all look the same (\ldots{}) some have built into them programs to become
+  aggressive''---\emph{Stephen Friend}} then querying for biologically motivated
+collections of genes among the predictive features could make proof of the
+implication of particular genetic programs in cancer biology.
+
+% \FloatBarrier
+
+\begin{marginfigure}%
+  \includegraphics[width=\linewidth]{jci-cancer-microarrays.jpg}
+  \caption[Cover of \emph{The Journal of Clinical Investigation} of June
+  1\textsuperscript{st}, 2005]{Cover of \emph{The Journal of Clinical
+      Investigation} of June 1\textsuperscript{st}, 2005.}
+  \label{fig:cancer-microarray}
+\end{marginfigure}
+
+It was with a similar reasoning in mind that the Stanford group presented the
+argument for the link between a wound healing genetic program and cancer
+progression.\cite{chang_gene_2004} The argument begins with the recognition of
+the similarities between the tumour microenvironment and normal wound healing.
+It then proceeds by characterizing a gene expression profile of fibroblast serum
+response (which physiologically only occurs in the context of a local injury),
+in a cell culture model profiled by microarray.  Finally, this signature profile
+is used to test specific hypotheses using publicly available gene expression
+data from human cancers.
+
+Accordingly, they demonstrated that, in a cohort of 51
+breast cancer patients with equal treatment, those with a higher expression of
+the core serum response signature were significantly more likely to develop
+metastasis and to die in a \mbox{5-year} \mbox{follow-up} period.  Similar
+results were obtained by segregating the \mbox{295-sample} \smallcaps{nki}
+cohort along an axis of expression of the serum response signature.  The
+signature was also shown to be predictive of outcome in a dataset of 62 patients
+with \mbox{stage \smallcaps{i}} and \mbox{stage \smallcaps{ii}} lung
+adenocarcinomas\cite{garber_diversity_2001} and a dataset of 42 patients with
+\mbox{stage \smallcaps{iii}} gastric carcinomas.\cite{leung_phospholipase_2002}
+This formulation established a novel framework to infer biological determinants
+of cancer progression based on gene expression profiles of clinical samples,
+obviating the need of experimental setups on \emph{in vivo} models.
+
+The rehashing of this strategy would prove exceptionally prolific.  In the wake
+of the Chang et al. publication, links between cancer progression and various
+biological signature markers were reported---including gene expression programs
+of stem
+\mbox{cell-ness};\cite{glinsky_microarray_2005,ben-porath_embryonic_2008}
+p53-status;\cite{miller_expression_2005} stromal
+component;\cite{west_determination_2005} response to
+hypoxia;\cite{chi_gene_2006} chromosomal
+instability;\cite{carter_signature_2006,buffa_large_2010} loss of
+\emph{\smallcaps{PTEN}} expression;\cite{saal_poor_2007} \smallcaps{EMT}
+transition;\cite{welm_macrophage-stimulating_2007,taube_core_2010}
+\emph{\smallcaps{E2F1}} perturbation;\cite{hallstrom_e2f1-dependent_2008}
+mi\smallcaps{R}-31 targets;\cite{valastyan_tumor_2011} among many more.
+% bromodomain 4;\cite{crawford_bromodomain_2008}
+% retinoic acid receptor;\cite{hua_genomic_2009} anchorage-independent
+% growth;\cite{mori_anchorage-independent_2009} among many more.
+
+\medskip
+
+\newthought{By 2005,} ten years after the arabidopsis report, the partnership
+between microarray technology and cancer research was in full swing
+(Figure~\ref{fig:cancer-microarray}).  Reflecting the increasing appeal of the
+technology, at least half a dozen vendors were then marketing whole genome
+microarrays, each relying on their own specifics
+(Table~\ref{tab:WholeGenomeArray}).
+
+Microarrays can typically be designed in a \mbox{two-colour}
+(\mbox{dual-channel}) or in a \mbox{single-colour} (\mbox{single-channel})
+setup.  In \mbox{dual-channel} microarrays, c\smallcaps{dna}s prepared from two
+samples (usually diseased \emph{versus} healthy tissue) are each labeled with
+its own fluorophore, then mixed and hybridized on the same microarray.  The
+ratios of the measurements of the fluorescence emission in the wavelength of
+each fluorophore is then used to estimate the relative abundance of individual
+transcripts in the two samples.  \mbox{Single-channel} microarrays measure the
+hybridization intensities of a single population of c\smallcaps{dna}s labeled
+with a unique fluorophore and, therefore, express the relative abundance of
+transcript expression across biological samples processed in the same
+experiment.  Oligonucleotide microarrays often carry control probes designed to
+hybridize with \smallcaps{rna} \mbox{spike-ins}.  The degree of hybridization
+between the \mbox{spike-ins} and the control probes is used to normalize the
+hybridization measurements for the target probes.
+
+Other platform specific attributes include the probe manufacturing process (made
+\mbox{\emph{in situ}} by photolithographic or ink-jet methods, or by standard
+oligonucleotide synthesis protocols followed by attachment to various
+substrates); the probe substrates (activated glass slides, silicon chips, or
+membranes); the probe design and location (most probes are derived from the 3'
+end of the gene coding sequences to accommodate the fact that target labeling
+usually begins at the 3' end of m\smallcaps{RNA}s); probe size and number per
+array (Table~\ref{tab:WholeGenomeArray}); and the proper probe annotation (as
+sequence databases were still in state of flux, probe annotations were
+constantly being revised and did not necessarily target their designated
+gene).\cite{kawasaki_end_2006}
+
+% The great majority of these studies were
+% done without internal controls or standards, which rendered comparison of
+% results in independent experimental settings difficult or impossible.
+
+\begin{table}[ht]
+  \small
+  \centering
+  % \fontfamily{ppl}%\selectfont
+  \begin{tabular}[c]{lcS[table-format=6.0]S[table-format=6.0]}
+    \toprule
+    \multicolumn{1}{c}{Vendor} & \multicolumn{1}{c}{Probe Size} &
+    \multicolumn{1}{c}{\# Probesets} & \multicolumn{1}{c}{\# Probes per array}\\
+    \midrule
+    \smallcaps{ABI} & 60mer & 33000 & 33000 \\
+    Affymetrix & 25mer & 54000 & 1000000 \\
+    Agilent & 60mer & 44000 & 44000 \\
+    \smallcaps{GE} Amersham & 30mer & 57000 & 57000 \\
+    Illumina & 50mer & 46000 & 1500000 \\
+    Microarrays, Inc. & 70mer & 49000 & 49000 \\
+    NimbleGen & 60mer & 38000 & 380000 \\
+    Phalanx Biotech & 60mer & 30000 & 30000 \\
+    ``Home brew'' & \begin{tabular}[c]
+      {@{}c@{}}
+      \vspace{-.1cm}
+      50mer--\emph{n}70mer\\or c\smallcaps{DNA}s
+    \end{tabular}&
+    40000 & 40000 \\
+    \bottomrule
+  \end{tabular}
+  \caption[Tachnical attributes of principal commercial microarray platforms]{Technical attributes of the principal commercial microarray
+    platforms by 2005.  A probeset constitutes a collection of probes
+    targeting a specific gene
+    (adapted from \citealp{kawasaki_end_2006}).}
+  \label{tab:WholeGenomeArray}
+  \vspace{0cm}
+\end{table}
+
+\medskip
+
+In addition, the expression data resulting from a microarray experiment can be
+influenced by a number of experimental factors, such like target
+c\smallcaps{dna} synthesis (linearly amplified \smallcaps{rna} may contain
+biases in the original m\smallcaps{rna}s ratio);\cite{nygaard_options_2006}
+target labelling (different fluorescent dyes present distinct stabilities,
+quantum efficiencies and wavelengths for stimulation and emission);
+hybridization and washing protocols (every commercial platform abides by its own
+methodology); and the imaging of the arrays (usually done by confocal and
+non-confocal scanners---yet variables like laser power, pixel sizes or scan time
+are not standardized).
+
+These sources of technical variation were making comparison of results obtained
+from different microarray platforms difficult or even impossible.  Some studies
+were reporting poor correlations between expression levels measured with
+different platforms.\cite{tan_evaluation_2003,shi_cross-platform_2005} In order
+to improve the reliability and concordance of microarray data, international
+consortia and technical study groups were assembled to determine a core set of
+\emph{Minimum Information About a Microarray Experiment} (\smallcaps{miame})
+standards\cite{brazma_minimum_2001} and, in 2006, the \emph{MicroArray Quality
+  Control} (\smallcaps{maqc}) project was
+launched.\cite{maqc_consortium_microarray_2006} As a result of these concerted
+efforts, the National Center for Biotechnology Information in the United States
+created, in 2002, the \emph{Gene Expression Omnibus}
+(\smallcaps{geo}),\footnote{\url{http://www.ncbi.nlm.nih.gov/geo/}
+  (\citealp{edgar_gene_2002})} an online repository for \mbox{high-throughput}
+gene expression data.  In 2003, the European Bioinformatics Institute started
+\emph{ArrayExpress},\footnote{\url{http://www.ebi.ac.uk/arrayexpress}
+  (\citealp{brazma_arrayexpress--public_2003})} a public database of microarray
+gene expression data.
+
+Gene expression profiling studies are also challenged by biological
+idiosyncrasies.  For one, gene expression patterns are a function of fluid
+cellular states in constant readjustment.  Microarray experiments consist of
+snapshots of such dynamic ranges, which may account for some of the variation
+across experiments.  Distinct synthesis and degradation rates of the probed
+m\smallcaps{rna} transcripts may further nuance expression readings.  Even
+traditional housekeeping genes (fundamental to the basic biology of the cell and
+thus considered gold standards) have been shown to differ across tissues and
+experimental conditions.\cite{thorrez_using_2008} What is more, biological
+heterogeneity in the biopsy sample can significantly bias reports of gene
+expression, as distinct cellular types may be differently represented in
+distinct samples.
+
+But by and large, the most contentious aspect of the application of microarrays
+in cancer research concerns the methodological analysis of the experimental
+data.  In 2007, a critical detailed review of \mbox{forty-two} studies for
+cancer outcome appeared in the \emph{Journal of the National Cancer Institute}
+by Alain Dupuy and Richard Simon, from the Hôpital Saint-Louis in Paris and the
+\smallcaps{nci} in Maryland.\cite{dupuy_critical_2007} They
+identified three endemic analytic flaws permeating the reviewed studies.
+
+Microarray experiments typically aim for one or more of the following
+objectives: (\emph{a}) to identify individual genes (transcripts) whose
+expression is correlated with a phenotypic trait; (\emph{b}) to identify
+multiple genes interactively involved in regulatory networks and in mediating
+biological phenomena or disease pathogenesis; (\emph{c}) to discover potential
+targets for drug development; and (\emph{d}) to identify molecular markers that
+can be used as tools for disease diagnosis and prognosis or as predictors of
+clinical outcome.\cite{kim_expectations_2010} In \mbox{outcome-related}
+microarray experiments, these aims can be approached with statistical tools
+addressing three kinds of tasks: finding genes correlated with outcome, class
+discovery, and supervised prediction.
+
+For the outcome-related gene finding task, Dupuy and Simon identified a trend
+for an inadequate, unclear, or unstated method for controlling the number of
+\mbox{false-positive} differentially expressed genes.  Because microarray
+analysis involves making inferences about each gene whose expression is measured
+on the array, the large number of hypotheses being tested can yield a higher
+than desirable proportion of false positives.  Statistical procedures to correct
+for excess of false positives in multiple testing, such like the false discovery
+rate, are thus necessary.\cite{benjamini_controlling_1995,noble_how_2009}
+
+Concerning the class discovery task, they recognized a tendency to credit
+expression clusters with biological meaning when the clustering procedure was
+itself based on genes selected for their correlation with outcome.  This causes
+non-independent evidence that outcome can be predicted based on expression
+levels---a statistical misconception known as feature selection
+bias.\cite{ambroise_selection_2002}
+
+For the supervised prediction task, they flagged analytic lapses causing a
+biased estimation of the prediction accuracy through incorrect cross-validation
+procedures.  The more common of these experimental design errors involved the
+violation of the principle of separation of the training and testing sets during
+the validation of the classifier, incurring the derived models in data
+overfitting.\footnote{Overfitting occurs when a classifier describes random
+  error or noise pertaining to the training set instead of the underlying
+  structure of the data.}
+
+With the emerging developments on the computational analysis of microarray
+data\cite{quackenbush_computational_2001,irizarry_summaries_2003} and the
+concomitant accrued sensitivity to its technical specifics, the stream of
+published microarray studies started to be tempered by a series of reviews
+questioning the validity, reproducibility and biological significance of the
+results.\cite{michiels_prediction_2005,tinker_challenges_2006,kawasaki_end_2006,cahan_meta-analysis_2007,gusnanto_identification_2007,mathoulin-pelissier_survival_2008,kim_expectations_2010}
+
+In iconic fashion, John Ioannidis, now a Professor of Medicine at Stanford,
+chastised the field with a dire assessment on the lack of reproducibility of
+some \mbox{high-profile} microarray research
+findings.\cite{ioannidis_repeatability_2009} Upon independent dissection of the
+analysis protocols of eighteen studies published in \mbox{\emph{Nature
+    Genetics}} during 2005 and 2006, his team concluded that ten of them could
+not be reproduced at all.  The main reason for failure to reproduce was data
+unavailability, and discrepancies were mostly due to incomplete data annotation
+or specification of data processing and analysis.
+
+In the meantime, prognostic gene expression signatures of clinical outcome of
+breast cancer were accumulating in the literature at a steady
+rate.\cite{vant_veer_gene_2002,paik_multigene_2004,ma_two-gene_2004,wang_gene-expression_2005,chang_robustness_2005,miller_expression_2005,glinsky_microarray_2005,foekens_multicenter_2006,naderi_gene-expression_2006,teschendorff_consensus_2006,sotiriou_gene_2006,liu_prognostic_2007}
+Intriguingly, very few genes were showing in common among the distinct
+prognostic markers.  On a thorough review on the correspondence between these
+biomarkers and the clinicopathological features of breast cancer, Christos
+Sotiriou and Lajos Putszai, from the Institut Jules Bordet in Brussels and the
+University of Texas in Houston, sought to form a synthesis of the evidence
+supporting genomic prognostic signals.\cite{sotiriou_gene-expression_2009}
+Sotiriou and Putszai reasoned that the absence of common markers between
+signatures could be a feature of complex gene expression systems entertaining a
+large number of correlated variables.  They also stressed the general tendency
+for prognostic signatures to perform better among \smallcaps{ER+} tumours, as
+they best discriminate \mbox{low-proliferation} \mbox{luminal \smallcaps{a}}
+tumours from \mbox{high-proliferation} \mbox{luminal \smallcaps{b}} tumours,
+whereas they mostly classify \smallcaps{ER--} tumours (comprising the basal-like
+and \mbox{\smallcaps{her}-positive} phenotypes) as \mbox{high-risk}.  This could
+be explained by the ability of prognostic signatures to capture molecular
+features of tumour differentiation and tumour grade, both linked with cancer
+progression and metastatic spread.  They summed up by proposing that models for
+breast cancer prognostication should include both genomic and clinical variables
+for best accuracy.
+
+% tectonic readjustments
+
+In 2011, David Venet and Vincent Detours, at the Université Libre de Bruxelles,
+further added to the debate concerning the biological interpretation of
+prognostic genomic signals in breast cancer.\cite{venet_most_2011} Probing the
+\mbox{295-sample} \smallcaps{nki} reference cohort, they compared the prognostic
+ability of \mbox{fourty-seven} published breast cancer outcome signatures with
+signatures made of random genes.  They showed that 60\% of them were not
+significantly better outcome predictors than random signatures of identical
+size.  In addition, more than 90\% of random signatures with more than 100 genes
+were shown to be significant outcome predictors.  Interestingly, they observed
+that adjusting breast cancer expression data for a proliferation marker
+abrogated most of the outcome association of published and random signatures.
+By systematically exploring outcome associations in the \smallcaps{nki}-295
+cohort, Venet and Detours exposed a wider and more pervasive range of prognostic
+signals than previously anticipated.  They obtained similar results by
+replicating the analysis in expression profiles of an independent cohort of 380
+breast cancer patients from another study.\cite{loi_definition_2007} A
+\mbox{decade worth} of biological extrapolations based on the transcription
+profiles of clinical samples was eventually challenged by a more stringent
+formulation of experimental controls.
+
+\medskip
+
+Microarrays, once hailed as the ``21\textsuperscript{st} century divining
+rod,''\cite{he_microarrays21st_2001} have highlighted exciting new avenues to
+engage the neoplastic cell.  Still, on the battlefield, cancer remained as
+deceptive a foe as ever.  Translational research with direct impact on clinical
+practice resulting from the microarray boom has proved tentative and timid at
+best.  The most significant contributions were made in the context of predicting
+a patient's prognosis by interpreting a panel of specific \mbox{tumour-related}
+genes.  The first \smallcaps{FDA} clearance of \mbox{microarray-based} gene
+profiling reagents was obtained in May
+2011.\footnote{\url{http://investor.affymetrix.com/phoenix.zhtml?c=116408&p=irol-newsArticle&ID=1561100}}
+As of 2013,\cite{kittaneh_molecular_2013} three genomic assays were commercially
+available for prognostication in early stage breast cancer: Oncotype
+\smallcaps{dx} (consisting of a \mbox{21-gene} profile narrowed down from a list
+of 250 candidate genes that were analyzed in a total of 447 patients from 3
+separate studies); MammaPrint (based on the \mbox{70-gene} \smallcaps{nki}
+predictor; \smallcaps{fda} approved in 2007); and \smallcaps{pam50} (a
+\mbox{50-gene} set used for standardizing subtype classification).
+
+The mining of the wealth of data yielded by cancer expression profiling has been
+as much a source of promising guidance as of humbling reappraisal.
+
+% Other issues troubling outome-related microarray analysis include poor
+% definition of survival end points\cite{mathoulin-pelissier_survival_2008}
+
+% There's a kernel of truth
+
+% \mbox{Outcome-related} microarray analysis\footnote{\mbox{Outcome-related}
+% studies seek to establish a statistical association between gene expression
+% levels and a particular clinical outcome, such as relapse of disease, death,
+% or therapeutic response.} allows for all these and, in their review, Dupuy and
+% Simon schematized these objectives into three categories of statistical
+% analysis: finding genes correlated with outcome, class discovery, and
+% supervised prediction.
+
+% results, list of possible biases. batch specific biases.
+
+% 2007: Dupuy & Simon review validity and reproducibility of microarray-based
+% research with a meta-analysis on 90 studies.  Quote: ``The use of microarray
+% technology has generated great excitement for its potential to identify
+% biomarkers for cancer outcomes, but the reproducibility and validity of
+% findings based on microarray data have come under widespread challenge.''
+% (nci-dupuy-2007.pdf)
+
+% Steps to run a microarray: 1-sequence the entire genome of the organism
+% you're studying.  2-use massive amount of computing power to determine where
+% all the genes are in your sequence.  3-more computing power to design primer
+% pairs to use PCR to make copies of every gene.  4-with those primers, copy
+% every gene on the genome 5-run quality tests on all gene copies to verify
+% which PCR reactions did not work 6-separate double stranded DNA into single
+% stranded DNA.  7-use robots to place microscopic droplets of each
+% single-stranded DNA into ordered rows and columns on a glass microscopic
+% slide (microarray).
+
+% each spot contains multiple copies of a unique DNA sequence that represents a
+% single gene.
+
+% list of terms to use:
+% genetic catalog; gene expression profile.
+
+% While microarrays quantify the m\smallcaps{rna} species extracted from a given
+% tissue, they do not tell us if the subsequent protein is actually being
+% properly synthesized.
+
+% Limitations of microarrays.  They cannot:
+% 1-tell which genes went bad to cause a disease.
+% 2-cure a disease
+% 3-identify every genes that is behaving inappropriately
+
+% From:
+% http://en.wikipedia.org/wiki/Breast_cancer_classification#cite_ref-pmid20065178_43-0
+% Several commercially marketed DNA microarray tests analyze clusters of genes
+% and may help decide which possible treatment is most effective for a
+% particular cancer.  The use of these assays in breast cancers is supported by
+% Level II evidence or Level III evidence.  No tests have been verified by Level
+% I evidence, which is rigorously defined as being derived from a prospective,
+% randomized controlled trial where patients who used the test had a better
+% outcome than those who did not.  Acquiring extensive Level I evidence would be
+% clinically and ethically challenging.  However, several validation approaches
+% are being actively pursued.
+
+% tying up:
+% Some evidence suggest that these assays provide comparable
+% prognostic information: Concordance among Gene-Expression-Based Predictors for
+% Breast Cancer
+
+% Affymetrix Achieves First FDA Clearance of Microarray-Based Gene Profiling
+% Reagents
+% http://investor.affymetrix.com/phoenix.zhtml?c=116408&p=irol-newsArticle&ID=1561100
+
+\bigskip
+
+% Cancer\footnote{``It's bad bile.  It's bad habits.  It's bad bosses.  It's bad
+% genes.''---\emph{Mel Greaves}}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../thesis"
+%%% End:
