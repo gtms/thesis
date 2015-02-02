@@ -15,7 +15,8 @@ setwd (work.dir)
 ## loads data
 load ("raw-data/fracGenesSignif.dfr.RData")
 load ("raw-data/fracSignif.dfr.RData")
-studies.dfr <- read.csv2 ("raw-data/studies.csv")
+studies.dfr <- read.csv2 ("raw-data/studies.csv",
+                          stringsAsFactors = FALSE)
 
 ## preprocess data
 ## defines function to choose event, should there be more than one available
@@ -30,29 +31,43 @@ selectEvent <- function (dfr,
     dfr[idx, ]
 }
 
+## renames certain cancers
+## atypical-teratoid-rhabdoid-tumors to teratoid-rhabdoid
+studies.dfr$cancer[studies.dfr$cancer == "atypical-teratoid-rhabdoid-tumors"] <- "teratoid-rhabdoid"
+studies.dfr$cancer[studies.dfr$cancer == "cervical-cancer"] <- "cervical"
+
+## defines vars2keep
+vars2keep <- c ("study", "cancer", "os", "dfs", "dss", "dmfs", "nGenes")
+
 ## produces fracSigs.dfr
 fracSigs.dfr <- merge (fracSignif.dfr,
-                       studies.dfr[, c ("study", "cancer", "nSamples", "nGenes")])
+                       studies.dfr[, vars2keep])
 fracSigs.dfr <- selectEvent (fracSigs.dfr)
 fracSigs.dfr$eventSigs.rdx <- ifelse (fracSigs.dfr$event %in% c ("os", "dss"),
                                   "death", "relapse")
 
 ## produces fracGenes.dfr
 fracGenes.dfr <- merge (fracGenesSignif.dfr[, c ("fracSignif.pval", "study", "event")],
-                        studies.dfr[, c ("study", "cancer", "nSamples", "nGenes")])
+                        studies.dfr[, vars2keep])
 names (fracGenes.dfr)[names (fracGenes.dfr) == "fracSignif.pval"] <- "fracSignifGenes.pval"
 fracGenes.dfr <- selectEvent (fracGenes.dfr)
 fracGenes.dfr$eventGenes.rdx <- ifelse (fracGenes.dfr$event %in% c ("os", "dss"),
                                    "death", "relapse")
 
 ## merges fracSigs.dfr and fracGenes.dfr
-merged.dfr <- merge (fracSigs.dfr[, !names (fracSigs.dfr) %in% "event"],
+## merged.dfr <- merge (fracSigs.dfr[, !names (fracSigs.dfr) %in% "event"],
+merged.dfr <- merge (fracSigs.dfr,
                      fracGenes.dfr[, c ("study", "fracSignifGenes.pval", "eventGenes.rdx")],
                      by = "study")
 
+## redefines nSamples according to the chosen event
+merged.dfr$nSamples <- sapply (1:nrow (merged.dfr), function (n) {
+    merged.dfr[n, merged.dfr[n, "event"]]
+})
+
 ## reorders study according to fraction of MSigDBc2 signatures associated with outcome
 merged.dfr$study <- with (merged.dfr,
-                          ordered (study, study[order (msigdb, decreasing = TRUE)]))
+                          ordered (study, study[order (random, decreasing = TRUE)]))
 rownames (merged.dfr) <- merged.dfr$study
 merged.dfr <- merged.dfr[levels (merged.dfr$study), ]
 
@@ -93,16 +108,20 @@ colorsRGB.mtx <- sapply (colors, col2rgb)
 
 ## defines layout of device; initializes pdf device
 ## opens device
-pdf (file = "img/fraction-significant-tests-base-R-graphics.pdf",
+svg (file = "img/fraction-significant-tests-base-R-graphics.svg",
      width = 12,
      height = 10)
 
+## pdf (file = "img/fraction-significant-tests-base-R-graphics.pdf",
+##      width = 12,
+##      height = 10)
+
 ## sets layout
-layout (mat = matrix (1:5, ncol = 5),
-        widths = c (1.5, 1, .5, 3, 3))
+layout (mat = matrix (1:4, ncol = 4),
+        widths = c (1.5, 1, .5, 1.5))
 
 ## defines the setup the numbers of columns and the margins of the device
-par (mar = c (4, 0, 5, .5))
+## par (mar = c (4, 0, 5, .5))
 
 ## panel #1
 ## study names
@@ -127,6 +146,7 @@ text (x = .5,
                                         # positions below, to the left of, above
                                         # and to the right of the specified
                                         # coordinates.
+      adj = 0,
       font = 1)
 
 ## panel #2
@@ -149,10 +169,11 @@ text (x = .5,
       y = nStudies:1,
       labels = merged.dfr$cancer,
       cex = .8, # sets the size of the labels
-      ## pos = 2, # Values of '1', '2', '3' and '4', respectively indicate
+      ## pos = 1, # Values of '1', '2', '3' and '4', respectively indicate
                                         # positions below, to the left of, above
                                         # and to the right of the specified
                                         # coordinates.
+      adj = 0,
       font = 1)
 
 ## panel #3
@@ -179,6 +200,7 @@ text (x = .5,
                                         # positions below, to the left of, above
                                         # and to the right of the specified
                                         # coordinates.
+      adj = 1,
       font = 1)
 
 ## panel #4
@@ -191,13 +213,18 @@ plot (x = NA,
       y = NA,
       ## col = colors["blue_mid"],
       pch = 19,
-      main = "Death",
+      main = "Fraction associated with outcome",
       xlim = c (0, 1),
       ylim = c (0, nStudies),
       yaxt = "n", ## no x axis
       xlab = "", ## no x label
       ylab = "", ## no y label
       frame.plot = FALSE) # whether to give the plot a frame or not
+
+## adds horizontal faint guidelines
+abline (h = 1:nStudies,
+        lty = 3,
+        col = "grey")
 
 ## adds red line at x = .05
 abline (v = .05,
@@ -219,8 +246,26 @@ points (x = rev (merged.dfr$msigdb.death),
 ## adds results with fraction of genes associated with outcome
 points (x = rev (merged.dfr$genes.death),
         y = 1:nStudies,
-        col = colors["red_light"],
+        col = colors["brown"],
         pch = 19)
+
+## adds results with randomized signatures
+points (x = rev (merged.dfr$random.relapse),
+        y = 1:nStudies,
+        col = colors["blue_mid"],
+        pch = 1)
+
+## adds results with regular signatures
+points (x = rev (merged.dfr$msigdb.relapse),
+        y = 1:nStudies,
+        col = colors["blue_dark"],
+        pch = 1)
+
+## adds results with fraction of genes associated with outcome
+points (x = rev (merged.dfr$genes.relapse),
+        y = 1:nStudies,
+        col = colors["brown"],
+        pch = 1)
 
 ## panel #5
 ## This panel plots the fraction of significant tests
@@ -228,66 +273,81 @@ points (x = rev (merged.dfr$genes.death),
 ## colours to be used: blue_mid and blue_dark
 ## par (mar = c (9.9, .1, 9.9, .1))
 ## sets the emply plot device
-plot (x = NA,
-      y = NA,
-      ## col = colors["blue_mid"],
-      pch = 19,
-      main = "Relapse",
-      xlim = c (0, 1),
-      ylim = c (0, nStudies),
-      yaxt = "n", ## no x axis
-      xlab = "", ## no x label
-      ylab = "", ## no y label
-      frame.plot = FALSE) # whether to give the plot a frame or not
+## plot (x = NA,
+##       y = NA,
+##       ## col = colors["blue_mid"],
+##       pch = 19,
+##       main = "Relapse",
+##       xlim = c (0, 1),
+##       ylim = c (0, nStudies),
+##       yaxt = "n", ## no x axis
+##       xlab = "", ## no x label
+##       ylab = "", ## no y label
+##       frame.plot = FALSE) # whether to give the plot a frame or not
 
 ## adds red line at x = .05
-abline (v = .05,
-        lty = 3,
-        col = "darkred")
+## abline (v = .05,
+##         lty = 3,
+##         col = "darkred")
 
 ## adds results with randomized signatures
-points (x = rev (merged.dfr$random.relapse),
-        y = 1:nStudies,
-        col = colors["blue_mid"],
-        pch = 19)
+## points (x = rev (merged.dfr$random.relapse),
+##         y = 1:nStudies,
+##         col = colors["blue_mid"],
+##         pch = 19)
 
 ## adds results with regular signatures
-points (x = rev (merged.dfr$msigdb.relapse),
-        y = 1:nStudies,
-        col = colors["blue_dark"],
-        pch = 19)
+## points (x = rev (merged.dfr$msigdb.relapse),
+##         y = 1:nStudies,
+##         col = colors["blue_dark"],
+##         pch = 19)
 
 ## adds results with fraction of genes associated with outcome
-points (x = rev (merged.dfr$genes.relapse),
-        y = 1:nStudies,
-        col = colors["red_light"],
-        pch = 19)
+## points (x = rev (merged.dfr$genes.relapse),
+##         y = 1:nStudies,
+##         col = colors["red_light"],
+##         pch = 19)
 
 ## adds legend text at the bottom right corner
 ## regular
-text (x = 1,
-      y = 4,
-      labels = "regular",
-      pos = 2,
-      cex = 1.5,
-      col = colors["blue_dark"])
+## text (x = 1,
+##       y = 4,
+##       labels = "MSigDB C2",
+##       pos = 2,
+##       cex = 1.5,
+##       col = colors["blue_dark"])
 
 ## random
-text (x = 1,
-      y = 1,
-      labels = "random",
-      pos = 2,
-      cex = 1.5,
-      col = colors["blue_mid"])
+## text (x = 1,
+##       y = 1,
+##       labels = "random",
+##       pos = 2,
+##       cex = 1.5,
+##       col = colors["blue_mid"])
 
 ## genes
-text (x = 1,
-      y = 7,
-      labels = "genes",
-      pos = 2,
-      cex = 1.5,
-      col = colors["red_light"])
+## text (x = 1,
+##       y = 7,
+##       labels = "singluar genes",
+##       pos = 2,
+##       cex = 1.5,
+##       col = colors["brown"])
+
+legend ("bottomright",
+        legend = c ("death endpoint",
+            "relapse endpoint",
+            "single genes",
+            "MSigDB C2 signatures",
+            "random signatures"),
+        bty = "n",
+        lwd = 2,
+        cex = 1.5,
+        text.col = c (rep ("black", 2),
+            colors["brown"],
+            colors["blue_dark"],
+            colors["blue_mid"]),
+        lty = rep (NA, 5),
+        pch = c (19, 1, rep (NA, 3)))
 
 ## closes device
 dev.off ()
-d
