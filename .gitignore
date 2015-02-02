@@ -16,6 +16,7 @@
 *.lof
 *.lot
 *.toc
+*.Rhistory
 
 ## directories
 org/auto/
