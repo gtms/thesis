@@ -1,0 +1,120 @@
+\section{Motivation \& Contributions of this Thesis}
+
+The work contributed in this thesis is anchored in the analytic corpus developed
+during ten years of gene expression assaying of cancer biopsies with
+microarray technology.  Its motivations are framed by the current understanding
+of the fundamental biology of cancer, primed by its two major axis of
+progression: differentiation and proliferation.
+
+\subsection{Differentiation}
+We first explored the differentiation axis by investigating the potential of
+gene expression differentiation signatures to chart cancer progression using
+whole genome microarray profiles of tumour samples.  As most molecular
+classifiers of cancer rely on the variant features of the transformed neoplastic
+transcriptome, we reasoned that a complementary approach could consist of
+leveraging the invariant features specified by the unique transcriptional
+signatures of each tissue of origin.
+
+As a case study, we took to thyroid cancer.  Neoplasms of the thyrocyte cell are
+characterized by a well defined linear progression from benign, fully
+differentiated tumour types, up to one of the most lethal human cancers, the
+anaplastic thyroid carcinoma (Figure~\ref{fig:thyroid-carcinogenesis}).  We
+aimed to build a genomic marker of thyroid cancer progression based on a gene
+expression signature of healthy thyrocytes.  As a result, we devised a general
+method to derive robust \mbox{organ-specific} gene \mbox{expression-based}
+differentiation indices, published in the journal
+\emph{Oncogene}.\cite{tomas_general_2012}
+
+\begin{figure}[ht]
+  \includegraphics{fie-thyroid-carcinogenesis-2012-thyroid.png}%
+  \caption[Step model of thyroid carcinogenesis]{Step model of thyroid
+    carcinogenesis.  Thyroid epithelial cells may undergo transformation via
+    alterations in different oncogenes and tumour supressor genes, giving rise
+    to \mbox{well-differentiated} papillary or follicular carcinomas.
+    Additional mutational load can cause progression of a differentiated tumour
+    into a poorly differentiated one, and eventually into an anaplastic
+    carcinoma.  Particularly challenging, from the histopathological point of
+    view, is the distinction between follicular adenomas and follicular
+    carcinomas; and between follicular variants of papillary carcinomas and
+    their classical counterpart (reproduced from
+    \citealp{sastre-perona_role_2012}).}
+  \label{fig:thyroid-carcinogenesis}
+\end{figure}
+
+Contributions made in the context of this work include:
+\begin{itemize}{}{}
+\item An unbiased procedure to derive \mbox{organ-specific} differentiation
+  markers from gene expression profiles of healthy tissues.
+\item Proof of concept of the clinical utility of differentiation signatures in
+  cancer diagnosis, featuring thyroid cancer as a test case.  Specifically, we
+  demonstrated that, in a panel of expression profiles composed of thyroid
+  cancers of distinct subtypes and normal thyroid samples:
+  \begin{enumerate}
+  \item The expression of a \mbox{thyroid-specific} differentiation biomarker,
+    consisting of 15 genes, is inversely correlated with that of a proliferation
+    biomarker, also independently derived from expression profiles of healthy
+    tissues.  Conversely, the differentiation biomarker is positively correlated
+    with the proliferation biomarker in expression profiles of a
+    \mbox{time-course} experiment where thyrocytes in culture were treated with
+    \smallcaps{tsh} hormone (the \mbox{thyroid-stimulating} hormone,
+    \smallcaps{tsh}, induces both the metabolic activity and proliferation of
+    thyrocytes).  These observations support the independence of the two
+    biomarkers and prove that the differentiation biomarker does capture a
+    transcriptome signature particular to the epithelial thyroid cell.
+  \item A multidimensional scaling analysis representation of the profiled
+    clinical samples exposes a non-overlapping continuum of thyroid tumours of
+    increasing malignancy.
+  \item The differentiation biomarker can accurately discriminate between
+    follicular adenomas and follicular carcinomas; and between follicular
+    variants of papillary carcinomas and classical papillary carcinomas---two
+    challenging histopathological diagnosis.  Moreover, the accuracy of the
+    differentiation biomarker in this supervised classification task was not
+    significantly different from the accuracy of two supervised machine learning
+    classifiers trained within the whole gene expression space of the tested
+    samples.
+  \end{enumerate}
+\end{itemize}
+
+\subsection{Proliferation}
+Uncontrolled proliferation is not just a hallmark of
+cancer\cite{hanahan_hallmarks_2011}---but its very own operational definition.
+Using a proliferation biomarker consisting of 129 genes derived from healthy
+tissues, Venet and Detours\cite{venet_most_2011} showed that most of the
+prognostic content found in the reference \smallcaps{nki}-295 dataset was
+linked to a pervasive proliferative signal in the neoplastic transcriptome.
+
+We took to a wider collection of 102 distinct \mbox{outcome-related} cancer
+cohorts, spanning 22 types of cancer to (\emph{a}) evaluate the extent of
+prognostic signals in human cancers transcriptomes; and (\emph{b}) dissect the
+potential technical and biological variables linked to prognostic content in
+different cancer.  The results of this work are currently under submission and
+will be thoroughly detailed in the \emph{results}\footnote{Link to results
+  section here.} section.
+
+\medskip
+
+Contributions made in the context of this work include:
+\begin{itemize}
+\item Evidence of an extensive correlation structure in cancer transcriptomes as
+  assayed by microarrays.  This is concluded on the count that, in 76\% of the
+  cancer cohorts analyzed, more than 5\% of random gene expression signatures is
+  associated either with patient death or relapse of disease.
+\item Demonstration that variables of both technical and biological essence are
+  linked with the heterogeneity in prognostic content observed across 33 breast
+  cancer cohorts.  This was determined from a thorough statistical multivariate
+  analysis of the \mbox{clinico-pathological} variables associated in each study
+  with the prognostic fraction of the transcriptome.
+\item Corroboration of the significance of proliferation as the biological
+  program comprising most of the prognostic content in cancer transcriptomes.
+  Serial deconvolution of distinct biologically motivated biomarkers was
+  undertaken across the studied cohorts to yield this result.
+\end{itemize}
+
+% A proliferation metagene captures a significant fraction of the
+% pan-transcriptomic pervasive signals associated with outcome; other biological
+% programs may also account for prognostic content to various degrees.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../thesis"
+%%% End:

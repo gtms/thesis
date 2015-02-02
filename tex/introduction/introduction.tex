@@ -1,10 +1,41 @@
 \documentclass{tufte-book}
+% \documentclass[nohyper]{tufte-book}
+% 23Oct2014
+% [nohyper] option
+% as per instructions found on
+% http://tex.stackexchange.com/questions/134633/figure-references-in-tufte-book
 
 \usepackage{fontspec}
 \usepackage{soul}
 \usepackage{booktabs}
 \usepackage{morefloats}
 \usepackage{siunitx}
+\usepackage{microtype}
+% \usepackage{bookmark} % see [nohyper] option above
+% \usepackage{marginfix}
+
+% For graphics / images
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
+\graphicspath{{../../graphics/}}
+
+% The following package makes prettier tables.  We're all about the bling!
+\usepackage{booktabs}
+
+% The units package provides nice, non-stacked fractions and better spacing
+% for units.
+\usepackage{units}
+
+% The fancyvrb package lets us customize the formatting of verbatim
+% environments.  We use a slightly smaller font.
+\usepackage{fancyvrb}
+\fvset{fontsize=\normalsize}
+
+% Prints a trailing space in a smart way.
+\usepackage{xspace}
+
+% \hypersetup{colorlinks}% uncomment this line if you prefer colored hyperlinks
+% (e.g., for onscreen viewing)
 
 % from
 % http://tex.stackexchange.com/questions/46831/why-does-manually-loading-hyperref-change-the-font-size-for-captions-in-tufte-do
@@ -16,7 +47,7 @@
 
 \defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
 \setmainfont{Minion Pro}
-\setsansfont[Scale=MatchLowercase]{Gill Sans MT}
+\setsansfont[Scale=MatchLowercase]{Gill Sans}
 % \setsansfont[Scale=MatchLowercase]{Gill Sans Std}
 \setmonofont[Scale=MatchLowercase]{Consolas}
 
@@ -74,6 +105,8 @@
 
 \input{./life/life.tex}
 \input{./cancer/cancer.tex}
+\input{./microarrays/microarrays.tex}
+\input{./motivation/motivation.tex}
 
 \backmatter
 
