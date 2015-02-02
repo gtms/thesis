@@ -13,6 +13,9 @@
 *.png
 *.svg
 *.RData
+*.lof
+*.lot
+*.toc
 
 ## directories
 org/auto/
