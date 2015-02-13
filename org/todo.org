@@ -1,3 +1,0 @@
-* Shorten and clean life.tex section
-* Add concept of anaplasia in cancer.tex section
-In line with the differentiation axis of cancer.

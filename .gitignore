@@ -17,8 +17,9 @@
 *.lot
 *.toc
 *.Rhistory
+*.org
 
 ## directories
-org/auto/
+org/
 pdf/
 graphics/
