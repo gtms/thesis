@@ -17,6 +17,7 @@
 *.lot
 *.toc
 *.Rhistory
+*.org
 
 ## directories
 org/
