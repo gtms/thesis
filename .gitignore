@@ -19,6 +19,6 @@
 *.Rhistory
 
 ## directories
-org/auto/
+org/
 pdf/
 graphics/
