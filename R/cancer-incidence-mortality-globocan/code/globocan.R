@@ -133,7 +133,7 @@ globocan.plt <- globocan.plt +
     scale_y_continuous (breaks = seq (.5, 13.5, 1),
                         labels = top.cancers.srt) +
                             geom_vline (xintercept = 0) +
-                                xlab ("Age-standardized rate per 100 000 population (2012)")
+                                xlab ("Age-standardized rate per 100 000 population")
 
 globocan.plt +
     theme_bw () +
