@@ -1,63 +1,72 @@
-\documentclass{tufte-book}
-% \documentclass[nohyper]{tufte-book}
-% 23Oct2014
-% [nohyper] option
-% as per instructions found on
-% http://tex.stackexchange.com/questions/134633/figure-references-in-tufte-book
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PREAMBLE BEGINS HERE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{fontspec}
+\documentclass[a4paper,sfsidenotes,twoside]{tufte-book}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Loads packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage{fontspec}
+\usepackage[MnSymbol]{mathspec}
 \usepackage{soul}
 \usepackage{booktabs}
 \usepackage{morefloats}
 \usepackage{siunitx}
 \usepackage{microtype}
-\usepackage{pdfpages}
-\usepackage{hyperref}
-% \usepackage{bookmark} % see [nohyper] option above
-% \usepackage{marginfix}
+\usepackage{pdfpages} % to insert pages of external documents
+\usepackage{etoolbox} % provides some support for comma-separated lists
+\usepackage{booktabs}
+% \usepackage{units} % superseded by siunitx
+\usepackage{xspace} % prints trailing space in a smart way
+\usepackage{makeidx}
+\usepackage{fancyvrb}
+\usepackage[hyperfootnotes=false]{hyperref}
 
-% For graphics / images
-\usepackage{graphicx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sets up fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
+\setprimaryfont{Minion Pro}
+\setmainfont{Minion Pro}
+\setsansfont[Scale=MatchLowercase]{Gill Sans} % pc15
+% \setsansfont[Scale=MatchLowercase]{Gill Sans Std} % HP-ENVY14
+\setmonofont[Scale=MatchLowercase]{Consolas}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Defines font size of verbatim environments (package fancyvrb)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fvset{fontsize=\normalsize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sets up the spacing using fontspec features
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
+\renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Specifies settings for graphics/images
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 \graphicspath{{../graphics/}}
 
-% The following package makes prettier tables.  We're all about the bling!
-\usepackage{booktabs}
 
-% The units package provides nice, non-stacked fractions and better spacing
-% for units.
-\usepackage{units}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Redefines \cite command
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Prints a trailing space in a smart way.
-\usepackage{xspace}
-
-% \hypersetup{colorlinks}% uncomment this line if you prefer colored hyperlinks
-% (e.g., for onscreen viewing)
-
-% Book metadata
-% \title{Differentiation and Proliferation in Cancer\thanks{Thanks to Edward R.~Tufte for his inspiration.}}
-% \author[Gil Tomás]{Gil Tomás}
-% \publisher{Publisher of This Book}
-
-% % from
-% % http://tex.stackexchange.com/questions/46831/why-does-manually-loading-hyperref-change-the-font-size-for-captions-in-tufte-do
-% % 05Sep2014
-% \makeatletter
-% \let\tufte@caption\@caption
-% \usepackage[hyperfootnotes=false]{hyperref}
-% \let\@caption\tufte@caption
-
-\defaultfontfeatures{Ligatures=TeX,Numbers=OldStyle}
-\setmainfont{Minion Pro}
-\setsansfont[Scale=MatchLowercase]{Gill Sans}
-% \setsansfont[Scale=MatchLowercase]{Gill Sans Std}
-\setmonofont[Scale=MatchLowercase]{Consolas}
-
-\usepackage{etoolbox}% provides some support for comma-separated lists
-
-% Set up the spacing using fontspec features
-\renewcommand\allcapsspacing[1]{{\addfontfeature{LetterSpace=15}#1}}
-\renewcommand\smallcapsspacing[1]{{\addfontfeature{LetterSpace=10}#1}}
+%% As per instructions taken from:
+%% http://tex.stackexchange.com/questions/46012/how-do-i-get-full-or-abbreviated-citations-to-appear-automatically-in-tufte-foot
 
 \makeatletter
 % We'll keep track of the old/seen bibkeys here.
@@ -103,94 +112,133 @@
 }
 \makeatother
 
-% The following was added as of 31Oct2014
-% from the preamble of the sample-book.tex
-\providecommand{\XeLaTeX}{X\lower.5ex\hbox{\kern-0.15em\reflectbox{E}}\kern-0.1em\LaTeX}
-\newcommand{\tXeLaTeX}{\XeLaTeX\index{XeLaTeX@\protect\XeLaTeX}}
-% \index{\texttt{\textbackslash xyz}@\hangleft{\texttt{\textbackslash}}\texttt{xyz}}
-\newcommand{\tuftebs}{\symbol{'134}}% a backslash in tt type in OT1/T1
-\newcommand{\doccmdnoindex}[2][]{\texttt{\tuftebs#2}}% command name -- adds backslash automatically (and doesn't add cmd to the index)
-\newcommand{\doccmddef}[2][]{%
-  \hlred{\texttt{\tuftebs#2}}\label{cmd:#2}%
-  \ifthenelse{\isempty{#1}}%
-    {% add the command to the index
-      \index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2}}% command name
-    }%
-    {% add the command and package to the index
-      \index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2} (\texttt{#1} package)}% command name
-      \index{#1 package@\texttt{#1} package}\index{packages!#1@\texttt{#1}}% package name
-    }%
-}% command name -- adds backslash automatically
-\newcommand{\doccmd}[2][]{%
-  \texttt{\tuftebs#2}%
-  \ifthenelse{\isempty{#1}}%
-    {% add the command to the index
-      \index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2}}% command name
-    }%
-    {% add the command and package to the index
-      \index{#2 command@\protect\hangleft{\texttt{\tuftebs}}\texttt{#2} (\texttt{#1} package)}% command name
-      \index{#1 package@\texttt{#1} package}\index{packages!#1@\texttt{#1}}% package name
-    }%
-}% command name -- adds backslash automatically
-\newcommand{\docopt}[1]{\ensuremath{\langle}\textrm{\textit{#1}}\ensuremath{\rangle}}% optional command argument
-\newcommand{\docarg}[1]{\textrm{\textit{#1}}}% (required) command argument
-\newenvironment{docspec}{\begin{quotation}\ttfamily\parskip0pt\parindent0pt\ignorespaces}{\end{quotation}}% command specification environment
-\newcommand{\docenv}[1]{\texttt{#1}\index{#1 environment@\texttt{#1} environment}\index{environments!#1@\texttt{#1}}}% environment name
-\newcommand{\docenvdef}[1]{\hlred{\texttt{#1}}\label{env:#1}\index{#1 environment@\texttt{#1} environment}\index{environments!#1@\texttt{#1}}}% environment name
-\newcommand{\docpkg}[1]{\texttt{#1}\index{#1 package@\texttt{#1} package}\index{packages!#1@\texttt{#1}}}% package name
-\newcommand{\doccls}[1]{\texttt{#1}}% document class name
-\newcommand{\docclsopt}[1]{\texttt{#1}\index{#1 class option@\texttt{#1} class option}\index{class options!#1@\texttt{#1}}}% document class option name
-\newcommand{\docclsoptdef}[1]{\hlred{\texttt{#1}}\label{clsopt:#1}\index{#1 class option@\texttt{#1} class option}\index{class options!#1@\texttt{#1}}}% document class option name defined
-\newcommand{\docmsg}[2]{\bigskip\begin{fullwidth}\noindent\ttfamily#1\end{fullwidth}\medskip\par\noindent#2}
-\newcommand{\docfilehook}[2]{\texttt{#1}\index{file hooks!#2}\index{#1@\texttt{#1}}}
-\newcommand{\doccounter}[1]{\texttt{#1}\index{#1 counter@\texttt{#1} counter}}
 
-% From:
-% http://tex.stackexchange.com/questions/113333/make-headers-display-chapter-title-not-book-title-in-tufte-book
-% 03Nov2014
-% \makeatletter
-% \newcommand\chapterauthor[1]{#1\gdef\@chapterauthor{#1}}
-% \def\@chapterauthor{}
-% \fancypagestyle{mystyle}{%
-% \fancyhf{}%
-% \renewcommand{\chaptermark}[1]{\markboth{##1}{}}%
-% \fancyhead[LE]{\thepage\quad\smallcaps{\newlinetospace{\leftmark}}}%
-% \fancyhead[RO]{\smallcaps{\newlinetospace{\@chapterauthor}}\quad\thepage}%
-% }
-% \makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Random hacks from the preamble of tufte-latex-3.5.0 (sample-book.tex)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \pagestyle{fancy}
-% \fancyhf{}
-% \fancyhead[LE]{\thepage}
-% \fancyhead[RO]{\thechapter}
+%%
+% Prints argument within hanging parentheses (i.e., parentheses that take
+% up no horizontal space).  Useful in tabular environments.
+\newcommand{\hangp}[1]{\makebox[0pt][r]{(}#1\makebox[0pt][l]{)}}
 
-% Generates the index
-\usepackage{makeidx}
+%%
+% Prints an asterisk that takes up no horizontal space.
+% Useful in tabular environments.
+\newcommand{\hangstar}{\makebox[0pt][l]{*}}
+
+% Prints the month name (e.g., January) and the year (e.g., 2008)
+\newcommand{\monthyear}{%
+  \ifcase\month\or January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or
+  December\fi\space\number\year
+}
+
+% Prints an epigraph and speaker in sans serif, all-caps type.
+\newcommand{\openepigraph}[2]{%
+  %\sffamily\fontsize{14}{16}\selectfont
+  \begin{fullwidth}
+  \sffamily\large
+  \begin{doublespace}
+  \noindent\allcaps{#1}\\% epigraph
+  \noindent\allcaps{#2}% author
+  \end{doublespace}
+  \end{fullwidth}
+}
+
+% Inserts a blank page
+\newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
+
+% Typesets the font size, leading, and measure in the form of 10/12x26 pc.
+\newcommand{\measure}[3]{#1/#2$\times$\unit[#3]{pc}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Defines book metadata
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Proliferation and Differentiation in cancer]{%
+  \setlength{\parindent}{0pt}%
+  % Proliferation \& \par
+  Proliferation and \par
+  Differentiation \par
+  in Cancer
+  \vspace{1cm}
+}
+\author[Gil Tomás]{Gil Tomás}
+\publisher{Université Libre de Bruxelles}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Generates the index
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \makeindex
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PREAMBLE ENDS HERE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \begin{document}
+
+\frontmatter
+
+\blankpage
+
+% \maketitle
+
+\newpage
+\begin{fullwidth}
+~\vfill
+\thispagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+Copyright \copyright\ \the\year\ \thanklessauthor
+
+\par\smallcaps{Published by \thanklesspublisher}
+
+\par\smallcaps{tufte-latex.googlecode.com}
+
+\par Licensed under the Apache License, Version 2.0 (the ``License''); you may
+not use this file except in compliance with the License. You may obtain a copy
+of the License at \url{http://www.apache.org/licenses/LICENSE-2.0}. Unless
+required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an \smallcaps{``AS IS'' BASIS, WITHOUT WARRANTIES
+OR CONDITIONS OF ANY KIND}, either express or implied. See the License for the
+specific language governing permissions and limitations under the
+License.\index{license}
+
+\par\textit{First printing, \monthyear}
+\end{fullwidth}
+
 
 \tableofcontents
 \listoffigures
 \listoftables
 
+
 \chapter{Introduction}
-\label{introduction}
+\label{chap:introduction}
 
 \input{./introduction/life/life.tex}
 \input{./introduction/cancer/cancer.tex}
 \input{./introduction/microarrays/microarrays.tex}
 \input{./introduction/motivation/motivation.tex}
 
+
 \chapter{Methods}
 \label{chap:methods}
 
 \input{./methods/methods.tex}
 
+
 \chapter{Results}
 \label{chap:results}
 
 \input{./results/results.tex}
+
 
 \chapter{Discussion}
 \label{chap:discussion}
@@ -199,10 +247,12 @@
 \input{./discussion/cancer/cancer-discussion.tex}
 \input{./discussion/life/life-discussion.tex}
 
+
 \backmatter
 
 \bibliography{thesis}
 \bibliographystyle{plainnat}
+
 
 \end{document}
 
