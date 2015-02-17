@@ -2,25 +2,51 @@
 \label{sec:microarray-methods}
 
 Microarray technology relies on the non-covalent, sequence-specific interaction
-between complementary strands of nucleic acids into a single
-complex,\cite{crick_protein_1958} to detect and quantify specific populations of
-m\smallcaps{rna} on a solution.  A microarray chip consists of a universe of
-m\smallcaps{rna}-specific complementary oligonucleotide probes attached to a
-substrate (Figure~\ref{fig:microarray-economist}).
+between complementary strands of nucleic acids\cite{crick_protein_1958} to
+detect and quantify specific populations of m\smallcaps{rna} on a solution.  A
+microarray chip consists of a universe of oligonucleotide probes attached to a
+substrate through covalent bonds.  Each such probe is synthesized to
+specifically match a unique messenger \smallcaps{rna} molecule.  When the chip
+is exposed to a solution of fluorecently labeled m\smallcaps{rna}s, only those
+that hybridize with their respective probes will be retained upon washing off
+non-specific bonding sequences.  This allows for the quantification of the
+fluorescent signals emitted when the chip is scanned with a laser beam of a
+specific wavelength.  The measured signals relay the relative quantity of each
+m\smallcaps{rna} molecule assayed by the microarray, as each spot has a known
+position on the chip (Figure~\ref{fig:microarray-economist}).
 
-\begin{figure}%
+% Oligonucleotide microarrays often carry control probes designed to hybridize
+% with RNA spike-ins. The degree of hybridization between the spike-ins and the
+% control probes is used to normalize the hybridization measurements for the
+% target probes.
+
+\begin{marginfigure}%
   \begin{center}
-    \includegraphics[width=9cm]{microarrays-economist.jpg}
+    % \includegraphics[width=9cm]{microarrays-economist.jpg}
+    \includegraphics{microarrays-economist-17Feb2015.pdf}
     \caption[Schematic representation of how microarrays work]{A schematic
-      representation of how microarrays work. Source: \smallcaps{The
-        Economist}.}
+      representation of how microarrays work.  \textbf{1.}~Microarrays rely on a
+      fundamental property of nucleic acids, the monomeric units that polymerize
+      into \smallcaps{dna} or \smallcaps{rna} strands.  Adenine (\smallcaps{A})
+      are complementary to thymine (\smallcaps{t}), and cytosine (\smallcaps{c})
+      are complementary to guanine (\smallcaps{g}).  Just one incorrect base can
+      prevent two strands from binding.  \textbf{2.}~A microarray typically
+      contains thousands of squares, or spots.  Each spot anchors many copies of
+      a particular sequence of single-stranded \smallcaps{dna}, corresponding to
+      a particular gene.  \textbf{3.}~Messenger \smallcaps{rna} fragments
+      extracted from a tissue and labeled with different fluorescent dyes are
+      washed over the microarray and hybridize with \smallcaps{dna} strands with
+      the complementary sequence.  \textbf{4.}~The dyes are illuminated using
+      fluorescent light.  It is then possible to show which \smallcaps{rna}
+      fragments were retained in which spots---and hence which genes were being
+      expressed in the tissue from which the \smallcaps{rna} was extracted.
+      Source: \emph{The Economist; Affymetrix}.}
     \label{fig:microarray-economist}
   \end{center}
-\end{figure}
-
-
+\end{marginfigure}
 
 %%% Local Variables:
+%%% TeX-engine: xetex
 %%% mode: latex
 %%% TeX-master: "../../thesis"
 %%% End:
