@@ -2,8 +2,8 @@
 \label{sec:microarray-methods}
 
 Microarray technology relies on the non-covalent, sequence-specific interaction
-between complementary strands of nucleic acids\cite{crick_protein_1958} to
-detect and quantify specific populations of m\smallcaps{rna} on a solution.  A
+between complementary strands of nucleic acids\cite{watson_molecular_1953} to
+detect and quantify specific populations of m\smallcaps{rna} in a solution.  A
 microarray chip consists of a universe of oligonucleotide probes attached to a
 substrate through covalent bonds.  Each such probe is synthesized to
 specifically match a unique messenger \smallcaps{rna} molecule.  When the chip
@@ -41,9 +41,167 @@ position on the chip (Figure~\ref{fig:microarray-economist}).
       fragments were retained in which spots---and hence which genes were being
       expressed in the tissue from which the \smallcaps{rna} was extracted.
       Source: \emph{The Economist; Affymetrix}.}
-    \label{fig:microarray-economist}
+    \label{fig:microarray-economist}%
   \end{center}
 \end{marginfigure}
+
+\section{Microarray data analysis}
+\label{sec:microarray-methods-analysis}
+
+By virtue of their design, microarrays allow for the monitoring of expression
+levels for thousands of gene transcription products simultaneously.  Microarray
+expression data are thus characterized by high dimensionality and noisiness.
+This prompts the need for preprocessing methods aiming at removing systematic
+biases between arrays that were introduced during
+experimentation.\cite{shakya_comparison_2010}
+
+The goal of microarray data preprocessing is to convert raw imaging data into
+meaningful biological data and to enable comparison of results obtained from
+different arrays.  It comprises three steps: (\emph{a})~the transformation of
+image data into intensity values; (\emph{b})~the assessment of array quality;
+and (\emph{c})~the removing of technical biases (through background adjustment,
+normalization and feature filtering and summarization).
+
+The digital imaging of fluorescence signals is typically performed by
+proprietary software designed by the microarray manufacturer.  These software
+packages assign coordinates to each spot in the array, quantify signal intensity
+and uniformity of each spot, and compare their signal intensity relative to
+background.
+
+Quality control is performed by visual inspection of imaging data from the
+scanner or the platform software, with special attention given to washing
+artifacts, odd or missing spots, and array uniformity.  Aberrant chips may have
+to be discarded at this stage.
+
+Chips meeting quality standards then undergo background adjustment and
+normalization.  Normalization methods aim to compensate for procedural biases
+that are independent from biological signal.  Initial approaches for microarray
+normalization relied on the assumption that most genes, and in particular
+so-called housekeeping genes,\footnote{\emph{Housekeeping} genes are genes
+  defined as participating in basic, thus universal, cellular processes.}
+should have similar expression levels across samples.  Housekeeping genes have
+since been shown to vary in expression by 30\% or more across healthy samples,
+and even more in tumour samples.\cite{lee_control_2002,eisenberg_human_2003}
+Since then, data-driven normalization approaches were developed, such as median
+correction,\cite{cho_genome-wide_1998,selinger_rna_2000} variance stabilizing
+transformation,\cite{durbin_variance-stabilizing_2002} locally weighted linear
+regression\cite{yang_normalization_2002} and spline based
+methods.\cite{workman_new_2002} The underlying principle of these corrective
+procedures is that most of the observed variation in expression values is due to
+technical biases rather than to biological sources.\cite{hicks_when_2014}
+
+Normalization strategies for double-channel microarrays (spotted oligonucleotide
+or c\smallcaps{dna} arrays\cite{schena_quantitative_1995}) are different from
+those for single-channel microarrays (\emph{in situ} synthesized high density
+oligonucleotide arrays\cite{lockhart_expression_1996} such as \emph{Affymetrix
+  GeneChip}).  \emph{Affymetrix GeneChip} arrays use multiple probes per gene
+and a single-colour detection system, as one sample is hybridized per chip.
+Spotted oligonucleotide or c\smallcaps{dna} arrays use one probe per gene and a
+two-colour scheme, where two different samples are hybridized on the same array.
+Consequently, normalization of single-channel microarrays is performed at the
+``between-array'' level, whereas normalization of double-channel microarrays is
+conducted at the ``within-array'' level.\cite{do_normalization_2006}
+
+For double-channel arrays chips, normalization methods commonly seek to remove
+biases within each array with local regression algorithms.  Terry Speed's lab,
+at Berkeley, identified an intensity-dependent dye bias concerning
+c\smallcaps{dna} arrays.  In these arrays, the $log_{2} (ratio)$ shows a
+systematic dependence on intensity, characterized by a deviation from zero for
+low-intensity spots.  Frequently, under-expressed genes appear up-regulated in
+the red channel ($R$), and moderately expressed genes appear up-regulated in the
+green channel ($G$).
+% This artifact is the result of a ``quenching'' effect, whereby dye molecules
+% in close proximity tend to re-absorb light from each other, hence diminishing
+% the signal.  The amount of re-absorption is a function of the template
+% concentration and differs for the two dyes.
+This effect can be visualized by plotting the measured
+$log_{2}(\frac{R_{i}}{G_{i}})$ for each feature in the array as a function of
+the $log_{2}(R_{i}G_{i})$ product intensities.  This ratio-intensity plot is
+termed \smallcaps{ma} plot.\footnote{The name of the plot comes from ``minus''
+  and ``add'', the ratio and product in the logarithmic scale.}  This technical
+bias may be corrected by fitting a locally weighted regression known as
+\emph{lowess} smoothing.\cite{yang_normalization_2001} More specific sources of
+technical bias, such as spatially-dependent bias resulting from the print tips
+used in the manufacturing process of the array, may also be addressed by a
+\emph{lowess}-based, within group normalization (Figure~\ref{fig:ma-plot}).
+
+\begin{marginfigure}%
+  \begin{center}
+    \includegraphics{MA-plot-Yang-2002.png}
+    \caption[Within-array normalization]{Example of within-array normalization.
+      \textbf{A:}~\smallcaps{ma} plot showing print tip position dependent bias.
+      \textbf{B:}~\smallcaps{ma} plot after within-print tip group location
+      \emph{lowess} normalization (\citealp{yang_normalization_2002}).}
+    \label{fig:ma-plot}%
+  \end{center}
+\end{marginfigure}
+
+\emph{Affymetrix GeneChip} are the reference arrays in the single-channel class,
+and the platform of choice for the development of between-array normalization
+methods.  \emph{Affymetrix} chips consist of several tens of thousands
+probe-sets.  A probe-set is a collection of probe pairs designed to interrogate
+a specific sequence and contains \numrange{11}{20} probe pairs of 25-mer
+oligonucleotides each.  Each probe pair consists of a perfect match probe
+(\smallcaps{pm}) and a mismatch probe (\smallcaps{mm}).  The \smallcaps{mm}
+probe differs from the \smallcaps{pm} probe by a single substitution at the
+center base position, conceived to disturb the binding of the target gene
+transcript.  This design allows for the quantification of background and
+nonspecific hybridization effects.  Several between-array normalization methods
+have been proposed in the literature.  The \smallcaps{mas5}
+algorithm\cite{hubbell_robust_2002} normalizes the value of summarized
+probe-sets by linear scaling based on a reference array.  The \smallcaps{rma}
+(robust multi-array average) algorithm\cite{irizarry_exploration_2003}
+normalizes the value of each probe by quantile normalization\footnote{Quantile
+  normalization is a global adjustment method that assumes the statistical
+  distribution of expression values of each sample is the same.  Normalization
+  is achieved by imposing the same distribution to all samples, using as
+  reference an average distribution.  The average distribution is estimated from
+  the average of each quantile across samples.} in multiple arrays.  The
+\smallcaps{gcrma} algorithm\cite{wu_model-based_2004} uses the same
+normalization and summarization methods as \smallcaps{rma}, but uses probe
+sequence information to estimate and correct for probe affinity to non-specific
+binding.  More recently, the f\smallcaps{rma} (frozen \smallcaps{rma})
+algorithm\cite{mccall_frozen_2010} leverages pre-computed estimates of
+probe-specific effects and variance from public microarray databases to, in
+concert with the information from new arrays, normalize and summarize the data.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% http://www.people.vcu.edu/~mreimers/OGMDA/normalize.expression.html
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The first ``\mbox{across-array}'' normalization methods relied on the
+% assumption that most genes, and in particular ``housekeeping''
+% genes\footnote{\emph{Housekeeping} genes are genes recognized as participating
+% in basic, thus universal, cellular processes.}, should not be expected to be
+% differentially expressed across samples.  However, housekeeping genes have
+% since been shown to vary in expression by 30\% or more across healthy samples,
+% and even more in tumour samples.\cite{lee_control_2002} This lead to new
+% approaches to identify stable patterns of expression around which to pin
+% global levels of expression.  Yet, these approaches have been shown to suffer
+% from significant levels of cross-hybridization between \mbox{25-mers} in
+% \emph{Affymetrix} chips.
+
+% Terry Speed's lab, at Berkeley, identified an important intensity-dependent
+% dye bias regarding double channel microarrays, and introduced a popular method
+% for adjusting it.  In these arrays, the $log_{2} (ratio)$ shows a systematic
+% dependence on intensity, characterized by a deviation from zero for
+% low-intensity spots.  Typically, under-expressed genes appear up-regulated in
+% the red channel ($R$) and moderately expressed genes appear up-regulated in
+% the green channel ($G$).  This artifact is the result of a ``quenching''
+% effect, whereby dye molecules in close proximity tend to re-absorb light from
+% each other, hence diminishing the signal.  The amount of re-absorption is a
+% function of the template concentration and differs for the two dyes.  This
+% effect can be visualized by plotting the measured
+% $log_{2}(\frac{R_{i}}{G_{i}})$ for each feature in the array as a function of
+% the $log_{2}(R_{i}G_{i})$ product intensities.  This ratio-intensity plot is
+% termed \smallcaps{ma} plot.\footnote{The name of the plot comes from ``minus''
+% and ``add'', or ratio and product in the logarithmic scale.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Among these are methods designed to normalize single chips, known as
+% ``within-arrays'' methods, such as quantile normalization, or \smallcaps{mas5}
+% for \emph{Affymetrix} chips.
 
 %%% Local Variables:
 %%% TeX-engine: xetex
