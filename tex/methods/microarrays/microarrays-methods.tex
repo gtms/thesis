@@ -52,7 +52,7 @@ By virtue of their design, microarrays allow for the monitoring of expression
 levels for thousands of gene transcription products simultaneously.  Microarray
 expression data are thus characterized by high dimensionality and noisiness.
 This prompts the need for preprocessing methods aiming at removing systematic
-biases between arrays, introduced during
+biases in expression measurements, introduced during
 experimentation.\cite{shakya_comparison_2010}
 
 The goal of microarray data preprocessing is to convert raw imaging data into
@@ -98,14 +98,23 @@ oligonucleotide arrays,\cite{lockhart_expression_1996} such as \emph{Affymetrix
 and a single-colour detection system, as one sample is hybridized per chip.
 Spotted oligonucleotide or c\smallcaps{dna} arrays use one probe per gene and a
 two-colour scheme, where two different samples are hybridized on the same array.
-Consequently, normalization of single-channel microarrays is performed at the
+Consequently, single-channel arrays measure the overall abundance of a probe
+sequence in a target sample, whereas c\smallcaps{dna} arrays measure the
+relative abundance of a probe sequence in two target samples.
+% In other words, the expression measures for single-channel arrays are absolute
+% (log) intensities, whereas they represent (log) ratios of intensities for
+% c\smallcaps{dna} arrays.\footnote{In many cases, one of the samples in a
+% c\smallcaps{DNA} array hybridization is a common reference used across
+% multiple slides and whose sole purpose is to provide a baseline for direct
+% comparison of expression measures between arrays.}
+As a result, normalization of single-channel microarrays is performed at the
 ``between-array'' level, whereas normalization of double-channel microarrays is
 conducted at the ``within-array'' level.\cite{do_normalization_2006}
 
 For double-channel arrays chips, normalization methods commonly seek to remove
 biases within each array with local regression algorithms.  Terry Speed's lab,
 at Berkeley, identified an intensity-dependent dye bias concerning
-c\smallcaps{dna} arrays.  In these arrays, the $log_{2} (ratio)$ shows a
+c\smallcaps{dna} arrays.  In these arrays, the $\log_2(ratio)$ shows a
 systematic dependence on intensity, characterized by a deviation from zero for
 low-intensity spots.  Frequently, under-expressed genes appear up-regulated in
 the red channel ($R$), and moderately expressed genes appear up-regulated in the
@@ -115,22 +124,23 @@ green channel ($G$).
 % the signal.  The amount of re-absorption is a function of the template
 % concentration and differs for the two dyes.
 This effect can be visualized by plotting the measured
-$log_{2}(\frac{R_{i}}{G_{i}})$ for each feature in the array as a function of
-the $log_{2}(R_{i}G_{i})$ product intensities.  This ratio-intensity plot is
-termed \smallcaps{ma} plot.\footnote{The name of the plot comes from ``minus''
-  and ``add'', the ratio and product in the logarithmic scale.}  This technical
-bias may be corrected by fitting a locally weighted regression known as
-\emph{lowess} smoothing.\cite{yang_normalization_2001} More specific sources of
-technical bias, including spatially-dependent bias resulting from the print tips
-used in the manufacturing process of the array, may also be addressed by a
-\emph{lowess}-based, within group normalization (Figure~\ref{fig:ma-plot}).
+$\log_2(\frac{R_{i}}{G_{i}})$ for each feature in the array as a function of the
+$\log_2(R_{i}G_{i})$ product intensities.  This ratio-intensity plot is termed
+\smallcaps{ma} plot.\footnote[][-4.5cm]{The name of the plot comes from
+  ``minus'' and ``add'', respectively the ratio and product in the logarithmic
+  scale.}  This technical bias may be corrected by fitting a locally weighted
+regression known as \emph{lowess} smoothing
+(Figure~\ref{fig:ma-plot}).\cite[-4.2cm]{yang_normalization_2001} More specific
+sources of technical bias, including spatially-dependent bias resulting from the
+print tips used in the manufacturing process of the array, may also be addressed
+by a \emph{lowess}-based, within group normalization.
 
-\begin{marginfigure}%
+\begin{marginfigure}[-4.2cm]%
   \begin{center}
-    \includegraphics{MA-plot-Yang-2002.png}
-    \caption[Within-array normalization]{Example of within-array normalization.
-      \textbf{A:}~\smallcaps{ma} plot showing print tip position dependent bias.
-      \textbf{B:}~\smallcaps{ma} plot after within-print tip group location
+    \includegraphics{lowess-normalization-23Feb2013.pdf}
+    \caption[\emph{Lowess} normalization]{Example of \emph{lowess}
+      normalization.  \textbf{A:}~\smallcaps{ma} plot showing colour dye
+      dependent bias.  \textbf{B:}~\smallcaps{ma} plot after correction with
       \emph{lowess} normalization (\citealp{yang_normalization_2002}).}
     \label{fig:ma-plot}%
   \end{center}
@@ -148,7 +158,7 @@ center base position, conceived to disturb the binding of the target gene
 transcript.  This design allows for the quantification of background and
 nonspecific hybridization effects.
 
-Several between-array normalization methods have been proposed in the
+Different between-array normalization methods have been proposed in the
 literature.  The \smallcaps{mas5} algorithm\cite{hubbell_robust_2002} normalizes
 the value of summarized probe-sets by linear scaling based on a reference array.
 The \smallcaps{rma} (robust multi-array average)
@@ -205,8 +215,145 @@ normalize and summarize the data.
 % ``within-arrays'' methods, such as quantile normalization, or \smallcaps{mas5}
 % for \emph{Affymetrix} chips.
 
+Several comparison articles on these and other normalization methods were
+produced in the specialized
+literature,\cite{ploner_correlation_2005,bolstad_comparison_2003,harr_comparison_2006}
+and a more detailed technical review on the computational implementation of
+these algorithms can be found in the context of the Bionconductor
+project.\footnote{The Bioconductor project is an open source and open
+  development software project for the analysis and comprehension of genomic
+  data.  It is rooted in the open source statistical computing environment
+  \textsf{R} (\citealp{gentleman_bioinformatics_2006}).}
+
+\medskip
+
+The normalized microarray data for $p$ genes and $n$ biological samples are
+denoted by $X_{n \times p}$ such that $x_{ij}$ represents the expression of gene
+$j$ of sample $i$.
+
 \section{Microarray data analysis}
 \label{sec:microarray-methods-data-analysis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% http://discover.nci.nih.gov/microarrayAnalysis/Exploratory.Analysis.jsp
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In cancer research, analysis of genomic experiments performed with
+\smallcaps{dna} microarray data may address a variety of tasks, including
+finding gene associations with particular phenotypes, tumour class discovery or
+tumour class prediction.  The work contributed in this thesis concerns:
+(\emph{a}) the class prediction of tumour types based on gene expression
+profiles; and (\emph{b}) the modeling of association of gene expression profiles
+with particular outcomes (e.g., death of a patient or relapse of disease), using
+survival analysis.  Both these problems are examples of application of
+supervised learning techniques to the analysis of microarray data.  In machine
+learning,\footnote{Machine learning is a branch of computational science whose
+  purpose is to implement algorithms capable to infer models from training data.
+  Models derived from machine learning methods are then expected to make
+  predictions or to inform decisions on testing data.} supervised learning
+methods seek to infer a function from labeled training data.  Conversely,
+unsupervised learning methods aim to find intrinsic structure from unlabeled
+data.\cite{webb_statistical_2003} Unsupervised learning is thus suited to
+uncover coherent genomic signals from microarray data, whereas supervised
+learning can be used to find associations between genomic signals and phenotypic
+classes of samples.
+
+Due to the high dimensionality of microarray data, it is often necessary to use
+methods for dimensionality reduction.  These include \emph{feature
+  transformation} methods and \emph{feature selection}
+methods.\cite{haibe-kains_identification_2009}
+
+Feature transformation is an unsupervised approach that consists in reducing the
+feature space of a microarray gene expression matrix, such that new features
+retain biological pertinence, maximum information and generalizability to
+similar experiments:
+
+\begin{equation}
+  \label{eq:feature-transformation}
+  X_{n \times p} \to X'_{n \times p'} : p \gg p'
+\end{equation}
+
+Examples of microarray feature transformation techniques include principal
+component analysis and clustering methods.
+
+Feature selection techniques, on the other hand, are supervised approaches to
+reduce data dimensionality.  In this work, particular attention will be given to
+gene expression signatures, an example of microarray feature selection.  Gene
+expression signatures are collections of genes sharing a combined expression
+pattern associated with a given phenotype.  The range of biological phenotypes
+confining the characterization of gene expression signatures may include the
+specification of tumour classes,\cite{perou_molecular_2000} the modulation of
+signaling pathways,\cite{itadani_can_2008} or the definition of distinct
+clinical outcomes.\cite{vant_veer_gene_2002}
+
+% metagenes. how are they derived. correlations with gene expression. they can
+% behave as surrogate markers of biological processes, states or responses and
+% be used as classifiers.  Metagenes can also be also non-biologically
+% motivated, and thus be defined randomly.
+
+% a word about meta-data resources and bioconductor tools.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% abstract of chapter seven of the book
+%% Bioinformatics and Computational Biology Solutions Using R and Bioconductor
+%% Meta-data Resources and Tools in Bioconductor
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Closing the gap between knowledge of sequence and knowledge of function
+% requires aggressive, integrative use of biological research databases of many
+% different types.  For greatest effectiveness, analysis processes and
+% interpretation of analytic results must be guided using relevant knowledge
+% about the systems under investigation.  However, this knowledge is often
+% widely scattered and encoded in a variety of formats.  In this section, we
+% consider some of the different sources of biological information as well as
+% the software tools that can be used to access these data and to integrate them
+% into an analysis.  Bioconductor provides tools for creating, distributing, and
+% accessing annotation resources in ways that have been found effective in work-
+% flows for statistical analysis of microarray and other high-throughput assays.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+
+This section will proceed with a brief overview of tools for visualization of
+genomic data, namely heatmaps and multidimensional scaling.  It will then
+discuss the unsupervised learning tools used in this work, including principal
+component analysis, clustering analysis and a summary on machine learning
+methods.  Next, it will cover tools to evaluate the performance of classifiers,
+including \smallcaps{roc} curves (for binary classifiers) and \smallcaps{gsea}
+(an algorithm that uses microarray data to determine whether a gene expression
+classifier is statistically associated with any of two phenotypic classes of
+biological samples).  Finally, it will detail survival analysis, the branch of
+supervised learning that seeks to explain the relationship between a number of
+measured features (gene expression data) and the time duration until the
+occurrence of a particular event (survival outcome).
+
+\subsection{Visualization techniques}
+\label{sec:methods-visualization}
+
+\subsection{Principal component analysis}
+\label{sec:methods-pc}
+
+\subsection{Clustering analysis}
+\label{sec:methods-clustering}
+
+\subsection{Machine learning analysis}
+\label{sec:methods-machine-learning}
+
+\subsection{Receiver operating characteristic curves}
+\label{sec:methods-roc}
+
+\subsection{Gene set enrichment analysis}
+\label{sec:methods-gsea}
+
+\subsection{Survival analysis}
+\label{sec:methods-survival-analysis}
+
+
+
+
+
 
 
 
