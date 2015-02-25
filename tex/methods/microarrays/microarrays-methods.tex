@@ -82,13 +82,13 @@ so-called housekeeping genes,\footnote{\emph{Housekeeping} genes are genes
 should have similar expression levels across samples.  Housekeeping genes have
 since been shown to vary in expression by 30\% or more across healthy samples,
 and even more in tumour samples.\cite{lee_control_2002,eisenberg_human_2003}
-Since then, data-driven normalization approaches were developed, such as median
+Data-driven normalization approaches were then developed, such as median
 correction,\cite{cho_genome-wide_1998,selinger_rna_2000} variance stabilizing
 transformation,\cite{durbin_variance-stabilizing_2002} locally weighted linear
 regression\cite{yang_normalization_2002} and spline based
-methods.\cite{workman_new_2002} The underlying principle of these corrective
-procedures is that most of the observed variation in expression values is due to
-technical biases rather than to biological sources.\cite{hicks_when_2014}
+methods.\cite{workman_new_2002} Data-driven presupposes that most of the
+observed variation in expression values is due to technical biases rather than
+to biological sources.\cite{hicks_when_2014}
 
 Normalization strategies for double-channel microarrays (spotted oligonucleotide
 or c\smallcaps{dna} arrays\cite{schena_quantitative_1995}) are different from
@@ -129,7 +129,7 @@ $\log_2(R_{i}G_{i})$ product intensities.  This ratio-intensity plot is termed
 \smallcaps{ma} plot.\footnote[][-4.5cm]{The name of the plot comes from
   ``minus'' and ``add'', respectively the ratio and product in the logarithmic
   scale.}  This technical bias may be corrected by fitting a locally weighted
-regression known as \emph{lowess} smoothing
+regression, known as \emph{lowess} smoothing
 (Figure~\ref{fig:ma-plot}).\cite[-4.2cm]{yang_normalization_2001} More specific
 sources of technical bias, including spatially-dependent bias resulting from the
 print tips used in the manufacturing process of the array, may also be addressed
@@ -160,15 +160,16 @@ nonspecific hybridization effects.
 
 Different between-array normalization methods have been proposed in the
 literature.  The \smallcaps{mas5} algorithm\cite{hubbell_robust_2002} normalizes
-the value of summarized probe-sets by linear scaling based on a reference array.
-The \smallcaps{rma} (robust multi-array average)
-algorithm\cite{irizarry_exploration_2003} normalizes the value of each probe by
-quantile normalization\footnote{Quantile normalization is a global adjustment
-  method that assumes the statistical distribution of expression values of each
-  sample is the same.  Normalization is achieved by imposing the same
-  distribution to all samples, using an average distribution as reference.  The
-  average distribution is estimated from the average of each quantile across
-  samples.} in multiple arrays.  The \smallcaps{gcrma}
+each array independently and sequentially and uses the value of \smallcaps{mm}
+probes to compute summarized averages with linear scaling.  The \smallcaps{rma}
+(robust multi-array average) algorithm\cite{irizarry_exploration_2003}
+normalizes the value of each probe by quantile normalization\footnote{Quantile
+  normalization is a global adjustment method that assumes the statistical
+  distribution of expression values of each sample is the same.  Normalization
+  is achieved by imposing the same distribution to all samples, using an average
+  distribution as reference.  The average distribution is estimated from the
+  average of each quantile across samples.} in multiple arrays, neglecting
+information from \smallcaps{mm} probes.  The \smallcaps{gcrma}
 algorithm\cite{wu_model-based_2004} applies the same normalization and
 summarization methods as \smallcaps{rma}, but uses probe sequence information to
 estimate and correct for probe affinity to non-specific binding.  More recently,
@@ -215,15 +216,17 @@ normalize and summarize the data.
 % ``within-arrays'' methods, such as quantile normalization, or \smallcaps{mas5}
 % for \emph{Affymetrix} chips.
 
-Several comparison articles on these and other normalization methods were
-produced in the specialized
+Several reviews on these and other normalization methods were produced in the
+specialized
 literature,\cite{ploner_correlation_2005,bolstad_comparison_2003,harr_comparison_2006}
-and a more detailed technical review on the computational implementation of
-these algorithms can be found in the context of the Bionconductor
-project.\footnote{The Bioconductor project is an open source and open
-  development software project for the analysis and comprehension of genomic
-  data.  It is rooted in the open source statistical computing environment
-  \textsf{R} (\citealp{gentleman_bioinformatics_2006}).}
+and a more detailed technical exposition of the computational implementation of
+these algorithms can be found in Gentleman et
+al.,\cite{gentleman_bioinformatics_2006} in the context of the
+\href{http://www.bioconductor.org/}{\textsf{Bioconductor}} project.\footnote{The
+  Bioconductor project is an open source and open development software project
+  for the analysis and comprehension of genomic data
+  (\citealp{gentleman_bioconductor:_2004}.  It is rooted in the open source
+  statistical computing environment \textsf{R}.}
 
 \medskip
 
@@ -246,45 +249,85 @@ tumour class prediction.  The work contributed in this thesis concerns:
 profiles; and (\emph{b}) the modeling of association of gene expression profiles
 with particular outcomes (e.g., death of a patient or relapse of disease), using
 survival analysis.  Both these problems are examples of application of
-supervised learning techniques to the analysis of microarray data.  In machine
-learning,\footnote{Machine learning is a branch of computational science whose
-  purpose is to implement algorithms capable to infer models from training data.
-  Models derived from machine learning methods are then expected to make
-  predictions or to inform decisions on testing data.} supervised learning
-methods seek to infer a function from labeled training data.  Conversely,
-unsupervised learning methods aim to find intrinsic structure from unlabeled
-data.\cite{webb_statistical_2003} Unsupervised learning is thus suited to
-uncover coherent genomic signals from microarray data, whereas supervised
+supervised learning techniques to the analysis of microarray data.
+
+In machine learning,\footnote{Machine learning is a branch of computational
+  science whose purpose is to implement algorithms capable to infer models from
+  training data.  Models derived from machine learning methods are then expected
+  to make predictions or to inform decisions on testing data.} supervised
+learning methods seek to infer a function from labeled training data.
+Conversely, unsupervised learning methods aim to find intrinsic structure from
+unlabeled data.\cite{webb_statistical_2003} Unsupervised learning is thus suited
+to uncover coherent genomic signals from microarray data, whereas supervised
 learning can be used to find associations between genomic signals and phenotypic
 classes of samples.
 
-Due to the high dimensionality of microarray data, it is often necessary to use
-methods for dimensionality reduction.  These include \emph{feature
-  transformation} methods and \emph{feature selection}
+Due to the high dimensionality of expression profiles, methods for
+dimensionality reduction are required for microarray data analysis.  These
+include \emph{feature transformation} methods and \emph{feature selection}
 methods.\cite{haibe-kains_identification_2009}
 
 Feature transformation is an unsupervised approach that consists in reducing the
 feature space of a microarray gene expression matrix, such that new features
 retain biological pertinence, maximum information and generalizability to
 similar experiments:
-
 \begin{equation}
   \label{eq:feature-transformation}
   X_{n \times p} \to X'_{n \times p'} : p \gg p'
 \end{equation}
-
 Examples of microarray feature transformation techniques include principal
 component analysis and clustering methods.
 
 Feature selection techniques, on the other hand, are supervised approaches to
 reduce data dimensionality.  In this work, particular attention will be given to
-gene expression signatures, an example of microarray feature selection.  Gene
-expression signatures are collections of genes sharing a combined expression
-pattern associated with a given phenotype.  The range of biological phenotypes
-confining the characterization of gene expression signatures may include the
-specification of tumour classes,\cite{perou_molecular_2000} the modulation of
-signaling pathways,\cite{itadani_can_2008} or the definition of distinct
-clinical outcomes.\cite{vant_veer_gene_2002}
+gene expression signatures, which configure an example of microarray feature
+selection.  Gene expression signatures, or metagenes, are collections of genes
+sharing a combined expression pattern associated with a given phenotype.  The
+range of biological phenotypes confining the characterization of expression
+signatures include the modulation of signaling pathways,\cite{itadani_can_2008}
+the specification of tumour classes,\cite{ramaswamy_multiclass_2001} or the
+definition of distinct clinical outcomes.\cite{vant_veer_gene_2002} In the last
+two decades, a wealth of microarray studies on perturbed \emph{in vitro}
+biological systems have generated an extensive number of gene signatures related
+to various cellular mechanisms.\cite{chibon_cancer_2013} Public repositories,
+like the Gene Ontology consortium (\smallcaps{go}),\cite{ashburner_gene_2000}
+the Kyoto Encyclopedia of Genes and Genomes
+(\smallcaps{kegg}),\cite{kanehisa_kegg:_2000}
+\mbox{GeneSigDB},\cite{culhane_genesigdb:_2012} or the Molecular Signatures
+Database (\mbox{MSigDB}),\cite{subramanian_gene_2005} have sought to curate and
+articulate this volume of information in order to guide the interpretation of
+genome-wide expression profiles.  Because biologically motivated gene signatures
+can act as surrogate markers for the molecular processes they capture, they
+provide entry points for hypothesis testing in public microarray data.
+
+The use of a common vocabulary to refer to microarray features is thus essential
+to this goal.  Given the wide range of microarray platforms on the market,
+preprocessing routines often produce genomic expression data with feature
+annotations that are disjoint, inconsistent, or conflicting.  Computational
+strategies to interface curated annotation databases in order to update and
+standardize feature nomenclatures are generally poorly discussed in the
+literature.  A solid foundation for \emph{in silico} solutions to bridge the gap
+between the knowledge of transcript sequence and the knowledge of transcript
+function is provided in Gentleman et al.\cite{gentleman_bioinformatics_2006}
+
+Accordingly, for all datasets used in this work (described in the
+\hyperref[sec:methods-datasets]{\textsf{Microarray datasets}} section),
+\href{http://www.bioconductor.org/}{\textsf{Bioconductor}} resources were used
+to update feature annotations, and referents for \smallcaps{hugo} Gene
+Nomenclature Committee (\smallcaps{hgnc}) gene
+symbols\footnote{\href{http://www.genenames.org/}{http://www.genenames.org/}}
+were universally retained as feature descriptors.  Microarray gene annotation
+may also be used to perform dimension reduction of the expression feature space.
+Hence, expression matrices where multiple features addressed the expression of
+the same gene product were collapsed using a \texttt{maxSum}
+routine.\cite{miller_strategies_2011}
+
+All analyses described in the \hyperref[chap:results]{\textsf{Results}} chapter
+were conducted in the \href{http://www.r-project.org/}{\textsf{R}} environment
+for statistical computing,\cite{r_core_team_r:_2014} with extensive use of
+computational resources from the
+\href{http://www.bioconductor.org/}{\textsf{Bioconductor}}
+project.\cite{gentleman_bioconductor:_2004}
 
 % metagenes. how are they derived. correlations with gene expression. they can
 % behave as surrogate markers of biological processes, states or responses and
@@ -320,14 +363,14 @@ This section will proceed with a brief overview of tools for visualization of
 genomic data, namely heatmaps and multidimensional scaling.  It will then
 discuss the unsupervised learning tools used in this work, including principal
 component analysis, clustering analysis and a summary on machine learning
-methods.  Next, it will cover tools to evaluate the performance of classifiers,
-including \smallcaps{roc} curves (for binary classifiers) and \smallcaps{gsea}
-(an algorithm that uses microarray data to determine whether a gene expression
-classifier is statistically associated with any of two phenotypic classes of
-biological samples).  Finally, it will detail survival analysis, the branch of
-supervised learning that seeks to explain the relationship between a number of
-measured features (gene expression data) and the time duration until the
-occurrence of a particular event (survival outcome).
+algorithms.  Next, it will cover tools to evaluate the performance of
+classifiers, including \smallcaps{roc} curves (for binary classifiers) and
+\smallcaps{gsea} (an algorithm that uses microarray data to determine whether a
+gene expression classifier is statistically associated with any of two
+phenotypic classes of biological samples).  Finally, it will detail survival
+analysis, the branch of supervised learning that seeks to explain the
+relationship between a number of measured features (gene expression data) and
+the time duration until the occurrence of a particular event (survival outcome).
 
 \subsection{Visualization techniques}
 \label{sec:methods-visualization}
@@ -350,10 +393,12 @@ occurrence of a particular event (survival outcome).
 \subsection{Survival analysis}
 \label{sec:methods-survival-analysis}
 
+Survival analysis is a collection of statistical procedures for data analysis
+for which the outcome variable of interest is time until the event
+occurs.\cite{kleinbaum_survival_1996}
 
-
-
-
+\section{Microarray datasets}
+\label{sec:methods-datasets}
 
 
 
