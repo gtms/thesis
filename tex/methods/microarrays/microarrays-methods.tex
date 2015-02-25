@@ -395,12 +395,25 @@ the time duration until the occurrence of a particular event (survival outcome).
 
 Survival analysis is a collection of statistical procedures for data analysis
 for which the outcome variable of interest is time until the event
-occurs.\cite{kleinbaum_survival_1996}
+occurs.\cite{kleinbaum_survival_1996} In follow-up studies of cancer patients,
+survival analysis is used to model association of the expression of genomic
+markers in cancer biopsies with the time until a given clinical outcome is
+observed.
+
+Clinical outcomes may include death of the patient (overall survival, or
+\smallcaps{os}), death of the patient caused by the cancer (disease-specific
+survival, or \smallcaps{dss}), the finding of new metastases in the patient
+(distant metastasis free survival, or \smallcaps{dmfs}) or recurrence of the
+cancer (disease-free survival, or \smallcaps{dfs}).  Whenever the information
+about an individual survival time is incomplete, that observation is said to be
+censored.  This may be due because the event was not observed by the end of the
+study (in which case the follow-up time considered for that patient is the
+entire duration of the study) or because the patient quit the study before its
+end (in which case the follow-up time considered for that patient is up to the
+moment of leaving).
 
 \section{Microarray datasets}
 \label{sec:methods-datasets}
-
-
 
 %%% Local Variables:
 %%% TeX-engine: xetex
