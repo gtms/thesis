@@ -40,8 +40,8 @@ position on the chip (Figure~\ref{fig:microarray-economist}).
       fluorescent light.  It is then possible to show which \smallcaps{rna}
       fragments were retained in which spots---and hence which genes were being
       expressed in the tissue from which the \smallcaps{rna} was extracted.
-      Source: \emph{The Economist; Affymetrix}.}
-    \label{fig:microarray-economist}%
+      Source: \emph{The Economist;
+        Affymetrix}.}\label{fig:microarray-economist}%
   \end{center}
 \end{marginfigure}
 
@@ -114,11 +114,11 @@ conducted at the ``within-array'' level.\cite{do_normalization_2006}
 For double-channel arrays chips, normalization methods commonly seek to remove
 biases within each array with local regression algorithms.  Terry Speed's lab,
 at Berkeley, identified an intensity-dependent dye bias concerning
-c\smallcaps{dna} arrays.  In these arrays, the $\log_2(ratio)$ shows a
-systematic dependence on intensity, characterized by a deviation from zero for
-low-intensity spots.  Frequently, under-expressed genes appear up-regulated in
-the red channel ($R$), and moderately expressed genes appear up-regulated in the
-green channel ($G$).
+c\smallcaps{dna} arrays.  In these arrays, the $\log_2$ of the dye intensity
+ratios shows a systematic dependence on intensity, characterized by a deviation
+from zero for low-intensity spots.  Frequently, under-expressed genes appear
+up-regulated in the red channel ($R$), and moderately expressed genes appear
+up-regulated in the green channel ($G$).
 % This artifact is the result of a ``quenching'' effect, whereby dye molecules
 % in close proximity tend to re-absorb light from each other, hence diminishing
 % the signal.  The amount of re-absorption is a function of the template
@@ -141,8 +141,8 @@ by a \emph{lowess}-based, within group normalization.
     \caption[\emph{Lowess} normalization]{Example of \emph{lowess}
       normalization.  \textbf{A:}~\smallcaps{ma} plot showing colour dye
       dependent bias.  \textbf{B:}~\smallcaps{ma} plot after correction with
-      \emph{lowess} normalization (\citealp{yang_normalization_2002}).}
-    \label{fig:ma-plot}%
+      \emph{lowess} normalization
+      (\citealp{yang_normalization_2002}).}\label{fig:ma-plot}%
   \end{center}
 \end{marginfigure}
 
@@ -225,7 +225,7 @@ al.,\cite{gentleman_bioinformatics_2006} in the context of the
 \href{http://www.bioconductor.org/}{\textsf{Bioconductor}} project.\footnote{The
   Bioconductor project is an open source and open development software project
   for the analysis and comprehension of genomic data
-  (\citealp{gentleman_bioconductor:_2004}.  It is rooted in the open source
+  (\citealp{gentleman_bioconductor:_2004}).  It is rooted in the open source
   statistical computing environment \textsf{R}.}
 
 \medskip
@@ -247,9 +247,10 @@ finding gene associations with particular phenotypes, tumour class discovery or
 tumour class prediction.  The work contributed in this thesis concerns:
 (\emph{a}) the class prediction of tumour types based on gene expression
 profiles; and (\emph{b}) the modeling of association of gene expression profiles
-with particular outcomes (e.g., death of a patient or relapse of disease), using
-survival analysis.  Both these problems are examples of application of
-supervised learning techniques to the analysis of microarray data.
+with the time until a particular outcome is observed (e.g., death of a patient
+or relapse of disease), using survival analysis.  Both these problems are
+examples of application of supervised learning techniques to the analysis of
+microarray data.
 
 In machine learning,\footnote{Machine learning is a branch of computational
   science whose purpose is to implement algorithms capable to infer models from
@@ -273,7 +274,7 @@ retain biological pertinence, maximum information and generalizability to
 similar experiments:
 \begin{equation}
   \label{eq:feature-transformation}
-  X_{n \times p} \to X'_{n \times p'} : p \gg p'
+  X_{n \times p} \to X'_{n \times p'} : p \gg p'.
 \end{equation}
 Examples of microarray feature transformation techniques include principal
 component analysis and clustering methods.
@@ -404,19 +405,235 @@ Clinical outcomes may include death of the patient (overall survival, or
 \smallcaps{os}), death of the patient caused by the cancer (disease-specific
 survival, or \smallcaps{dss}), the finding of new metastases in the patient
 (distant metastasis free survival, or \smallcaps{dmfs}) or recurrence of the
-cancer (disease-free survival, or \smallcaps{dfs}).  Whenever the information
-about an individual survival time is incomplete, that observation is said to be
-censored.  This may be due because the event was not observed by the end of the
-study (in which case the follow-up time considered for that patient is the
-entire duration of the study) or because the patient quit the study before its
-end (in which case the follow-up time considered for that patient is up to the
-moment of leaving).
+cancer (disease-free survival, or \smallcaps{dfs}).  \emph{Survival time} refers
+to the lapse of time since the beginning of the study up to the moment when an
+event is observed, regardless of the clinical outcome considered.  Whenever the
+information about an individual's survival time is incomplete, that observation
+is said to be censored (Figure~\ref{fig:censorship}).  This may be due because
+the event was not observed by the end of the study (in which case the follow-up
+time considered for that patient is the entire duration of the study) or because
+the patient quit or withdrew from the study before its end (in which case the
+follow-up time considered for that patient is the time up to dropping out).
+
+\begin{marginfigure}%
+  \includegraphics{censorship-28Feb2015.pdf}
+  \caption[Right-censored survival data]{A schematic representation of
+    right-censored survival data.  Survival time is said to be
+    \emph{right-}censored when the information regarding the right side of the
+    follow-up period is incomplete.  Observed events are denoted by (\CIRCLE).
+    Censored observations are denoted by (\Circle).  Notice that patient
+    \smallcaps{b} is also censored, as no event had been observed by the end
+    of the study (see text for details).}\label{fig:censorship}%
+\end{marginfigure}
+
+Follow-up studies are not amenable to ordinary regression models because the
+time to event is typically not normally distributed and these models cannot
+incorporate censoring data.  Instead, survival analysis uses two functions to
+estimate survival time, the \emph{survival} function and the \emph{hazard}
+function.
+
+The survival function, $S(t)$, describes the probability of an event occurring
+later than some specified time $t$:
+\begin{equation}
+  \label{eq:survival-function}
+  S(t) = P"r(T > t),
+\end{equation}
+where $T$ is a random variable for a patient's survival time.
+
+The hazard function, $h(t)$, describes the instantaneous potential per unit time
+for the event to occur, given the patient has survived up to time $t$:
+\begin{equation}
+  \label{eq:hazard-function}
+  h(t) = \lim_{\Delta t \to 0}\frac{P"r\{t \leqslant T \less t + \Delta t
+    \mid T \geqslant t \}}{\Delta t}.
+\end{equation}
+
+% While the survival function is non-increasing i.e., $S(t)$ heads downwards as
+% $t$ increases, (Figure~\ref{fig:survival-function}), the hazard function
+% describes a failure rate conditional to the interval of time considered, and
+% can therefore be modeled by any number of distributions.
+
+Both functions are related to each other.  However, while the survival function
+is non-increasing (Figure~\ref{fig:survival-function}), the hazard function may
+be modeled by any number of distributions, as it describes a failure rate
+conditional to the interval of time considered.  Building on these functions,
+survival analysis stipulates a suite of parametric, non-parametric and
+semi-parametric methods to make inferences over survival time.  These methods
+can then be used to ascertain the relationship between a variable of interest
+and the time to a clinical outcome.
+
+\begin{marginfigure}%
+  \includegraphics{survival-function-28Feb2015.pdf}
+  \caption[Survival function]{The survival function, \emph{S}\,(\emph{t}),
+    describes the likelihood that a patient will have a lifetime exceeding time
+    \emph{t}.  \textbf{A:}~The theoretical distribution is non-increasing, and
+    characterized by \mbox{\emph{S}\,(0) = 1} and \mbox{\emph{S}\,($\infty$) =
+      0}.  \textbf{B:}~In practice, the estimated survival function,
+    \emph{\^{S}}\,(\emph{t}), often takes a shape of a step function.  Because
+    study periods are never infinite and there may be competing risks for
+    failure, it is likely that not all patients will experience a clinical
+    outcome by the end of the study.}\label{fig:survival-function}%
+\end{marginfigure}
+
+In the biomedical literature, the most recognizable non-parametric method to
+estimate the survival function is the Kaplan-Meier
+estimator.\cite{kaplan_nonparametric_1958} The Kaplan-Meier estimator is defined
+as the probability of surviving in a given length of time while considering time
+in many small intervals.\footnote{\citealp[pp. 365--93]{altman_practical_1990}}
+It estimates the probability of occurrence of an event at time $t$ by
+cumulatively multiplying prior probabilities of survival at preceding $t_i$
+intervals.  The Kaplan-Meier, or product limit estimator, is thus formulated as:
+\begin{equation}
+  \label{eq:kaplan-meier}
+\hat{S}(t)=\prod_{t_i<t}\frac{n_i-d_i}{n_i},
+\end{equation}
+where $n_i$ and $d_i$ are, respectively and for each prior time interval $t_i$,
+the number of patients at risk (right-censored observations are removed), and
+the number of patients experiencing an event.  The Kaplan-Meier estimator can be
+used to obtain univariate descriptive statistics for survival data or to compare
+the survival time for two or more groups of subjects.
+
+The logrank test is a non-parametric hypothesis test to compare the survival
+distribution of two
+samples.\cite{mantel_evaluation_1966,peto_asymptotically_1972} It challenges the
+null hypothesis that there is no difference between the populations in the
+probability of an event at any time point.  To do so, it compares the estimates
+of the hazard functions of the two groups at each observed event time.  The
+logrank test is based on the same assumptions as the Kaplan-Meier survival
+curve---namely, that censoring is unrelated to prognosis, the survival
+probabilities are the same for subjects recruited early and late in the study,
+and the events happened at the times specified.\cite{bland_logrank_2004}
+Importantly, both the Kaplan-Meier estimator and the logrank test are able to
+incorporate right-censored survival data.
+
+When modeling the presence of covariates or explanatory variables to explain
+survival time, fully parametric and semi-parametric approaches are available.
+Parametric approaches, like the accelerated life class of models, assume that
+the effect of covariates is proportional with respect to survival
+time.\cite{kalbfleisch_statistical_2011} Under this model,
+\begin{equation}
+  \label{eq:aft}
+  S_1(t) = S_0(t/\gamma).
+\end{equation}
+Effectively, this means that the probability that a member of group one will be
+alive at time $t$ is exactly the same as the probability that a member of group
+zero will be alive at time $t/\gamma$.  In parametric models, the estimation of
+the covariates is conditional to the prior definition of the hazard
+distributions in both groups.
+
+% \footnote{For instance, for $\lambda = 2$, this would be half the age, so the
+% probability that a member of group one would be alive at age 40 (or 60) would
+% be the same as the probability that a member of group zero would be alive at
+% age 20 (or 30). Thus, $\lambda$ can be interpreted as affecting the passage of
+% time.  In this example, people in group zero age ``twice as fast''.}
+
+Alternatively, the Cox proportional hazards family of models assumes that the
+effects of the covariates is proportional with respect to the
+hazard.\cite{cox_regression_1972} This assumption obviates the need of
+specifying the underlying hazard functions---the model only seeks to fit the
+regression parameters, hence being referred to has semi-parametric.  In its
+simplest form, it can be formulated in such a way that the hazard at time $t$
+for an individual with covariates $X$ is assumed to be:
+\begin{equation}
+  \label{eq:proportional-hazards}
+  h(t \mid X)=h_0(t) \exp(\beta_1 X_{1}+\ldots+\beta_pX_{p}).
+\end{equation}
+This model formalizes the hazard of individual $i$ at time $t$ as the product of
+a baseline hazard function, $h_0(t)$, and of a linear function of a set of $p$
+covariates, which is exponentiated.  Along with the specification of the model,
+Sir David Cox developed a maximum partial likelihood method for estimation
+of its covariates.\cite{cox_regression_1972} A logrank statistic can be
+derived as the score test for the Cox proportional hazards model comparing two
+groups.  The term Cox regression refers to the combination of both the model and
+the estimation procedure.  It has become the tool of choice to estimate the
+association of the expression of genomic metagenes with differential survival
+times in cancer follow-up studies.
+
+% An important advantage The modeling of the survival time by the Kaplan-Meier
+% can also incorporate right-censored data
+
+% Parametric methods assume that the underlying distribution of survival times
+% follow certain known probability distributions.  For instance, the hazard
+% function can be assumed to:
+% \begin{itemize}
+% \item be constant over time, e.g., when considering the likelihood of an healthy
+%   individual to become ill;
+% \item follow an increasing Weibull distribution, e.g., when considering the
+%   likelihood of death for cancer patients not responding to treatment---as it is
+%   expected to increase with time;
+% \item follow an decreasing Weibull distribution, e.g., when considering the
+%   likelihood of death for post-surgical cancer patients with fair prognosis---as
+%   it is expected to decrease with time;
+% \item follow a lognormal distribution, e.g., when considering the likelihood of
+%   death for tuberculosis patients---as it first increases upon diagnosis, only
+%   to decrease later.
+% \end{itemize}
+% Once the parametric function of choice is defined, model parameters
+% are usually estimated using an appropriate modification of a maximum likelihood
+% procedure.
+
+% be constant over time (e.g., when considering the likelihood of an healthy
+% individual of becoming ill); follow an increasing Weibull distribution (e.g.,
+% when considering the likelihood of death for cancer patients not responding to
+% treatment, as it is expected to increase with time); follow a decreasing
+% Weibull distribution (e.g., when considering the likelihood of death for
+% post-surgical cancer patients, as it is expected to decrease with time), or
+% follow a lognormal distribution (e.g., when considering the likelihood of
+% death for tuberculosis patients, as it first increases after diagnosis, then
+% decreases).
+
+% In follow-up studies of cancer patients, it is generally of interest to
+% describe the relationship of the expression of a biologically motivated
+% metagene to the time to event---possibly in the presence of clinical
+% covariates, such as age, treatment, or tumour class.  This calls for models
+% that describe the relationship between the predictor variable and survival
+% time.  Survival analysis offers a range of parametric, non-parametric and
+% semi-parametric approaches to model this relationship.
+
+\medskip
+
+When considering the association of genomic markers with survival time, the
+dependent variable is composed of two parts: one consisting of the time to the
+event (or lack thereof), encoded as a non-negative number; the other registering
+the event status, encoded as a binary variable (routinely 1 if the event is
+observed, and 0 if not).
+
+Typically, the predictor is also a binary class, the result of discretizing the
+patients in groups of good and bad prognosis as a function of the metagene
+classifier.  This requires a method to stratify the cohort with an unsupervised
+classification procedure.  Venet et al.\cite{venet_most_2011}\,investigated
+three methods to this goal: (\emph{a})~the standard spliting of the cohort along
+the two main clusters defined by hierarchical clustering of the metagene's
+expression data;\footnote{Computed with the \texttt{hcluster} function of the
+  \textsf{amap} \textsf{R} package, and implemented with average linkage and (1
+  -- \emph{correlation}) between pairs of observations as the dissimilarity
+  measure.} (\emph{b})~spliting the cohort along the two main clusters defined
+by applying the \emph{k}-means clustering algorithm to the metagene's expression
+data;\footnote{Computed with the \textsf{R} function \texttt{kmeans}.} and
+(\emph{c})~spliting the cohort along the median of the metagene's first
+principal component.\footnote{Computed with the \textsf{R} function
+  \texttt{prcomp}.} They confirmed that the methods based on the first principal
+component (henceforth referred to as \textsf{PC1} method) yielded significantly
+higher hazard ratios and smaller \emph{p}-values.
+
+In this work, we chose to model survival time as a function of a single
+\emph{continuous} predictor, defined by the first principal component of the
+metagene's expression (or by a single vector of gene expression) throughout the
+entire cohort.  This departure from the standard approach has the disadvantage
+of making it impossible to calculate a Kaplan-Meier estimator for the
+model---therefore lacking a visual representation and making it harder to assess
+the validity of the proportional hazards assumption.  However, it has the
+advantage of using a predictor variable that faithfully mirrors the patterns of
+expression captured by the metagene and of not requiring the artificial
+stratification of the cohort in (balanced or not) groups of differential
+prognosis.
+
+Whenever applicable, association of metagene expression with outcome was thusly
+computed by fitting a proportional hazards regression model between predictor
+and dependent variables with the \texttt{coxph} function of the \textsf{R}
+\textsf{survival} package.
+
+% We have shown this approach to be more sensitive (data not shown).
 
 \section{Microarray datasets}
 \label{sec:methods-datasets}
-
-%%% Local Variables:
-%%% TeX-engine: xetex
-%%% mode: latex
-%%% TeX-master: "../../thesis"
-%%% End:
