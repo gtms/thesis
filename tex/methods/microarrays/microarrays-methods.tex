@@ -604,15 +604,19 @@ classifier.  This requires a method to stratify the cohort with an unsupervised
 classification procedure.  Venet et al.\cite{venet_most_2011}\,investigated
 three methods to this goal: (\emph{a})~the standard spliting of the cohort along
 the two main clusters defined by hierarchical clustering of the metagene's
-expression data;\footnote{Computed with the \texttt{hcluster} function of the
-  \textsf{amap} \textsf{R} package, and implemented with average linkage and (1
-  -- \emph{correlation}) between pairs of observations as the dissimilarity
-  measure.} (\emph{b})~spliting the cohort along the two main clusters defined
+expression data;
+% \footnote{Computed with the \texttt{hcluster} function of the \textsf{amap}
+% \textsf{R} package, and implemented with average linkage and (1
+% -- \emph{correlation}) between pairs of observations as the dissimilarity
+% measure.}
+(\emph{b})~spliting the cohort along the two main clusters defined
 by applying the \emph{k}-means clustering algorithm to the metagene's expression
-data;\footnote{Computed with the \textsf{R} function \texttt{kmeans}.} and
-(\emph{c})~spliting the cohort along the median of the metagene's first
-principal component.\footnote{Computed with the \textsf{R} function
-  \texttt{prcomp}.} They confirmed that the methods based on the first principal
+data;
+% \footnote{Computed with the \textsf{R} function \texttt{kmeans}.}
+and (\emph{c})~spliting the cohort along the median of the metagene's first
+principal component.
+% \footnote{Computed with the \textsf{R} function \texttt{prcomp}.}
+They confirmed that the methods based on the first principal
 component (henceforth referred to as \textsf{PC1} method) yielded significantly
 higher hazard ratios and smaller \emph{p}-values.
 
