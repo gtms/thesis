@@ -19,6 +19,7 @@ debug-thesis.tex
 *.toc
 *.Rhistory
 *.org
+*.Rda
 
 ## directories
 org/
