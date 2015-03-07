@@ -8,36 +8,152 @@ expression of thousands of genes, became the first molecular biology tool
 capable of addressing the complex polygenic nature of
 cancer.\cite{grant_microarrays_2004} Genomic perturbations drive cancer
 progression by disturbing mechanisms for cell cycle control, differentiation,
-\smallcaps{dna} repair, apoptosis, tumour vascularization, and metabolism.  A
-common approach to investigate how these mechanisms are impacted during cancer
-progression is through the monitoring of gene expression signatures, as
-surrogates of biological processes, in expression profiles of cancer biopsies.
+\smallcaps{dna} repair, apoptosis, tumour vascularization, and metabolism.  The
+monitoring of gene expression signatures---as surrogates of biological
+processes---in molecular profiles of cancer biopsies can be used to investigate
+how these mechanisms are impacted during cancer progression.
+
+% A common approach to investigate how these mechanisms are impacted during cancer
+% progression is through the monitoring of gene expression signatures, as
+% surrogates of biological processes, in molecular profiles of cancer biopsies.
+
 In this thesis, we present the result of two analyses relating to the use of
 gene expression signatures as biomarkers in cancer research.  The first concerns
 the use of differentiation and proliferation signatures in cancer diagnostic;
 the second regards the extent of prognostic signals in cancer transcriptomes.
 Here we offer a discussion of these contributions within the broader context of
-the use of microarray technology in cancer research.  This section will then
-conclude with some remarks on the challenges in the interpretation and analysis
+the use of microarray technology in clinical oncology.  This section will then
+conclude with some remarks on the challenges in the analysis and interpretation
 of microarray data.
 
 \subsection{Differentiation and proliferation signatures in cancer diagnostic}
 \label{discussion-differentiation-microarrays}
 % Monday 02Mar2015
+% Hello, have a look at this nice figure (Figure~\ref{fig:diff-prolif}).
+Molecular classification of cancer is a common diagnostic problem in clinical
+oncology.\cite{golub_molecular_1999,alizadeh_distinct_2000,bullinger_use_2004}
+The problem consists in assigning tumours to known taxonomic classes based on
+their expression profiles and is framed as a supervised learning prediction
+task.  The traditional approach involves training a moleclular classifier in a
+group of labeled samples and then assess its performance on an independent set
+of unlabeled samples.\cite{golub_molecular_1999}
 
-Hello, have a look at this nice figure (Figure~\ref{fig:diff-prolif}).
+% This approach rests on the assumption that the core molecular features whose
+% expression is necessary and sufficient to specify tumour classes are tractable
+% by microarray technology.
+
+This approach rests on the assumption that the core molecular features that
+specify tumour classes are tractable by direct comparison of their expression
+profiles.  While this is an established evidence in some cancer
+models,\cite{haibe-kains_three-gene_2012,markert_molecular_2011} in other case
+studies, molecular diagnostics of clinical sub-types is less
+consensual.\cite{travis_new_2013,nikiforov_molecular_2011} This may be explained
+in part by technical variance, e.g., data overfitting or different investigators
+using different experimental methodologies.\cite{weigelt_challenges_2012}
+Additionally, biological variance, in the form of noise due to sampling
+heterogeneity or erratic patterns of tumour evolution, may also condition the
+stability of classifiers derived from inter-class comparisons.
+
+We sought to approach this classification problem from a different perspective.
+Instead of relying on the \emph{intrinsic}, \emph{variant} features that appear
+contrasted between samples of different classes, we addressed the task by
+enrolling the \emph{extrinsic}, \emph{invariant} features of biomarkers for two
+core processes of multicellular life: differentiation and proliferation.  As
+cancer progression is defined by an increase in proliferation rates and a
+concomitant decrease in tissue differentiation (Figure~\ref{fig:diff-prolif}),
+we reasoned that mapping the expression profiles of distinct tumour sub-types
+along these two continuums would result in a classification procedure that is
+more resistant to technical and biological idiosyncrasies.
 
 \begin{marginfigure}%
   \begin{center}
     % \includegraphics[width=9cm]{microarrays-economist.jpg}
     \includegraphics{proliferation-differentiation.png}
-    \caption[Differentiation proliferation in cancer]{A schematic view of
-      differentiation and proliferation in cancer progression (see text for
+    \caption[Differentiation proliferation in cancer]{A schematic representation
+      of the inverse relationship between tissue differentiation and
+      proliferation in cancer progression (see text for
       details).}\label{fig:diff-prolif}%
   \end{center}
 \end{marginfigure}%
 
+To test this formulation, two requirements had to be fulfilled.  First, we
+needed a cancer model characterized by a well defined linear progression from
+benign, differentiated tumours types, to aggressive, anaplastic ones---along
+which taxonomic classes could be sensibly represented.  Second, we needed a
+robust method to define molecular differentiation signatures from expression
+profiles of healthy tissues, as well as a reliable proliferation metagene.
 
+As a case study, we took to thyroid cancer.  Follicular-cell-derived carcinomas
+are broadly divided into well-differentiated, poorly differentiated and
+undifferentiated types on the basis of histological and clinical parameters
+(Figure~\ref{fig:thyroid-carcinogenesis}).\cite{kondo_pathogenetic_2006} Among
+the well differentiated thyroid carcinomas are the papillary and follicular
+types.  The anaplastic thyroid carcinoma, at the other extreme of the
+dedifferentiation continuum, is a highly aggressive and lethal tumour.
+
+Especially fitting to test our classification procedure is the distinction
+between follicular adenomas and follicular carcinomas; and the distinction
+between follicular variants of papillary carcinomas and their classical
+counterpart.  These challenging pathological
+diagnostics\cite{lubitz_molecular_2005} are critical from the prognostic point
+of view.  In each case, while the former types behave in an indolent manner and
+have an excellent prognosis, the latter are defined as poorly differentiated
+thyroid carcinomas, and may evolve to be develop a malignant phenotype.
+
+Several methods exist to quantitatively measure cell proliferation in biological
+samples, such as bromodeoxyuridine incorporation, Ki-67 or proliferating cell
+nuclear antigen (\smallcaps{pcna}) immunostaining.  Conversely, the
+differentiation state of a cell is commonly defined by a range of qualitative
+morphological and physiological parameters.  Underlying these phenotypic traits,
+at the molecular level, are tissue specific expression patterns that define the
+degree of structural and functional specialization of their cellular types.
+
+To investigate these expression patterns, we devised an agnostic method to
+select for genes that are consistently highly expressed on a cell type of
+choice, but less expressed in other tissue types.  This was achieved by
+selecting for genes among the \num{1000} most expressed genes in the tissue of
+choice, that were not among the top \num{5000} most expressed genes in a
+selection of other tissue types.  This algorithm was applied to a dataset of
+sixteen \smallcaps{rna} sequencing profiles of healthy human organs (Table
+here).  Compared to microarray expression profiling, \smallcaps{rna} sequencing
+technology estimates m\smallcaps{rna} expression with read counts normalized by
+transcript length, therefore reflecting more accurately absolute transcription
+level.\cite{wang_rna-seq:_2009}  This simple learning algorithm yielded a list
+of eight thyroid specific genes, four of which had previously been identified as
+canonical thyroid genes.
+
+\begin{table}[ht]
+  \small
+  \centering
+  %\fontfamily{ppl}\selectfont
+  %\newcolumntype{d}[1]{D{.}{\cdot}{#1}}
+  \begin{tabular}{lD{.}{.}{-1}}
+    \toprule
+    BodyMap tissue & \multicolumn{1}{c} {Number of tissue-specific genes} \\
+    \midrule
+    adipose        & 0                                                    \\
+    adrenal        & 0                                                    \\
+    blood          & 19                                                   \\
+    brain          & 96                                                   \\
+    breast         & 5                                                    \\
+    colon          & 5                                                    \\
+    heart          & 13                                                   \\
+    kidney         & 18                                                   \\
+    liver          & 101                                                  \\
+    lung           & 14                                                   \\
+    lymph          & 0                                                    \\
+    ovary          & 5                                                    \\
+    prostate       & 5                                                    \\
+    skeletal       & 11                                                   \\
+    testes         & 68                                                   \\
+    thyroid        & 8                                                    \\
+    \bottomrule
+  \end{tabular}
+  \caption[Size of tissue differentiation signatures]{Size of tissue differentiation signatures.}
+  \label{tab:diff-sigs}
+\end{table}
+
+\clearpage
 
 \subsection{The extent of prognostic signals in the cancer transcriptomes}
 \label{sec:discussion-prognostic-microarrays}
