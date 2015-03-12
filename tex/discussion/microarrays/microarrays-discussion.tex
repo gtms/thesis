@@ -17,14 +17,14 @@ how these mechanisms are impacted during cancer progression.
 % progression is through the monitoring of gene expression signatures, as
 % surrogates of biological processes, in molecular profiles of cancer biopsies.
 
-In this thesis, we present the result of two analyses relating to the use of
-gene expression signatures as biomarkers in cancer research.  The first concerns
-the use of differentiation and proliferation signatures in cancer diagnostic;
-the second regards the extent of prognostic signals in cancer transcriptomes.
-Here we offer a discussion of these contributions within the broader context of
-the use of microarray technology in clinical oncology.  This section will then
-conclude with some remarks on the challenges in the analysis and interpretation
-of microarray data.
+In this dissertation, we present the result of two analyses relating to the use
+of gene expression signatures as biomarkers in cancer research.  The first
+concerns the use of differentiation and proliferation signatures in cancer
+diagnostic; the second regards the extent of prognostic signals in cancer
+transcriptomes.  Here we offer a discussion of these contributions within the
+broader context of the use of microarray technology in clinical oncology.  This
+section will then conclude with some remarks on the challenges in the analysis
+and interpretation of microarray data.
 
 \subsection{Differentiation and proliferation signatures in cancer diagnostic}
 \label{discussion-differentiation-microarrays}
@@ -34,7 +34,7 @@ Molecular classification of cancer is a common diagnostic problem in clinical
 oncology.\cite{golub_molecular_1999,alizadeh_distinct_2000,bullinger_use_2004}
 The problem consists in assigning tumours to known taxonomic classes based on
 their expression profiles and is framed as a supervised learning prediction
-task.  The traditional approach involves training a moleclular classifier in a
+task.  The conventional approach involves training a moleclular classifier in a
 group of labeled samples and then assess its performance on an independent set
 of unlabeled samples.\cite{golub_molecular_1999}
 
@@ -72,24 +72,46 @@ more resistant to technical and biological idiosyncrasies.
     \caption[Differentiation proliferation in cancer]{A schematic representation
       of the inverse relationship between tissue differentiation and
       proliferation in cancer progression (see text for
-      details).}\label{fig:diff-prolif}%
+      details).}
+    \label{fig:diff-prolif}%
   \end{center}
 \end{marginfigure}%
 
-To test this formulation, two requirements had to be fulfilled.  First, we
-needed a cancer model characterized by a well defined linear progression from
-benign, differentiated tumours types, to aggressive, anaplastic ones---along
-which taxonomic classes could be sensibly represented.  Second, we needed a
+To test this idea, two requirements had to be met.  First, we needed a cancer
+model characterized by a well defined linear progression, from benign,
+differentiated tumour types, to aggressive, anaplastic ones---along which
+taxonomic tumour classes could be sensibly represented.  Second, we needed a
 robust method to define molecular differentiation signatures from expression
-profiles of healthy tissues, as well as a reliable proliferation metagene.
+profiles of healthy tissues, and a dependable proliferation metagene.
 
-As a case study, we took to thyroid cancer.  Follicular-cell-derived carcinomas
-are broadly divided into well-differentiated, poorly differentiated and
+As a case study, we took to thyroid cancer.  Thyrocyte-derived carcinomas are
+broadly divided into well-differentiated, poorly differentiated and
 undifferentiated types on the basis of histological and clinical parameters
 (Figure~\ref{fig:thyroid-carcinogenesis}).\cite{kondo_pathogenetic_2006} Among
 the well differentiated thyroid carcinomas are the papillary and follicular
 types.  The anaplastic thyroid carcinoma, at the other extreme of the
-dedifferentiation continuum, is a highly aggressive and lethal tumour.
+dedifferentiation continuum, is a highly aggressive and lethal tumour
+(Figure~\ref{fig:neoplastic-grading}).
+
+\begin{marginfigure}
+  \begin{center}
+    \includegraphics{neoplastic-grading.png}
+    \caption[Neoplastic grading]{In clinical pathology, the loss of tissue
+      differentiation and increase in proliferation is captured by the concept
+      of neoplastic grading.  While cancers with fair prognosis are said to be
+      differentiated, cancers with poor prognosis are referred to as anaplastic.
+      \textbf{A:}~Micrograph of a low magnification thyroid tissue.  The
+      functional units of the thyroid gland are the thyroid follicles, lined by
+      an epithelium of thyrocytes.  Thyrocytes delimit the follicular lumen,
+      where the colloid serves as a reservoir for thyroglobulin.
+      \textbf{B:}~Micrograph of an anaplastic thyroid carcinoma, a stage
+      \smallcaps{iv} thyroid tumour.  These tumours have a high mitotic rate and
+      are among the human tumours with the poorest prognosis.  Notice the degree
+      of structural tissular disorganization compared with the tissue of
+      origin.}
+    \label{fig:neoplastic-grading}%
+  \end{center}
+\end{marginfigure}
 
 Especially fitting to test our classification procedure is the distinction
 between follicular adenomas and follicular carcinomas; and the distinction
@@ -97,8 +119,8 @@ between follicular variants of papillary carcinomas and their classical
 counterpart.  These challenging pathological
 diagnostics\cite{lubitz_molecular_2005} are critical from the prognostic point
 of view.  In each case, while the former types behave in an indolent manner and
-have an excellent prognosis, the latter are defined as poorly differentiated
-thyroid carcinomas, and may evolve to be develop a malignant phenotype.
+have an good prognosis, the latter are defined as poorly differentiated thyroid
+carcinomas, and may evolve to develop a malignant phenotype.
 
 Several methods exist to quantitatively measure cell proliferation in biological
 samples, such as bromodeoxyuridine incorporation, Ki-67 or proliferating cell
@@ -110,54 +132,292 @@ degree of structural and functional specialization of their cellular types.
 
 To investigate these expression patterns, we devised an agnostic method to
 select for genes that are consistently highly expressed on a cell type of
-choice, but less expressed in other tissue types.  This was achieved by
-selecting for genes among the \num{1000} most expressed genes in the tissue of
-choice, that were not among the top \num{5000} most expressed genes in a
-selection of other tissue types.  This algorithm was applied to a dataset of
-sixteen \smallcaps{rna} sequencing profiles of healthy human organs (Table
-here).  Compared to microarray expression profiling, \smallcaps{rna} sequencing
-technology estimates m\smallcaps{rna} expression with read counts normalized by
-transcript length, therefore reflecting more accurately absolute transcription
-level.\cite{wang_rna-seq:_2009}  This simple learning algorithm yielded a list
-of eight thyroid specific genes, four of which had previously been identified as
-canonical thyroid genes.
+choice, but among the least expressed in other tissue types.  This was
+formulated by selecting for genes among the \num{1000} most expressed in the
+tissue of choice, that were not among the top \num{5000} most expressed in an
+assortment of other tissue types.  This algorithm was applied to a dataset of
+sixteen \smallcaps{rna} sequencing profiles of healthy human
+organs.\cite{bodymap_2.0_2012} Compared to microarray expression profiling,
+\smallcaps{rna} sequencing technology estimates m\smallcaps{rna} expression with
+read counts normalized by transcript length, therefore reflecting more
+accurately absolute transcription levels.\cite{wang_rna-seq:_2009} This simple
+learning algorithm yielded a list of eight thyrocyte specific genes
+(Table~\ref{tab:diff-sigs}).
+
+% four of which had previously been identified as
+% canonical thyroid genes.\footnote{The list includes the genes
+%   \smallcaps{\emph{crabp1}}, \smallcaps{\emph{foxe1}}, \smallcaps{\emph{iyd}},
+%   \smallcaps{\emph{pth}}, \smallcaps{\emph{slc26a7}}, \smallcaps{\emph{tg}},
+%   \smallcaps{\emph{tpo}}, and \smallcaps{\emph{tshr}}.  Four are known thyrocyte
+%   genes: forkhead box protein \smallcaps{e1} (\smallcaps{\,\emph{foxe1}},
+%   a.k.a.\,\smallcaps{\emph{ttf2}}), thyroglobulin, thyroperoxydase and the
+%   \smallcaps{tsh} receptor.}
+
+The thyroid differentiation biomarker was then projected in the feature space of
+two \emph{Affymetrix} microarray platforms, \smallcaps{U}95av2 and
+\smallcaps{U}133v2.  Because \emph{Affymetrix} platforms often bear several
+probesets targeting for a specific gene, we selected, in two reference
+compendiums of healthy tissues profiled with each platform, the probeset that
+maximizes the thyroid-specific signal for each gene in our signature.  A thyroid
+differentiation index, dubbed \emph{\mbox{t-index}}, could then be derived from
+biological samples profiled in any of these platforms, by computing the median
+expression of the respective selected probesets.
 
 \begin{table}[ht]
   \small
   \centering
-  %\fontfamily{ppl}\selectfont
-  %\newcolumntype{d}[1]{D{.}{\cdot}{#1}}
+  % \fontfamily{ppl}\selectfont
+  % \newcolumntype{d}[1]{D{.}{\cdot}{#1}}
   \begin{tabular}{lD{.}{.}{-1}}
     \toprule
-    BodyMap tissue & \multicolumn{1}{c} {Number of tissue-specific genes} \\
+    Human  BodyMap 2.0 tissue & \multicolumn{1}{c}{Number of tissue-specific genes} \\
     \midrule
-    adipose        & 0                                                    \\
-    adrenal        & 0                                                    \\
-    blood          & 19                                                   \\
-    brain          & 96                                                   \\
-    breast         & 5                                                    \\
-    colon          & 5                                                    \\
-    heart          & 13                                                   \\
-    kidney         & 18                                                   \\
-    liver          & 101                                                  \\
-    lung           & 14                                                   \\
-    lymph          & 0                                                    \\
-    ovary          & 5                                                    \\
-    prostate       & 5                                                    \\
-    skeletal       & 11                                                   \\
-    testes         & 68                                                   \\
-    thyroid        & 8                                                    \\
+    adipocytes                & 0                                                   \\
+    adrenal gland             & 0                                                   \\
+    blood                     & 19                                                  \\
+    brain                     & 96                                                  \\
+    breast                    & 5                                                   \\
+    colon                     & 5                                                   \\
+    heart                     & 13                                                  \\
+    kidney                    & 18                                                  \\
+    liver                     & 101                                                 \\
+    lung                      & 14                                                  \\
+    lymph nodes               & 0                                                   \\
+    ovary                     & 5                                                   \\
+    prostate                  & 5                                                   \\
+    skeletal                  & 11                                                  \\
+    testes                    & 68                                                  \\
+    thyroid                   & 8                                                   \\
     \bottomrule
   \end{tabular}
-  \caption[Size of tissue differentiation signatures]{Size of tissue differentiation signatures.}
+  \caption[Size of tissue differentiation signatures]{Size of tissue
+    differentiation signatures.  Tissue-specific differentiation signatures were
+    derived by selecting for genes that are among the most expressed in the tissue
+    of choice, and among the least expressed in the remaining 15 tissue types (see
+    text for details).  The size of the signatures reflects the degree of
+    structural and functional specialization of that organ.  Tissues for which no
+    gene met the selection criteria are likely to have a less particular
+    metabolism (adipocytes) or to represent a mix of different cell types (adrenal
+    gland and lymph nodes).}
   \label{tab:diff-sigs}
 \end{table}
+
+A biomarker of proliferation was similarly derived from expression profiles of
+healthy tissues.  The proliferating cell nuclear antigen (\smallcaps{pcna}) is a
+cofactor of \smallcaps{dna} polymerase $\delta$ and an essential motif for cell
+replication.  A metagene, called meta-\smallcaps{pcna}, was obtained by
+selecting the 1\% genes most positively correlated with the \smallcaps{pcna}
+gene in a compendium of expression profiles of normal
+tissues.\cite{venet_most_2011} A meta-\smallcaps{pcna} index can similarly be
+derived from expression profiles of biological samples by computing the median
+expression of the genes of this proliferation biomarker.  This metagene consists
+of 129 genes featuring many significant cell-cycle related genes, like
+\smallcaps{\emph{aurka}}, \smallcaps{\emph{mki67}}, \smallcaps{\emph{top2a}}, or
+\smallcaps{\emph{mcm2}}.
+
+% We then tested the expression of these two biomarkers in three datasets of
+% normal and neoplastic thyroid expression profiles.  The first, hybridized on an
+% \emph{Affymetrix} \smallcaps{u}133v2 chip, comprised eleven anaplastic thyroid
+% carcinomas (\smallcaps{atc}s), together with \num{49} papillary thyroid
+% carcinomas (\smallcaps{ptc}s), paired with \num{45} adjacent normal tissues
+% (\smallcaps{gse}29265).  The second included seven normal thyroid samples
+% (\smallcaps{n}), nine follicular thyroid carcinomas (\smallcaps{ftc}s); and an
+% aditional 17 follicular thyroid adenomas (\smallcaps{fta}s), 9 \smallcaps{ftc}s,
+% 13 follicular variants of papillary thyroid carcinomas (\smallcaps{fvptc}s) and
+% nine classical papillary thyroid carcinomas (\smallcaps{cptc}s)---altogether
+% hybridized on \emph{Affymetrix} \smallcaps{U}95av2 chips and normalized with the
+% \smallcaps{rma} procedure (\smallcaps{gse}29315).
+
+We then evaluated the expression of these two biomarkers in three datasets of
+normal and neoplastic thyroid expression profiles.  The first, hybridized on an
+\emph{Affymetrix} \smallcaps{u}133v2 chip
+(\href{http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE29265}{\smallcaps{gse}29265}),
+comprised a selection of 49 samples, including anaplastic thyroid carcinomas
+(\smallcaps{atc}s) and papillary thyroid carcinomas (\smallcaps{ptc}s), paired
+with their respective adjacent normal tissues.  The second, hybridized on
+\emph{Affymetrix} \smallcaps{U}95av2
+(\href{http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE29315}{\smallcaps{gse}29315}),
+included a total of 71 samples spanning normal thyroids, follicular thyroid
+adenomas and follicular thyroid carcinomas (\smallcaps{fta}s and
+\smallcaps{ftc}s); altogether with classical papillary thyroid carcinomas and
+follicular variants of papillary thyroid carcinomas (\smallcaps{cptc}s and
+\smallcaps{fvptc}s).  The third dataset\cite{van_staveren_gene_2006} comes from
+a kinetic time course study profiling primary cultured thyrocytes with
+\mbox{thyroid-stimulating hormone} (\smallcaps{tsh}), and was hybridized on a
+home made platform interrogating nearly \num{4000} genes.  A well characterized
+response of thyrocytes in culture to \smallcaps{tsh} stimulation is an increase
+both in metabolic activity (differentiation), as well as in mitotic activity
+(proliferation).
+
+By quantifying the \emph{t-index} and the meta-\smallcaps{pcna} index in these
+three datasets, we were able to establish that, (\emph{a}) the two indices are
+negatively correlated in a range of thyrocyte-derived tumours of increasing
+aggressiveness, yet positively correlated in a time course experiment of
+\smallcaps{tsh} stimulation of thyrocytes; (\emph{b}) the \emph{t-index} can
+accurately discriminate between expression profiles of \smallcaps{fta}s when
+compared with \smallcaps{ftc}s; and between expression profiles of
+\smallcaps{fvptc}s when compared with \smallcaps{cptc}s; and (\emph{c}) the
+performance of this differential diagnosis classifier is as robust as a
+classifier derived by training a \smallcaps{svm} learning algorithm (validated
+with a repeated inner/outer cross-validation procedure) on the whole expression
+space of the labeled samples.
+
+\medskip
+
+Because defects in cell-cycle regulation are the defining feature of neoplastic
+pathogenesis, genes participating in proliferation are often found highly
+expressed in tumour microarrays when compared with normal samples.  In spite of
+the many discordant proliferation gene lists proposed in the
+literature,\cite{whitfield_common_2006} increased expression of most of these
+biomarkers has often been linked with poor clinical
+prognosis.\cite{dai_cell_2005,paik_multigene_2004,rosenwald_proliferation_2003,sorlie_gene_2001}
+Proliferation is a universal and conserved theme of cancer
+transcriptomes,\cite{rhodes_large-scale_2004} and frequently accounts for most
+of the power driving the performance of prognostic
+signatures.\cite{sole_biological_2009,venet_most_2011,wirapati_meta-analysis_2008}
+Proliferation biomarkers are thus a major component of genomic-based clinical
+diagnostics for cancer patients.
+
+The identification of other potential tumour class-specific genes, related to
+the particular biology of each taxonomic group, is performed by training
+learning algorithms on labeled expression profiles.  The validity of the
+selected features, along with the mathematical function used to predict tumour
+class based on their vector of expression, is then assessed by testing the
+accuracy of the model in unlabeled samples.\cite{simon_diagnostic_2003} This
+methodology can however be hindered by a number of
+issues.\cite{brenton_molecular_2005} The classifier may reflect the inherent
+technical and biological biases specific to the training set, rather than
+capturing the modulations underpinning class specification---the model is then
+said to ``overfit'' the training set.  Moreover, even when models are trained in
+large enough datasets and proper care is taken to ensure independent validation,
+the unstable nature of cancer genomes may itself obscure class-specific
+biological signals by adding random variance to expression measurements.
+
+Here, we investigate the possibility of enlisting another classifier, external
+to cancer biology, to address the problem of thyrocyte-derived tumour class
+prediction.  By identifying genes whose expression rank highly exclusively in
+thyroid samples, we defined a molecular differentiation marker that takes no
+\emph{a priori} concerning the biology of the thyrocyte.  Unsurprisingly, this
+marker contains important genes in thyroid physiology, including genes coding
+for: thyroglobulin (a dimeric protein used to produce thyroid hormone); thyroid
+peroxidase (a membrane-bound glycoprotein that takes part in the iodination of
+the precursors of thyroid hormone); iodotyrosine deiodinase (an enzyme that
+facilitates the iodide salvage post-thyroid hormone synthesis); the thyrotropin
+receptor (a receptor activated by \smallcaps{tsh}); and the \smallcaps{ttf2}
+transcription factor (active in the developing thyroid, with a role in
+controlling the onset of its differentiation\cite{zannini_ttf-2_1997}).  The
+signature also comprises genes coding for the parathyroid hormone (parathyroid
+cells were likely to be present in the resected profiled biopsies); cellular
+retinoic acid binding protein 1 and a member of the solute carrier family 26
+(both proteins for which no known role in thyroid has been identified to date).
+
+Noticeably, in diagnostic immunochemistry, antigens for thyroglobulin and
+thyroid peroxidase are already routinely used to provide a quantitative
+assessment of the malignancy of neoplastic thyroid
+lesions.\cite{tanaka_immunohistochemical_1996,gerard_correlation_2003} Our
+biomarker of thyrocyte differentiation, the \emph{t-index}, was used as a
+classifier to accurately disentangle two challenging pathological diagnoses,
+\mbox{\smallcaps{fta} \emph{vs} \smallcaps{ftc}} and \mbox{\smallcaps{fvptc}
+  \emph{vs} \smallcaps{cptc}}, based on their expression profiles
+(\mbox{\emph{cf.}  Figure~4\emph{a},\emph{d}} of the article in the
+\hyperref[chap:results]{\textsf{Results}} chapter).  Papillary and follicular
+carcinomas, the two main taxonomic classes of thyroid tumours, are shown to
+depart from thyrocytes along two distinct axes of gene expression
+(\mbox{\emph{cf.} Figure~3} of the article in the
+\hyperref[chap:results]{\textsf{Results}} chapter), suggesting that our
+biomarker correlates with the molecular courses of thyroid cancer progression.
+
+Furthermore, we show that the \emph{t-index} and the meta-\smallcaps{pcna} index
+are negatively correlated in expression profiles of a panel of thyroid cancers
+(\mbox{\emph{cf.} Figure~2\emph{a},\emph{b}} of the article in the
+\hyperref[chap:results]{\textsf{Results}} chapter), yet positively correlated in
+an \emph{in vitro} experiment of physiological and mitotic thyrocyte activation
+(\mbox{\emph{cf.} Figure~2\emph{c}} of the article in the
+\hyperref[chap:results]{\textsf{Results}} chapter).  This provides supporting
+evidence for the independence of our classifier from proliferation, unlike
+potential classifiers derived from the expression space of labeled tumour
+samples.  Nonetheless, class prediction of thyroid tumours based on the
+\emph{t-index} is as accurate as a state-of-the art machine learning algorithm
+selecting for the optimal classifying genes from the entire set of features
+spotted in the arrays (\mbox{\emph{cf.} Figure~4\emph{c},\emph{f}} of the
+article in the \hyperref[chap:results]{\textsf{Results}} chapter).
+
+This proof of concept brings into a quantitative framework the formulation that
+neoplastic progression can be mapped along an axis of molecular
+dedifferentiation.  Thyroid cancer is especially suited to test this hypothesis,
+as it comprises a family of mostly indolent tumours that evolve slowly
+(Figure~\ref{fig:thyroid-carcinogenesis}), providing ample opportunity for
+sampling malignancies at different stages of progression.  In addition, biopsies
+of thyrocyte-derived cancers, while populated by a range of distinct cellular
+types (fibroblasts, \smallcaps{c} cells, stromal cells), are mostly dominated by
+thyroid epithelial cells---an essential condition for the biological bearing of
+our differentiation signature in these expression profiles.
+
+The generalization of this approach to other cancer families may depend on both
+the feasibility to derive stable markers of differentiation for the cell type of
+origin, as well as on the tractability of those markers in respective cancer
+biopsies.  Breast cancer, for instance, is typically derived from epithelial
+cells of the mammary gland, yet the expression profiles of most breast cancer
+biopsies are largely dominated by adipocytes.  On the other hand, cancers
+derived from the hematopoietic lineage could prove particularly amenable to our
+strategy, as expression profiles of purified populations of human hematopoietic
+cells at different stages of maturation are readily available in the
+literature.\cite{novershtern_densely_2011}
+
+While the use of biologically motivated molecular markers to dissect cancer
+genomes is not a novelty,\cite{sund_tumor_2009,dave_prediction_2004} to our
+knowledge, ours is the first study to enroll biomarkers of differentiation to
+guide the interpretation of cancer expression profiles.  We devised a simple
+method to catalogue genes that are only significantly expressed in a particular
+tissue type, potentially seizing fundamental tissue-specific expression
+patterns.  We then showed that a thyroid-specific biomarker can be reliably used
+to map the molecular progression of two distinct taxonomies of thyrocyte-derived
+neoplasias, and is able to solve two challenging pathological diagnoses.  These
+results raise the possibility that the process of molecular dedifferentiation, a
+collateral of cancer progression, could be accurately quantified and modeled for
+prospective use in clinical oncology.
+
+Our methodology is not without shortcomings.  Not all genes in the thyroid
+differentiation signature are pertinent to the class prediction problem.  For
+instance, the expression of the \smallcaps{tsh} receptor gene is usually
+preserved during cancer progression,\cite{dagostino_different_2014} and the
+expression of the parathyroid hormone gene is irrelevant to the thyrocyte
+biology.  More sophisticated learning methods, along with more stringent methods
+of cell type selection, might help to alleviate these imprecisions.
+Additionally, for each of the undertaken classification tasks, we do not provide
+a proper cut-off point to translate the quantitative predictive \emph{t-index}
+into a predicted class label.  This is because our experimental setting did not
+include a sufficient number of samples of each class to estimate a sensible
+cut-off point for the classifier.  In both cases, the accuracy of the classifier
+was estimated by stipulating all possible cut-off points and computing the
+respective area under the \smallcaps{roc} curve (\mbox{\emph{cf.}
+  Figure~4\emph{b},\emph{e}} of the article in the
+\hyperref[chap:results]{\textsf{Results}} chapter).
+
+Still, when addressing tumour class prediction, classifiers based on
+differentiation signatures have the advantage of being stable and extraneous to
+the biology of the disease, and thus virtually immune to biological variance
+motivated by cancer genome instability or overfitting biases.  Their potential
+to assist diagnostic tasks in cancer oncology remains to be fully explored.
+
+% is marked by the incremental shedding of functional
+% features specifying cell differentiation.  It raises the intriguing possibility
+
+\bigskip
+
+% \lipsum
 
 \clearpage
 
 \subsection{The extent of prognostic signals in the cancer transcriptomes}
 \label{sec:discussion-prognostic-microarrays}
 % Tuesday 03Mar2015
+
+Another eminent question in clinical oncology is disease outcome prediction.
+
+Gene expression profiling has identified cancer prognostic and predictive
+signatures with superior performance to conventional histopathological or
+clinical parameters (pls-sole-2009).
 
 \subsection{Microarray data interpretation and analysis}
 \label{sec:discussion-interpretation-microarrays}
