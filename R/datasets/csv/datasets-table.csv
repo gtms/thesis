@@ -1,0 +1,115 @@
+"";"cancer";"platform";"normalization";"nSamples";"nGenes";"os";"dfs";"dss";"dmfs"
+"BLCA";"bladder";"AgilentG4502A";"RMA";122;20501;119;NA;NA;NA
+"BRCA";"breast";"AgilentG4502A";"RMA";849;20501;574;NA;NA;NA
+"CESC";"cervical";"AgilentG4502A";"RMA";97;20501;39;NA;NA;NA
+"COAD";"colon";"AgilentG4502A";"RMA";192;20501;192;NA;NA;NA
+"GBM";"glioblastoma";"AgilentG4502A";"RMA";169;20501;167;NA;NA;NA
+"HNSC";"head and neck";"AgilentG4502A";"RMA";303;20501;302;NA;NA;NA
+"KICH";"kidney";"AgilentG4502A";"RMA";66;20501;65;NA;NA;NA
+"KIRC";"kidney";"AgilentG4502A";"RMA";480;20501;480;NA;NA;NA
+"KIRP";"kidney";"AgilentG4502A";"RMA";76;20501;72;NA;NA;NA
+"LAML";"leukemia";"AgilentG4502A";"RMA";183;20501;172;NA;NA;NA
+"LGG";"glioma";"AgilentG4502A";"RMA";205;20501;205;NA;NA;NA
+"LIHC";"liver ";"AgilentG4502A";"RMA";34;20501;34;NA;NA;NA
+"LUAD";"lung";"AgilentG4502A";"RMA";355;20501;329;NA;NA;NA
+"LUSC";"lung";"AgilentG4502A";"RMA";259;20501;251;NA;NA;NA
+"OV";"ovary";"AgilentG4502A";"RMA";266;20501;264;NA;NA;NA
+"PAAD";"pancreas";"AgilentG4502A";"RMA";31;20501;30;NA;NA;NA
+"PRAD";"prostate ";"AgilentG4502A";"RMA";140;20501;126;NA;NA;NA
+"READ";"rectum";"AgilentG4502A";"RMA";72;20501;72;NA;NA;NA
+"SKCM";"skin";"AgilentG4502A";"RMA";267;20501;242;NA;NA;NA
+"STAD";"stomach";"AgilentG4502A";"RMA";57;20501;57;NA;NA;NA
+"THCA";"thyroid";"AgilentG4502A";"RMA";414;20501;354;NA;NA;NA
+"UCEC";"uterine corpus";"AgilentG4502A";"RMA";370;20501;369;NA;NA;NA
+"metabric-discovery-set";"breast";"Illumina HT-12 v3";"quantile normalization";997;19628;980;NA;980;NA
+"metabric-validation-set";"breast";"Illumina HT-12 v3";"quantile normalization";995;19628;991;NA;991;NA
+"NKI";"breast";"Agilent";NA;337;12937;295;295;NA;295
+"GSE10846-lymphoma";"lymphoma";"GPL570";"MAS5.0";420;20185;414;NA;NA;NA
+"GSE2658-myeloma";"myeloma";"GPL570";"MAS5.0";559;19944;NA;NA;559;NA
+"GSE39582-colon";"colon";"GPL570";"RMA";566;19945;NA;557;NA;NA
+"GSE44001-cervical-cancer";"cervical-cancer";"Illumina HumanHT-12 WG-DASL V4.0 R2 expression beadchip";"quantile normlization";300;20104;NA;300;NA;NA
+"GSE10645-GPL5858-prostate";"prostate";"GPL5858-DASL Human Cancer Panel by Gene";"cyclic loess";497;596;596;NA;596;NA
+"GSE7390-breast";"breast";"GPL96";"MAS5.0";198;12495;198;198;NA;198
+"GSE16391-breast";"breast";"GPL570";NA;55;19944;NA;48;NA;NA
+"GSE5327-breast";"breast";"GPL96";"MAS5.0";58;12495;NA;NA;NA;58
+"GSE2034-breast";"breast";"GPL96";"MAS5.0";286;12495;NA;NA;NA;286
+"GSE2990-breast";"breast";"GPL96";"RMA";189;12495;NA;187;NA;179
+"GSE6532-GPL570-breast";"breast";"GPL570";"RMA";87;19944;NA;87;NA;87
+"GSE6532-GPL96-breast";"breast";"GPL96";"RMA";327;12495;NA;306;NA;293
+"GSE6532-GPL97-breast";"breast";"GPL97";"RMA";327;9733;NA;306;NA;293
+"GSE1456-GPL96-breast";"breast";"GPL96";NA;159;12495;159;159;159;NA
+"GSE1456-GPL97-breast";"breast";"GPL97";NA;159;9733;159;159;159;NA
+"GSE4922-GPL96-breast";"breast";"GPL96";"MAS5.0";289;12495;NA;249;NA;NA
+"GSE4922-GPL97-breast";"breast";"GPL97";"MAS5.0";289;9733;NA;249;NA;NA
+"GSE9195-breast";"breast";"GPL570";"RMA";77;19944;NA;77;NA;77
+"GSE12093-breast";"breast";"GPL96";"MAS5.0";136;12495;NA;136;NA;NA
+"GSE20685-breast";"breast";"GPL570";"quantile normalization";327;18922;NA;NA;NA;327
+"GSE3494-GPL96-breast";"breast";"GPL96";"MAS5.0";251;12495;NA;NA;236;NA
+"GSE3494-GPL97-breast";"breast";"GPL97";"MAS5.0";251;9733;NA;NA;236;NA
+"GSE1379-breast";"breast";"GPL1223";"subtraction median log2 ratios gene-wise";60;11558;NA;60;NA;NA
+"GSE11121-breast";"breast";"GPL96";"MAS5.0";200;12495;NA;NA;NA;200
+"GSE12276-breast";"breast";"GPL570";"MAS5.0";204;19944;NA;NA;NA;204
+"GSE7378-breast";"breast";"GPL4685";"RMA";54;12659;NA;54;NA;NA
+"GSE1378-breast";"breast";"GPL1223";"subtraction median log2 ratios gene-wise";60;11558;NA;60;NA;NA
+"GSE3143-breast";"breast";"GPL8300";"MAS5.0";158;7114;158;NA;NA;NA
+"GSE19615-breast";"breast";"GPL570";"dChip invariant method and PM-MM difference method for backgroud subtraction (Ref: Li Wong et al.)";115;19944;NA;NA;NA;115
+"GSE9893-breast";"breast";"GPL5049";"cross-array median normalization";155;15762;155;NA;NA;NA
+"GSE19536-breast";"breast";"GPL6480";"quantile normalization";100;19425;98;NA;98;NA
+"GSE25307-breast";"breast";"GPL5345";"normalized and corrected for intensity-based location adjustment (Ref: Yang et al. 2001) ";577;8428;547;NA;NA;NA
+"GSE18229-GPL1390-breast";"breast";"GPL1390";"lowess-normalized";199;14457;160;160;NA;NA
+"GSE18229-GPL887-breast";"breast";"GPL887";"lowess-normalized";94;16579;53;53;NA;NA
+"GSE12417-aml";"leukemia";"GPL570";"VSN";163;12714;163;NA;NA;NA
+"GSE12945-colon";"colon";"GPL96";"FRMA";62;12714;62;51;NA;NA
+"GSE14333-colon";"colon";"GPL570";"FRMA";290;20027;NA;226;NA;NA
+"GSE14764-ovary";"ovary";"GPL96";"FRMA";80;12714;80;NA;NA;NA
+"GSE14814-nsclc";"lung";"GPL96";"FRMA";90;12714;90;NA;90;NA
+"GSE16102-bone";"bone";"GPL96";"FRMA";57;12714;34;NA;NA;NA
+"GSE16131-lymphoma";"lymphoma";"GPL96";"FRMA";184;12714;180;NA;NA;NA
+"GSE16581-meningioma";"brain";"GPL570";"FRMA";68;20027;67;NA;NA;NA
+"GSE17538-colon";"colon";"GPL570";"FRMA";238;20027;232;232;226;NA
+"GSE19188-nsclc";"lung";"GPL570";"FRMA";91;20027;82;NA;NA;NA
+"GSE19234-melanoma";"skin";"GPL570";"FRMA";44;20027;44;NA;NA;NA
+"GSE19829-ovary";"ovary";"GPL570";"FRMA";28;20027;28;NA;NA;NA
+"GSE22762-cll";"leukemia";"GPL570";"FRMA";107;20027;107;NA;NA;NA
+"GSE23501-lymphoma";"lymphoma";"GPL570";"FRMA";69;20027;69;69;NA;NA
+"GSE23554-ovary";"ovary";"GPL96";"FRMA";28;12714;28;NA;NA;NA
+"GSE27020-larynx";"larynx";"GPL96";"FRMA";109;12714;NA;109;NA;NA
+"GSE31595-colon";"colon";"GPL570";"FRMA";37;20027;NA;37;NA;NA
+"GSE31684-bladder";"bladder";"GPL570";"GCRMA";93;19851;93;NA;93;NA
+"GSE4271-glioma";"brain";"GPL96";"FRMA";100;12714;77;NA;NA;NA
+"GSE4412-glioma";"brain";"GPL96";"FRMA";85;12714;85;NA;NA;NA
+"GSE4475-lymphoma";"lymphoma";"GPL96";"RMA";221;12714;159;NA;NA;NA
+"GSE7696-glioblastoma";"brain";"GPL570";"RMA";80;19851;80;NA;NA;NA
+"GSE8894-nsclc";"lung";"GPL570";"FRMA";138;20027;NA;138;NA;NA
+"GSE9899-ovary";"ovary";"GPL570";"FRMA";295;20027;289;286;NA;NA
+"GSE31210-lung-adenocarcinoma";"lung";"GPL570";"FRMA";246;20027;226;226;NA;NA
+"GSE33113-colon";"colon";"GPL570";"FRMA";90;20027;NA;90;NA;NA
+"GSE3141-lung";"lung";"GPL570";"FRMA";111;20027;111;NA;NA;NA
+"GSE13507-bladder";"bladder";"GPL6102";"quantile normalization";165;20045;165;NA;165;NA
+"GSE13876-ovary";"ovary";"GPL7759";"quantile normalization";415;13796;NA;NA;415;NA
+"oberthuer2006-neuroblastoma";"neuroblastoma";"custom array";"VSM";251;9878;NA;251;251;NA
+"GSE3149-ovary";"ovary";"GPL96";"FRMA";122;12913;NA;NA;122;NA
+"GSE32062-ovary";"ovary";"GPL570";"FRMA";260;19596;260;260;NA;NA
+"GSE11318-lymphoma";"lymphoma";"GPL570";"FRMA";203;20026;200;NA;NA;NA
+"GSE10143-liver";"liver";"GPL5471";"cubic spline algorithm";80;6090;80;NA;NA;NA
+"GSE16432-GPL10105-leukemia";"leukemia";"GPL10105";"gene mean centering within, then between arrays";45;13188;45;NA;NA;NA
+"GSE16432-GPL10106-leukemia";"leukemia";"GPL10106";"gene mean centering within, then between arrays";38;13493;38;NA;NA;NA
+"GSE16432-GPL10107-leukemia";"leukemia";"GPL10107";"gene mean centering within, then between arrays";82;13084;81;NA;NA;NA
+"GSE16432-GPL8650-leukemia";"leukemia";"GPL8650";"gene mean centering within, then between arrays";25;8144;25;NA;NA;NA
+"GSE16432-GPL8651-leukemia";"leukemia";"GPL8651";"gene mean centering within, then between arrays";45;12779;45;NA;NA;NA
+"GSE16432-GPL8652-leukemia";"leukemia";"GPL8652";"gene mean centering within, then between arrays";50;13070;50;NA;NA;NA
+"GSE16432-GPL8653-leukemia";"leukemia";"GPL8653";"gene mean centering within, then between arrays";94;13659;93;NA;NA;NA
+"GSE16432-GPL8654-leukemia";"leukemia";"GPL8654";"gene mean centering within, then between arrays";49;12358;49;NA;NA;NA
+"GSE32894-bladder";"bladder";"GPL6947";"quantile normalization";308;15515;NA;NA;248;NA
+"GSE17674-ewing-sarcoma";"bone";"GPL570";"FRMA";44;20027;32;44;NA;NA
+"GSE30929-liposarcoma";"liposarcoma";"GPL96";"FRMA";140;12714;NA;NA;NA;140
+"GSE28026-at-rt";"atypical-teratoid-rhabdoid-tumors";"GPL570";"FRMA";18;20027;17;NA;NA;NA
+"GSE14520-liver";"liver";"GPL571";"FRMA";249;12569;242;242;NA;NA
+"GSE16560-prostate";"prostate";"GPL5474";"cubic spline algorithm";281;6090;281;NA;NA;NA
+"GSE37745-nsclc";"lung";"GPL570";"FRMA";196;20184;196;NA;NA;NA
+"GSE41258-colon";"colon";"GPL96";"FRMA";182;12701;NA;NA;252;NA
+"GSE19915-GPL3883-bladder";"bladder";"GPL3883";"lowess-normalized";47;10109;NA;NA;47;NA
+"GSE19915-GPL5186-bladder";"bladder";"GPL5186";"lowess-normalized";20;14606;NA;NA;20;NA
+"GSE13041-GPL96-glioblastoma";"brain";"GPL96";"RMA";191;12496;NA;NA;191;NA
+"GSE13041-GPL8300-glioblastoma";"brain";"GPL8300";"RMA";49;8657;NA;NA;49;NA
+"GSE13041-GPL570-glioblastoma";"brain";"GPL570";"RMA";27;19851;NA;NA;27;NA
