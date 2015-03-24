@@ -10,7 +10,7 @@ cancer.\cite{grant_microarrays_2004} Genomic perturbations drive cancer
 progression by disturbing mechanisms for cell cycle control, differentiation,
 \smallcaps{dna} repair, apoptosis, tumour vascularization, and metabolism.  The
 monitoring of gene expression signatures---as surrogates of biological
-processes---in molecular profiles of cancer biopsies can be used to investigate
+processes---in molecular profiles of cancer biopsies, can be used to investigate
 how these mechanisms are impacted during cancer progression.
 
 % A common approach to investigate how these mechanisms are impacted during cancer
@@ -29,7 +29,6 @@ and interpretation of microarray data.
 \subsection{Differentiation and proliferation signatures in cancer diagnostic}
 \label{discussion-differentiation-microarrays}
 % Monday 02Mar2015
-% Hello, have a look at this nice figure (Figure~\ref{fig:diff-prolif}).
 Molecular classification of cancer is a common diagnostic problem in clinical
 oncology.\cite{golub_molecular_1999,alizadeh_distinct_2000,bullinger_use_2004}
 The problem consists in assigning tumours to known taxonomic classes based on
@@ -69,10 +68,9 @@ more resistant to technical and biological idiosyncrasies.
   \begin{center}
     % \includegraphics[width=9cm]{microarrays-economist.jpg}
     \includegraphics{proliferation-differentiation.png}
-    \caption[Differentiation proliferation in cancer]{A schematic representation
-      of the inverse relationship between tissue differentiation and
-      proliferation in cancer progression (see text for
-      details).}
+    \caption[Differentiation and proliferation in cancer]{A schematic
+      representation of the inverse relationship between tissue differentiation
+      and proliferation in cancer progression (see text for details).}
     \label{fig:diff-prolif}%
   \end{center}
 \end{marginfigure}%
@@ -142,7 +140,10 @@ organs.\cite{bodymap_2.0_2012} Compared to microarray expression profiling,
 read counts normalized by transcript length, therefore reflecting more
 accurately absolute transcription levels.\cite{wang_rna-seq:_2009} This simple
 learning algorithm yielded a list of eight thyrocyte specific genes
-(Table~\ref{tab:diff-sigs}).
+(Table~\ref{tab:diff-sigs}).\footnote{The list includes the genes
+  \smallcaps{\emph{crabp1}}, \smallcaps{\emph{foxe1}}, \smallcaps{\emph{iyd}},
+  \smallcaps{\emph{pth}}, \smallcaps{\emph{slc26a7}}, \smallcaps{\emph{tg}},
+  \smallcaps{\emph{tpo}}, and \smallcaps{\emph{tshr}}.}
 
 % four of which had previously been identified as
 % canonical thyroid genes.\footnote{The list includes the genes
@@ -206,14 +207,14 @@ A biomarker of proliferation was similarly derived from expression profiles of
 healthy tissues.  The proliferating cell nuclear antigen (\smallcaps{pcna}) is a
 cofactor of \smallcaps{dna} polymerase $\delta$ and an essential motif for cell
 replication.  A metagene, called meta-\smallcaps{pcna}, was obtained by
-selecting the 1\% genes most positively correlated with the \smallcaps{pcna}
-gene in a compendium of expression profiles of normal
-tissues.\cite{venet_most_2011} A meta-\smallcaps{pcna} index can similarly be
-derived from expression profiles of biological samples by computing the median
-expression of the genes of this proliferation biomarker.  This metagene consists
-of 129 genes featuring many significant cell-cycle related genes, like
-\smallcaps{\emph{aurka}}, \smallcaps{\emph{mki67}}, \smallcaps{\emph{top2a}}, or
-\smallcaps{\emph{mcm2}}.
+selecting the 1\% genes most positively correlated with the
+\smallcaps{\emph{pcna}} gene in a compendium of expression profiles of normal
+tissues.\cite{venet_most_2011} This metagene consists of 129 genes featuring
+many significant cell-cycle related genes, like \smallcaps{\emph{aurka}},
+\smallcaps{\emph{mki67}}, \smallcaps{\emph{top2a}}, or \smallcaps{\emph{mcm2}}.
+A meta-\smallcaps{pcna} index can similarly be derived from expression profiles
+of biological samples by computing the median expression of the genes of this
+proliferation biomarker.
 
 % We then tested the expression of these two biomarkers in three datasets of
 % normal and neoplastic thyroid expression profiles.  The first, hybridized on an
@@ -288,7 +289,7 @@ methodology can however be hindered by a number of
 issues.\cite{brenton_molecular_2005} The classifier may reflect the inherent
 technical and biological biases specific to the training set, rather than
 capturing the modulations underpinning class specification---the model is then
-said to ``overfit'' the training set.  Moreover, even when models are trained in
+said to overfit the training set.  Moreover, even when models are trained in
 large enough datasets and proper care is taken to ensure independent validation,
 the unstable nature of cancer genomes may itself obscure class-specific
 biological signals by adding random variance to expression measurements.
@@ -296,20 +297,21 @@ biological signals by adding random variance to expression measurements.
 Here, we investigate the possibility of enlisting another classifier, external
 to cancer biology, to address the problem of thyrocyte-derived tumour class
 prediction.  By identifying genes whose expression rank highly exclusively in
-thyroid samples, we defined a molecular differentiation marker that takes no
-\emph{a priori} concerning the biology of the thyrocyte.  Unsurprisingly, this
-marker contains important genes in thyroid physiology, including genes coding
-for: thyroglobulin (a dimeric protein used to produce thyroid hormone); thyroid
-peroxidase (a membrane-bound glycoprotein that takes part in the iodination of
-the precursors of thyroid hormone); iodotyrosine deiodinase (an enzyme that
-facilitates the iodide salvage post-thyroid hormone synthesis); the thyrotropin
-receptor (a receptor activated by \smallcaps{tsh}); and the \smallcaps{ttf2}
-transcription factor (active in the developing thyroid, with a role in
-controlling the onset of its differentiation\cite{zannini_ttf-2_1997}).  The
-signature also comprises genes coding for the parathyroid hormone (parathyroid
-cells were likely to be present in the resected profiled biopsies); cellular
-retinoic acid binding protein 1 and a member of the solute carrier family 26
-(both proteins for which no known role in thyroid has been identified to date).
+thyroid compared to other tissues, we defined a molecular differentiation marker
+that takes no \emph{a priori} concerning the biology of the thyrocyte.
+Unsurprisingly, this marker contains important genes in thyroid physiology,
+including genes coding for: thyroglobulin (a dimeric protein used to produce
+thyroid hormone); thyroid peroxidase (a membrane-bound glycoprotein that takes
+part in the iodination of the precursors of thyroid hormone); iodotyrosine
+deiodinase (an enzyme that facilitates the iodide salvage post-thyroid hormone
+synthesis); the thyrotropin receptor (a receptor activated by \smallcaps{tsh});
+and the \smallcaps{ttf2} transcription factor (active in the developing thyroid,
+with a role in controlling the onset of its
+differentiation\cite{zannini_ttf-2_1997}).  The signature also comprises genes
+coding for the parathyroid hormone (parathyroid cells were likely to be present
+in the resected profiled biopsies); cellular retinoic acid binding protein 1 and
+a member of the solute carrier family 26 (both proteins for which no known role
+in thyroid has been identified to date).
 
 Noticeably, in diagnostic immunochemistry, antigens for thyroglobulin and
 thyroid peroxidase are already routinely used to provide a quantitative
@@ -320,6 +322,9 @@ classifier to accurately disentangle two challenging pathological diagnoses,
 \mbox{\smallcaps{fta} \emph{vs} \smallcaps{ftc}} and \mbox{\smallcaps{fvptc}
   \emph{vs} \smallcaps{cptc}}, based on their expression profiles
 (\mbox{\emph{cf.}  Figure~4\emph{a},\emph{d}} of the article in the
+\hyperref[chap:results]{\textsf{Results}} chapter).  The \emph{t-index} can also
+be used to chart a linear progression between thyroid neoplasias of increasing
+malignancy (\mbox{\emph{cf.}  Figure~2\emph{a},\emph{b}} of the article in the
 \hyperref[chap:results]{\textsf{Results}} chapter).  Papillary and follicular
 carcinomas, the two main taxonomic classes of thyroid tumours, are shown to
 depart from thyrocytes along two distinct axes of gene expression
@@ -381,17 +386,17 @@ Our methodology is not without shortcomings.  Not all genes in the thyroid
 differentiation signature are pertinent to the class prediction problem.  For
 instance, the expression of the \smallcaps{tsh} receptor gene is usually
 preserved during cancer progression,\cite{dagostino_different_2014} and the
-expression of the parathyroid hormone gene is irrelevant to the thyrocyte
-biology.  More sophisticated learning methods, along with more stringent methods
-of cell type selection, might help to alleviate these imprecisions.
-Additionally, for each of the undertaken classification tasks, we do not provide
-a proper cut-off point to translate the quantitative predictive \emph{t-index}
-into a predicted class label.  This is because our experimental setting did not
-include a sufficient number of samples of each class to estimate a sensible
-cut-off point for the classifier.  In both cases, the accuracy of the classifier
-was estimated by stipulating all possible cut-off points and computing the
-respective area under the \smallcaps{roc} curve (\mbox{\emph{cf.}
-  Figure~4\emph{b},\emph{e}} of the article in the
+expression of the parathyroid hormone gene is irrelevant to the thyrocyte's
+biology.  More sophisticated learning methods, along with more stringent
+techniques of cell type isolation prior to profiling, might help to alleviate
+these imprecisions.  Additionally, for each of the undertaken classification
+tasks, we do not provide a proper cut-off point to translate the quantitative
+predictive \emph{t-index} into a predicted class label.  This is because our
+experimental setting did not include a sufficient number of samples of each
+class to estimate a sensible cut-off point for the classifier.  In both cases,
+the accuracy of the classifier was estimated by stipulating all possible cut-off
+points and computing the respective area under the \smallcaps{roc} curve
+(\mbox{\emph{cf.}  Figure~4\emph{b},\emph{e}} of the article in the
 \hyperref[chap:results]{\textsf{Results}} chapter).
 
 Still, when addressing tumour class prediction, classifiers based on
@@ -403,24 +408,496 @@ to assist diagnostic tasks in cancer oncology remains to be fully explored.
 % is marked by the incremental shedding of functional
 % features specifying cell differentiation.  It raises the intriguing possibility
 
-\bigskip
-
-% \lipsum
-
-\clearpage
-
 \subsection{The extent of prognostic signals in the cancer transcriptomes}
 \label{sec:discussion-prognostic-microarrays}
 % Tuesday 03Mar2015
 
-Another eminent question in clinical oncology is disease outcome prediction.
+\begin{marginfigure}%
+  \includegraphics{nem-vandevijver-2002-fig2ab.pdf}
+  \caption[Validation of a genomic marker's predictive ability]{Validation of a
+    genomic marker's predictive ability.  A predictive 70-gene signature was
+    derived from a prospective cohort of 98 expression profiles of breast cancer
+    with known survival times (\citealp{vant_veer_gene_2002}).  This
+    prognosis-classifier was subsequently used to segregate good and bad
+    prognosis groups in an independent cohort of 295 breast
+    carcinomas. Differential outcome between each group, regarding likelihood of
+    developing metastasis (panel \textbf{A}), or likelihood of dying (panel
+    \textbf{B}), was then established with Kaplan-Meier analysis
+    (\citealp{van_de_vijver_gene-expression_2002}).}
+  \label{fig:validation-prognosis-km}%
+\end{marginfigure}
 
-Gene expression profiling has identified cancer prognostic and predictive
-signatures with superior performance to conventional histopathological or
-clinical parameters (pls-sole-2009).
+Disease outcome prediction is another important challenge in clinical
+oncology.\cite{van_de_vijver_gene-expression_2002,vasselli_predicting_2003,sanchez-carbayo_defining_2006}
+The problem consists in uncovering biomarkers whose expression in cancer
+biopsies have a predictive ability regarding disease outcome.  It can also be
+conceived as a supervised learning prediction task, with a similar strategy to
+the class prediction problem.  A molecular classifier is derived from a training
+set of samples with distinct survival times with respect to a clinical event;
+its predictive ability is then validated with survival analysis on an
+independent set of samples with associated clinical follow-up data
+(Figure~\ref{fig:validation-prognosis-km}).
 
-\subsection{Microarray data interpretation and analysis}
-\label{sec:discussion-interpretation-microarrays}
+This methodology has identified cancer prognostic and predictive signatures with
+superior performance to conventional histopathological or clinical
+parameters.\cite{sole_biological_2009} Additionally, it offers a framework to
+test for the implication of particular biological processes in cancer
+progression, through the quantification of the association of their surrogate
+transcriptional markers with clinical outcome.\cite{chang_gene_2004} This
+formulation assumes that the expression patterns prompting cancer progression
+are universal motifs, yet specific enough to be modeled by biologically
+motivated molecular markers.
+
+We sought to test this assumption by characterizing the range and the nature of
+prognostic transcriptional signals in a representative selection of human cancer
+expression profiles.  In order to do so, we compiled 114 expression profile
+studies of cancers afflicting 19 organ systems (Table~\ref{tab:cancer-tissues}),
+with clinical follow-up data.  The transcriptomes of these nearly \num{22000}
+neoplastic samples were profiled with over 30 different commercial and custom
+microarray platforms (Table~\ref{tab:datasets}).
+
+\begin{table}[ht]
+  \small
+  \centering
+  % \fontfamily{ppl}\selectfont
+  % \newcolumntype{d}[1]{D{.}{\cdot}{#1}}
+  \begin{tabular}{lD{.}{.}{-1}}
+    \toprule
+    \multicolumn{1}{c}{Tissue of origin}   & \multicolumn{1}{c}{Number of cancer studies} \\
+    \midrule
+    breast                                 & 33                                           \\
+    blood cells                            & 12                                           \\
+    central nervous system                 & 11                                           \\
+    colon                                  & 9                                            \\
+    lung                                   & 8                                            \\
+    ovary                                  & 8                                            \\
+    bladder                                & 6                                            \\
+    lymphatic system                       & 5                                            \\
+    kidney                                 & 3                                            \\
+    liver                                  & 3                                            \\
+    prostate                               & 3                                            \\
+    uterus                                 & 3                                            \\
+    bone                                   & 2                                            \\
+    % cervix                               & 2                                            \\
+    squamous cells (mouth, nose or throat) & 2                                            \\
+    skin                                   & 2                                            \\
+    adipocytes                             & 1                                            \\
+    pancreas                               & 1                                            \\
+    stomach                                & 1                                            \\
+    thyroid                                & 1                                            \\
+    \bottomrule
+  \end{tabular}
+  \caption[Distribution of tissues of origin in the cancers studies probed for
+  prognostic signals]{Nearly \num{22000} expression profiles of cancer
+    biopsies, across 114 studies, were compiled from the
+    public domain to quantify the extent of prognostic signals in cancer
+    transcriptomes.  Among these, experiments profiling breast tumours, with 33
+    studies, were the most represented. This reflects the prevalence of breast
+    cancer in the population (Figure~\ref{fig:globocan}), and its pivotal
+    role as the original model for genomic outcome prediction analyses.  Next, in terms
+    of representation, are studies profiling cancers originating from the
+    hematopoietic lineage (12) and central nervous system (11)---perhaps a
+    reflex of the ability to isolate relatively uncontaminated populations of tumoural cells from
+    these cancer types---, followed by colon (9) and lung (8)---two of the most prevalent cancers
+    worldwide.  See Table~\ref{tab:datasets} for a thorough description of each dataset used in
+    this meta-analysis.}
+  \label{tab:cancer-tissues}
+\end{table}
+
+To gauge the extent of prognostic signals in each of these datasets, we tested
+association with outcome of each of the 4722 biologically motivated gene
+expression signatures in the \smallcaps{c2} collection of the Molecular
+Signatures Database (MSigDB \smallcaps{c2}), curated by the Broad Institute.
+This collection includes gene sets collected from various sources such as online
+pathway databases, publications in PubMed, and knowledge of domain experts.
+
+Estimating association between a genomic marker and clinical outcome requires
+the formulation of an outcome predictor from multi-gene values of expression.
+Traditionally, this is achieved by a function that stratifies the cohort in good
+and bad prognosis groups according to a cut-off point for the expression of the
+gene classifier (Figure~\ref{fig:validation-prognosis-km}).  Instead, we chose
+to formulate association with outcome by modeling survival time as a function of
+the first principal component of each expression signature.  The logrank
+\mbox{\emph{p-}value} of the corresponding Cox proportional model was used to
+assert the prognostic value of the biomarker.
+
+% \begin{table}[ht]
+%   \small
+%   \centering
+%   % \fontfamily{ppl}\selectfont
+%   % \newcolumntype{d}[1]{D{.}{\cdot}{#1}}
+%   \begin{tabular}{lD{.}{.}{-1}}
+%     \toprule
+%     \multicolumn{1}{c}{Gene Ontology Biological Process term}                                     & \multicolumn{1}{c}{Frequency} \\
+%     \midrule
+%     innate immune response                                                                        & 39                            \\
+%     neurotrophin \smallcaps{trk} receptor signaling pathway                                       & 33                            \\
+%     positive regulation of transcription from \smallcapse{rna} polymerase \smallcaps{ii} promoter & 33                            \\
+%     blood coagulation                                                                             & 32                            \\
+%     negative regulation of apoptotic process                                                      & 31                            \\
+%     Fc-epsilon receptor signaling pathway                                                         & 29                            \\
+%     apoptotic process                                                                             & 27                            \\
+%     epidermal growth factor receptor signaling pathway                                            & 27                            \\
+%     fibroblast growth factor receptor signaling pathway                                           & 26                            \\
+%     platelet activation                                                                           & 25                            \\
+%     positive regulation of apoptotic process                                                      & 24                            \\
+%     response to drug                                                                              & 24                            \\
+%     mitotic cell cycle                                                                            & 21                            \\
+%     viral process                                                                                 & 21                            \\
+%     axon guidance                                                                                 & 19                            \\
+%     Ras protein signal transduction                                                               & 18                            \\
+%     negative regulation of cell proliferation                                                     & 18                            \\
+%     negative regulation of transcription from \smallcaps{rna} polymerase \smallcaps{ii} promoter  & 18                            \\
+%     positive regulation of cell proliferation                                                     & 18                            \\
+%     signal transduction                                                                           & 18                            \\
+%     \smallcaps{g1}/\smallcaps{s} transition of mitotic cell cycle                                 & 17                            \\
+%     insulin receptor signaling pathway                                                            & 17                            \\
+%     leukocyte migration                                                                           & 16                            \\
+%     positive regulation of transcription, \smallcaps{dna}-templated                               & 16                            \\
+%     protein phosphorylation                                                                       & 16                            \\
+%     \bottomrule
+%   \end{tabular}
+%   \caption[Frequency of most represented \smallcaps{go} Biological Process terms
+%   among the genes of 4722 gene sets of MSigDB \smallcaps{c2}]{Frequency of most
+%     represented \smallcaps{go} Biological Process terms among the genes of 4722 gene sets of MSigDB \smallcaps{c2}.}
+%   \label{tab:go-msigdb}
+% \end{table}
+
+To control for an over-representation of cancer-related themes within the
+\mbox{MSigDB \smallcaps{c2}} collection, we replicated the analysis with a
+synthetic collection of signatures of the same size, but made up of genes
+randomly selected from the human genome.  Finally, we tested association of
+single features in every dataset with outcome, by modeling survival times as a
+function of individual vectors of expression in the expression matrices.
+
+Figure~\ref{fig:prognostic-fraction} reports the proportion of tested
+\mbox{MSigDB \smallcaps{c2}} signatures, randomized signatures, and single
+features found associated with outcome in each dataset at a logrank $p<0.05$.
+These quantities capture the fraction of each transcriptome bearing information
+regarding differential patient survival.  From the statistical point of view,
+they can be interpreted as likelihoods of finding a significant genomic
+association with outcome by chance alone.  We thus refer to these estimates as
+the baseline prognostic content\footnote{Prognostic content will henceforth
+  refer to the fraction of tested markers found associated with outcome in a
+  given dataset.} of cancer transcriptomes.
+
+Critically, in 100 of the 114 datasets analyzed (88\%), more than five percent
+of single-gene markers show a significant association with outcome.  When
+considering multi-gene markers, up to 87 datasets (76\%) registered more than
+five percent of random signatures associated with outcome.  Overall, the median
+prognostic content across all studies for single-gene markers and random
+multi-gene markers was, respectively, 12\% and 16\%.  These observations suggest
+that, in most cancer transcriptomes, prognostic signals are disseminated
+throughout a nontrivial fraction of their expression features; that the
+likelihood of finding random associations with outcome is globally
+non-negligible; and that the nature of prognostic signals is not
+marker-specific.
+
+We investigated the possibility of these estimates being the result of biased
+survival time constructs.  To do so, we measured the prognostic content captured
+by single-gene markers in the thirteen breast cancer datasets with overall
+survival data available in our study
+(Figure~\ref{fig:distribution-survival-times}), for \num{100} iterations each of
+the respective randomized survival objects.  In ten out of the thirteen breast
+datasets thusly tested, the actual observed prognostic content was beyond the
+95\textsuperscript{th} quantile of the null distribution generated with
+randomized survival objects (Figure~\ref{fig:null-breast-os}).  Furthermore, in
+all but one of the datasets (\smallcaps{GSE9893}), the median of the null
+distributions did not depart remarkably from the five percent stipulated
+significance level.  This result suggests that the transcriptomic prognostic
+signals quantified in this meta-analysis are conducive of actual biological cues
+regarding the prospective malignancy of the profiled cancers.
+
+A compelling result of this analysis is the considerable heterogeneity of
+prognostic fractions observed across surveyed cohorts
+(Figure~\ref{fig:prognostic-fraction}).  This observation is not
+cancer-specific.  Among breast cancers, for instance, single-marker prognostic
+content alone ranged from 4\% to 60\%.  To examine the contributions of
+potential biological and demographic dataset-specific factors to this effect, we
+quantified single-marker prognostic fraction for re-samplings of the \num{1972}
+transcriptomes of the two \smallcaps{metabric} breast cancer cohorts, regarding
+modulations of four variables: sample size, duration of follow-up time, fraction
+of \smallcaps{er}+ patients, and fraction of node positive patients
+(Figure~\ref{fig:bootstrap-metabric}).
+
+The estimates of prognostic content are markedly sensitive to sampling variance,
+as suggested by the dispersal of the distribution of estimates (confidence
+interval: 12\% to 23\%), when \num{100} samplings of \num{500} random
+transcriptomes were examined for the fraction of genes associated with outcome
+(Figure~\ref{fig:bootstrap-metabric}\emph{a}).  This feature alone is likely to
+yield a significant contribution to the range of estimates computed in our
+meta-analysis, as 108 of the 114 datasets analyzed included less than \num{500}
+profiled tumours.  Moreover, the sensitivity of our estimation procedure is, as
+expected, largely dependent on the number of profiles included in the analysis,
+as shown by a bootstrapping experiment of sample sizes towards the assessment of
+the prognostic fraction (Figure~\ref{fig:bootstrap-metabric}\emph{b}).
+Provocatively, the estimates of prognostic content do not appear to level off
+even when the experimental sample size reached \num{1750}---by far the largest
+in the field.  A sampling experiment of sequential truncation of follow-up times
+was equally shown to impact estimates of prognostic content
+(Figure~\ref{fig:bootstrap-metabric}\emph{c}).  Sharply increasing predictive
+fractions were observed up to the fifth year of follow-up, followed by a gradual
+decrease of the estimates for higher follow-up times.  This trend suggests that,
+in breast cancers, prognostic patterns of expression are optimally correlated
+with short-term forms of progression of the disease, and that long-term forms of
+progression are less efficiently predicted from primary tumour transcriptomes.
+The modulation of the fraction of \smallcaps{er}+ transcriptomes towards
+experimental samplings of our estimate has exposed a tendency congruent with the
+clinical relevance of this receptor in breast cancer pathology
+(Figure~\ref{fig:bootstrap-metabric}\emph{d}).  Thus, an increase of
+\smallcaps{er}+ profiles to up to 50\% in our samplings leads to a corresponding
+linear rise in estimates of prognostic content, at which point a further
+increase in the proportion of \smallcaps{er}+ profiles yields little impact on
+fraction estimates.  This observation is in line with the fact that the
+predictive power of most signatures in breast cancer is mostly confined to
+\smallcaps{er}+ phenotypes.\cite{weigelt_challenges_2012} Finally, a sampling
+experiment with dosed fractions of profiles from node positive patients
+(Figure~\ref{fig:bootstrap-metabric}\emph{e}), has also uncovered a pattern of
+prognostic fraction estimates that can be largely explained by the fact that
+nodal status is clinically correlated to \smallcaps{er} status in breast cancer.
+
+\medskip
+
+A large number of studies has interpreted the statistical association of
+transcriptional markers with clinical outcomes as evidence that their underlying
+biological mechanisms are involved in cancer progression.  This approach has
+gained widespread appeal because of the increasing availability in the public
+domain of expression profiles of cancer biopsies with associated survival data;
+and because it obviates the need for time-consuming and costly experimental
+setups on \emph{in vivo} models.
+
+In order for a molecular marker to be recognized as a prognostic factor, it has
+to meet three successive criteria: its \emph{specific} association with clinical
+outcomes has to be asserted; its prognostic performance and accuracy has to be
+validated in an independent group of patients; and the independence of its
+prognostic value from other potential factors has to be established with a
+multivariate analysis.\cite{chibon_cancer_2013}
+
+The assumption that prognostic signatures reported in the literature are
+specific conveyors of biological signals pertaining to cancer progression was
+previously challenged by our research group and
+others.\cite{venet_most_2011,lauss_prediction_2010,ein-dor_outcome_2005,mosley_cell_2008}
+For instance, Venet et al.\ have shown that, in two reference breast cancer
+cohorts, most published signatures are significantly prognostic, yet no more
+prognostic than random sets of genes.\cite{venet_most_2011}
+% Here, we present an experimental design aiming at quantifying and characterizing
+% the pervasiveness of prognostic signals in human cancer transcriptomes.
+Here, we provide a global assessment of the pervasiveness of prognostic signals
+in human cancer transcriptomes.
+
+The chief observation issued from our analysis is the wide heterogeneity of
+prognostic contents measured across the examined cancer cohorts.  When estimated
+by the fraction of single gene-markers associated with outcome, our assessment
+of transcriptomic prognostic content ranged from 2\% to 60\%; whereas a fraction
+of 4722 random multi-gene markers ranging from 0.1\% to 94\% was shown to
+inform patient differential survival across investigated datasets.
+Interestingly, in most datasets, the fraction of randomized signatures
+associated with outcome was only marginally inferior to the fraction of
+biologically motivated prognostic MSigDB~\smallcaps{c2} signatures (median
+difference: 2\%; maximum difference: 17\%).  In 37 out of the 114 analysed
+datasets, the fraction of prognostic random signatures was higher than the
+fraction of biologically motivated ones.
+
+We have shown that this heterogeneity is not the result of biased survival times
+constructs---the dependent variables of our fitted models.  Our estimate of
+prognostic content is, however, notoriously sensitive to sampling variance, an
+observation consistent with previous reports.\cite{ein-dor_outcome_2005} This
+variance may be accounted for in part by a range of dataset-specific demographic
+factors---such as duration of follow-up times or cohort size---, as well as by
+cancer-specific biological covariates.  Furthermore, in at least one dataset
+(\smallcaps{GSE9893}, single-gene marker prognostic content: 60\%), we have
+identified a critical normalization artifact responsible for an artificial
+over-estimation of the prognostic fraction.  Upon re-normalization of the
+original arrays, we have re-evaluated our estimate of prognostic content down to
+19\%; conversely, a metric of signal-to-noise ratio,\cite{venet_measure_2012}
+surged from 15\% to 34\% (a score now within the inter-quartile range of the 114
+datasets analysed).  This precedent suggests that artefactual spurious
+correlations in expression matrices may account for significant portions of
+prognostic content in our observations.
+
+The scope of this analysis remains strictly epistemological.  While we have
+observed that, in the thirteen breast cancer datasets with \smallcaps{os}
+survival data, the single-features with highest scores of association with
+\smallcaps{os} are largely overlapping (excluding \smallcaps{GSE9893}), the
+validation of cancer-specific, biologically pertinent molecular markers from
+microarray data is still a delicate task.  In any event, a more stringent
+formulation of experimental controls is essential to the validation of the
+predictive ability of biologically motivated
+biomarkers.\cite{beck_significance_2013} Feature transformation techniques might
+further be required to address spurious structures of correlation and assist to
+the dissection of additional biological components in genomic prognostic
+signals.
+
+Taken together, these observations attest for the pan-transcriptomic nature of
+prognostic signals in cancer expression profiles---as quantified by association
+with outcome of single- and multi-gene markers with a Cox proportional hazards
+model, at logrank $p<0.05$.  This illation is not cancer- or platform-specific;
+therefore, transcriptomic prognostic signals cannot be convened to infer
+specific biological mechanisms driving cancer progression.  While these
+prognostic signals remain independent, and thus complementary, to
+clinicopathological parameters, their ubiquity explains why many different
+studies have reported incongruent outcome-specific predictive
+signatures.\cite{gevaert_prediction_2009,chibon_cancer_2013} In addition, the
+landscape of prognostic signals uncovered by our analysis may account for the
+complexity of some challenges in clinical oncology---including the difficulty in
+finding stable molecular predictors of response to specific systemic treatments
+in breast cancer, for instance.\cite{reis-filho_gene_2011} We envisage the
+phenomena here reported to be of significance for the interpretation of global
+expression patterns of neoplastic samples; and to have a bearing in the
+development of next generation genomic predictors.
+
+% challenging the hypothesis that prognostic signatures reported in the literature
+% are specific conveyors of biological signals pertaining to cancer progression.
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Discussion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Overall, the manner these re-sampling experiments impact the fluctuating of
+% prognostic fractions in a reference breast cancer cohort is not surprising,
+% and speaks for the nature
+
+% Re-sampling strategy
+
+% To discuss:
+% -heterogeneity
+% -preditor (single-genes, multi-gene markers)
+% -predicted variable (survival times)
+% -methodology employed to estimate outcome
+% -GSE9893 (data not shown)
+
+% Essentially, our analysis provides the clues to two interpret two
+% puzzling/pressing questions regarding the survival outcome literature: why so
+% many distinct signatures are associated with outcome in different platforms
+% and why genomic analysis cannot provide a unique biomarker of response to
+% treatment.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thousands of studies have interpreted the correlation with cancer outcome of a
+% transcriptional marker associated with a biological process as suggestive that
+% this process contributes to cancer progression. This interpretation assumes
+% that the correlation of the marker is specific, i.e. does not apply to all
+% markers, a possibility uncontrolled for in most studies. Here we perform this
+% control by quantifying the probability that random single-genes and
+% multi-genes markers are prognostic in 114 datasets spanning human cancers
+% afflicting 22 organ systems. We found that >5\% of the single- and multi-genes
+% markers are associated with outcome at p<0.05 (log-rank test) in 73 and 83 of
+% the datasets, respectively. Demographics, but also technical details of the
+% studies and sampling effects modulate the probability of observing an
+% association by chance. Thus, no biological conclusion can be drawn from the
+% association at p<0.05 of a marker with cancer outcome.
+
+% The vast majority of mechanistic cancer studies are performed in animals and/or
+% in vitro for ethical reasons. Proving that a mechanism dissected in these
+% experimental systems contributes to cancer progression in human requires
+% clinical trails, which are costly and take years to perform. Therefore,
+% researchers have relied on weaker correlative evidence to back the relevance of
+% their findings to human diseases. One such evidence is the statistically
+% significant association of a molecular maker of the mechanism under
+% investigation with disease outcome in human. It can be established with
+% non-interventional clinical studies. It has been extensively used in the past
+% decades and has gained more popularity recently with the availability of web
+% servers1–3providing, for free, association statistics for any single- or
+% multi-gene markers and cancer outcome on the basis of published cancer
+% transcriptome databases.
+
+% To have any value, however, the reported association must be specific of the
+% marker at hand and not reflect a global property of the transcriptome. Most
+% studies estimate the association with a Cox analysis and a log-rank test and
+% display it with a Kaplan-Meier curve. None of these controls for the possibility
+% that a large fraction of transcriptome could be associated outcome and that
+% therefore the prognostic effect is non-specific. Disturbingly, this possibility
+% has been proven true in bladder4 and breast5–7 cancers. In particular,
+% we have shown7 that more than half of the transcriptome is correlated with
+% proliferation in two breast cancer cohorts and that 1 in 4 single gene and 9 in
+% 10 random signatures of >100 genes were associated with overall survival at
+% p<0.05. As a consequence, most published signatures were found to be
+% significantly prognostic, but not more prognostic than random sets of genes.
+
+% To investigate whether the pervasive association of the transcriptome with
+% outcome extends to other cohorts and other types of cancers we compiled 114
+% published gene-expression datasets with patient follow-up from the GEO8 and
+% InSilicoDB9 databases. These included human cancers from 22 organ systems,
+% and a wide range of transcriptomic platforms (Fig. 1; Supplementary Table
+% S1). We computed for each dataset the fraction of genes associated with outcome
+% at log-rank p<0.05 (Fig. 1, Supplementary Methods). This quantity may be viewed
+% as the probability of observing a significantly prognostic single gene marker by
+% chance alone. The median fraction was 9\%. It was higher than 5\% for 95 (83\%)
+% datasets. To take an extreme example, an investigator measuring the association
+% of a gene with outcome in the KIRC datasets (kidney cancer) has a 50\% chance to
+% obtain a positive result, i.e. a value far above the canonical 5\% significance
+% threshold. To investigate recent multi-gene approaches, we ran a similar
+% calculation for 4722 signatures of the MSigDB database10 (Fig. 1; details in
+% Supplementary Methods). The prognostic fraction was larger for signatures than
+% for single genes, with a median of 12\%. It was larger than 5\% for 74\% of the
+% datasets, larger that 20\% for 41 (36\%) and larger that 50\% for 13 (11\%). To
+% control for possible bias of MSigDB toward oncology-related signatures, we reran
+% the exact same calculation, but replacing each signature by a similarly sized
+% set of randomly selected genes. The overall qualitative result is unaltered
+% (Fig. 1).
+
+% Intriguingly, the prognostic transcriptome fraction was extremely
+% heterogeneous within datasets related to the same organ system. For example,
+% it ranged from 4 to 37\% among the breast cancer datasets. To probe the
+% contributions of the dataset’s technical and demographic specifics to this
+% variability, we reran the single-gene analysis on subsets of the 1972
+% transcriptome profiles available from the METABRIC11 study. First,
+% repeated random selection of profiles reveals that sampling effects are
+% substantial (prognostic fraction CI=6-17\%) with 500 patients (Fig. 2A), a
+% size in par with the largest studies. Second, the prognostic fraction, as
+% expected, depends on sample size (Fig. 2B). Interestingly, it shows no sign of
+% inflection as N reaches 1750, by far the largest sample size in the
+% field. Third, we investigated the impact of follow-up time by artificially
+% truncating follow-up data (Fig. 2C; Supplementary Methods). Shorter and longer
+% maximum follow-up times yielded lower prognostic fractions, consistent with
+% the fact that incomplete data, but also late events12, are not predictable
+% from primary tumor transcriptomes. Fourth, increasing the fraction of ER+
+% patients up to 50\% increases the prognostic fraction, but has no effect
+% beyond 50\% (Fig. 2D). This is compatible with the notion that transcriptional
+% marker are more prognostic within the ER+ group and that the ER+ patients
+% have, on average, a better prognostic than ER- patients.13 Fifth,
+% increasing the fraction of node positive patients, which is correlated with ER
+% status, also increases the prognostic fraction (Fig. 2E). Sixth, lower
+% cellularity is unexpectedly associated with a higher prognostic fraction
+% (Fig. 2F). This may reflect the role of the microenvironment in breast cancer
+% progression and the massive impact of cell types proportions on the
+% transcriptomes of bulk tissues.14 Finally, unique dataset-specific
+% processing details also play a role. For example, dataset GSE9893 has one of
+% the highest prognostic fractions (Fig. 1), but surprisingly its
+% signal-to-noise metrics15 is very low (Supplementary Fig. S1). Examination
+% of the data reveals that normalization was performed in two batches and
+% induced massive spurious correlations between expression and outcome
+% (Supplementary Fig. S1). Accordingly, a proper single-batch normalization of
+% the raw expression data restores the signal-to-noise metrics to normal and
+% decreases the prognostic fraction from 59\% to 19\% (Supplementary Fig. S1).
+
+% We have shown the fraction of prognostic single- and multi-gene markers is
+% greater that 5\% in the vast majority of the datasets. Furthermore, the
+% probability of a significant single- or multi-genes marker association with
+% outcome depends on cohort’s demographics, but also to a large extent on
+% technical factors that include sampling effects, cohort size, patient
+% follow-up protocols, cellularity standards, protocol randomization and
+% possibly other factors not addressed here. These findings call for the
+% reappraisal of previous study resting on the associations of markers with
+% outcome to support relevance to human cancer, including low-throughput
+% PCR-based studies. They also call for study-specific controls akin to those
+% presented Fig. 1 in future studies.
+
+% A marker does not need to convey interesting biological information
+% research-wise in order to be useful in the clinic. Therefore, our results have
+% no bearing on the clinical utility of published marker associations.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+
+% \subsection{Microarray data interpretation and analysis}
+% \label{sec:discussion-interpretation-microarrays}
 % Wednesday 04Mar2015
 
 % End up with a wink to underlying models for cancer progression.  In other
