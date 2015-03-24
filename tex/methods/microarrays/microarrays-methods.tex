@@ -363,38 +363,242 @@ project.\cite{gentleman_bioconductor:_2004}
 This section will proceed with a brief overview of tools for visualization of
 genomic data, namely heatmaps and multidimensional scaling.  It will then
 discuss the unsupervised learning tools used in this work, including principal
-component analysis, clustering analysis and a summary on machine learning
-algorithms.  Next, it will cover tools to evaluate the performance of
-classifiers, including \smallcaps{roc} curves (for binary classifiers) and
-\smallcaps{gsea} (an algorithm that uses microarray data to determine whether a
-gene expression classifier is statistically associated with any of two
-phenotypic classes of biological samples).  Finally, it will detail survival
-analysis, the branch of supervised learning that seeks to explain the
-relationship between a number of measured features (gene expression data) and
-the time duration until the occurrence of a particular event (survival outcome).
+component analysis, cluster analysis and a summary on machine learning
+algorithms.  Next, it will cover \smallcaps{roc} curves, a tool to evaluate the
+performance of classifiers.
+% , including \smallcaps{roc} curves (for binary classifiers) and
+% \smallcaps{gsea} (an algorithm that uses microarray data to determine whether
+% a gene expression classifier is statistically associated with any of two
+% phenotypic classes of biological samples).
+Finally, it will detail survival analysis, the branch of supervised learning
+that seeks to explain the relationship between a number of measured features
+(gene expression data) and the time duration until the occurrence of a
+particular event (survival outcome).
 
 \subsection{Visualization techniques}
 \label{sec:methods-visualization}
 % 02Mar2015
+\begin{marginfigure}%
+    \includegraphics{heatmap.png}
+    \caption[Example of a heatmap]{Example of a heatmap generated from an
+      expression matrix, $X_{n \times p}$, issued from a \smallcaps{dna}
+      microarray experiment.  The expression of a selection of features
+      (columns) is shown for all the profiled samples in the experiment (rows).
+      The traditional colour coding scheme ranges from bright green to bright
+      red, for features highly expressed or repressed between conditions (or
+      regarding a control sample, in double channel arrays), respectively.
+      Features coded in darker shades are not differentially expressed between
+      conditions.  Features and samples are hierarchically clustered in
+      dendrograms, to reflect gene co-expression motifs and related expression
+      patterns between samples.}
+    \label{fig:heatmap}%
+\end{marginfigure}
+
+The heatmap is the most recognizable visual representation of microarray
+expression matrices (Figure~\ref{fig:heatmap}).  It translates the $\log_2$
+values of expression into a colour-coding scheme that seeks to convey the
+phenotype-specific transcription patterns of the profiled samples.  Because of
+the high dimensionality of microarray data, and of the nuanced nature of
+transcription profiles, methods of feature selection are routinely used to
+narrow down the choice of genes represented in heatmaps.  The result is a direct
+visual representation of the expression matrix, highlighting a subset of genes
+that maximize the contrast between sampled phenotypes or conditions.
+
+% Heatmaps typically only show the subset of the feature space (narrowed down by
+% feature selection) that maximizes the contrast between sampled phenotypes or
+% conditions.
+
+\begin{marginfigure}%
+    \includegraphics{mds-15Mar2015.pdf}
+    \caption[Example of a multidimesional scaling]{Example of a multidimensional
+      scaling (\smallcaps{mds}) based on a distance matrix of road distances, in
+      km, between 16 European cities.  In this representation, the data
+      transformation involves the projection of uni-dimensional variables into a
+      two-dimensional space.  In microarray data analysis, \smallcaps{mds}
+      transformation requires optimally solving the projection of the high
+      dimensional expression space into a plane, so that the between-sample
+      distances are best exposed (see text for details).}
+    \label{fig:mds}%
+\end{marginfigure}
+
+More sophisticated techniques of visualization may require a degree of data
+transformation.  Such is the case of multidimensional scaling (\smallcaps{mds}),
+a visualization technique that seeks to project the $n$-dimensional feature
+space of a collection of samples into a two-dimensional space, in such a way
+that the similarities between samples are preserved as best as possible
+(Figure~\ref{fig:mds}).  The implementation of the \smallcaps{mds} algorithm
+used in this dissertation, known as non-metric multidimensional scaling,
+requires finding the optimal coordinate matrix whose configuration minimizes a
+loss function called \emph{stress}, based on a dissimilarity matrix derived from
+the gene expression space.\cite{borg_modern_2005}
 
 \subsection{Principal component analysis}
 \label{sec:methods-pc}
 % 03Mar2015
+Principal component analysis, or \smallcaps{pca}, is an unsupervised technique
+of feature transformation, whose purpose is to reduce the dimensionality of a
+dataset to a few, interpretable, and linear combinations of
+variables.\cite{pearson_liii._1901} It proceeds by identifying orthogonal
+directions, termed principal components, along which the variation of the data
+is maximal.  Principal components are uncorrelated meta-variables, each
+explaining a decreasing fraction of the partitioned variation within the
+original data.  Similarities and differences between samples are thus best
+visualized when projected in this new feature space.
 
-\subsection{Clustering analysis}
+Due to the intricate patterns of correlations in their expression space, microarray
+data are particularly suited for \smallcaps{pca}-driven dimensionality
+reduction.\cite{ringner_what_2008} One appealing aspect of \smallcaps{pca}
+analysis of expression profiles is the potential biological interpretability of
+principal components.  For instance, the first principal component of a
+collection of expression profiles of breast cancers has been shown to explain
+the separation of samples according to estrogen receptor status (a major
+predictor of disease progression).\cite{saal_poor_2007}
+
+In this dissertation, \smallcaps{pca} is used to derive eigengenes from the
+feature expression space of cancer biopsies.  An eigengene is a meta-variable
+seizing the modulation of a gene signature in a collection of samples.  It can
+be defined, for instance, by the first principal component of the expression of
+the metagene in those samples.
+
+% defined by the first principal component of a gene expression
+% signature, that can be used to capture the modulation of the underlying
+% expression patterns in the sampled expression profiles.
+
+%  This is done by computing the first principal component of gene expression
+% signatures define new expression vectors that best represent the expression
+
+% can be used to project samples in a new feature space that . In this dissertation, \smallcaps{pca} is used to find
+% meta-variables in the expression space of expression profiles that best
+% represent the
+
+% This is achieved through a series of orthogonal transformations to cast a set of
+% observations of potentially correlated variables into new meta-variables,
+% represented by a series of linearly uncorrelated vectors, each capturing
+% decreasing fractions of variation among the original data.
+
+% Because of their high dimensionality, microarray data are
+% characterized by a high number of correlations in their feature space.
+
+%  has a long record of applications
+% in the analysis of microarray data
+
+\subsection{Cluster analysis}
 \label{sec:methods-clustering}
 % 04Mar2015
+Cluster analysis is an unsupervised technique for exploratory data mining that
+seeks to group objects according to their degree of similarity.  In microarray
+data analysis, clustering methods are mainly employed to address class discovery
+tasks, based on gene expression profiles of biospecimens.  Several clustering
+techniques have been used to this goal.
+
+Hierarchical clustering is a collection of algorithms that aim to build a binary
+tree of the data that successively merges similar groups of samples.  It
+comprises agglomerative (or bottom-up) methods, which proceed by sequentially
+combining $n$ objects into groups; and divisive (or top-down) methods, which
+recursively separate $n$ objects into finer groupings.  The results of
+hierarchical clustering are presented in a dendrogram.
+
+The \emph{k}-means algorithm works by iteratively assigning each sample to one
+of $k$ clusters, each being defined as the set of samples showing the lowest
+dispersion from the respective centroid (the multidimensional version of the
+mean).  Because the number $k$ of clusters has to be defined \emph{a~priori},
+\emph{k}-means are an example of supervised clustering.  Whenever the mean of
+objects can not be computed, cost functions can be used to define a
+\emph{representative object} (the medoid, or the multidimensional representation
+of the median), as is the case in the partitioning around medoids algorithm, or
+\smallcaps{pam}.
+
+Self-organization maps, or \smallcaps{som}, are a group of algorithms inspired
+by neural networks of the brain.  Their aim is to produce a two-dimensional,
+discretized representation of a high dimension input space, called a map.  This
+is achieved by associating a weight vector with the same dimension as the
+feature space to each of a set of spatially distributed components, called nodes
+or neurons.  The algorithm then trains a model that optimizes the projection of
+the feature space onto the map, by iteratively finding the node whose weight
+vector shows the minimal distance to each feature space vector.  Clusters are
+then defined as groups of objects from the input space that are projected onto
+the same node.
+
+However supervised or unsupervised, learning techniques require the selection of
+a measure of distance between, or similarity among, the objects to be classified
+or clustered.  Distances are functions that satisfy at least three properties:
+(\emph{a})~non-negativity, $d(x,y)\ge 0$; (\emph{b})~symmetry, $d(x,y)=d(y,x)$;
+and (\emph{c})~identification mark, $d(x,x)=0$.  Examples of metrics used in the
+computation of distances between the vectors of gene expression between $m$
+expression profiles include the Euclidean distance:
+\begin{equation}
+  \label{eq:euclidean-distance}
+  d_{euc}=\sqrt{\sum_{i=1}^{m}(x_i-y_i)^2},
+\end{equation}
+and the Manhattan distance:
+\begin{equation}
+  \label{eq:manhattan-distance}
+  d_{man}=\sum_{i=1}^{m}\left|x_i-y_i\right|.
+\end{equation}
+% Many options are available in selection of a distance for machine learning
+% tasks.
+Correlation-based distance measures have been widely used in the microarray
+literature.\cite{eisen_cluster_1998} They include one minus the standard Pearson
+correlation coefficient, Spearman’s rank correlation, and Kendall’s~$\tau$.
+
+% In microarray
+% data analysis, it can be used as a feature transformation methodology, through
+% the selection of
+
+% in microarray data analysis,
+% and can also be used to perform feature transformation.
 
 \subsection{Machine learning analysis}
 \label{sec:methods-machine-learning}
 % 05Mar2015
+Machine learning refers to computational and statistical inference processes
+employed to create, on the basis of observational data, reusable algorithms for
+prediction.\cite{gentleman_bioinformatics_2006} An essential property of a
+learning algorithm is generalization.  In the context of machine learning,
+generalization refers to the ability of the trained classifier to perform
+accurately on new samples.  In microarray data analysis, this means identifying
+expression features related to the underlying biology of the phenotypic classes
+under analysis.
+
+Several classification and feature selection methods have been co-opted for the
+identification of differentially expressed genes in microarray
+data.\cite{pirooznia_comparative_2008} In this dissertation, we made use of
+\href{http://www.bioconductor.org/}{\textsf{Bioconductor}} implementations of
+two supervised machine learning algorithms in order to optimize expression
+feature selection towards two clinically challenging diagnostic problems in
+thyroid cancer.
+
+Support vector machines, or \smallcaps{svm}, are an example of a
+non-probabilistic binary linear classifier.  They seek to find the function that
+maximizes the distance between training samples of distinct categories when
+projected on a hyperplane.\cite{cortes_support-vector_1995} Random forests, or
+\smallcaps{rf}, are classifiers consisting of a collection of decision trees
+grown from the features that are most discerning in the training
+set.\cite{breiman_random_2001} They operate under the assumption that, in the
+feature expression space of microarray data, while each individual classifier is
+a weak learner, the ensemble of all classifiers taken together produce a strong
+learner.  Both of these algorithms were employed with a feature-selection step.
+Feature selections and algorithm parameters were nested in an inner
+cross-validation loop to preclude any possibility of parameters and
+feature-selection biases.
+
+Classifiers were thusly trained on \sfrac{9}{10} of our samples and used to
+predict the remaining \sfrac{1}{10}.  They were tuned on \sfrac{9}{10} of the
+training samples, and optimized by comparing the prediction on the remaining
+\sfrac{1}{10} of the training samples.  For each sample, our implementations of
+the algorithms returns, for \smallcaps{rf}, a percentage of decision trees
+votes, and for \smallcaps{svm}, a real score between $-1$ and $1$.  This loop
+was repeated 10 times and the results were averaged.  Those scores were then
+used as a diagnostic test to compute \smallcaps{roc} curves.
 
 \subsection{Receiver operating characteristic curves}
 \label{sec:methods-roc}
 % 06Mar2015
 
-\subsection{Gene set enrichment analysis}
-\label{sec:methods-gsea}
+To do.
+
+% \subsection{Gene set enrichment analysis}
+% \label{sec:methods-gsea}
 % 07Mar2015
 
 \subsection{Survival analysis}
@@ -470,15 +674,19 @@ and the time to a clinical outcome.
 
 \begin{marginfigure}%
   \includegraphics{survival-function-28Feb2015.pdf}
-  \caption[Survival function]{The survival function, \emph{S}\,(\emph{t}),
-    describes the likelihood that a patient will have a lifetime exceeding time
-    \emph{t}.  \textbf{A:}~The theoretical distribution is non-increasing, and
-    characterized by \mbox{\emph{S}\,(0) = 1} and \mbox{\emph{S}\,($\infty$) =
-      0}.  \textbf{B:}~In practice, the estimated survival function,
-    \emph{\^{S}}\,(\emph{t}), often takes a shape of a step function.  Because
-    study periods are never infinite and there may be competing risks for
-    failure, it is likely that not all patients will experience a clinical
-    outcome by the end of the study.}\label{fig:survival-function}%
+  % \caption[Survival function]{The survival function, \emph{S}\,(\emph{t}),
+  \caption[Survival function]{The survival function, $S(t)$ describes the
+    likelihood that a patient will have a lifetime exceeding time $t$.
+    \textbf{A:}~The theoretical distribution is non-increasing, and
+    % characterized by \mbox{\emph{S}\,(0) = 1} and \mbox{\emph{S}\,($\infty$) =
+    %   0}.
+    characterized by $S(0)=1$ and $S(\infty)=0$.  \textbf{B:}~In practice, the
+    % estimated survival function, \emph{\^{S}}\,(\emph{t}), often takes a shape
+    estimated survival function, $\hat{S}(t)$, often takes the shape of a step
+    function.  Because study periods are never infinite and there may be
+    competing risks for failure, it is likely that not all patients will
+    experience a clinical outcome by the end of the
+    study.}\label{fig:survival-function}%
 \end{marginfigure}
 
 In the biomedical literature, the most recognizable non-parametric method to
@@ -623,8 +831,8 @@ and (\emph{c})~spliting the cohort along the median of the metagene's first
 principal component.
 % \footnote{Computed with the \textsf{R} function \texttt{prcomp}.}
 They confirmed that the methods based on the first principal
-component (henceforth referred to as \textsf{PC1} method) yielded significantly
-higher hazard ratios and smaller \emph{p}-values.
+component % (henceforth referred to as \textsf{PC1} method)
+yielded significantly higher hazard ratios and smaller \emph{p}-values.
 
 In this work, we chose to model survival time as a function of a single
 \emph{continuous} predictor, defined by the first principal component of the
