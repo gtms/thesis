@@ -731,13 +731,13 @@ signals.
 Taken together, these observations attest for the pan-transcriptomic nature of
 prognostic signals in cancer expression profiles---as quantified by association
 with outcome of single- and multi-gene markers with a Cox proportional hazards
-model, at logrank $p<0.05$.  This illation is not cancer- or platform-specific;
-therefore, transcriptomic prognostic signals cannot be convened to infer
-specific biological mechanisms driving cancer progression.  While these
-prognostic signals remain independent, and thus complementary, to
-clinicopathological parameters, their ubiquity explains why many different
-studies have reported incongruent outcome-specific predictive
-signatures.\cite{gevaert_prediction_2009,chibon_cancer_2013} In addition, the
+model, at logrank $p<0.05$.  This conclusion is not cancer- or
+platform-specific.  Therefore, transcriptomic prognostic signals cannot be
+convened to infer specific biological mechanisms driving cancer progression.
+While molecular prognostic signals remain independent, and thus complementary,
+to clinicopathological parameters, their ubiquity is in agreement with the
+multitude of incongruous predictive signatures reported in the
+literature.\cite{gevaert_prediction_2009,chibon_cancer_2013} In addition, the
 landscape of prognostic signals uncovered by our analysis may account for the
 complexity of some challenges in clinical oncology---including the difficulty in
 finding stable molecular predictors of response to specific systemic treatments
@@ -749,15 +749,9 @@ development of next generation genomic predictors.
 % challenging the hypothesis that prognostic signatures reported in the literature
 % are specific conveyors of biological signals pertaining to cancer progression.
 
-\clearpage
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Discussion
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Overall, the manner these re-sampling experiments impact the fluctuating of
-% prognostic fractions in a reference breast cancer cohort is not surprising,
-% and speaks for the nature
 
 % Re-sampling strategy
 
@@ -773,7 +767,6 @@ development of next generation genomic predictors.
 % many distinct signatures are associated with outcome in different platforms
 % and why genomic analysis cannot provide a unique biomarker of response to
 % treatment.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -801,7 +794,7 @@ development of next generation genomic predictors.
 % investigation with disease outcome in human. It can be established with
 % non-interventional clinical studies. It has been extensively used in the past
 % decades and has gained more popularity recently with the availability of web
-% servers1–3providing, for free, association statistics for any single- or
+% servers providing, for free, association statistics for any single- or
 % multi-gene markers and cancer outcome on the basis of published cancer
 % transcriptome databases.
 
@@ -811,8 +804,8 @@ development of next generation genomic predictors.
 % display it with a Kaplan-Meier curve. None of these controls for the possibility
 % that a large fraction of transcriptome could be associated outcome and that
 % therefore the prognostic effect is non-specific. Disturbingly, this possibility
-% has been proven true in bladder4 and breast5–7 cancers. In particular,
-% we have shown7 that more than half of the transcriptome is correlated with
+% has been proven true in bladder and breast cancers. In particular,
+% we have shown that more than half of the transcriptome is correlated with
 % proliferation in two breast cancer cohorts and that 1 in 4 single gene and 9 in
 % 10 random signatures of >100 genes were associated with overall survival at
 % p<0.05. As a consequence, most published signatures were found to be
@@ -820,8 +813,8 @@ development of next generation genomic predictors.
 
 % To investigate whether the pervasive association of the transcriptome with
 % outcome extends to other cohorts and other types of cancers we compiled 114
-% published gene-expression datasets with patient follow-up from the GEO8 and
-% InSilicoDB9 databases. These included human cancers from 22 organ systems,
+% published gene-expression datasets with patient follow-up from the GEO and
+% InSilicoDB databases. These included human cancers from 22 organ systems,
 % and a wide range of transcriptomic platforms (Fig. 1; Supplementary Table
 % S1). We computed for each dataset the fraction of genes associated with outcome
 % at log-rank p<0.05 (Fig. 1, Supplementary Methods). This quantity may be viewed
@@ -831,7 +824,7 @@ development of next generation genomic predictors.
 % of a gene with outcome in the KIRC datasets (kidney cancer) has a 50\% chance to
 % obtain a positive result, i.e. a value far above the canonical 5\% significance
 % threshold. To investigate recent multi-gene approaches, we ran a similar
-% calculation for 4722 signatures of the MSigDB database10 (Fig. 1; details in
+% calculation for 4722 signatures of the MSigDB database (Fig. 1; details in
 % Supplementary Methods). The prognostic fraction was larger for signatures than
 % for single genes, with a median of 12\%. It was larger than 5\% for 74\% of the
 % datasets, larger that 20\% for 41 (36\%) and larger that 50\% for 13 (11\%). To
@@ -845,7 +838,7 @@ development of next generation genomic predictors.
 % it ranged from 4 to 37\% among the breast cancer datasets. To probe the
 % contributions of the dataset’s technical and demographic specifics to this
 % variability, we reran the single-gene analysis on subsets of the 1972
-% transcriptome profiles available from the METABRIC11 study. First,
+% transcriptome profiles available from the METABRIC study. First,
 % repeated random selection of profiles reveals that sampling effects are
 % substantial (prognostic fraction CI=6-17\%) with 500 patients (Fig. 2A), a
 % size in par with the largest studies. Second, the prognostic fraction, as
@@ -854,21 +847,21 @@ development of next generation genomic predictors.
 % field. Third, we investigated the impact of follow-up time by artificially
 % truncating follow-up data (Fig. 2C; Supplementary Methods). Shorter and longer
 % maximum follow-up times yielded lower prognostic fractions, consistent with
-% the fact that incomplete data, but also late events12, are not predictable
+% the fact that incomplete data, but also late events, are not predictable
 % from primary tumor transcriptomes. Fourth, increasing the fraction of ER+
 % patients up to 50\% increases the prognostic fraction, but has no effect
 % beyond 50\% (Fig. 2D). This is compatible with the notion that transcriptional
 % marker are more prognostic within the ER+ group and that the ER+ patients
-% have, on average, a better prognostic than ER- patients.13 Fifth,
+% have, on average, a better prognostic than ER- patients. Fifth,
 % increasing the fraction of node positive patients, which is correlated with ER
 % status, also increases the prognostic fraction (Fig. 2E). Sixth, lower
 % cellularity is unexpectedly associated with a higher prognostic fraction
 % (Fig. 2F). This may reflect the role of the microenvironment in breast cancer
 % progression and the massive impact of cell types proportions on the
-% transcriptomes of bulk tissues.14 Finally, unique dataset-specific
+% transcriptomes of bulk tissues. Finally, unique dataset-specific
 % processing details also play a role. For example, dataset GSE9893 has one of
 % the highest prognostic fractions (Fig. 1), but surprisingly its
-% signal-to-noise metrics15 is very low (Supplementary Fig. S1). Examination
+% signal-to-noise metrics is very low (Supplementary Fig. S1). Examination
 % of the data reveals that normalization was performed in two batches and
 % induced massive spurious correlations between expression and outcome
 % (Supplementary Fig. S1). Accordingly, a proper single-batch normalization of
@@ -894,11 +887,20 @@ development of next generation genomic predictors.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage
-
-% \subsection{Microarray data interpretation and analysis}
-% \label{sec:discussion-interpretation-microarrays}
+\subsection{Microarray data analysis and interpretation}
+\label{sec:discussion-interpretation-microarrays}
 % Wednesday 04Mar2015
+Biological inferences made with microarray data analysis rest on the
+verification of a number of predicates.  These can be divided into methodological
+and analytic (or statistical) components.  Methodological design considerations
+have been extensively discussed
+elsewhere.\cite{kerr_experimental_2001,churchill_fundamentals_2002,yang_design_2002,kerr_design_2003,yang_microarray_2003}
+Here we offer a brief overview on the main statistical challenges related to
+microarray data analysis and interpretation.
+
+The statistical components of a microarray experiment
+
+% Without proper verification of any of these steps,
 
 % End up with a wink to underlying models for cancer progression.  In other
 % words, interpretation of microarray data is dependent on the underlying
