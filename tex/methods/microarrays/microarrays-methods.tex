@@ -589,13 +589,42 @@ training samples, and optimized by comparing the prediction on the remaining
 the algorithms returns, for \smallcaps{rf}, a percentage of decision trees
 votes, and for \smallcaps{svm}, a real score between $-1$ and $1$.  This loop
 was repeated 10 times and the results were averaged.  Those scores were then
-used as a diagnostic test to compute \smallcaps{roc} curves.
+used as a diagnostic test to compute receiver characteristic operating curves.
+
+\begin{marginfigure}%
+    \includegraphics{roc-curve.pdf}
+    \caption[Example of a receiver operating characteristic (\smallcaps{roc}
+    curve)]{Receiver operating characteristic curves (\smallcaps{roc}) are
+      visual representations of the trade-off between sensitivity (the
+      proportion of actual positives which are correctly identified) and
+      specificity (the proportion of true negatives correctly identified) of a
+      diagnostic test, or classifier.  The area under the \smallcaps{roc} curve
+      (\smallcaps{auc}) is equal to the probability that a classifier will
+      classify a sample correctly.  The ability to superimpose different
+      \smallcaps{auc}s on the same plot allows for direct comparison of
+      different classifiers.}
+    \label{fig:roc}%
+\end{marginfigure}
 
 \subsection{Receiver operating characteristic curves}
 \label{sec:methods-roc}
 % 06Mar2015
 
-To do.
+Receiver operating characteristic curves, or \smallcaps{roc} curves, are a tool
+for diagnostic test evaluation that allows for the creation of a sensitivity and
+specificity report.\cite{fawcett_introduction_2006} A typical \smallcaps{roc}
+curve plots the true positive rate (sensitivity), as a function of the false
+positive rate ($1-\text{specificity}$), for different cut-off points of a
+parameter produced by a classifier model.  Each point on the
+\smallcaps{roc} curve represents a sensitivity/specificity pair, corresponding
+to a particular decision threshold (Figure~\ref{fig:roc}).
+
+The area under the curve, or \smallcaps{auc} (0 < \smallcaps{auc} < 1),
+represents the overall probability that the phenotype being investigated of a
+randomly chosen subject is correctly identified by the
+test.\cite{hanley_meaning_1982}  The \smallcaps{auc} metric allows for direct
+comparison of classifier performance.  A \smallcaps{auc} of 50\% represents a
+chance of correct classification no better than a random classifier.
 
 % \subsection{Gene set enrichment analysis}
 % \label{sec:methods-gsea}
