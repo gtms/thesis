@@ -10,12 +10,13 @@ cancer.\cite{grant_microarrays_2004} Genomic perturbations drive cancer
 progression by disturbing mechanisms for cell cycle control, differentiation,
 \smallcaps{dna} repair, apoptosis, tumour vascularization, and metabolism.  The
 monitoring of gene expression signatures---as surrogates of biological
-processes---in molecular profiles of cancer biopsies, can be used to investigate
-how these mechanisms are impacted during cancer progression.
+processes---in molecular profiles of cancer biospecimens, can be used to
+investigate how these mechanisms are impacted during cancer progression.
 
-% A common approach to investigate how these mechanisms are impacted during cancer
-% progression is through the monitoring of gene expression signatures, as
-% surrogates of biological processes, in molecular profiles of cancer biopsies.
+% A common approach to investigate how these mechanisms are impacted
+% during cancer progression is through the monitoring of gene
+% expression signatures, as surrogates of biological processes, in
+% molecular profiles of cancer biopsies.
 
 In this dissertation, we present the result of two analyses relating to the use
 of gene expression signatures as biomarkers in cancer research.  The first
@@ -422,8 +423,8 @@ to assist diagnostic tasks in cancer oncology remains to be fully explored.
     prognosis groups in an independent cohort of 295 breast
     carcinomas. Differential outcome between each group, regarding likelihood of
     developing metastasis (panel \textbf{A}), or likelihood of dying (panel
-    \textbf{B}), was then established with Kaplan-Meier analysis
-    (\citealp{van_de_vijver_gene-expression_2002}).}
+    \textbf{B}), was then established with Kaplan-Meier analysis (\emph{adapted
+      from} \citealp{van_de_vijver_gene-expression_2002}).}
   \label{fig:validation-prognosis-km}%
 \end{marginfigure}
 
@@ -890,15 +891,223 @@ development of next generation genomic predictors.
 \subsection{Microarray data analysis and interpretation}
 \label{sec:discussion-interpretation-microarrays}
 % Wednesday 04Mar2015
-Biological inferences made with microarray data analysis rest on the
-verification of a number of predicates.  These can be divided into methodological
-and analytic (or statistical) components.  Methodological design considerations
-have been extensively discussed
-elsewhere.\cite{kerr_experimental_2001,churchill_fundamentals_2002,yang_design_2002,kerr_design_2003,yang_microarray_2003}
-Here we offer a brief overview on the main statistical challenges related to
-microarray data analysis and interpretation.
 
-The statistical components of a microarray experiment
+As microarray technology matured from the original double channel,
+\mbox{c\smallcaps{dna}-based} chips,\cite{schena_quantitative_1995} to the
+commercial single-channel, \emph{in situ} synthesized and high density
+oligonucleotide spotted arrays,\cite{lockhart_expression_1996} so did their
+associated analytic methodologies, along with their data interpretation.
+
+% End with note on expecation recalibration
+
+Prior to any analytic processing of microarray data lies the issue of probe
+annotation.  While initial c\smallcaps{dna} microarrays used reverse-transcribed
+copies of isolated gene fragments as probes, high density spotted arrays derived
+their probes from genomic or \smallcaps{est} sequences.\footnote{Expressed
+  sequence tags, or \smallcaps{est}s, are transcribed m\smallcaps{rna}s from a
+  tissue type used to produce genome assemblies.} Each subsequent revision of
+the human reference genome carries with it the reassignment of a subset of
+probes in the array to new gene products, therefore potentially upsetting
+previous conclusions based on former gene annotations.  For instance,
+\href{http://www.bioconductor.org/}{\textsf{Bioconductor}} software annotation
+packages for most commercially available microarray chips are still updated
+every six months, following reviewing cycles of the human reference assembly
+genome.
+
+More complexity arises from the fact that not all probes in an array have a
+designated gene associated to them; other probes may recognize multiple target
+sequences, known as promiscuous probes; and some genes may have several probes
+assigned to them, each of which interrogating a unique m\smallcaps{rna}
+transcript.  Several strategies exist to collapse the expression of distinct
+probes targeting the same gene into a single value.  The most common include
+computing the arithmetic mean of redundant probes or retaining the one
+exhibiting the highest value of expression (or, conservatively, the lowest).
+Miller et al.~have reviewed a collection of strategies for aggregating gene
+expression data when applied to different genomic
+applications.\cite{miller_strategies_2011}
+
+Specific to the \emph{Affymetrix GeneChip} platform is the issue of summarizing
+probe expression into probesets.  The set of rules used to perform this
+transformation is defined by a Chip Description File, or \smallcaps{cdf},
+containing the mappings of which probes are to be aggregated into a single
+probeset.  Alternative custom \smallcaps{cdf} files have been shown to provide
+both better precision and accuracy in probeset estimates when compared to the
+original Affymetrix definitions.\cite{sandberg_improved_2007}
+
+Microarray analysis methodologies are notoriously challenged by \emph{the curse
+  of dimensionality},\cite{bellman_adaptive_1961} a feature of
+highly-dimensional data where the number of measured variables largely exceeds
+the number of samples.  One of the consequences of the curse of dimensionality
+is an increased likelihood of detecting false positive models due to chance
+alone.  This impacts both the task of finding differentially expressed genes
+between phenotypic classes and the task of building predictive models.
+
+For the gene selection task, initial assessments of differential expression
+based on fold-change---defined as the ratio in expression means between two
+groups---, were rapidly supplemented by more robust models based on
+\mbox{$t$-statistics}.  Instead of just relying on within-gene comparisons,
+these methods attempted to exploit the between-gene information in the array by
+weighting the $t$-statistic with global variance estimates---a procedure known
+as variance shrinkage.  Example of such methods include the popular significance
+analysis of microarrays, or \smallcaps{sam},\cite{tusher_significance_2001} and
+more sophisticated approaches that seek to model between-gene relationships with
+empirical Bayes methods.\cite{newton_differential_2001}
+
+To control for the excess of false positive models resulting from the
+highly-dimensional experimental design, multiple-testing correction
+methodologies are required.  Among these are restrictive family-wise error rate
+(\smallcaps{fwer}) correction methods, which proceed by strictly limiting the
+probability of producing type \smallcaps{i} errors to less than a pre-determined
+significance level $\alpha$ across the entire experiment.  This initial class of
+correction procedures was later replaced by the more flexible false-discovery
+rate,\cite{benjamini_controlling_1995} which aims to control the expected
+proportion of incorrectly rejected null hypothesis in a list of validated
+models.
+
+Nevertheless, strategies for gene selection between classes are further
+compounded by coarse definitions of biological phenotypes that translate
+ineffectively at the molecular level;\cite{piatetsky-shapiro_microarray_2003} by
+a poor understanding of the dynamic ranges of gene expression in physiological
+settings;\cite{nadimpally_novel_2003} and by the unlikely assumption that
+expression measurements are atomic quantities behaving independently of each
+other.\cite{piatetsky-shapiro_microarray_2003} Indeed, it was the
+acknowledgment of the intricate nature of expression profiles, with groups of
+genes coordinately expressed as pathway components, that paved the way to more
+sophisticated analytic methods for microarray data analysis.
+
+% pathway analysis
+The analysis of perturbations in the expression of co-regulated genes between
+conditions is denominated knowledge base-driven pathway analysis.  It introduces
+a framework to interpret the underlying biology of differentially expressed
+transcripts, and can contribute to mitigate the curse of dimensionality by
+reducing the volume of inferences made in the gene expression space.
+
+Khatri et al.~discuss three generations of pathway-based analytic approaches to
+dissect microarray data.\cite{khatri_ten_2012} First generation methods are
+based on simple over-representation analysis, and focus on determining the
+fraction of genes in a particular pathway found among the set of significantly
+perturbed genes issued from the microarray.  Inferences made by
+over-representation analysis use statistics based on the hypergeometric
+distribution, binomial distribution, or the chi-square distribution.
+
+Rather than making inferences on individual genes meeting a criteria for global
+differential expression, second generation methods, collectively termed
+functional class scoring (\smallcaps{fcs}) methods, aim to uncover weaker but
+coordinated changes in sets of functionally related genes.  An example of this
+class of methods is the gene set enrichment analysis, or \smallcaps{gsea}, whose
+procedure can be generalized in three steps.  First, a gene-level statistic is
+calculated from the microarray experiment; second, gene-level statistics for all
+genes in a pathway are aggregated into a single pathway-level statistic; and,
+third, the statistical significance of pathway-level statistics is assessed.
+When compared to over-representation analysis, \smallcaps{fcs} methods introduce
+refinements at three levels.  First, they do not require the arbitrary
+stipulation of a class of differentially expressed genes; second, they integrate
+gene measurements to infer patterns of coordinated expression; and, third, they
+account for the non-independent nature of gene expression, by relying on
+pathway-level statistics.
+
+Third generation functional methods seek to include topological elements
+concerning the nature (e.g., inhibition, activation), or the cellular
+localization (e.g., nucleus, cytoplasm), of the gene product interactions in a
+given pathway.  Such methods, like the signaling pathway impact analysis
+algorithm\cite{tarca_novel_2009} for instance, aim for a more realistic modeling
+of gene co-expression between phenotypes.
+
+% signatures and their pivotal role in microarray data analysis
+The consolidation of functional analysis methods shifted the focus of microarray
+data interpretation from the individual gene to the biological pathway level.
+To that effect, gene expression signatures, defined as collections of genes
+whose combined expression is associated with a given phenotype, became the
+operative units for statistical inference concerning diagnostic, prognostic, and
+predictive tasks,\footnote{Some imprecision exists in the literature regarding
+  the definitions of the terms ``prognostic'' and ``predictive.''  Antoine
+  Italiano proposed that a prognostic factor is ``a clinical or biologic
+  characteristic that is objectively measurable and that provides information on
+  the likely outcome of the cancer disease in an untreated individual.''  In
+  contrast, a predictive factor is ``a clinical or biologic characteristic that
+  provides information on the likely benefit from treatment (either in terms of
+  tumor shrinkage or survival)'' (\citealp{italiano_prognostic_2011}).} from
+expression profiles of cancer biospecimens.  % Gene expression signatures may
+% be biologically motivated (e.g., when representing a given molecular pathway) or
+% agnostic (e.g., when resulting from supervised methods of classification).
+
+The potential for biologically motivated gene signatures to guide the
+interpretation of microarray experiments is however bounded by important
+annotation, methodological and conceptual challenges.  The low resolution of
+current pathway knowledge bases, such as the Gene Ontology, has quickly become a
+major bottleneck to the elucidation of genomic experiments depicting
+increasingly refined and complex molecular landscapes.  This issue is
+illustrated, for instance, by our incipient understanding of alternative
+splicing patterns of gene transcripts, which can result in gene products with
+related, distinct, or even opposing functionality.\cite{wang_alternative_2008}
+Furthermore, advances in genomic technologies have not been met by a
+corresponding increase in granularity of genomic annotation databases.  In fact,
+a large number of protein-coding genes are still affected by low quality or
+inaccurate annotations---and some are ``inferred from electronic annotations,''
+or yet to be annotated at all.\cite{khatri_ten_2012} In addition, static
+annotations are likely to misrepresent the contextual information
+essential to model the dynamics of cellular physiology, effectively neglecting
+the highly integrated nature of biological systems.
+
+Ultimately, microarray data analysis proposes the rendition of these layers of
+biological intricacy through the projection of expression measurements into a
+linear, non-redundant namespace of features, such as Entrez Gene \smallcaps{id}s
+or \smallcaps{hgnc} gene symbols---which then provide the starting point for
+statistical inference.
+
+\medskip
+
+Taken together, these considerations significantly condition the scope of
+microarray-based discovery of biological knowledge.  It follows that special
+caution is advised when translating findings issued from the analysis of
+expression profiles of neoplastic biospecimens into clinical cancer research.
+
+\clearpage
+
+% validation
+
+% \clearpage
+
+% Biological inferences made from gene expression data analysis rest on the
+% verification of a number of premises.  These can be associated to the
+% methodological, or experimental, design protocol for data generation; or to
+% the subsequent analytic, or statistical, treatment of the
+% data.\cite{allison_microarray_2006} Methodological design considerations have
+% been extensively discussed
+% elsewhere.\cite{kerr_experimental_2001,churchill_fundamentals_2002,yang_design_2002,kerr_design_2003,yang_microarray_2003}
+% Here, we offer a brief overview of some analytic challenges associated to
+% microarray data interpretation.
+
+% The nature of these challenges is bounded by the statistical formulation of the
+% problem under study.  For instance, the most common task in microarray data
+% analysis is the identification of transcripts differentially expressed between
+% phenotypic classes of samples.  Differential expression analysis has long been
+% recognized as a problem.
+
+% gene annotations
+% potential cross-hybridization
+
+% It follows that statistical validation of biomarkers from microarray experiments
+% requires independent corroboration in independently designed experimental
+% biological models, in order to \ldots
+
+% \medskip
+
+% The technical considerations here discussed are often understated in the
+% specialized literature, and assumptions regarding their management are
+% relegated to supplementary data \ldots{}  Yet, when
+% not fully taken into consideration, they have the potential to weigh to a great
+% degree on the inferences made from gene expression data analysis---as
+% underscored by the wide-ranging landscape of prognostic signals in human cancer
+% transcriptomes uncovered by our meta-analysis.
+
+% Another critical limitation
+
+% Collectively, challenges in data interpretation, together with technical
+% variance and the inherent resolution limitations of the technique itself, may
+% explain, to a large degree, the lack of consensus between \ldots
+
+% Wang-2009: RNA-seq: a revolutionary tool for transcriptomics.
 
 % Without proper verification of any of these steps,
 
@@ -906,7 +1115,79 @@ The statistical components of a microarray experiment
 % words, interpretation of microarray data is dependent on the underlying
 % biological model for the system under study.
 
-\clearpage
+% the technical considerations here discussed are often understated in the
+% specialized literature, and assumptions regarding their management are
+% relegated to supplementary data \ldots{}  Yet, when
+% not fully taken into consideration, they have the potential to weigh to a great
+% degree on the inferences made from gene expression data analysis---as
+% underscored by the wide-ranging landscape of prognostic signals in human cancer
+% transcriptomes uncovered by our meta-analysis.
+
+% Another critical limitation
+
+% Collectively, challenges in data interpretation, together with technical
+% variance and the inherent resolution limitations of the technique itself, may
+% explain, to a large degree, the lack of consensus between \ldots
+
+% Wang-2009: RNA-seq: a revolutionary tool for transcriptomics.
+
+
+% Without proper verification of any of these steps,
+
+% End up with a wink to underlying models for cancer progression.  In other
+% words, interpretation of microarray data is dependent on the underlying
+% biological model for the system under study.
+
+% However, such approaches are focused on class prediction, and the rankings of
+% genes so obtained are strongly influenced by between-gene depend- encies and
+% feature-selection strategies,
+
+% Biological inferences made from gene expression data analysis rest on the
+% verification of a number of premises.  These can be associated to the
+% methodological, or experimental, design protocol for data generation; or to
+% the subsequent analytic, or statistical, treatment of the
+% data.\cite{allison_microarray_2006} Methodological design considerations have
+% been extensively discussed
+% elsewhere.\cite{kerr_experimental_2001,churchill_fundamentals_2002,yang_design_2002,kerr_design_2003,yang_microarray_2003}
+% Here, we offer a brief overview of some analytic challenges associated to
+% microarray data interpretation.
+
+% The nature of these challenges is bounded by the statistical formulation of the
+% problem under study.  For instance, the most common task in microarray data
+% analysis is the identification of transcripts differentially expressed between
+% phenotypic classes of samples.  Differential expression analysis has long been
+% recognized as a problem.
+
+% gene annotations
+% potential cross-hybridization
+
+% It follows that statistical validation of biomarkers from microarray experiments
+% requires independent corroboration in independently designed experimental
+% biological models, in order to \ldots
+
+% \medskip
+
+% The technical considerations here discussed are often understated in the
+% specialized literature, and assumptions regarding their management are often
+% relegated to supplementary data \ldots{}  Yet, when
+% not fully taken into consideration, they have the potential to weigh to a great
+% degree on the inferences made from gene expression data analysis---as
+% underscored by the wide-ranging landscape of prognostic signals in human cancer
+% transcriptomes uncovered by our meta-analysis.
+
+% Another critical limitation
+
+% Collectively, challenges in data interpretation, together with technical
+% variance and the inherent resolution limitations of the technique itself, may
+% explain, to a large degree, the lack of consensus between \ldots
+
+% Wang-2009: RNA-seq: a revolutionary tool for transcriptomics.
+
+% Without proper verification of any of these steps,
+
+% End up with a wink to underlying models for cancer progression.  In other
+% words, interpretation of microarray data is dependent on the underlying
+% biological model for the system under study.
 
 %%% Local Variables:
 %%% TeX-engine: xetex
