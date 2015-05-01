@@ -4,33 +4,198 @@
 % This is the \emph{cancer} section of the discussion.
 
 \newthought{Cancer research} aims to improve the diagnosis and treatment through
-better disease classification and patient stratification, which allows for the
-design of therapies that are more targeted to specific cancer sub-types and
-potentially improves the effectiveness of existing regimens based on therapeutic
-response and adverse events.
+better disease classification and patient stratification.  This allows for the
+design of therapies that are better targeted to specific cancer subtypes and
+improve the effectiveness of existing regimens, while reducing their morbidity.
 
-Topics to discuss:
-\begin{itemize}
-\item expectations \emph{vs} reality
-\item solid achievements (differentiation sigs)
-\item questions raised and issues to address (extent of the prognostic signals)
-\item shortcomings of the technology regarding the translation into the clinical realm (nrc-weigelt-2012.pdf)
-\end{itemize}
+In this dissertation, we present two case studies for the application of gene
+expression signatures to address supervised tasks of class prediction, and
+outcome prediction, based on publicly available transcriptomes of neoplastic
+samples.  Each analysis addresses a problem related to the clinical management
+of oncological pathologies, framed by the analytic corpus developed for
+microarray data research, and grounded by the current understanding of the
+biology of cancer.
+
+% \medskip
+
+\subsection{Molecular classification of cancer}
+\label{sec:molecular-classification}
+
+% classification
+Our first contribution concerns the improvement of molecular diagnostics for
+tumour classification based on expression profiles of clinical samples.
+Traditionally, tumour classification rests on morphological characterization and
+immunohistochemical assessment of tissue-specific antigens.  Histological types
+thusly defined denote distinct clinical behaviours and responses to treatment.
+Molecular characterization of tumour subtypes aims to increase the accuracy of
+tumour classification based on features that escape histomorphological
+assessment alone.
+
+Following the proof-of-principle molecular classification of leukemia by Golub
+et al.~in 1999,\cite{golub_molecular_1999} molecular cancer classification was
+generalized to solid tumours by Ramaswamy et al. and Su et al.~in
+2001.\cite{ramaswamy_multiclass_2001,su_molecular_2001} Both studies present an
+experimental design where an initial number of primary carcinomas (respectively
+144 and 100), spanning most human solid cancers, was used to train a multiclass
+predictor to determine the anatomical origin of a random test sample, given its
+expression profile.  Reported accuracies of these classifiers ranged from 78\%
+to 83\%.  Ramaswamy et al.~remarked that poorly differentiated tumours are less
+amenable to molecular classification.  They interpreted this observation as
+evidence for a distinct molecular pathogenesis of poorly differentiated tumours
+when compared to their well differentiated counterparts.  Su et al.~noted that,
+for eleven of the tumour classes they analyzed, a minimal core set of genes is
+sufficient to accurately discriminate between classes.  This suggests that
+expression of genes particular to the basal physiology and morphology of the
+respective tissues of origin might be actionable for molecular classification.
+
+We reasoned that these findings may well be explained by the projection of
+cancer progression along axes of molecular dedifferentiation and increased
+proliferation.  We then demonstrated that two biomarkers, one of thyroid
+differentiation and another of proliferation, both derived from healthy tissues,
+could be used to accurately classify tumour subtypes of thyroid
+origin.\cite{tomas_general_2012}
+
+In spite of a promising decade for the translation of these research findings
+into relevant diagnostics with an impact on clinical management, a review of the
+field by Schnabel and Erlander\cite{schnabel_gene_2012} cites only three
+commercial molecular cancer classifiers currently available for clinical use
+(Table~\ref{tab:molecular-classifiers}).
+
+\begin{table}
+  \footnotesize
+  \centering
+  \begin{tabular}{m{1.7cm}C{2.5cm}C{2.5cm}C{2.5cm}}
+    % \begin{tabular}{m{1.7cm}ccc}
+        %         \setlength{\extrarowheight}{20pt}
+    \toprule
+    & bioTheranostics Cancer \smallcaps{type} \smallcaps{ID}\textregistered{} & Rosetta
+                                                                                Genomics
+                                                                                mi\smallcaps{R}view met
+                                                                                2\texttrademark{}
+    & PathworkDiagnostics\textregistered{} Tissue of Origin\\
+    \midrule
+    Tissue \newline specimen & formalin-fixed and paraffin-embedded & formalin-fixed and
+                                                                      paraffin-embedded &
+                                                                                          formalin-fixed
+                                                                                          and
+                                                                                          paraffin-embedded\\
+    Assay \newline technology (biomolecule) & \smallcaps{rt-pcr} (m\smallcaps{rna}) & microarray
+                                                                                      (mi\smallcaps{rna}) &
+                                                                                                            microarray
+                                                                                                            (m\smallcaps{rna})\\
+    Biomarkers assessed & 92 & 64 & 2000\\
+    Tumour types classified & 54 & 42 & 15\\
+    Accuracy & 87\% &  85\% & 89\% \\
+    Tumour subclassification & Yes & No & No\\
+    \smallcaps{fda} clearance & No & No & Yes\\
+    \bottomrule
+  \end{tabular}
+  \caption[Commercial molecular cancer classifiers currently available for clinical use]{Commercial molecular cancer classifiers currently available for clinical use (adapted from \citealp{schnabel_gene_2012}).}
+  \label{tab:molecular-classifiers}
+\end{table}
+
+Of the three, only one attempts to class molecular tumour subtypes; the other
+two are designed to locate the primary tumour in patients that present with
+cancers of uncertain origin in the metastatic setting.  Only the
+PathworkDiagnostics\textregistered{} test has met standards for \smallcaps{fda}
+clearance, yet none of these assays has properly challenged traditional
+classification methods.  At best, they have found their way into clinical
+management as molecular correlates to histopathological findings.
+
+In their expert opinion piece, Schnabel and Erlander suggest that clinical
+adoption of gene expression-based classifiers has been curbed by the lack of
+clinical gold standards; and by the potential confounding effect of tumour
+heterogeneity in molecular evaluations of mixed populations of cells.  Molecular
+classifiers can, however, contribute to a clinical decision whenever
+pathological assessment is uncertain or conflicting; or even rule out unlikely
+tumour classes, facilitating the decision process.
+
+Interestingly, they also raise the possibility that recent paradigm shifts in
+neoplastic disease conceptualization may also contribute for the lack of reach
+of molecular classifiers in the clinical setting.  Namely, the recent increased
+attention given to the complex nature of heterotypic signalings in the tumour
+microenvironment,\cite{weigelt_need_2014} a feature that lies beyond the scope
+of microarray technology resolution, may well account for the struggle of
+traditional molecular classifiers to recapitulate neoplastic disease in its
+essence.
+
+\subsection{Molecular outcome prognostication of cancer}
+\label{sec:molecular-prediction}
+
+Cancer prognostication is one of the most challenging tasks in oncology.  Here,
+the consensus is to adhere to formal anatomical staging systems, such as the the
+\smallcaps{tnm} staging system,\cite{sobin_tnm:_2003} which provide a basis for
+prediction of survival, choice of initial treatment and stratification of
+patients in clinical trials.\cite{ludwig_biomarkers_2005}
+
+\clearpage
+
+In our second contribution made in this dissertation, we show that \ldots
+
+The reference model for clinical outcome prediction based on molecular
+information is breast cancer.
+
+hmi-kim-2014.pdf
+
+While the TCGA and ICGC provide many opportunities to uncover the novel
+knowledge of the molecular basis of cancer, it is crucial to address the issue
+of development of an appropriate methodological framework for data integration
+to better understand different cancer phenotypes, further providing an enhanced
+global view on the interplays between different genomic features. With an
+abundance in of multi-omics data and clinical data from cancer patients,
+relevant integration frameworks will be valuable for explaining the molecular
+pathogenesis and underlying biology in cancer, eventually leading to more
+effective screening strategies and therapeutic targets in many types of cancer.
+
+nrc-hanash-2004
+Integrated global profiling of cancer
+
+kim doesn't like michiels!
+
+Our results suggest that a better understanding of
+how best to assess classi- fiers in cancer prognostics is needed before
+generalized conclusions can be rendered. The utility of microarrays and other
+high-throughput technologies has been shown in clinical applications and safety
+assessment. It seems ap- parent that the excitement surrounding microarrays in
+general and the rush to publish in this area in particular have resulted in
+published studies that were not ade- quately validated. Publications such as
+Michiels et al.'s (19) have brought widespread attention to the early and
+perhaps premature studies that made unsupportable inferences. However, caution
+is also warranted in indict- ing microarrays in a broad way as unreliable, when
+so much work remains to be done in understanding how best to analyze such
+complex data and the extension of assessing the utility of a classifier derived
+from such data.
+
+
+
+% Schemes for classification of tumour subtypes are notoriously less performing,
 
 \bigskip
 
-Where is cancer research now?
-\begin{itemize}
-\item The importance of genomics to seize the biology of cancer.
-\item Vanguard treatments and their experimental motivations.
-\item is curing cancer a realistic expectation (as it was in the mid-20th
-  century), or will we have to settle for improvement of diagnostic/prognostic
-  tools?
-\item why are genomics failing in producing a clarification of cancer as
-  a biological phenomena?
-\item paradox: maximum depth of analytical tools, minimal expectations regarding
-  clinical management of disease
-\end{itemize}
+
+% Topics to discuss:
+% \begin{itemize}
+% \item expectations \emph{vs} reality
+% \item solid achievements (differentiation sigs)
+% \item questions raised and issues to address (extent of the prognostic signals)
+% \item shortcomings of the technology regarding the translation into the
+%   clinical realm (nrc-weigelt-2012.pdf)
+% \end{itemize}
+
+% \bigskip
+
+% Where is cancer research now?
+% \begin{itemize}
+% \item The importance of genomics to seize the biology of cancer.
+% \item Vanguard treatments and their experimental motivations.
+% \item is curing cancer a realistic expectation (as it was in the mid-20th
+%   century), or will we have to settle for improvement of diagnostic/prognostic
+%   tools?
+% \item why are genomics failing in producing a clarification of cancer as
+%   a biological phenomena?
+% \item paradox: maximum depth of analytical tools, minimal expectations regarding
+%   clinical management of disease
+% \end{itemize}
 
 \clearpage
 
