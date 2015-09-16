@@ -1,24 +1,244 @@
 \section{Life}
 \label{life-discussion}
 
-This is the \emph{life} section of the discussion.
+\newthought{With projects} like The Cancer Genome Atlas drawing to an end,
+discussion is now shifting to where should cancer research go next.  Eric
+Lander, at the Broad Institute, has contended that ``completing the genomic
+analysis of this disease should be a biomedical
+imperative.''\cite{lawrence_discovery_2014} According to Lander, the
+identification of novel cancer genes from the mining of the \smallcaps{tcga}
+data provides the motivation to extend the search for genetic determinants of
+the disease to even larger panels of samples.
 
-We've learned a lot about genetic systems, but not yet enough.
+Elsewhere, skepticism has started to be voiced regarding the value of pursuing
+the entire catalog of cancer genes towards the advancement of new therapies.
+Bert Vogelstein, who championed the genetic nature of cancer in the early
+2000's, is less sure about whether extending the atlas project would be the best
+allocation of research funds: ``There’s no question that it would be
+valuable. The question is whether it’s worth it.''\cite{zimmer_catalog_2014}
 
-,the suspicion remains that,
+\medskip
 
+In this dissertation, we discussed applications of molecular biomarkers for
+cancer diagnostics and prognosis, based on microarray technology.  We conclude
+that the use of gene expression signatures in cancer research has shown great
+promise (e.g., with the use of differentiation and proliferation signatures to
+assist cancer diagnosis), but may have also promoted unfunded expectations
+(e.g., by mis-interpreting the nature of pervasive prognostic signals in cancer
+transcriptomes).  The research programs here detailed were designed to exploit
+the vast compendiums of cancer expression profiles available in the public
+domain, and their results must, therefore, first be contextualized within the
+technical and analytic frame of the technology that enabled them.
 
-The elucidation of these matters will only further our understanding of the
-nature of cancer
-% \footnote{``It's bad bile.  It's bad habits.  It's bad bosses.
-%   It's bad genes.''---\emph{Mel Greaves}}
----and of that other very peculiar
-wonder, life.
+While microarray technology allows for the quantification of m\smallcaps{rna}
+products of cancer biospecimens in solution, it only lends itself to the
+detection of gene products already mapped and printed in the chip of the
+platform of choice.  Furthermore, eventual mutations (either nucleotide changes
+or structural variants) in genes being transcribed may impair the correct
+estimation of their transcription levels due to the adulteration of their
+m\smallcaps{rna} sequences.  Even assuming correct estimates of the
+transcriptomic load of a given biospecimen, tissue cellularity and heterogeneity
+may complicate the interpretation of bulk expression profiles.  Finally, as
+microarray technology only probes the Central Dogma of Biology \footnote{The
+  central dogma of molecular biology, postulated by Francis Crick in 1958 and
+  reasserted in 1970 (\citealp{crick_protein_1958,crick_central_1970}), pertains
+  to the rules that govern the sequential flow of genetic information between
+  \smallcaps{dna}, \smallcaps{rna} and proteins.  It can be summarized as
+  `\smallcaps{dna} makes \smallcaps{rna} makes protein,'' which provides the
+  template for the enactment of hereditary information for all living organisms,
+  and frames the scope of evolutionary forces on genetic systems.} at the
+transcriptional level, it provides no insight on upstream modulatory effects on
+gene expression (e.g., epigenetic determinants), as well as on downstream
+modulatory effects on gene products (e.g., post-transcriptional modifications).
+
+The interpretation of microarray data is challenged by issues regarding
+non-specific probe hybridization, non-consensual probe annotations, poorly
+defined gene ontologies and an incomplete understanding of the dynamics of gene
+expression on \emph{in vivo} biological systems.  Nevertheless, and in spite of
+having fell short of the promise for personalized medicine, microarrays have
+spectacularly delivered in a number of ways: by offering a first glimpse at the
+previously unsuspected molecular taxonomy of many forms of cancer; by allowing
+for a quantitative diagnostic of neoplastic disease; by enabling the molecular
+dissection of cancer biospecimens with biologically motivated gene expression
+signatures; by unveiling disease-specific molecular prognostic markers; or by
+providing a framework to allow for patient stratification based on gene
+expression profiles.  Looking forward, we foresee microarray technology to
+retain its relevance in the clinical setting as a diagnostic tool, and for the
+plethora of publicly available expression profiles to remain a valuable mining
+resource, as novel insights on the biology of cancer come to the fore.
+
+% Unsurprisingly, many of the shortcomings of microarray technology listed above
+% can also be assigned to current state-of-the-art high throughput genomics
+% technologies.  This is because current biomedical research is conducted under
+% the paradigms prescribed by the emergence of molecular biology in the 1970's.
+% With the discovery of the structure of \smallcaps{dna} and the unlocking of the
+% genetic code, much of cell biology became redirected to the nucleus---not the least
+% because \smallcaps{dna} is a particularly stable and amenable molecule for
+% experimental manipulation.
+
+% Up to then, medical research was fundamentally carried out by physicians with
+% personal scientific interests who also treated patients.
+
+% For all the limitations of microarrays, it might even be argued
+% that, with their proven and tested pre-processing bioinformatics pipelines, they
+% might still provide a solid operational platform for cancer genomics.
+
+% Only then should their eventual contribution at the level of the current
+% conceptual understanding of the disease under study be considered.
+
+% start by discussing the results of the thesis and their shortcomings in the
+% context of microarray research
+
+% why are we failing to treat cancer?
+
+% We know a lot about the biology of the dieases---but not nearly as much as we need.
+
+% historical reasons
+
+% Medical research was largely done by physician–scientists who also treated
+% patients. That changed with the explosion of molecular biology in the
+% 1970s. Clinical and basic research started to separate, and biomedical research
+% emerged as a discipline in its own right, with its own training. The bulk of
+% biomedical research is now done by highly specialized PhD scientists (see
+% graph), and physician–scientists are a minority.
+
+% conceptual reasons: Gould versus Dawkins
+
+% \newthought{Much like} any human endeavour, the collective search to elucidate
+% and defeat cancer is fraught with
+
+% \newthought{Much like} sound models of cancer progression can inform the
+% interpretation of large-scale genomic experiments, evolutionary perspectives of
+% the history of life can equally be used to steer our understanding of the
+% disease itself.
+
+% This is the \emph{life} section of the discussion.
+
+% We've learned a lot about genetic systems, but not yet enough.
+
+% Pervasive transcription of the human genome produces thousands of previously
+% unidentified long intergenic coding RNAs.  Only 2% of our genome displays
+% protein-coding capacity.
+
+% non-coding \smallcaps{rna}s (nc\smallcaps{rna}s) are an heterogeneous group of
+% biomolecules that has been classified in three families concerning their size:
+% (\emph{a}) molecules ranging from 18 to 25 nucleotides in length, comprising
+% micro\smallcaps{rna}s and small interfering \smallcaps{rna}s; (\emph{b})
+% molecules from 30 to 300 nucleotides, involving small nucleolar
+% \smallcaps{rna}s, Piwi \smallcaps{rna}s (pi-\smallcaps{rna}s), transfer
+% \smallcaps{rna}s, ribosomal \smallcaps{rna}s and small-ncRNAs; and (\emph{c})
+% molecules larger than 300 nucleotides, referred to as long non-coding
+% \smallcaps{rnao}s (nc\smallcaps{rna}s).
+
+% For example, it has been demonstrated that some mi\samllcaps{rna}s can either
+% repress or induce the transcription of a given m\smallcaps{rna}, depending on
+% the proliferative status of the cell
+
+% No one like Gould knew how to weave these evolutionary threads into a narrative
+% that could so well play as metaphor for cancer itself, this ``strange eventful
+% history'':\footnote{\citealp[p. 54]{gould_flamingos_1987}}
+
+% \begin{quotation}
+%   Our world is not an optimal place, fine tuned by omnipotent forces of
+%   selection.  It is a quirky mass of imperfections, working well enough (often
+%   admirably); a jury-rigged set of adaptations built of curious parts made
+%   available by past histories in different contexts.  (\ldots) A world optimally
+%   adapted to current environments is a world without history, and a world
+%   without history might have been created as we find it.  History matters; it
+%   confounds perfection and proves that current life transformed its own past.
+% \end{quotation}
+
+% Exacting as it may be, the unraveling of these threads may well be key to
+% elucidate the nature of cancer; and of that other very peculiar wonder---life.
+
+% The elucidation of these matters will only further our understanding of the
+% nature of cancer; % \footnote{``It's bad bile.  It's bad habits.  It's bad bosses.
+%   % It's bad genes.''---\emph{Mel Greaves}}
+%  and of that other very peculiar wonder---life.
+
+\clearpage
+
+% state-of-the-art high throughput genomics
+% technologies.  For all the limitations of microarrays, it might even be argued
+% that, with their proven and tested pre-processing bioinformatics pipelines, they
+% might still provide a solid operational platform for cancer genomics.
+
+% Only then should their eventual contribution at the level of the current
+% conceptual understanding of the disease under study be considered.
+
+% start by discussing the results of the thesis and their shortcomings in the
+% context of microarray research
+
+% why are we failing to treat cancer?
+
+% We know a lot about the biology of the dieases---but not nearly as much as we need.
+
+% historical reasons
+
+% Medical research was largely done by physician–scientists who also treated
+% patients. That changed with the explosion of molecular biology in the
+% 1970s. Clinical and basic research started to separate, and biomedical research
+% emerged as a discipline in its own right, with its own training. The bulk of
+% biomedical research is now done by highly specialized PhD scientists (see
+% graph), and physician–scientists are a minority.
+
+% conceptual reasons: Gould versus Dawkins
+
+% \newthought{Much like} any human endeavour, the collective search to elucidate
+% and defeat cancer is fraught with
+
+% \newthought{Much like} sound models of cancer progression can inform the
+% interpretation of large-scale genomic experiments, evolutionary perspectives of
+% the history of life can equally be used to steer our understanding of the
+% disease itself.
+
+% This is the \emph{life} section of the discussion.
+
+% We've learned a lot about genetic systems, but not yet enough.
+
+% Pervasive transcription of the human genome produces thousands of previously
+% unidentified long intergenic coding RNAs.  Only 2% of our genome displays
+% protein-coding capacity.
+
+% non-coding \smallcaps{rna}s (nc\smallcaps{rna}s) are an heterogeneous group of
+% biomolecules that has been classified in three families concerning their size:
+% (\emph{a}) molecules ranging from 18 to 25 nucleotides in length, comprising
+% micro\smallcaps{rna}s and small interfering \smallcaps{rna}s; (\emph{b})
+% molecules from 30 to 300 nucleotides, involving small nucleolar
+% \smallcaps{rna}s, Piwi \smallcaps{rna}s (pi-\smallcaps{rna}s), transfer
+% \smallcaps{rna}s, ribosomal \smallcaps{rna}s and small-ncRNAs; and (\emph{c})
+% molecules larger than 300 nucleotides, referred to as long non-coding
+% \smallcaps{rnao}s (nc\smallcaps{rna}s).
+
+% For example, it has been demonstrated that some mi\samllcaps{rna}s can either
+% repress or induce the transcription of a given m\smallcaps{rna}, depending on
+% the proliferative status of the cell
+
+% No one like Gould knew how to weave these evolutionary threads into a narrative
+% that could so well play as metaphor for cancer itself, this ``strange eventful
+% history'':\footnote{\citealp[p. 54]{gould_flamingos_1987}}
+
+% \begin{quotation}
+%   Our world is not an optimal place, fine tuned by omnipotent forces of
+%   selection.  It is a quirky mass of imperfections, working well enough (often
+%   admirably); a jury-rigged set of adaptations built of curious parts made
+%   available by past histories in different contexts.  (\ldots) A world optimally
+%   adapted to current environments is a world without history, and a world
+%   without history might have been created as we find it.  History matters; it
+%   confounds perfection and proves that current life transformed its own past.
+% \end{quotation}
+
+% Exacting as it may be, the unraveling of these threads may well be key to
+% elucidate the nature of cancer; and of that other very peculiar wonder---life.
+
+% The elucidation of these matters will only further our understanding of the
+% nature of cancer; % \footnote{``It's bad bile.  It's bad habits.  It's bad bosses.
+%   % It's bad genes.''---\emph{Mel Greaves}}
+%  and of that other very peculiar wonder---life.
 
 \clearpage
 
 %%% Local Variables:
-%%% TeX-engine: xetex
 %%% mode: latex
 %%% TeX-master: "../../thesis"
 %%% End:
