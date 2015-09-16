@@ -35,7 +35,7 @@ Following the proof-of-principle molecular classification of leukemia by Golub
 et al.~in 1999,\cite{golub_molecular_1999} molecular cancer classification was
 generalized to solid tumours by Ramaswamy et al. and Su et al.~in
 2001.\cite{ramaswamy_multiclass_2001,su_molecular_2001} Both studies present an
-experimental design where an initial number of primary carcinomas (respectively
+experimental design where an initial number of primary carcinomas (respectively,
 144 and 100), spanning most human solid cancers, was used to train a multiclass
 predictor to determine the anatomical origin of a random test sample, given its
 expression profile.  Reported accuracies of these classifiers ranged from 78\%
@@ -119,59 +119,429 @@ of microarray technology resolution, may well account for the struggle of
 traditional molecular classifiers to recapitulate neoplastic disease in its
 essence.
 
-\subsection{Molecular outcome prognostication of cancer}
+\subsection{Molecular prognostication of cancer}
 \label{sec:molecular-prediction}
 
 Cancer prognostication is one of the most challenging tasks in oncology.  Here,
 the consensus is to adhere to formal anatomical staging systems, such as the the
 \smallcaps{tnm} staging system,\cite{sobin_tnm:_2003} which provide a basis for
-prediction of survival, choice of initial treatment and stratification of
-patients in clinical trials.\cite{ludwig_biomarkers_2005}
+prediction of survival, choice of initial treatment, and stratification of
+patients in clinical trials.\cite{ludwig_biomarkers_2005} The discovery of novel
+subdivisions of traditional tumour classes---defined by exclusive biomarkers,
+and presenting different clinical behaviours and therapeutic
+responses---motivated the search for molecular-based models for cancer
+prognostication.
+
+Tangible success was achieved when, in early 2007, the \smallcaps{fda} cleared
+MammaPrint\textcopyright{}, the first microarray-based commercial molecular
+prognostic test for breast cancer.\cite{fda_2007_2007} This assay, for
+node-negative women under 61 years of age with tumors less than
+\SIlist{5}{\centi\metre} in diameter, is based on the 70-gene prognosis profile
+of van't Veer et al.\cite{vant_veer_gene_2002}
+
+Breast cancer is, arguably, one of the most thoroughly characterized human
+cancers from the molecular point of view.  In the breast cancer model, genomics
+classification methods have uncovered at least four intrinsic subtypes: the
+basal-like subtype, which is estrogen receptor negative
+\mbox{(\smallcaps{er--})} and \smallcaps{her2--}; the \smallcaps{her2} subtype,
+characterized by increased expression of \smallcaps{her2} and of genes mapping
+to the \smallcaps{her2} amplicon; and two luminal \smallcaps{er+}
+subtypes---namely the luminal \smallcaps{A} subtype, characterized by high
+levels of \smallcaps{er} and \smallcaps{er}-related genes; and the luminal
+\smallcaps{b} subtype, characterized by lower \smallcaps{er} levels and high
+expression of genes implicated in the proliferation
+process.\cite{arpino_gene_2013} Evidence based on prognostic gene signatures
+empirically derived to discriminate between good- and poor-prognosis cancers has
+established that good prognosis \smallcaps{er+} tumours (luminal \smallcaps{a}
+tumours) derive little, if any, benefit from adjuvant chemotherapy.  Conversely,
+other subtypes show a greater sensitivity to multidrug chemotherapy
+regimens.\cite{weigelt_challenges_2012}
+
+While great hope was placed on first generation prognostic signatures to replace
+clinicopathological parameters in therapy decision making, it was eventually
+shown that these molecular classifiers largely complement the prognostic ability
+of tumour size and nodal status---two of the metrics encapsulated by the
+\smallcaps{tnm} staging
+system.\cite{sotiriou_gene-expression_2009,reis-filho_molecular_2010}
+Furthermore, the prognostic ability of these signatures is mostly restricted to
+\smallcaps{er+} breast cancer, with negligible prognostic value reported for
+patients with \smallcaps{er--} disease.
+
+Microarray-based markers of predictive response to breast cancer chemotherapy
+have also shown limited success in producing clinically serviceable tests.
+Weigelt et al.\cite{weigelt_challenges_2012} discuss possible causes for this
+poor translational output.  Among them, they cite challenges related to the
+confounding impact of molecular heterogeneity of disease when deriving
+prognostic and predictive markers; the lack of resolution of microarray
+technology at the post-transcriptional level; and the under-explored potential
+role for dynamic-response markers in predicting response to treatment.
+
+% the complexity of the tumour's transcriptomic landscape, which may keep
+% germane biological signals beyond the resolution of microarray technology; and
+% the possible widespread nature of tumour resistance mechanisms, which may
+% operate at different molecular levels.  and the strict requirements in tissue
+% quality standards for biomarker assaying.
+
+A large number of breast cancer prognostic signatures has been reported in the
+last decade.\cite{liu_breast_2014} While their overlap is limited, their
+prognostic ability has been linked with two main components of breast-derived
+neoplasias' biology: their proliferative activity, and their \smallcaps{er}
+signaling.  Nevertheless, the deceptive biological specificity of these
+biomarkers has inspired a burgeoning literature purporting to report the
+implication of biological phenomena in breast cancer progression.  This was
+routinely achieved by validating the prognostic ability of a biologically
+motivated gene signature in a cohort of breast cancer expression
+profiles.\cite{chang_gene_2004} Venet et al.~have challenged this reasoning by
+showing that most random gene expression signatures are associated with breast
+cancer outcome.\footnote{Their argument was illustrated, via \emph{reductio ad
+    absurdum}, with the demonstration that expression signatures of postprandial
+  laughter and of mice social defeat can both predict overall survival in the
+  \mbox{295-sample} \smallcaps{nki} reference cohort
+  (\citealp{venet_most_2011}).}  In this dissertation, we have extended these
+findings by characterizing the extent of prognostic signals in 114 cohorts of
+human cancers afflicting nineteen organ systems.\footnote{Under revision.}  We
+have shown that, in most cancer transcriptomes, the nature of prognostic signals
+is notoriously pervasive and their assessment is highly sensitive to sampling
+variance.  We describe a breast cancer case study where a sizable fraction of
+the prognostic signals quantified could be ascribed to spurious correlations
+related to a critical normalization artifact.  We further established that the
+extent of prognostic signals in transcriptomes of breast cancer are related to
+the fraction of \smallcaps{er+} neoplastic transcriptomes prognosticated and, to
+a lesser extent, to the fraction of node positive patients considered in the
+analysis.
+
+\begin{table}[ht]
+  \footnotesize
+  \centering
+  \begin{tabular}{m{3.2cm}m{1.5cm}m{1.1cm}m{2cm}m{1cm}}
+    \toprule
+    \multicolumn{1}{c}{Biomarker}
+                                                                                    & Official gene name       & Clinical use\textsuperscript{\emph{a}} & Cancer type                & Source type \\
+    \midrule
+    $\alpha$-fetoprotein (\smallcaps{afp})                                          & \smallcaps{\emph{afp}}   & Stg                                    & Nonseminomatous testicular & Serum       \\
+    Human chorionic gonadotropin (h\smallcaps{gc})                                  & \smallcaps{\emph{cgb}}   & Stg                                    & Testicular                 & Serum       \\
+    Carbohydrate antigen 19-9 (\smallcaps{ca19-9})                                  &                          & Mnt                                    & Pancreatic                 & Serum       \\
+    Carbohydrate antigen 125 (\smallcaps{ca125})                                    & \smallcaps{\emph{muc16}} & Mnt                                    & Ovarian                    & Serum       \\
+    Carcinoembryonic antigen (\smallcaps{cea})                                      & \smallcaps{\emph{psg2}}  & Mnt                                    & Colorectal                 & Tissue      \\
+    Epidermal growth factor receptor (\smallcaps{egfr})                             & \smallcaps{\emph{egfr}}  & Prd                                    & Colorectal                 & Tissue      \\
+    v-kit Hardy-Zuckerman 4 feline sarcoma viral oncogene homolog (\smallcaps{kit}) & \smallcaps{\emph{kit}}   & Prd                                    & Gastrointestinal           & Tissue      \\
+    Thyroglobulin                                                                   & \smallcaps{\emph{tg}}    & Mnt                                    & Thyroid                    & Serum       \\
+    Prostate specific antigen (\smallcaps{psa})
+                                                                                    & \smallcaps{\emph{klk3}}  & Scn, Mnt                               & Prostate                   & Serum       \\
+    Carbohydrate antigen 15.3 (\smallcaps{ca 15.3})                                 & \smallcaps{\emph{muc1}}  & Mnt                                    & Breast                     & Serum       \\
+    Carbohydrate antigen 27.29 (\smallcaps{ca27.29})                                & \smallcaps{\emph{muc1}}  & Mnt                                    & Breast                     & Serum       \\
+    Estrogen receptor (\smallcaps{er})
+                                                                                    & \smallcaps{\emph{esr1}}  & Prg, Prd                               & Breast                     & Tissue      \\
+    Progesterone receptor (\smallcaps{pr})
+                                                                                    & \smallcaps{\emph{pgr}}   & Prg, Prd                               & Breast                     & Tissue      \\
+    v-erb-b2 erythroblastic leukemia viral oncogene homolog 2
+    (\smallcaps{her2}-neu)                                                          & \smallcaps{\emph{erbb2}} & Prg, Prd                               & Breast                     & Tissue      \\
+    Nuclear matrix protein 22 (\smallcaps{nmp-22})
+                                                                                    &                          & Scn, Mnt                               & Bladder                    & Urine       \\
+    Fibrin/fibrinogen degradation products (\smallcaps{fdp})                        &                          & Mnt                                    & Bladder                    & Urine       \\
+    Bladder tumor antigen (\smallcaps{bta})                                         &                          & Mnt                                    & Bladder                    & Urine       \\
+    High molecular \smallcaps{cea} and mucin                                        &                          & Mnt                                    & Bladder                    & Urine       \\
+    \bottomrule
+    \multicolumn{5}{l}{\textsuperscript{\emph{a}}~Stg: staging; Mnt:
+    monitoring; Prd: prediction; Prg: prognosis; Scn: screening.}
+  \end{tabular}
+  \caption[\smallcaps{fda}-cleared protein cancer biomarkers]{List of the eighteen
+    \smallcaps{fda}-cleared protein cancer biomarkers issued from genomic
+    analyses currently available for clinical use (adapted from \citealp{pavlou_long_2013}).}
+  \label{tab:fda-biomarkers}
+\end{table}
+% \footnotetext{Stg: staging; Mnt: monitoring; Prd: prediction; Prg: prognosis;
+%   Scn: screening.}
+
+\newthought{Provocatively,} in a 2013 review on the impact of
+\smallcaps{fda}-approved molecular biomarkers in cancer staging, prognosis and
+treatment selection (Table~\ref{tab:fda-biomarkers}), Pavlou et al.~observed
+that, ``despite the intensified interest and investment by major stakeholders,
+including academia, industry, and government, the number of
+biomarkers\footnote{Accoding to the \smallcaps{nih}, a biomarker is defined as
+  ``a characteristic used to measure and evaluate objectively normal biological
+  processes, pathogenic processes, or pharmacological responses to a therapeutic
+  intervention.'' (\citealp{downing_biomarkers_2001})} receiving \smallcaps{us}
+Food and Drug Administration (\smallcaps{fda}) 4 clearance has declined
+substantially over the last ten years to less than one protein biomarker per
+year.''  % Among the most frequent causes for failure to validate a biomarker,
+% Pavlou et al.~quoted: pre-analytical factors (e.g., patient selection bias;
+% poor sample collection, handling and storage); analytical factors (e.g.,
+% methodological artifacts; poor analytical methodology); statistical factors
+% (e.g., small sample size; inadequate statistical analysis; data overfitting;
+% non-independence of training and validation patient cohorts); and clinical
+% validation factors (e.g., non-reproducible validation; poor study design; lack
+% of clinical performance).
+
+If anything, the lackluster translational output from the bench to the bedsite
+has not refrained the appeal of high throughput genomics technologies in cancer
+research.  Following the launch of the Cancer Genome Project (\smallcaps{cgp})
+in the United Kingdom in 2000, and of The Cancer Genome Atlas (\smallcaps{tcga})
+in the United States in 2006, the International Cancer Genome Consortium
+(\smallcaps{icgc}) was created in 2007 to coordinate the generation of
+comprehensive catalogues of genome alterations in 52 different cancer
+types.\cite{watson_emerging_2013,lawrence_mutational_2013} Since then,
+comprehensive genomic characterizations of glioblastoma, colon cancer, breast
+cancer, lung cancers, renal carcinoma, gastric carcinoma, bladder carcinoma, and
+thyroid
+carcinomas,\cite{mclendon_comprehensive_2008,the_cancer_genome_atlas_network_comprehensive_2012-1,the_cancer_genome_atlas_network_comprehensive_2012,the_cancer_genome_atlas_research_network_comprehensive_2012,the_cancer_genome_atlas_research_network_comprehensive_2014,the_cancer_genome_atlas_research_network_comprehensive_2013,the_cancer_genome_atlas_research_network_comprehensive_2014-1,the_cancer_genome_atlas_research_network_comprehensive_2014-2,agrawal_integrated_2014}
+among others, have been released in the public domain.
+
+% Since then, comprehensive genomic characterizations of
+% globalism,\cite{mclendon_comprehensive_2008} colon
+% cancer,\cite{the_cancer_genome_atlas_network_comprehensive_2012-1} breast
+% cancer,\cite{the_cancer_genome_atlas_network_comprehensive_2012} lung
+% cancers,\cite{the_cancer_genome_atlas_research_network_comprehensive_2012,the_cancer_genome_atlas_research_network_comprehensive_2014}
+% renal
+% carcinoma,\cite{the_cancer_genome_atlas_research_network_comprehensive_2013}
+% gastric
+% carcinoma,\cite{the_cancer_genome_atlas_research_network_comprehensive_2014-1}
+% bladder
+% carcinoma,\cite{the_cancer_genome_atlas_research_network_comprehensive_2014-2}
+% and thyroid carcinomas,\cite{agrawal_integrated_2014} among others, have been
+% released in the public domain.
+
+These % multi-disciplinary and
+large collaborative efforts bring together recent advancements in
+high-throughput technologies,\footnote{Tran et al.~provide a broad overview on
+  the latest technological developments in cancer genomics
+  (\citealp{tran_cancer_2012}).} % \cite{tran_cancer_2012}
+to integrate information provided by \smallcaps{dna} copy number arrays,
+\smallcaps{dna} methylation arrays, exome sequencing, messenger \smallcaps{rna}
+arrays, micro\smallcaps{rna} sequencing and reverse-phase protein arrays---in
+order to re-examine the molecular portraits of human cancers drawn by first
+generation microarrays fifteen years ago.  Cross-sectional global profilings of
+cancer are motivated by the premise that no single type of molecular approach
+can fully elucidate neoplastic biology,\cite{hanash_integrated_2004} and that
+intra-tumour heterogeneity is a defining feature of the molecular pathogenesis
+of cancer.\cite{yates_evolution_2012,almendro_cellular_2013}
+
+While aiming for a unified genomic theory of the disease, comprehensive
+molecular portraits of cancer have contributed with novel insights into
+neoplastic biology, including---the discovery of frequent somatic mutations in
+functional elements of non-coding regions of the genome, including promoter and
+enhancing regions;\cite{horn_tert_2013,huang_highly_2013} the identification of
+particular signatures of mutational processes, linked with patient's age, known
+mutagenic exposures or defects in \smallcaps{dna}
+maintenance;\cite{nik-zainal_mutational_2012} and, perhaps most enticingly, the
+possibility to recapitulate the evolutionary course of the disease, through the
+mapping of clonal and sub-clonal point and structural mutations in longitudinal
+and multi-regional samplings of tumours.\cite{watson_emerging_2013}
+
+% the distribution of clonal and subclonal mutations and somatic copy-number
+% aberrations in longitudinal and multi-region samplings.
+
+The technological arsenal at the service of integrated molecular catalogs of
+cancer can also be used to address the vision for personalized cancer medicine
+evoked by early microarrays.\cite{sander_genomic_2000}
+% While comprehensive molecular catalogs of cancer were primarily assembled to
+% seek a unified genomic theory of the disease, their technological arsenal was
+% also used to address the vision for personalized cancer medicine evoked by early
+% microarrays.\cite{sander_genomic_2000}
+Personalized medicine envisions to maximize treatment efficacy, and minimize its
+morbidity, through the tailoring of medical response based on individual tumour
+genomics.  Several pioneering personalized medicine programs are currently under
+way in the United States, namely at the Dana-Farber/Brigham and Womens Cancer
+Center, at the Massachusetts General Hospital, at the Memorial Sloan-Kettering
+Cancer Center, at the \smallcaps{md} Anderson Cancer Center, at the Oregon
+Health \& Science University, and at the Vanderbilt Cancer
+Center.\cite{macconaill_clinical_2011}
+
+Again, a familiar range of complex challenges compound to the limited
+effectiveness of global genomic approaches for diagnostic and treatment of
+cancer.  Issues related to the amount and quality of biological material
+available from patients; the high cost and slow turnaround time of
+high-throughput genomic assays; and the lack of consolidated bioinformatics
+pipelines for cancer genome diagnostics all contribute to narrow the windows of
+opportunity offered by personalized medicine programs.  But even when high
+quality data can be assembled, it is the insufficient working knowledge of the
+core dynamic biological processes driving disease progression that hinders the
+development of treatments effective at halting and receding specific forms of
+cancer progression.
+
+An example of such a personalized medicine program comes from the Mount Sinai
+School of Medicine, in New York, where fruit fly models bearing genetic make-ups
+based on patients' sequenced tumours are being engineered.  The flies are then
+used to screen for optimal chemotherapeutic combination of drugs tailored for a
+patient's individual cancer.\cite{warren_theres_2013} In spite of the extensive
+resources dedicated to profile genetic variation in selected individual
+patients, the use of empirically substantiated drug cocktails has been a
+recurring---if not the prevailing---strategy to innovate on cancer treatments.
+To this effect, several biological systems have been established (cancer cell
+lines; murine, zebrafish and \emph{Caenorhabditis elegans} systems, among
+others), to model the response of human cancers to selections of potential
+tumouricidal compounds.\cite{sharma_cell_2010,heyer_non-germline_2010,potts_cell_2011,gonzalez_drosophila_2013,white_zebrafish_2013}
+
+% An equally fatalistic sense of gloom can be found on the therapeutic development
+% front,
+
+% These programs are however facing significant challenges related to the amount
+% and quality of biological material available from each patient; the high cost
+% and slow turnaround time of high-throughput genomic assays; the lack of
+% consolidated bioinformatics pipelines for cancer genome diagnostics. and the
+% lack of sufficient biological knowledge of relevant pathways, their
+% relationships and interactions, to facilitate the contextual interpretation of
+% the data.
+
+% into integrated molecular portraits of each cancer.
+
+% The volume of data produced by these pan-genomic characterization efforts has
+% been staggering, and the this wealth of resources is still being actively
+% mined.
+
+% Global assessments of the expression of m\smallcaps{rna} molecules in neoplastic
+% biospecimens has been gradually complemented by assays probing
+% mi\smallcaps{rna}s, seeking comprehensive molecular global portraits
+
+% On one hand, the integration of distinct sources of evidence been into a general
+% systems biology narrative\cite{tarabichi_systems_2013} have
+
+% \medskip{}
+
+\begin{figure}[ht]
+  \includegraphics{cancer-mortality-rate.pdf}
+  \caption[Age-adjusted death rates for selected leading causes of death: United
+  States, 1958–2010]{Age-adjusted death rates for selected leading causes of
+    death: United States, 1958–2010.  Source: \smallcaps{us} National Vital
+    Statistics Reports (\citealp{murphy_deaths:_2013}).}
+  \label{fig:cancer-mortality-rate}
+\end{figure}
+
+Meanwhile, targeted cancer therapies have primarily sought to address neoplastic
+progression with chemotherapeutic compounds targeting the hallmarks of
+cancer.\cite{hanahan_hallmarks_2011} These include drugs aiming at inhibiting
+proliferative signals (e.g., the monoclocal antibody \emph{Cetuximab}) and
+tumour-driven angiogenesis (e.g., the angiogenesis inhibitor
+\emph{Bevacizumab}); at preventing evasion from apoptosis (e.g., the Bcl-2
+antisense m\smallcaps{rna} inhibitor \emph{Oblimersen Sodium}); or at inhibiting
+tumor-activated kinases that regulate cancer cell proliferation and survival
+(e.g., the tyrosine-kinase inhibitor \emph{Imatinib}).\cite{pavet_towards_2011}
+Other promising therapeutic prospects include: the incitement of differentiation
+of acute myelogenous leukemic blasts into mature white blood cells via the
+administration of all-trans-retinoic acid, or \smallcaps{atra}, which targets
+the oncogenic fusion protein
+\mbox{\smallcaps{pml-rar\,$\alpha$}};\footnote{Zhen-yi Wang and Zhu Chen, of the
+  Ruijin Hospital, in Shanghai---who had the idea of using \smallcaps{atra} to
+  treat \smallcaps{aml}---, are said to have been inspired by a passage from the
+  Analects of Confucius: ``If you use laws to direct the people, and punishments
+  to control them, they will merely try to evade the punishments, and will have
+  no sense of shame. But if by virtue you guide them, and by the rites you
+  control them, there will be a sense of shame and of right.''
+  (\citealp{groopman_is_2014}).} the enlistment of the patient's immune system
+via the administration of \emph{Ipilimumab}, an immunotherapeutic drug targeting
+the \mbox{\smallcaps{t}-lymphocyte-associated antigen 4}, which has been shown
+to extend survival time in stage \smallcaps{iv} melanoma when combined with a
+peptide vaccine;\cite{hodi_improved_2010} or the attempts at recruiting the
+tumor necrosis factor-related apoptosis-inducing ligand (\smallcaps{trail})
+pathway, which has been shown to induce apoptosis in a tumour-selective
+manner.\cite{ma_novel_2009}
+
+In spite of this remarkable widening of the anti-cancer pharmacopoeia, little
+improvement has been made concerning the management of their toxic
+side-effects---undergoing cancer treatment is too often as much of an ordeal as
+the disease itself.\cite{cleeland_reducing_2012} This can be partially explained
+by the generic scope of most anti-cancer drugs and their inability to
+specifically target malignant neoplastic cells.  Perhaps even more pressing is
+the widening gap between the advances in fundamental biomedical cancer research
+and corresponding measurable gains in clinical research, with new treatments,
+diagnostics and prevention.  This phenomenon, oft-described as ``the valley of
+death,''\cite{butler_translational_2008} has been invoked to explain why cancer
+has virtually retained, in the United States, the same mortality rate in the
+last fifty years (Figure~\ref{fig:cancer-mortality-rate}).
+
+% that eradicate malignant cells
+
+% \medskip{}
+% at countering immune evasion of cancer cells.
+
+% In spite of notable improvements, the many efforts to devise chemical cocktails
+% to halt and eradicate disease progression with high specificity have not been
+% met with success for most cancers.
+
+\bigskip{}
+
+% Main problem is treatment-derived toxicity.
+
+% The valley of death.
+
+% Novel chemotherapeutic (genotoxic) compounds are continuously being developed,
+% despite the induction of serious side effects arising from the damage caused to
+% normal tissue.
+
+% Irrespective on the accumulating knowledge on tumour-specific features, at
+% present the corresponding targeted therapies have only in rare cases led to
+% cure.
+
+% None of these therapies were informed by first generation transcriptomics, of
+% which high-throughput microarray technologies were at the core.
+
+\medskip{}
+
+So the paradox remains.  Of an age when tumours are being dissected at a never
+imagined resolution, and human, financial and technological resources allocated
+to the war on cancer are at their peak, our ability to restrain disease
+progression, specially in its advanced stages, has anything but stalled.  Such
+maximal deployment of resources is being translated into shrinking expectations
+from the patient's point of view: long past are the days when a cure was
+seemingly waiting to be found around the corner.
+
+What avenues for cancer research?
 
 \clearpage
 
-In our second contribution made in this dissertation, we show that \ldots
+% Interaction of different levels of genomic data for cancer clinical cancer
+% prediction, such as opy number variants at the genome level, DNA methylation at
+% the epigenome level, and gene expression and microRNA at the transcriptome level
+% (Kim 2012)  On the same subject, aslo: Integrated global profiling of cancer
+% (Samir Hanash, 2004).
 
-The reference model for clinical outcome prediction based on molecular
-information is breast cancer.
+% Resume of current therapies for cancer research---none of them informed by
+% genomics technology.
 
-hmi-kim-2014.pdf
+% A resume on how molecular markers have impacted clinical oncological practice
+% (Sidarsky).
 
-While the TCGA and ICGC provide many opportunities to uncover the novel
-knowledge of the molecular basis of cancer, it is crucial to address the issue
-of development of an appropriate methodological framework for data integration
-to better understand different cancer phenotypes, further providing an enhanced
-global view on the interplays between different genomic features. With an
-abundance in of multi-omics data and clinical data from cancer patients,
-relevant integration frameworks will be valuable for explaining the molecular
-pathogenesis and underlying biology in cancer, eventually leading to more
-effective screening strategies and therapeutic targets in many types of cancer.
+% Ashworth discusses the Genetic Interactions in Cancer Progression and Treatment.
 
-nrc-hanash-2004
-Integrated global profiling of cancer
+% But if the past is precedent, realizing this future will be exceedingly
+% difficult.
 
-kim doesn't like michiels!
+% In our second contribution made in this dissertation, we show that \ldots
 
-Our results suggest that a better understanding of
-how best to assess classi- fiers in cancer prognostics is needed before
-generalized conclusions can be rendered. The utility of microarrays and other
-high-throughput technologies has been shown in clinical applications and safety
-assessment. It seems ap- parent that the excitement surrounding microarrays in
-general and the rush to publish in this area in particular have resulted in
-published studies that were not ade- quately validated. Publications such as
-Michiels et al.'s (19) have brought widespread attention to the early and
-perhaps premature studies that made unsupportable inferences. However, caution
-is also warranted in indict- ing microarrays in a broad way as unreliable, when
-so much work remains to be done in understanding how best to analyze such
-complex data and the extension of assessing the utility of a classifier derived
-from such data.
+% Clinical outcome prediction by miRnas, Ioannidis.
 
+% The reference model for clinical outcome prediction based on molecular
+% information is breast cancer.
 
+% hmi-kim-2014.pdf
+
+% While the TCGA and ICGC provide many opportunities to uncover the novel
+% knowledge of the molecular basis of cancer, it is crucial to address the issue
+% of development of an appropriate methodological framework for data integration
+% to better understand different cancer phenotypes, further providing an
+% enhanced global view on the interplays between different genomic
+% features. With an abundance in of multi-omics data and clinical data from
+% cancer patients, relevant integration frameworks will be valuable for
+% explaining the molecular pathogenesis and underlying biology in cancer,
+% eventually leading to more effective screening strategies and therapeutic
+% targets in many types of cancer.
+
+% kim doesn't like michiels!
+
+% Our results suggest that a better understanding of how best to assess classi-
+% fiers in cancer prognostics is needed before generalized conclusions can be
+% rendered. The utility of microarrays and other high-throughput technologies
+% has been shown in clinical applications and safety assessment. It seems ap-
+% parent that the excitement surrounding microarrays in general and the rush to
+% publish in this area in particular have resulted in published studies that
+% were not ade- quately validated. Publications such as Michiels et al.'s (19)
+% have brought widespread attention to the early and perhaps premature studies
+% that made unsupportable inferences. However, caution is also warranted in
+% indict- ing microarrays in a broad way as unreliable, when so much work
+% remains to be done in understanding how best to analyze such complex data and
+% the extension of assessing the utility of a classifier derived from such data.
 
 % Schemes for classification of tumour subtypes are notoriously less performing,
-
-\bigskip
-
 
 % Topics to discuss:
 % \begin{itemize}
@@ -195,12 +565,44 @@ from such data.
 %   a biological phenomena?
 % \item paradox: maximum depth of analytical tools, minimal expectations regarding
 %   clinical management of disease
-% \end{itemize}
+% \end{itemize} tissue quality standards for biomarker
 
-\clearpage
+% assaying; the influence of molecular heterogeneity of the disease when deriving
+% prognostic and predictive markers; the complexity of the tumour's transcriptomic
+% landscape, which may keep germane biological signals beyond the resolution of
+% microarray technology; and the possible widespread nature of tumour resistance
+% mechanisms, which may operate at different molecular levels.
+
+% A wide-range of breast cancer prognostic signatures has been reported in the
+% last decade.\cite{liu_breast_2014} While their overlap is limited, their
+% prognostic ability has been narrowed down to two main components of
+% breast-derived neoplasias' biology: proliferative activity, and \smallcaps{er}
+% signaling.  Nevertheless, the deceptive biological specificity of these
+% biomarkers has inspired a burgeoning literature purporting to report the
+% implication of biological phenomena in breast cancer progression.  This was
+% routinely achieved by validating the prognostic ability of a biologically
+% motivated gene signature in a cohort of breast cancer expression
+% profiles.\cite{chang_gene_2004} Venet et al.~have deconstructed this reasoning
+% by showing that most random gene expression signatures are associated with
+% breast cancer outcome.\footnote{This fallacy was exposed, via \emph{reductio ad
+%     absurdum}, with the demonstration that expression signatures of postprandial
+%   laughter and of mice social defeat can both predict overall survival in the
+%   \mbox{295-sample} \smallcaps{nki} reference cohort
+%   (\citealp{venet_most_2011}).}  In this dissertation, we have have extended
+% these findings by characterizing the extent of prognostic signals in 114 cohorts
+% of human cancers afflicting nineteen organ systems.\footnote{Under revision.}
+% We have shown that, in most cancer transcriptomes, the nature of prognostic
+% signals is notoriously pervasive and their assessment is highly sensitive to
+% sampling variance.  We describe a breast cancer case study where a sizeable
+% fraction of the prognostic signals quantified could be ascribed to spurious
+% correlations related to a critical normalization artifact.  We also established
+% that the extent of prognostic signals in transcriptomes of breast cancer are
+% also related to the fraction of \smallcaps{er+} neoplastic transcriptomes
+% prognosticated and, to a lesser extent, to the fraction of node positive
+% patients under analysis.
 
 %%% Local Variables:
-%%% TeX-engine: xetex
+%%% reftex-default-bibliography: ("../../thesis.bib")
 %%% mode: latex
 %%% TeX-master: "../../thesis"
 %%% End:
