@@ -19,6 +19,7 @@
 \usepackage{microtype}
 \usepackage{pdfpages} % to insert pages of external documents
 \usepackage{etoolbox} % provides some support for comma-separated lists
+\usepackage{epigraph} % commands for typesetting epigraphs
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{longtable}
@@ -229,36 +230,69 @@
 
 \begin{document}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Cover
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \includepdf[trim=5cm 3cm 5cm 3cm]{../cover/cover.pdf}
+\includepdf[trim=4.5cm 2.5cm 4.5cm 2.5cm]{../cover/cover.pdf}
+
 \frontmatter
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Colophon
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{./front-matter/colophon.tex}
 
 \blankpage{}
 
-% \maketitle
+% \newpage{}
 
-\newpage
-\begin{fullwidth}
-~\vfill
-\thispagestyle{empty}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{\baselineskip}
-Copyright \copyright\ \the\year\ \thanklessauthor{}
 
-\par\smallcaps{Published by \thanklesspublisher}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HALF TITLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\includepdf[trim=4.5cm 2.5cm 4.5cm 2.5cm]{../cover/half-title-bw.pdf}
 
-\par\smallcaps{tufte-latex.googlecode.com}
+\blankpage{}
 
-\par Licensed under the Apache License, Version 2.0 (the ``License''); you may
-not use this file except in compliance with the License. You may obtain a copy
-of the License at \url{http://www.apache.org/licenses/LICENSE-2.0}. Unless
-required by applicable law or agreed to in writing, software distributed under
-the License is distributed on an \smallcaps{``AS IS'' BASIS, WITHOUT WARRANTIES
-OR CONDITIONS OF ANY KIND}, either express or implied. See the License for the
-specific language governing permissions and limitations under the
-License.\index{license}
 
-\par\textit{First printing, \monthyear}
-\end{fullwidth}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dedication
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\input{./front-matter/dedication.tex}
+
+\blankpage{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Epigraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{./front-matter/epigraph.tex}
+
+\blankpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Summary
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{./front-matter/summary.tex}
+
+\blankpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Acknowledgments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{./front-matter/acknowledgements.tex}
+
+\blankpage{}
 
 \tableofcontents
 \listoffigures
