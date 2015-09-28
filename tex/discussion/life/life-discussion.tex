@@ -1,9 +1,13 @@
 \section{Life}
 \label{life-discussion}
 
+% \newthought{Can cancer} be defeated?
+
+% \smallskip{}
+
 \newthought{With projects} like The Cancer Genome Atlas drawing to an end,
 discussion is now shifting to where should cancer research go next.  Eric
-Lander, at the Broad Institute, has contended that ``completing the genomic
+Lander, at the Broad Institute, has argued that ``completing the genomic
 analysis of this disease should be a biomedical
 imperative.''\cite{lawrence_discovery_2014} According to Lander, the
 identification of novel cancer genes from the mining of the \smallcaps{tcga}
@@ -34,17 +38,17 @@ While microarray technology allows for the quantification of m\smallcaps{rna}
 products of cancer biospecimens in solution, it only lends itself to the
 detection of gene products already mapped and printed in the chip of the
 platform of choice.  Furthermore, eventual mutations (either nucleotide changes
-or structural variants) in genes being transcribed may impair the correct
+or structural variants) in actively transcribed genes may impair the correct
 estimation of their transcription levels due to the adulteration of their
 m\smallcaps{rna} sequences.  Even assuming correct estimates of the
 transcriptomic load of a given biospecimen, tissue cellularity and heterogeneity
 may complicate the interpretation of bulk expression profiles.  Finally, as
-microarray technology only probes the Central Dogma of Biology \footnote{The
+microarray technology only probes the Central Dogma of Biology\footnote{The
   central dogma of molecular biology, postulated by Francis Crick in 1958 and
   reasserted in 1970 (\citealp{crick_protein_1958,crick_central_1970}), pertains
   to the rules that govern the sequential flow of genetic information between
   \smallcaps{dna}, \smallcaps{rna} and proteins.  It can be summarized as
-  `\smallcaps{dna} makes \smallcaps{rna} makes protein,'' which provides the
+  ``\smallcaps{dna} makes \smallcaps{rna} makes protein,'' which provides the
   template for the enactment of hereditary information for all living organisms,
   and frames the scope of evolutionary forces on genetic systems.} at the
 transcriptional level, it provides no insight on upstream modulatory effects on
@@ -56,7 +60,7 @@ non-specific probe hybridization, non-consensual probe annotations, poorly
 defined gene ontologies and an incomplete understanding of the dynamics of gene
 expression on \emph{in vivo} biological systems.  Nevertheless, and in spite of
 having fell short of the promise for personalized medicine, microarrays have
-spectacularly delivered in a number of ways: by offering a first glimpse at the
+notably delivered in a number of ways: by offering a first glimpse at the
 previously unsuspected molecular taxonomy of many forms of cancer; by allowing
 for a quantitative diagnostic of neoplastic disease; by enabling the molecular
 dissection of cancer biospecimens with biologically motivated gene expression
@@ -67,54 +71,171 @@ retain its relevance in the clinical setting as a diagnostic tool, and for the
 plethora of publicly available expression profiles to remain a valuable mining
 resource, as novel insights on the biology of cancer come to the fore.
 
-% Unsurprisingly, many of the shortcomings of microarray technology listed above
-% can also be assigned to current state-of-the-art high throughput genomics
-% technologies.  This is because current biomedical research is conducted under
-% the paradigms prescribed by the emergence of molecular biology in the 1970's.
-% With the discovery of the structure of \smallcaps{dna} and the unlocking of the
-% genetic code, much of cell biology became redirected to the nucleus---not the least
-% because \smallcaps{dna} is a particularly stable and amenable molecule for
-% experimental manipulation.
+\medskip{}
 
-% Up to then, medical research was fundamentally carried out by physicians with
-% personal scientific interests who also treated patients.
+A more insightful discussion of the merits and limits of microarrays and
+genomics in cancer research could benefit from a wider historical perspective.
+% the first high throughput genomic technology used to map the genetics of
+% cancer, could be made from a wider historical perspective.
+Current biomedical research is conducted under the paradigms defined by the
+emergence of molecular biology in the 1970's.  Following the discovery of the
+structure of \smallcaps{dna} and the unlocking of the genetic code, cellular
+biology turned its attention to the genome and to the mechanisms by which
+hereditary information is enacted throughout the cell.  This surge of interest
+in \smallcaps{dna}, complemented by the molecule's stability and amenability to
+experimental manipulation, led to the development of technologies aiming for its
+extensive isolation and characterization.  These technologies include molecular
+cloning, polymerase chain reaction (\smallcaps{pcr}) and Southern blotting---the
+precursor of microarrays.
 
-% For all the limitations of microarrays, it might even be argued
-% that, with their proven and tested pre-processing bioinformatics pipelines, they
-% might still provide a solid operational platform for cancer genomics.
+Up to then, medical research was typically carried out by physicians, like
+Sydney Farber, with a keen interest in the physiological aspects of disease.
+The emergence of biomedical medicine consummated the split between clinical and
+basic research, with generations of highly specialized researchers trained under
+the central dogma taking over from physician-scientists.
 
-% Only then should their eventual contribution at the level of the current
-% conceptual understanding of the disease under study be considered.
+The underlying premise of molecular and genomics approaches to tackle cancer is
+the univocal relationship between genotype and a disease phenotype.\footnote{Of
+  which this dissertation is an example: statistical associations between
+  genetic correlates and, respectively, histo-pathological thyroid cancer types
+  and differential survival times of cancer patients are at the core of the
+  results here discussed.  Incidentally, this idea is typified by the concept of
+  genetic penetrance, or the faction of a given phenotype that is explained by
+  its underlying genotype.} This conceptualization does not take into
+consideration the possibility of disease phenotypes being the result of dynamic
+inter-cellular interplays (e.g., heterotypic signalings in the tumour
+ecosystem), does not account for dynamically reversible neoplastic states (e.g.,
+\smallcaps{emt}-\smallcaps{met} transitions), and is unconcerned with the
+constrictions imposed by evolutionary forces on genetic systems (see bellow).
+By seeking to apprehend cancer mainly through the prism of its genetic
+alterations, molecular genomics has pushed to the background the
+characterization of the many cellular states visited by neoplastic types that,
+while enabled by genetic disruptions, are not fully explained by
+them.\footnote{Another side-effect of the bias towards genomics in cancer
+  research is the large number of biosynthesis products and enzymes remaining
+  unannotated in the human genome, resulting in poorly documented ontology
+  databases.}
 
-% start by discussing the results of the thesis and their shortcomings in the
-% context of microarray research
+% \footnote{Incidentally, this fact may account for \ldots{}.  These databases,
+% mainly populated from results}
 
-% why are we failing to treat cancer?
+To illustrate this point, consider the Warburg effect.  Otto Warburg's
+observation in 1924 that cancer cells metabolize glucose in a manner that is
+less efficient from that of cells in normal tissues\cite{warburg_ueber_1924} has
+remained a matter of contentious speculation throughout the
+20\textsuperscript{th} century.  Only recent observations on the metabolism of
+neoplastic cells have started to shed light into a possible link between the
+uptake and incorporation of nutrients into the biomass during proliferation and
+anaerobic glycolysis.\cite{heiden_understanding_2009}
 
-% We know a lot about the biology of the dieases---but not nearly as much as we need.
+Equally poorly understood are metabolic phenomena driven by nutrient conditions
+of the tumour microenvironment and intercellular metabolism---much of our
+understanding of metabolism was drawn from work in simple
+organisms.\cite{hsu_cancer_2008} If cancer is to be portrayed has a collection
+of phenotypic dynamic ranges enabled by a succession of genetic disruptions,
+perhaps a thorough characterization of these metabolic states and their
+inter-dependencies could provide better clues for targeted treatments than the
+exhaustive characterization of all putative cancer
+genes.\cite{kroemer_tumor_2008}
 
-% historical reasons
+\medskip{}
 
-% Medical research was largely done by physician–scientists who also treated
-% patients. That changed with the explosion of molecular biology in the
-% 1970s. Clinical and basic research started to separate, and biomedical research
-% emerged as a discipline in its own right, with its own training. The bulk of
-% biomedical research is now done by highly specialized PhD scientists (see
-% graph), and physician–scientists are a minority.
+Nevertheless, cancer remains at its core a disease of genetic deregulation.  The
+evolutionary history of genetic systems provides another orthogonal perspective
+when seeking a more integrated approach to the disease.
 
-% conceptual reasons: Gould versus Dawkins
+The multistep progression of cancer has been largely explained by models of
+clonal evolution, driven by the acquisition of genetic variants, then pruned by
+Darwinian selection.\cite{greaves_clonal_2012} These models fittingly mirror the
+views of Richard Dawkins, who has strongly argued for a gene-centered
+interpretation of evolution.\cite{dawkins_selfish_1976} This formulation is
+however weakened by the lack of genetic correlates of the hallmarks of cancer
+that could be tagged along the evolution of fitter cancer clones---the only
+\emph{bona fide} cancer genes reported to date are still classical oncogenes and
+tumour suppressor genes.
 
-% \newthought{Much like} any human endeavour, the collective search to elucidate
-% and defeat cancer is fraught with
+The paleontologist Stephen J. Gould was a vocal opponent of the gene-centric
+perspective of evolution, arguing that most genes may not have a consistent
+enough effect on phenotypes' fitness to drive their
+evolution.\footnote{Pleiotropy (the capacity of a gene to influence two or more
+  seemingly unrelated traits), epistasis (the reliance of a gene on the presence
+  of one or more modifier genes to express its phenotype) and polygenic traits
+  (traits that are controlled by different genes to different degrees) are given
+  as examples of why natural selection lacks reach to shape genetic landscapes.}
+One of Gould's main points of contention was what he described as
+\emph{adaptationism}, the assertion that natural selection explains the majority
+of evolved traits.\cite{gould_spandrels_1979} Instead, Gould quoted functional,
+structural and genetic constraints, as well as serendipity itself, as major
+evolutionary forces.  For instance, \emph{exaptation}, or the co-option of
+structures with different prior functions to a new context, has been proposed to
+take part in the evolution of complex traits, such as the human
+eye.\cite{gould_exaptation_1982}
 
-% \newthought{Much like} sound models of cancer progression can inform the
-% interpretation of large-scale genomic experiments, evolutionary perspectives of
-% the history of life can equally be used to steer our understanding of the
-% disease itself.
+% The gene-centered reductionist approach is largely in line with the current genomics
+% interpretation of cancer progression.  Gene fitness selection, penetrance.  If
+% selection, as Gould sees it, can act only to magnify and sculpt variations
+% previously embedded in genetic systems, \ldots{}.
 
-% This is the \emph{life} section of the discussion.
+The projection of this debate into cancer evolution has implications at many
+conceptual levels.  Consider, for instance, the role of genetic instability in
+cancer progression.  Here, orthodoxy posits that: ``instability leads to an
+increased mutation rate and can shape the evolution of the cancer genome through
+a plethora of mechanisms.''\cite{burrell_causes_2013} This is to say that
+genetic instability is an \emph{advantageous} feature, and therefore is
+\emph{selected for} by cancers, in order to keep producing more \emph{adaptive}
+genetic variants.  This point of view is so widespread in the field that one has
+to reach out to the fringes of the literature to find an alternative, more
+sensible rationale: ``taking a molecular perspective, nothing can be selected
+because it mutates. (\ldots{}) The evolutionary breakdown of a repair strategy
+in mutagenic environments is thereby easily explained by the accumulating costs
+of repair.''\cite{breivik_evolutionary_2005} In other words, mutagenic
+environments in cancer occur simply because it is \emph{too costly} for
+defective neoplastic cells to repair their \smallcaps{dna} \emph{and} keep
+dividing at the same time.  Similarly, virtually every hallmark of cancer has
+been interpreted from an adaptationist stance, without ever making proof of the
+dependency of their putative genetic correlates in cancer
+progression.\cite{bernards_progression_2002}
 
-% We've learned a lot about genetic systems, but not yet enough.
+Taken together, it seems evident that a reductionist gene-centric formulation of
+cancer evolution is falling short to explain the progression of the disease.
+Neoplastic evolution cannot just be modeled as the relentless selection of
+increasingly fitter hallmark genetic variants.  Rather, it could be refashioned
+as the by-product of the loosening of the genetic stack evolved to enforce
+social compliance, leaving neoplastic cells to scramble through contextual
+adaptive solutions within the scope of the underlying genetic\ circuitries.  If
+so, a more consequent strategy to curb cancer progression could pass by focusing
+on the universal modular adaptations cancer cells depend on to thrive.  Such
+adaptations are likely to be featured, in some form, in models of present-day
+genetic lineages that never undertook the transition to multicellularity.
+
+% \mediumskip{}
+
+% Would cancer, defined by genomic instability and its phenotypic heterogeneity
+% and plasticity be the best model to probe for these rules?  Perhaps such
+% undertaking would best be envisaged in biological models where the deployment of
+% the genetic information is faithfully mirrored by phenotypes strictly under
+% control of natural selection---embryogenesis, connected with If pursuing the complete
+% catalog of cancer genes remains an imperative task in cancer research,
+% addressing the gap between phenome and genome.
+
+% non-coding \smallcaps{rna}s (nc\smallcaps{rna}s) are an heterogeneous group of
+% biomolecules that has been classified in three families concerning their size:
+% (\emph{a}) molecules ranging from 18 to 25 nucleotides in length, comprising
+% micro\smallcaps{rna}s and small interfering \smallcaps{rna}s; (\emph{b})
+% molecules from 30 to 300 nucleotides, involving small nucleolar
+% \smallcaps{rna}s, Piwi \smallcaps{rna}s (pi-\smallcaps{rna}s), transfer
+% \smallcaps{rna}s, ribosomal \smallcaps{rna}s and small-ncRNAs; and (\emph{c})
+% molecules larger than 300 nucleotides, referred to as long non-coding
+% \smallcaps{rnao}s (nc\smallcaps{rna}s).
+
+% For example, it has been demonstrated that some mi\samllcaps{rna}s can either
+% repress or induce the transcription of a given m\smallcaps{rna}, depending on
+% the proliferative status of the cell
+
+% The elucidation of these matters will only further our understanding of the
+% nature of cancer; % \footnote{``It's bad bile.  It's bad habits.  It's bad bosses.
+%   % It's bad genes.''---\emph{Mel Greaves}}
+%  and of that other very peculiar wonder---life.
 
 % Pervasive transcription of the human genome produces thousands of previously
 % unidentified long intergenic coding RNAs.  Only 2% of our genome displays
@@ -134,109 +255,36 @@ resource, as novel insights on the biology of cancer come to the fore.
 % repress or induce the transcription of a given m\smallcaps{rna}, depending on
 % the proliferative status of the cell
 
-% No one like Gould knew how to weave these evolutionary threads into a narrative
-% that could so well play as metaphor for cancer itself, this ``strange eventful
-% history'':\footnote{\citealp[p. 54]{gould_flamingos_1987}}
+\bigskip{}
 
-% \begin{quotation}
-%   Our world is not an optimal place, fine tuned by omnipotent forces of
-%   selection.  It is a quirky mass of imperfections, working well enough (often
-%   admirably); a jury-rigged set of adaptations built of curious parts made
-%   available by past histories in different contexts.  (\ldots) A world optimally
-%   adapted to current environments is a world without history, and a world
-%   without history might have been created as we find it.  History matters; it
-%   confounds perfection and proves that current life transformed its own past.
-% \end{quotation}
+While modern notions of the disease have dramatically departed from its humoural
+depictions of a hundred and fifty years ago, many dots remain to be connected to
+yield a definitive, cohesive, and actionable picture of cancer.  To this end,
+engaging with historical, biological and evolutionary perspectives could provide
+an invaluable contribution.  And no one quite like Gould knew how to weave these
+themes into a rendering that could so well play as a metaphor for the malignancy
+itself:\footnote{\citealp[p. 54]{gould_flamingos_1987}}
+% , this ``strange eventful history'':
 
-% Exacting as it may be, the unraveling of these threads may well be key to
-% elucidate the nature of cancer; and of that other very peculiar wonder---life.
+\begin{quotation}
+  Our world is not an optimal place, fine tuned by omnipotent forces of
+  selection.  It is a quirky mass of imperfections, working well enough (often
+  admirably); a jury-rigged set of adaptations built of curious parts made
+  available by past histories in different contexts.  (\ldots) A world optimally
+  adapted to current environments is a world without history, and a world
+  without history might have been created as we find it.  History matters; it
+  confounds perfection and proves that current life transformed its own past.
+\end{quotation}
+
+Exacting as it may be, the unraveling of these threads may well be key to
+elucidate the nature of cancer; and of that other very peculiar wonder---life.
+
+\clearpage
 
 % The elucidation of these matters will only further our understanding of the
 % nature of cancer; % \footnote{``It's bad bile.  It's bad habits.  It's bad bosses.
 %   % It's bad genes.''---\emph{Mel Greaves}}
 %  and of that other very peculiar wonder---life.
-
-\clearpage
-
-% state-of-the-art high throughput genomics
-% technologies.  For all the limitations of microarrays, it might even be argued
-% that, with their proven and tested pre-processing bioinformatics pipelines, they
-% might still provide a solid operational platform for cancer genomics.
-
-% Only then should their eventual contribution at the level of the current
-% conceptual understanding of the disease under study be considered.
-
-% start by discussing the results of the thesis and their shortcomings in the
-% context of microarray research
-
-% why are we failing to treat cancer?
-
-% We know a lot about the biology of the dieases---but not nearly as much as we need.
-
-% historical reasons
-
-% Medical research was largely done by physician–scientists who also treated
-% patients. That changed with the explosion of molecular biology in the
-% 1970s. Clinical and basic research started to separate, and biomedical research
-% emerged as a discipline in its own right, with its own training. The bulk of
-% biomedical research is now done by highly specialized PhD scientists (see
-% graph), and physician–scientists are a minority.
-
-% conceptual reasons: Gould versus Dawkins
-
-% \newthought{Much like} any human endeavour, the collective search to elucidate
-% and defeat cancer is fraught with
-
-% \newthought{Much like} sound models of cancer progression can inform the
-% interpretation of large-scale genomic experiments, evolutionary perspectives of
-% the history of life can equally be used to steer our understanding of the
-% disease itself.
-
-% This is the \emph{life} section of the discussion.
-
-% We've learned a lot about genetic systems, but not yet enough.
-
-% Pervasive transcription of the human genome produces thousands of previously
-% unidentified long intergenic coding RNAs.  Only 2% of our genome displays
-% protein-coding capacity.
-
-% non-coding \smallcaps{rna}s (nc\smallcaps{rna}s) are an heterogeneous group of
-% biomolecules that has been classified in three families concerning their size:
-% (\emph{a}) molecules ranging from 18 to 25 nucleotides in length, comprising
-% micro\smallcaps{rna}s and small interfering \smallcaps{rna}s; (\emph{b})
-% molecules from 30 to 300 nucleotides, involving small nucleolar
-% \smallcaps{rna}s, Piwi \smallcaps{rna}s (pi-\smallcaps{rna}s), transfer
-% \smallcaps{rna}s, ribosomal \smallcaps{rna}s and small-ncRNAs; and (\emph{c})
-% molecules larger than 300 nucleotides, referred to as long non-coding
-% \smallcaps{rnao}s (nc\smallcaps{rna}s).
-
-% For example, it has been demonstrated that some mi\samllcaps{rna}s can either
-% repress or induce the transcription of a given m\smallcaps{rna}, depending on
-% the proliferative status of the cell
-
-% No one like Gould knew how to weave these evolutionary threads into a narrative
-% that could so well play as metaphor for cancer itself, this ``strange eventful
-% history'':\footnote{\citealp[p. 54]{gould_flamingos_1987}}
-
-% \begin{quotation}
-%   Our world is not an optimal place, fine tuned by omnipotent forces of
-%   selection.  It is a quirky mass of imperfections, working well enough (often
-%   admirably); a jury-rigged set of adaptations built of curious parts made
-%   available by past histories in different contexts.  (\ldots) A world optimally
-%   adapted to current environments is a world without history, and a world
-%   without history might have been created as we find it.  History matters; it
-%   confounds perfection and proves that current life transformed its own past.
-% \end{quotation}
-
-% Exacting as it may be, the unraveling of these threads may well be key to
-% elucidate the nature of cancer; and of that other very peculiar wonder---life.
-
-% The elucidation of these matters will only further our understanding of the
-% nature of cancer; % \footnote{``It's bad bile.  It's bad habits.  It's bad bosses.
-%   % It's bad genes.''---\emph{Mel Greaves}}
-%  and of that other very peculiar wonder---life.
-
-\clearpage
 
 %%% Local Variables:
 %%% mode: latex
