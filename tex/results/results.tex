@@ -1,4 +1,4 @@
-This chapter is comprised of two sections.  The first consists of a published
+This chapter is comprised of three sections.  The first consists of a published
 article, entitled ``A general method to derive robust organ-specific gene
 expression-based differentiation indices: application to thyroid cancer
 diagnostic.''\cite{tomas_general_2012} The results exposed in this manuscript
@@ -15,6 +15,9 @@ neoplastic expression profiles.  These results are elaborated upon in the
 corresponding section of the
 \hyperref[sec:discussion-prognostic-microarrays]{\textsf{Discussion}} chapter.
 
+The remaining section reports other publications to which the author contributed
+in the context of during this dissertation.
+
 % The results of this analysis are currently under revision.
 
 % \resetcitations
@@ -22,7 +25,7 @@ corresponding section of the
 \section{Differentiation and proliferation signatures in cancer diagnostic}
 \label{sec:results-differentiation-proliferation}
 
-See next page.
+\emph{See next page.}
 
 % \includepdf[pages=1-9,fitpaper=true]{../pdf/include/onc-tomas-2012.pdf}
 \includepdf[pages=1-9,trim=5cm 3cm 5cm 3cm]{../pdf/include/onc-tomas-2012.pdf}
@@ -31,66 +34,48 @@ See next page.
 \section{The extent of prognostic signals in the cancer transcriptomes}
 \label{sec:results-prognostic-survival}
 
-\subsection{Datasets}
-\label{sec:results-prognostic-survival-datasets}
+The vast majority of mechanistic cancer studies are performed in animals and/or
+\emph{in vitro} models for ethical reasons.  Proving that a biological mechanism
+established in these experimental systems contributes to cancer progression in
+human requires clinical trials, which are costly and take years to perform.
+Therefore, researchers have relied on weaker correlative evidence to back the
+relevance of their findings to human diseases.  One such evidence is the
+statistically significant association of a molecular maker of the biological
+mechanism under investigation with disease outcome in human.  Such association
+can be established with non-interventional clinical studies and has been
+extensively used in the past decades.  Moreover, this approach has recently
+gained popularity with the availability of web
+servers\cite{gyorffy_online_2010,ringner_gobo:_2011,gyorffy_online_2013} that
+provide, for free, association statistics between any single- or multi-gene
+markers and cancer outcomes using publicly available cancer transcriptome
+databases.
 
-A total of 114 public datasets of cancer gene expression profiles spanning 19
-types of cancer were downloaded from public repositories, manually curated and
-pre-processed for downstream analysis.  Sources for datasets include the Gene
-Expression Omnibus,\cite{edgar_gene_2002}
-InSilicoDB,\cite{taminau_insilicodb:_2011} and the \smallcaps{tcga} Research
-Network
-site.\footnote{\href{http://cancergenome.nih.gov/}{http://cancergenome.nih.gov/}}
-Individual datasets are described in the
-\hyperref[sec:methods-datasets]{\textsf{Methods}} chapter.
+To retain a biological bearing, the reported association must however be
+specific of the biomarker under analysis and not reflect a global property of
+the transcriptome.  Most studies estimate the association with a log-rank test
+based on a Cox Proportional Hazards model and use a Kaplan-Meier curve to
+visualize it.  None of these tools control for the possibility that a large
+fraction of transcriptome could be associated with outcome and that, therefore,
+the prognostic signal is non-specific.
 
-\subsection{Gene sets}
-\label{sec:results-prognostic-survival-genesets}
+Disturbingly, this possibility has been proven true in
+bladder\cite{lauss_prediction_2010} and
+breast\cite{ein-dor_outcome_2005,mosley_cell_2008,venet_most_2011} cancers.  In
+particular, our group has shown\cite{venet_most_2011} that more than half of the
+transcriptome is correlated with proliferation in two breast cancer cohorts and
+that one out of four single genes and that nine out of ten random signatures
+comprised of more than 100 genes were associated with overall survival at
+$p<0.05$.  As a consequence, most published signatures were found to be
+significantly prognostic, but no more prognostic than random sets of genes.
 
-For each cancer dataset, we evaluated the association with clinical outcome of
-the 4722 curated gene sets from the
-\href{http://www.broadinstitute.org/gsea/msigdb/index.jsp}Molecular Signatures
-Database (\mbox{MSigDB
-  \smallcaps{c2}}).\footnote{\href{http://www.broadinstitute.org/gsea/msigdb/index.jsp}{http://www.broadinstitute.org/gsea/msigdb/index.jsp}}
-\mbox{MSigDB \smallcaps{c2}} signatures are manually curated from the literature
-on gene expression and also include gene sets from curated pathways databases
-such as \smallcaps{kegg}.
-
-Version 4.0 of the MSigDB curated gene sets (updated on May 31, 2013) was
-downloaded and parsed to produce two lists of gene expression signatures: one
-containing the 4722 original signatures with gene symbols as identifiers, and a
-randomized list consisting of 4722 signatures of the same size as the originals,
-but composed of random samplings from the total pool of genes in the collection.
-
-\subsection{Association with outcome}
-\label{sec:results-prognostic-survival-association}
-
-Association with outcome was computed as follows.  For each cancer dataset, we
-retained the first of the following clinical outcomes available, in decreasing
-order of importance: disease-specific survival (\smallcaps{dss}); overall
-survival (\smallcaps{os}); disease-free survival (\smallcaps{dfs}); and distant
-metastasis free survival (\smallcaps{dmfs}).  The survival times for the
-selected clinical outcome specified the dependent variables.
-
-We then modeled the association of each gene set with survival times by fitting
-a univariate Cox proportional hazards model, using the continuous first
-principal component loading vector of the signature in the global expression
-matrix as the predictor variable.  The \emph{p}-value of the associated logrank
-test was used to estimate association of the gene set with survival times.
-
-A similar procedure was followed to compute the association of each single gene
-in the expression matrix with survival times, by using the respective continuous
-vector of expression as the predictor variable in the Cox model.  Here again, the
-\emph{p}-value of the logrank test was used to estimate association with
-outcome.
-
-\subsection{Prognostic content in human cancers}
-\label{sec:results-prognostic-survival-prognostic-content}
-
-Figure~\ref{fig:prognostic-fraction} shows, for each human cancer dataset
-analyzed, the fraction of \mbox{MSigDB \smallcaps{c2}} signatures, randomized
-signatures and single genes found significantly associated with outcome, at
-$p < 0.05$.
+To investigate whether the pervasive association of the transcriptome with
+outcome extends to other cohorts and other types of cancers we compiled 114
+published gene-expression datasets with patient follow-up from the
+\smallcaps{geo}\cite{edgar_gene_2002}, InSilicoDB\cite{coletta_insilico_2012}
+and the \smallcaps{tcga} Research Network
+databases.\footnote{\href{http://cancergenome.nih.gov/}{http://cancergenome.nih.gov/}}
+These included human cancers from 19 organ systems, and a representative range
+of microarray platforms (Table~\ref{tab:datasets}).
 
 \begin{figure}%
   \includegraphics{fraction-significant-tests-base-R-graphics-15Jan2015.pdf}
@@ -106,72 +91,49 @@ $p < 0.05$.
   \label{fig:prognostic-fraction}%
 \end{figure}
 
-\clearpage
+For each dataset, we computed the fraction of genes associated with outcome at
+log-rank $p<0.05$ (Figure~\ref{fig:prognostic-fraction}).  This quantity may be
+viewed as the probability of observing a significantly prognostic single gene
+marker by chance alone.  We thus refer to these estimates as the baseline
+prognostic content\footnote{Prognostic content will henceforth refer to the
+  fraction of tested markers found associated with outcome in a given dataset.}
+of cancer transcriptomes.  Overall, the median prognostic content across all
+studies for single-gene markers was 12\%.  In 100 of the 114 datasets
+analyzed (88\%), more than five percent of single-gene markers showed a
+significant association with outcome.  % It was higher than 5\% and random %
+% multi-gene markers was, respectively, 12\% and 16\%.                     %
+% The median fraction was 9%. It was higher than 5% for 95 (83%) datasets.
+To take an extreme example, an investigator measuring the association of a gene
+with outcome in the \smallcaps{kirc} datasets (kidney cancer) has a 50\% chance
+to obtain a positive result---a value far above the canonical 5\% significance
+threshold.
 
-\subsection{Distribution of survival times}
-\label{sec:results-prognostic-survival-survival-times}
+To investigate recent multi-gene approaches, we ran a similar calculation for
+each of the 4722 curated gene sets of the \mbox{MSigDB \smallcaps{c2}}
+database\cite{liberzon_molecular_2011} (Figure~\ref{fig:prognostic-fraction}).
+% The prognostic fraction was larger for signatures than for single genes, with
+% a median of 12%.
+The prognostic content was larger for multi-gene markers than for single-gene
+markers, with a median of 19\%.  The prognostic content for multi-gene markers
+was larger than 5\% in 76\% of the datasets (87 out of 114), larger than 20\% in
+48\% (55/114), and larger than 50\% in 19\% (22/114) of the datasets.  To
+control for possible biases of \mbox{MSigDB \smallcaps{c2}} towards
+oncology-related signatures, we reran the same computation, but replacing each
+signature by a similarly sized set of randomly selected genes.  The overall
+qualitative result is unchanged (Figure~\ref{fig:prognostic-fraction}).
 
-\begin{marginfigure}%
-  \includegraphics{event-distribution-breast-os.pdf}
-  \caption[Distribution of overall survival events in thirteen breast cancer
-  datasets]{Distribution of overall survival events in 13 breast cancer
-    datasets.  The density distributions for censored observations (black) and
-    death events (red) are shown for \num{4663} breast cancer patients whose
-    tumours were profiled across 13 studies.}
-  \label{fig:distribution-survival-times}%
-\end{marginfigure}
-
-For each of the 13 breast cancer datasets with overall survival (\smallcaps{os})
-data in our analysis (Figure~\ref{fig:distribution-survival-times}), we computed
-the fraction of genes associated with \smallcaps{os} at logrank $p < 0.05$ for
-\num{100} permutations of the respective survival times constructs
-(Figure~\ref{fig:null-breast-os}).
-
-\subsection{Re-sampling of \smallcaps{metabric} dataset}
-\label{sec:results-prognostic-survival-metabric}
-
-The discovery and validation \smallcaps{metabric} datasets comprise altogether
-\num{1972} expression profiles of breast cancers.\cite{curtis_genomic_2012} This
-constitutes one of the largest cohorts of cancer patients with follow-up and
-extensive clinical annotation data available in the public domain.
-
-We ran a series of bootstrapping experiments in a merged \smallcaps{metabric}
-dataset aiming at assessing the effect of potential confounding factors in the
-quantification of the prognostic signals of cancer transcriptomes.
-Figure~\ref{fig:bootstrap-metabric} shows distributions of single-marker
-prognostic fractions for the following experimental setups: (\emph{a})~\num{100}
-samplings of size \num{500} each, out of the total \mbox{1972}
-\smallcaps{metabric} transcriptomes; (\emph{b})~\num{100} samplings of size $N$,
-for every $N \in \{100, 200, 300, 500, 750, 1000, 1250, 1500, 1750\}$;
-(\emph{c})~\num{100} samplings of size \num{500}, with survival times
-beyond time $t$ months artificially censored at time $t$, for every
-$t \in \{25, 50, 75, 100, 125, 150, 175, 200, \max(\text{follow-up time})\}$;
-(\emph{d})~\num{100} samplings, each comprised of $300 \times E$ \smallcaps{er}+
-samples and $300 \times (1-E)$ \smallcaps{er}-- samples, for every
-$E \in \{0, 0.1, 0.2, \ldots{}, 0.9, 1\}$; and (\emph{e})~\num{100} samplings,
-each comprised of $500 \times L$ lymph node positive samples and
-$500 \times (1-L)$ lymph node negative samples, for every
-$L \in \{0, 0.1, 0.2, \ldots{}, 0.9, 1\}$.
-
-\vspace{8\baselineskip}
-
-\begin{figure}
-  \includegraphics{null-breast-os.pdf}
-  % \setfloatalignment{t}
-  \caption[Null distributions of prognostic content in 13 breast cancers cohorts
-  with randomized survival objects]{Null distributions of prognostic content in
-    13 breast cancers cohorts with randomized survival objects.  Prognostic
-    content, here defined as the fraction of single-gene markers associated with
-    overall survival at logrank \mbox{$p < 0.05$}, was computed for \num{100}
-    iterations of randomized survival times constructs for each dataset.  Each
-    boxplot shows the respective null distribution of prognostic fractions.
-    Actual prognostic fractions for each dataset are also displayed (refer to
-    Figure~\ref{fig:prognostic-fraction}), in red (if the observation is beyond
-    the 95\textsuperscript{th} quantile of the null distribution), or in grey
-    (if not).  The red horizontal dotted line shows the five percent expected
-    median of each null distribution.}
-  \label{fig:null-breast-os}%
-\end{figure}
+Intriguingly, single-gene prognostic content was found to be largely
+heterogeneous across datasets related to the same organ system.  For example, it
+ranged from 4\% to 59\% among the 33 breast cancer datasets analyzed.  To
+investigate the contributions of potential biological and demographic
+dataset-specific factors to this effect, we quantified single-marker prognostic
+fraction for re-samplings of the \num{1972} transcriptomes of the
+\smallcaps{metabric} breast cancer cohort, regarding modulations of four
+variables: sample size, duration of follow-up time, fraction of \smallcaps{er}+
+patients, and fraction of node positive patients
+(Figure~\ref{fig:bootstrap-metabric}).  We chose \smallcaps{metabric} for this
+analysis because it is one of the largest cohorts of cancer patients with
+follow-up and extensive clinical annotation data available in the public domain.
 
 \begin{figure*}
   \includegraphics{metabric-sims-19Mar2015.pdf}
@@ -192,8 +154,446 @@ $L \in \{0, 0.1, 0.2, \ldots{}, 0.9, 1\}$.
   \label{fig:bootstrap-metabric}
 \end{figure*}
 
-%%% Local Variables:
-%%% TeX-engine: xetex
-%%% mode: latex
-%%% TeX-master: "../thesis"
-%%% End:
+The estimates of prognostic content were found to be markedly sensitive to
+sampling variance, as suggested by the dispersal of the distribution of
+estimates (confidence interval: 12\% to 23\%), when \num{100} samplings of
+\num{500} random transcriptomes were examined for the fraction of genes
+associated with outcome (Figure~\ref{fig:bootstrap-metabric}\emph{a}).  This
+feature alone is likely to yield a significant contribution to the range of
+estimates computed in our meta-analysis, as 108 of the 114 datasets analyzed
+included less than \num{500} profiled tumours.  Moreover, the sensitivity of our
+estimation procedure is, unsurprisingly, largely dependent on the number of
+profiles included in the analysis, as shown by a bootstrapping experiment of
+sample sizes towards the assessment of the prognostic fraction
+(Figure~\ref{fig:bootstrap-metabric}\emph{b}).  Provocatively, the estimates of
+prognostic content do not appear to level off even when the experimental sample
+size reached \num{1750}---by far the largest in the field.  A sampling
+experiment of sequential truncation of follow-up times was equally shown to
+impact estimates of prognostic content
+(Figure~\ref{fig:bootstrap-metabric}\emph{c}).  Sharply increasing predictive
+fractions were observed up to the fifth year of follow-up, followed by a gradual
+decrease of the estimates for higher follow-up times.  This trend suggests that,
+in breast cancers, prognostic patterns of expression are optimally correlated
+with short-term forms of progression of the disease, and that long-term forms of
+progression are less efficiently predicted from primary tumour transcriptomes.
+The modulation of the fraction of \smallcaps{er}+ transcriptomes towards
+experimental samplings of our estimate has exposed a tendency congruent with the
+clinical relevance of this receptor in breast cancer pathology
+(Figure~\ref{fig:bootstrap-metabric}\emph{d}).  Thus, an increase of
+\smallcaps{er}+ profiles to up to 50\% in our samplings leads to a corresponding
+linear rise in estimates of prognostic content, at which point a further
+increase in the proportion of \smallcaps{er}+ profiles yields little impact on
+fraction estimates.  This observation is in line with the fact that the
+predictive power of most signatures in breast cancer is mostly confined to
+\smallcaps{er}+ phenotypes.\cite{weigelt_challenges_2012} A last sampling
+experiment with increasing fractions of profiles from node positive patients
+(Figure~\ref{fig:bootstrap-metabric}\emph{e}) also revealed an increasing
+pattern of prognostic fraction estimates.  This trend could be explained by the
+fact that nodal status is clinically correlated to \smallcaps{er} status in
+breast cancer.
+
+% First, repeated random selection of profiles reveals that sampling effects are   %
+% substantial (prognostic fraction CI=6-17%) with 500 patients                     %
+% (Fig. 2A), a size in par with the largest studies. Second, the prognostic        %
+% fraction, as expected, depends on sample size (Fig. 2B). Interestingly, it shows %
+% no sign of inflection as N reaches 1750, by far the largest sample size in the   %
+% field. Third, we investigated the impact of follow-up time by artificially       %
+% truncating follow-up data (Fig. 2C; Supplementary Methods). Shorter and longer   %
+% maximum follow-up times yielded lower prognostic fractions, consistent with the  %
+% fact that incomplete data, but also late events12, are not predictable from      %
+% primary tumor transcriptomes. Fourth, increasing the fraction of ER+ patients up %
+% to 50% increases the prognostic fraction, but has no effect beyond               %
+% 50% (Fig. 2D). This is compatible with the notion that                           %
+% transcriptional marker are more prognostic within the ER+ group and that the ER+ %
+% patients have, on average, a better prognostic than ER- patients.13 Fifth,       %
+% increasing the fraction of node positive patients, which is correlated with ER   %
+% status, also increases the prognostic fraction (Fig. 2E). Sixth, lower           %
+% cellularity is unexpectedly associated with a higher prognostic fraction         %
+% (Fig. 2F). This may reflect the role of the microenvironment in breast cancer    %
+% progression and the massive impact of cell types proportions on the              %
+% transcriptomes of bulk tissues.14                                                %
+
+Finally, dataset-specific processing details may also distort prognostic
+estimates.  Consider, for instance, dataset \smallcaps{gse9893}, which exhibits
+the highest prognostic fractions measured in our study
+(Figure~\ref{fig:prognostic-fraction}).  A thorough reanalysis of this dataset,
+detailed in a vignette following this text, reveals that its normalization was
+performed in two batches and induced massive spurious correlations between
+global values of expression and survival outcome.  Accordingly, a proper
+single-batch normalization of the raw expression data restores a signal-to-noise
+metrics to comparable values with other datasets, and decreases measurements of
+prognostic content from 59\% to 19\% for \smallcaps{gse9893}.
+
+We have shown that the fraction of prognostic single- and multi-gene biomarkers
+is greater that 5\% in the majority of publicly available transcriptome
+datasets.  Furthermore, we have demonstrated that the probability of a
+significant single- or multi-gene marker association with outcome depends on
+cohorts’ demographics, but also to a large extent on technical factors that
+include sampling effects, cohort size, patient follow-up protocols, protocol
+randomization and possibly other factors not addressed here.  These findings
+call for the reappraisal of conclusions made by previous studies pertaining to
+the implication of biological mechanisms to human cancer based on associations
+of biomarkers with outcome---including low-throughput \smallcaps{pcr}-based
+studies.  They also call for study-specific controls akin to those presented in
+Figure~\ref{fig:prognostic-fraction} in future studies.
+
+However, a biomarker does not need to convey relevant biological information
+regarding the course of disease in order to be useful in the clinic.  Therefore,
+our results have no bearing on the clinical utility of published biomarker
+associations.
+
+\subsection{Re-analysis of dataset \smallcaps{gse9893}}
+\label{sec:reanalysis-gse9893}
+The following vignette details the re-analysis of the extent of prognostic
+signals in a breast cancer dataset and exposes how a normalization artifact
+can distort estimations of prognostic content.
+
+% \includepdf[pages=1-9,trim=5cm 3cm 5cm
+% 3cm]{../pdf/include/supplementary-reanalysis-GSE9893.pdf}
+\includepdf[pages=1-17,trim=5cm 3cm 5cm 3cm]{../pdf/include/supplementary-reanalysis-GSE9893.pdf}
+
+% \subsection{Datasets}
+% \label{sec:results-prognostic-survival-datasets}
+
+% A total of 114 public datasets of cancer gene expression profiles spanning 19
+% types of cancer were downloaded from public repositories, manually curated and
+% pre-processed for downstream analysis.  Sources for datasets include the Gene
+% Expression Omnibus,\cite{edgar_gene_2002}
+% InSilicoDB,\cite{taminau_insilicodb:_2011} and the \smallcaps{tcga} Research
+% Network
+% site.\footnote{\href{http://cancergenome.nih.gov/}{http://cancergenome.nih.gov/}}
+% Individual datasets are described in the
+% \hyperref[sec:methods-datasets]{\textsf{Methods}} chapter.
+
+% \subsection{Gene sets}
+% \label{sec:results-prognostic-survival-genesets}
+
+% For each cancer dataset, we evaluated the association with clinical outcome of
+% the 4722 curated gene sets from the
+% \href{http://www.broadinstitute.org/gsea/msigdb/index.jsp}Molecular Signatures
+% Database (\mbox{MSigDB
+% \smallcaps{c2}}).\footnote{\href{http://www.broadinstitute.org/gsea/msigdb/index.jsp}{http://www.broadinstitute.org/gsea/msigdb/index.jsp}}
+% \mbox{MSigDB \smallcaps{c2}} signatures are manually curated from the literature
+% on gene expression and also include gene sets from curated pathways databases
+% such as \smallcaps{kegg}.
+
+% Version 4.0 of the MSigDB curated gene sets (updated on May 31, 2013) was
+% downloaded and parsed to produce two lists of gene expression signatures: one
+% containing the 4722 original signatures with gene symbols as identifiers, and a
+% randomized list consisting of 4722 signatures of the same size as the originals,
+% but composed of random samplings from the total pool of genes in the collection.
+
+% \subsection{Association with outcome}
+% \label{sec:results-prognostic-survival-association}
+
+% Association with outcome was computed as follows.  For each cancer dataset, we
+% retained the first of the following clinical outcomes available, in decreasing
+% order of importance: disease-specific survival (\smallcaps{dss}); overall
+% survival (\smallcaps{os}); disease-free survival (\smallcaps{dfs}); and distant
+% metastasis free survival (\smallcaps{dmfs}).  The survival times for the
+% selected clinical outcome specified the dependent variables.
+
+% We then modeled the association of each gene set with survival times by fitting
+% a univariate Cox proportional hazards model, using the continuous first
+% principal component loading vector of the signature in the global expression
+% matrix as the predictor variable.  The \emph{p}-value of the associated logrank
+% test was used to estimate association of the gene set with survival times.
+
+% A similar procedure was followed to compute the association of each single gene
+% in the expression matrix with survival times, by using the respective continuous
+% vector of expression as the predictor variable in the Cox model.  Here again, the
+% \emph{p}-value of the logrank test was used to estimate association with
+% outcome.
+
+% \subsection{Prognostic content in human cancers}
+% \label{sec:results-prognostic-survival-prognostic-content}
+
+% Figure~\ref{fig:prognostic-fraction} shows, for each human cancer dataset
+% analyzed, the fraction of \mbox{MSigDB \smallcaps{c2}} signatures, randomized
+% signatures and single genes found significantly associated with outcome, at
+% $p < 0.05$.
+
+% \begin{figure}%
+%   \includegraphics{fraction-significant-tests-base-R-graphics-15Jan2015.pdf}
+%   \caption[Prognostic content in human cancers]{Prognostic content in human
+%   cancers.  The fraction of markers significantly associated with outcome at
+%   logrank $p<0.05$ is shown for single-gene markers, multi-gene markers from
+%   the \mbox{MSigDB \smallcaps{c2}} database, and randomly generated
+%   multi-genes markers devoid of biological meaning.  The latter was used to
+%   order the datasets. Fractions were computed from death-related end-points
+%   when available (\smallcaps{os} or \smallcaps{dss}), or relapse otherwise
+%   (\smallcaps{dfs} or \smallcaps{dmfs}). The dotted red line marks the 0.05
+%   threshold.}
+%   \label{fig:prognostic-fraction}%
+% \end{figure}
+
+% \clearpage
+
+% \subsection{Distribution of survival times}
+% \label{sec:results-prognostic-survival-survival-times}
+
+% \begin{marginfigure}%
+%   \includegraphics{event-distribution-breast-os.pdf}
+%   \caption[Distribution of overall survival events in thirteen breast cancer
+%   datasets]{Distribution of overall survival events in 13 breast cancer
+%   datasets.  The density distributions for censored observations (black) and
+%   death events (red) are shown for \num{4663} breast cancer patients whose
+%   tumours were profiled across 13 studies.}
+%   \label{fig:distribution-survival-times}%
+% \end{marginfigure}
+
+% For each of the 13 breast cancer datasets with overall survival (\smallcaps{os})
+% data in our analysis (Figure~\ref{fig:distribution-survival-times}), we computed
+% the fraction of genes associated with \smallcaps{os} at logrank $p < 0.05$ for
+% \num{100} permutations of the respective survival times constructs
+% (Figure~\ref{fig:null-breast-os}).
+
+% \subsection{Re-sampling of \smallcaps{metabric} dataset}
+% \label{sec:results-prognostic-survival-metabric}
+
+% The discovery and validation \smallcaps{metabric} datasets comprise altogether
+% \num{1972} expression profiles of breast cancers.\cite{curtis_genomic_2012} This
+% constitutes one of the largest cohorts of cancer patients with follow-up and
+% extensive clinical annotation data available in the public domain.
+
+% We ran a series of bootstrapping experiments in a merged \smallcaps{metabric}
+% dataset aiming at assessing the effect of potential confounding factors in the
+% quantification of the prognostic signals of cancer transcriptomes.
+% Figure~\ref{fig:bootstrap-metabric} shows distributions of single-marker
+% prognostic fractions for the following experimental setups: (\emph{a})~\num{100}
+% samplings of size \num{500} each, out of the total \mbox{1972}
+% \smallcaps{metabric} transcriptomes; (\emph{b})~\num{100} samplings of size $N$,
+% for every $N \in \{100, 200, 300, 500, 750, 1000, 1250, 1500, 1750\}$;
+% (\emph{c})~\num{100} samplings of size \num{500}, with survival times
+% beyond time $t$ months artificially censored at time $t$, for every
+% $t \in \{25, 50, 75, 100, 125, 150, 175, 200, \max(\text{follow-up time})\}$;
+% (\emph{d})~\num{100} samplings, each comprised of $300 \times E$ \smallcaps{er}+
+% samples and $300 \times (1-E)$ \smallcaps{er}-- samples, for every
+% $E \in \{0, 0.1, 0.2, \ldots{}, 0.9, 1\}$; and (\emph{e})~\num{100} samplings,
+% each comprised of $500 \times L$ lymph node positive samples and
+% $500 \times (1-L)$ lymph node negative samples, for every
+% $L \in \{0, 0.1, 0.2, \ldots{}, 0.9, 1\}$.
+
+% \vspace{8\baselineskip}
+
+% \begin{figure}
+%   \includegraphics{null-breast-os.pdf}
+%   %   \setfloatalignment{t}
+%   \caption[Null distributions of prognostic content in 13 breast cancers cohorts
+%   with randomized survival objects]{Null distributions of prognostic content in
+%   13 breast cancers cohorts with randomized survival objects.  Prognostic
+%   content, here defined as the fraction of single-gene markers associated with
+%   overall survival at logrank \mbox{$p < 0.05$}, was computed for \num{100}
+%   iterations of randomized survival times constructs for each dataset.  Each
+%   boxplot shows the respective null distribution of prognostic fractions.
+%   Actual prognostic fractions for each dataset are also displayed (refer to
+%   Figure~\ref{fig:prognostic-fraction}), in red (if the observation is beyond
+%   the 95\textsuperscript{th} quantile of the null distribution), or in grey
+%   (if not).  The red horizontal dotted line shows the five percent expected
+%   median of each null distribution.}
+%   \label{fig:null-breast-os}%
+% \end{figure}
+
+% \begin{figure*}
+%   \includegraphics{metabric-sims-19Mar2015.pdf}
+%   \caption[Bootstrapping experiments on the \smallcaps{metabric}
+%   dataset]{Bootstrapping experiments on the \num{1972} combined breast cancer
+%   transcriptomes of the \smallcaps{metabric} dataset.
+%   \textbf{A--}Distribution of the prognostic fraction in 100 samplings of 500
+%   expression profiles, out of the total 1972 \smallcaps{metabric} profiles.
+%   \textbf{B--}Effect of sample size.  \num{100} samplings (grey points) were
+%   assessed for each specified sample size.  \textbf{C--}Effect of follow-up
+%   times.  For each time $t$, \num{100} samplings were assessed for which
+%   patients beyond time $t$ were considered censored at time $t$.
+%   \textbf{D--}Effect of the fraction of \smallcaps{er}+ patients.  \num{100}
+%   samplings, each of 300 patients, were assessed with the respective fraction
+%   of \smallcaps{er}+ samples.  \textbf{E--}Effect of the fraction of node
+%   positive patients.  \num{100} samplings, each of 500 patients, were assessed
+%   with the respective fraction of node positive patients.}
+%   \label{fig:bootstrap-metabric}
+% \end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% example, dataset GSE9893 has one of the highest prognostic fractions (Fig. 1),   %
+% but surprisingly its signal-to-noise metrics15 is very low (Supplementary        %
+% Fig. S1). Examination of the data reveals that normalization was performed in    %
+% two batches and induced massive spurious correlations between expression and     %
+% outcome (Supplementary Fig. S1). Accordingly, a proper single-batch              %
+% normalization of the raw expression data restores the signal-to-noise metrics to %
+% normal and decreases the prognostic fraction from 59% to 19% (Supplementary      %
+% Fig. S1).  We have shown the fraction of prognostic single- and multi-gene       %
+% markers is greater that                                                          %
+% 5% in the vast majority of the datasets. Furthermore, the probability of a       %
+%  % significant single- or multi-genes marker association with outcome depends on %
+%  % cohort’s demographics, but also to a large extent on technical factors that   %
+%  % include sampling effects, cohort size, patient follow-up protocols,           %
+%  % cellularity standards, protocol randomization and possibly other factors not  %
+%  % addressed here. These findings call for the reappraisal of previous study     %
+%  % resting on the associations of markers with outcome to support relevance to   %
+%  % human cancer, including low-throughput PCR-based studies. They also call for  %
+%  % study-specific controls akin to those presented Fig. 1 in future studies.     %
+% A marker does not need to convey interesting biological information              %
+% research-wise in order to be useful in the clinic. Therefore, our results have   %
+% no bearing on the clinical utility of published marker associations.             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection{Datasets}
+% \label{sec:results-prognostic-survival-datasets}
+
+% A total of 114 public datasets of cancer gene expression profiles spanning 19
+% types of cancer were downloaded from public repositories, manually curated and
+% pre-processed for downstream analysis.  Sources for datasets include the Gene
+% Expression Omnibus,\cite{edgar_gene_2002}
+% InSilicoDB,\cite{taminau_insilicodb:_2011} and the \smallcaps{tcga} Research
+% Network
+% site.\footnote{\href{http://cancergenome.nih.gov/}{http://cancergenome.nih.gov/}}
+% Individual datasets are described in the
+% \hyperref[sec:methods-datasets]{\textsf{Methods}} chapter.
+
+% \subsection{Gene sets}
+% \label{sec:results-prognostic-survival-genesets}
+
+% For each cancer dataset, we evaluated the association with clinical outcome of
+% the 4722 curated gene sets from the
+% \href{http://www.broadinstitute.org/gsea/msigdb/index.jsp}Molecular Signatures
+% Database (\mbox{MSigDB
+% \smallcaps{c2}}).\footnote{\href{http://www.broadinstitute.org/gsea/msigdb/index.jsp}{http://www.broadinstitute.org/gsea/msigdb/index.jsp}}
+% \mbox{MSigDB \smallcaps{c2}} signatures are manually curated from the literature
+% on gene expression and also include gene sets from curated pathways databases
+% such as \smallcaps{kegg}.
+
+% Version 4.0 of the MSigDB curated gene sets (updated on May 31, 2013) was
+% downloaded and parsed to produce two lists of gene expression signatures: one
+% containing the 4722 original signatures with gene symbols as identifiers, and a
+% randomized list consisting of 4722 signatures of the same size as the originals,
+% but composed of random samplings from the total pool of genes in the collection.
+
+% \subsection{Association with outcome}
+% \label{sec:results-prognostic-survival-association}
+
+% Association with outcome was computed as follows.  For each cancer dataset, we
+% retained the first of the following clinical outcomes available, in decreasing
+% order of importance: disease-specific survival (\smallcaps{dss}); overall
+% survival (\smallcaps{os}); disease-free survival (\smallcaps{dfs}); and distant
+% metastasis free survival (\smallcaps{dmfs}).  The survival times for the
+% selected clinical outcome specified the dependent variables.
+
+% We then modeled the association of each gene set with survival times by fitting
+% a univariate Cox proportional hazards model, using the continuous first
+% principal component loading vector of the signature in the global expression
+% matrix as the predictor variable.  The \emph{p}-value of the associated logrank
+% test was used to estimate association of the gene set with survival times.
+
+% A similar procedure was followed to compute the association of each single gene
+% in the expression matrix with survival times, by using the respective continuous
+% vector of expression as the predictor variable in the Cox model.  Here again, the
+% \emph{p}-value of the logrank test was used to estimate association with
+% outcome.
+
+% \subsection{Prognostic content in human cancers}
+% \label{sec:results-prognostic-survival-prognostic-content}
+
+% Figure~\ref{fig:prognostic-fraction} shows, for each human cancer dataset
+% analyzed, the fraction of \mbox{MSigDB \smallcaps{c2}} signatures, randomized
+% signatures and single genes found significantly associated with outcome, at
+% $p < 0.05$.
+
+% \begin{figure}%
+%   \includegraphics{fraction-significant-tests-base-R-graphics-15Jan2015.pdf}
+%   \caption[Prognostic content in human cancers]{Prognostic content in human
+%   cancers.  The fraction of markers significantly associated with outcome at
+%   logrank $p<0.05$ is shown for single-gene markers, multi-gene markers from
+%   the \mbox{MSigDB \smallcaps{c2}} database, and randomly generated
+%   multi-genes markers devoid of biological meaning.  The latter was used to
+%   order the datasets. Fractions were computed from death-related end-points
+%   when available (\smallcaps{os} or \smallcaps{dss}), or relapse otherwise
+%   (\smallcaps{dfs} or \smallcaps{dmfs}). The dotted red line marks the 0.05
+%   threshold.}
+%   \label{fig:prognostic-fraction}%
+% \end{figure}
+
+% \clearpage
+
+% \subsection{Distribution of survival times}
+% \label{sec:results-prognostic-survival-survival-times}
+
+% \begin{marginfigure}%
+%   \includegraphics{event-distribution-breast-os.pdf}
+%   \caption[Distribution of overall survival events in thirteen breast cancer
+%   datasets]{Distribution of overall survival events in 13 breast cancer
+%   datasets.  The density distributions for censored observations (black) and
+%   death events (red) are shown for \num{4663} breast cancer patients whose
+%   tumours were profiled across 13 studies.}
+%   \label{fig:distribution-survival-times}%
+% \end{marginfigure}
+
+% For each of the 13 breast cancer datasets with overall survival (\smallcaps{os})
+% data in our analysis (Figure~\ref{fig:distribution-survival-times}), we computed
+% the fraction of genes associated with \smallcaps{os} at logrank $p < 0.05$ for
+% \num{100} permutations of the respective survival times constructs
+% (Figure~\ref{fig:null-breast-os}).
+
+% \subsection{Re-sampling of \smallcaps{metabric} dataset}
+% \label{sec:results-prognostic-survival-metabric}
+
+% The discovery and validation \smallcaps{metabric} datasets comprise altogether
+% \num{1972} expression profiles of breast cancers.\cite{curtis_genomic_2012} This
+% constitutes one of the largest cohorts of cancer patients with follow-up and
+% extensive clinical annotation data available in the public domain.
+
+% We ran a series of bootstrapping experiments in a merged \smallcaps{metabric}
+% dataset aiming at assessing the effect of potential confounding factors in the
+% quantification of the prognostic signals of cancer transcriptomes.
+% Figure~\ref{fig:bootstrap-metabric} shows distributions of single-marker
+% prognostic fractions for the following experimental setups: (\emph{a})~\num{100}
+% samplings of size \num{500} each, out of the total \mbox{1972}
+% \smallcaps{metabric} transcriptomes; (\emph{b})~\num{100} samplings of size $N$,
+% for every $N \in \{100, 200, 300, 500, 750, 1000, 1250, 1500, 1750\}$;
+% (\emph{c})~\num{100} samplings of size \num{500}, with survival times
+% beyond time $t$ months artificially censored at time $t$, for every
+% $t \in \{25, 50, 75, 100, 125, 150, 175, 200, \max(\text{follow-up time})\}$;
+% (\emph{d})~\num{100} samplings, each comprised of $300 \times E$ \smallcaps{er}+
+% samples and $300 \times (1-E)$ \smallcaps{er}-- samples, for every
+% $E \in \{0, 0.1, 0.2, \ldots{}, 0.9, 1\}$; and (\emph{e})~\num{100} samplings,
+% each comprised of $500 \times L$ lymph node positive samples and
+% $500 \times (1-L)$ lymph node negative samples, for every
+% $L \in \{0, 0.1, 0.2, \ldots{}, 0.9, 1\}$.
+
+% \vspace{8\baselineskip}
+
+% \begin{figure}
+%   \includegraphics{null-breast-os.pdf}
+%   %   \setfloatalignment{t}
+%   \caption[Null distributions of prognostic content in 13 breast cancers cohorts
+%   with randomized survival objects]{Null distributions of prognostic content in
+%   13 breast cancers cohorts with randomized survival objects.  Prognostic
+%   content, here defined as the fraction of single-gene markers associated with
+%   overall survival at logrank \mbox{$p < 0.05$}, was computed for \num{100}
+%   iterations of randomized survival times constructs for each dataset.  Each
+%   boxplot shows the respective null distribution of prognostic fractions.
+%   Actual prognostic fractions for each dataset are also displayed (refer to
+%   Figure~\ref{fig:prognostic-fraction}), in red (if the observation is beyond
+%   the 95\textsuperscript{th} quantile of the null distribution), or in grey
+%   (if not).  The red horizontal dotted line shows the five percent expected
+%   median of each null distribution.}
+%   \label{fig:null-breast-os}%
+% \end{figure}
+
+% \begin{figure*}
+%   \includegraphics{metabric-sims-19Mar2015.pdf}
+%   \caption[Bootstrapping experiments on the \smallcaps{metabric}
+%   dataset]{Bootstrapping experiments on the \num{1972} combined breast cancer
+%   transcriptomes of the \smallcaps{metabric} dataset.
+%   \textbf{A--}Distribution of the prognostic fraction in 100 samplings of 500
+%   expression profiles, out of the total 1972 \smallcaps{metabric} profiles.
+%   \textbf{B--}Effect of sample size.  \num{100} samplings (grey points) were
+%   assessed for each specified sample size.  \textbf{C--}Effect of follow-up
+%   times.  For each time $t$, \num{100} samplings were assessed for which
+%   patients beyond time $t$ were considered censored at time $t$.
+%   \textbf{D--}Effect of the fraction of \smallcaps{er}+ patients.  \num{100}
+%   samplings, each of 300 patients, were assessed with the respective fraction
+%   of \smallcaps{er}+ samples.  \textbf{E--}Effect of the fraction of node
+%   positive patients.  \num{100} samplings, each of 500 patients, were assessed
+%   with the respective fraction of node positive patients.}
+%   \label{fig:bootstrap-metabric}
+% \end{figure*
