@@ -68,10 +68,20 @@ packages assign coordinates to each spot in the array, quantify signal intensity
 and uniformity of each spot, and compare their signal intensity relative to
 background.
 
-Quality control is performed by visual inspection of imaging data from the
-scanner or the platform software, with special attention given to washing
-artifacts, odd or missing spots, and array uniformity.  Aberrant chips may have
-to be discarded at this stage.
+Quality control is a critical step in the preprocessing of microarray data.  In
+spite of the many efforts to provide standards for the technology, such as the
+External \smallcaps{rna} Control Consortium\cite{baker_external_2005} and the
+MicroArray Quality Control\cite{consortium_microarray_2010} initiatives, there
+remains a lack of consensus in both defining and measuring microarray
+quality.\cite{mccall_assessing_2011} Computational strategies to tackle quality
+assessment in single-channel and double-channel arrays have been implemented in
+the \textsf{Bioconductor} package
+\textsf{arrayQualityMetrics}.\cite{kauffmann_arrayqualitymetrics--bioconductor_2009,kauffmann_microarray_2010}
+
+% Quality control is performed by visual inspection of imaging data from the
+% scanner or the platform software, with special attention given to washing
+% artifacts, odd or missing spots, and array uniformity.  Aberrant chips may have
+% to be discarded at this stage.
 
 Chips meeting quality standards then undergo background adjustment and
 normalization.  Normalization methods aim to compensate for procedural biases
@@ -86,9 +96,9 @@ Data-driven normalization approaches were then developed, such as median
 correction,\cite{cho_genome-wide_1998,selinger_rna_2000} variance stabilizing
 transformation,\cite{durbin_variance-stabilizing_2002} locally weighted linear
 regression\cite{yang_normalization_2002} and spline based
-methods.\cite{workman_new_2002} Data-driven presupposes that most of the
-observed variation in expression values is due to technical biases rather than
-to biological sources.\cite{hicks_when_2014}
+methods.\cite{workman_new_2002} % Data-driven presupposes that most of the
+% observed variation in expression values is due to technical biases rather than
+% to biological sources.\cite{hicks_when_2014}
 
 Normalization strategies for double-channel microarrays (spotted oligonucleotide
 or c\smallcaps{dna} arrays\cite{schena_quantitative_1995}) are different from
@@ -106,10 +116,10 @@ relative abundance of a probe sequence in two target samples.
 % c\smallcaps{dna} arrays.\footnote{In many cases, one of the samples in a
 % c\smallcaps{DNA} array hybridization is a common reference used across
 % multiple slides and whose sole purpose is to provide a baseline for direct
-% comparison of expression measures between arrays.}
-As a result, normalization of single-channel microarrays is performed at the
-``between-array'' level, whereas normalization of double-channel microarrays is
-conducted at the ``within-array'' level.\cite{do_normalization_2006}
+% comparison of expression measures between arrays.}  As a result, normalization
+% of single-channel microarrays is performed at the ``between-array'' level,
+% whereas normalization of double-channel microarrays is conducted at the
+% ``within-array'' level.\cite{do_normalization_2006}
 
 For double-channel arrays chips, normalization methods commonly seek to remove
 biases within each array with local regression algorithms.  Terry Speed's lab,
@@ -126,7 +136,7 @@ up-regulated in the green channel ($G$).
 This effect can be visualized by plotting the measured
 $\log_2(\frac{R_{i}}{G_{i}})$ for each feature in the array as a function of the
 $\log_2(R_{i}G_{i})$ product intensities.  This ratio-intensity plot is termed
-\smallcaps{ma} plot.\footnote[][-4.5cm]{The name of the plot comes from
+\smallcaps{ma} plot.\footnote[][-5.5cm]{The name of the plot comes from
   ``minus'' and ``add'', respectively the ratio and product in the logarithmic
   scale.}  This technical bias may be corrected by fitting a locally weighted
 regression, known as \emph{lowess} smoothing
@@ -146,17 +156,16 @@ by a \emph{lowess}-based, within group normalization.
   \end{center}
 \end{marginfigure}
 
-\emph{Affymetrix GeneChip} are the reference arrays in the single-channel class,
-and the platform of choice for the development of between-array normalization
-methods.  \emph{Affymetrix} chips consist of several tens of thousands
-probe-sets.  A probe-set is a collection of probe pairs designed to interrogate
-a specific sequence and contains \numrange{11}{20} probe pairs of 25-mer
-oligonucleotides each.  Each probe pair consists of a perfect match probe
-(\smallcaps{pm}) and a mismatch probe (\smallcaps{mm}).  The \smallcaps{mm}
-probe differs from the \smallcaps{pm} probe by a single substitution at the
-center base position, conceived to disturb the binding of the target gene
-transcript.  This design allows for the quantification of background and
-nonspecific hybridization effects.
+\emph{Affymetrix GeneChip} are the reference arrays in the single-channel class
+and consist of several tens of thousands probe-sets.  A probe-set is a
+collection of probe pairs designed to interrogate a specific sequence and
+contains \numrange{11}{20} probe pairs of 25-mer oligonucleotides each.  Each
+probe pair consists of a perfect match probe (\smallcaps{pm}) and a mismatch
+probe (\smallcaps{mm}).  The \smallcaps{mm} probe differs from the
+\smallcaps{pm} probe by a single substitution at the center base position,
+conceived to disturb the binding of the target gene transcript.  This design
+allows for the quantification of background and nonspecific hybridization
+effects.
 
 Different between-array normalization methods have been proposed in the
 literature.  The \smallcaps{mas5} algorithm\cite{hubbell_robust_2002} normalizes
@@ -280,13 +289,16 @@ Examples of microarray feature transformation techniques include principal
 component analysis and clustering methods.
 
 Feature selection techniques, on the other hand, are supervised approaches to
-reduce data dimensionality.  In this dissertation, particular attention will be
-given to gene expression signatures, which configure an example of microarray
-feature selection.  Gene expression signatures, or metagenes, are collections of
-genes sharing a combined expression pattern associated with a given phenotype.
-The range of biological phenotypes confining the characterization of expression
-signatures include the modulation of signaling pathways,\cite{itadani_can_2008}
-the specification of tumour classes,\cite{ramaswamy_multiclass_2001} or the
+reduce data dimensionality, in order to produce simplified and interpretable
+models.  % In this dissertation, particular attention will be
+% given to gene expression signatures, which configure an example of microarray
+% feature selection.
+
+Gene expression signatures, or metagenes, are collections of genes sharing a
+combined expression pattern associated with a given phenotype.  The range of
+biological phenotypes confining the characterization of expression signatures
+include the modulation of signaling pathways,\cite{itadani_can_2008} the
+specification of tumour classes,\cite{ramaswamy_multiclass_2001} or the
 definition of distinct clinical outcomes.\cite{vant_veer_gene_2002} In the last
 two decades, a wealth of microarray studies on perturbed \emph{in vitro}
 biological systems have generated an extensive number of gene signatures related
@@ -320,8 +332,10 @@ symbols\footnote{\href{http://www.genenames.org/}{http://www.genenames.org/}}
 were universally retained as feature descriptors.  Microarray gene annotation
 may also be used to perform dimension reduction of the expression feature space.
 Hence, expression matrices where multiple features addressed the expression of
-the same gene product were collapsed using a \texttt{maxSum}
-routine.\cite{miller_strategies_2011}
+the same gene product were collapsed using a \texttt{maxMean}
+routine.\cite{miller_strategies_2011} This approach consists of selecting, among
+all the features measuring the expression of the same gene, the probeset with
+highest mean expression.
 
 All analyses described in the \hyperref[chap:results]{\textsf{Results}} chapter
 were conducted in the \href{http://www.r-project.org/}{\textsf{R}} environment
@@ -568,19 +582,25 @@ two supervised machine learning algorithms in order to optimize expression
 feature selection towards two clinically challenging diagnostic problems in
 thyroid cancer.
 
-Support vector machines, or \smallcaps{svm}, are an example of a
-non-probabilistic binary linear classifier.  They seek to find the function that
-maximizes the distance between training samples of distinct categories when
-projected on a hyperplane.\cite{cortes_support-vector_1995} Random forests, or
-\smallcaps{rf}, are classifiers consisting of a collection of decision trees
-grown from the features that are most discerning in the training
+Support vector machines, or \smallcaps{svm}, are classifiers that operate by
+mapping input vectors into a high dimensional feature space in a non-linear
+fashion.  Linear decision surfaces, or hyperplanes, are then constructed, which
+can be used to separate classes of data.  The optimal hyperplane is the linear
+decision function with maximal margin between the vectors of the considered
+classes.  Margins can be functionally described by a subset of the training
+data, the so-called \emph{support vectors}.\cite{cortes_support-vector_1995}
+% are an example of a non-probabilistic binary linear classifier.  They seek to
+% find the function that maximizes the distance between training samples of
+% distinct categories when projected on a hyperplane
+Random forests, or \smallcaps{rf}, are classifiers consisting of a collection of
+decision trees grown from the features that are most discerning in the training
 set.\cite{breiman_random_2001} They operate under the assumption that, in the
 feature expression space of microarray data, while each individual classifier is
 a weak learner, the ensemble of all classifiers taken together produce a strong
 learner.  Both of these algorithms were employed with a feature-selection step.
 Feature selections and algorithm parameters were nested in an inner
 cross-validation loop to preclude any possibility of parameters and
-feature-selection biases.
+feature-selection biases.\cite{johannes_mcrestimate:_2010}
 
 Classifiers were thusly trained on \sfrac{9}{10} of our samples and used to
 predict the remaining \sfrac{1}{10}.  They were tuned on \sfrac{9}{10} of the
@@ -877,8 +897,8 @@ prognosis.
 
 Whenever applicable, association of metagene expression with outcome was thusly
 computed by fitting a proportional hazards regression model between predictor
-and dependent variables with the \texttt{coxph} function of the \textsf{R}
-\textsf{survival} package.
+and dependent variables with the \texttt{coxph} function of the
+\textsf{Bioconductor} \textsf{survival} package.
 
 % We have shown this approach to be more sensitive (data not shown).
 
