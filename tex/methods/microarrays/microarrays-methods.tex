@@ -363,9 +363,9 @@ project.\cite{gentleman_bioconductor:_2004}
 This section will proceed with a brief overview of tools for visualization of
 genomic data, namely heatmaps and multidimensional scaling.  It will then
 discuss the unsupervised learning tools used in this dissertation, including
-principal component analysis, cluster analysis and a summary on machine learning
-algorithms.  Next, it will cover \smallcaps{roc} curves, a tool to evaluate the
-performance of classifiers.
+principal component analysis % , cluster analysis
+and a summary on machine learning algorithms.  Next, it will cover
+\smallcaps{roc} curves, a tool to evaluate the performance of classifiers.
 % , including \smallcaps{roc} curves (for binary classifiers) and
 % \smallcaps{gsea} (an algorithm that uses microarray data to determine whether
 % a gene expression classifier is statistically associated with any of two
@@ -482,64 +482,64 @@ the expression of the metagene in those samples.
 %  has a long record of applications
 % in the analysis of microarray data
 
-\subsection{Cluster analysis}
-\label{sec:methods-clustering}
-% 04Mar2015
-Cluster analysis is an unsupervised technique for exploratory data mining that
-seeks to group objects according to their degree of similarity.  In microarray
-data analysis, clustering methods are mainly employed to address class discovery
-tasks, based on gene expression profiles of biospecimens.  Several clustering
-techniques have been used to this goal.
+% \subsection{Cluster analysis}
+% \label{sec:methods-clustering}
+% % 04Mar2015
+% Cluster analysis is an unsupervised technique for exploratory data mining that
+% seeks to group objects according to their degree of similarity.  In microarray
+% data analysis, clustering methods are mainly employed to address class discovery
+% tasks, based on gene expression profiles of biospecimens.  Several clustering
+% techniques have been used to this goal.
 
-Hierarchical clustering is a collection of algorithms that aim to build a binary
-tree of the data that successively merges similar groups of samples.  It
-comprises agglomerative (or bottom-up) methods, which proceed by sequentially
-combining $n$ objects into groups; and divisive (or top-down) methods, which
-recursively separate $n$ objects into finer groupings.  The results of
-hierarchical clustering are presented in a dendrogram.
+% Hierarchical clustering is a collection of algorithms that aim to build a binary
+% tree of the data that successively merges similar groups of samples.  It
+% comprises agglomerative (or bottom-up) methods, which proceed by sequentially
+% combining $n$ objects into groups; and divisive (or top-down) methods, which
+% recursively separate $n$ objects into finer groupings.  The results of
+% hierarchical clustering are presented in a dendrogram.
 
-The \emph{k}-means algorithm works by iteratively assigning each sample to one
-of $k$ clusters, each being defined as the set of samples showing the lowest
-dispersion from the respective centroid (the multidimensional version of the
-mean).  Because the number $k$ of clusters has to be defined \emph{a~priori},
-\emph{k}-means are an example of supervised clustering.  Whenever the mean of
-objects can not be computed, cost functions can be used to define a
-\emph{representative object} (the medoid, or the multidimensional representation
-of the median), as is the case in the partitioning around medoids algorithm, or
-\smallcaps{pam}.
+% The \emph{k}-means algorithm works by iteratively assigning each sample to one
+% of $k$ clusters, each being defined as the set of samples showing the lowest
+% dispersion from the respective centroid (the multidimensional version of the
+% mean).  Because the number $k$ of clusters has to be defined \emph{a~priori},
+% \emph{k}-means are an example of supervised clustering.  Whenever the mean of
+% objects can not be computed, cost functions can be used to define a
+% \emph{representative object} (the medoid, or the multidimensional representation
+% of the median), as is the case in the partitioning around medoids algorithm, or
+% \smallcaps{pam}.
 
-Self-organization maps, or \smallcaps{som}, are a group of algorithms inspired
-by neural networks of the brain.  Their aim is to produce a two-dimensional,
-discretized representation of a high dimension input space, called a map.  This
-is achieved by associating a weight vector with the same dimension as the
-feature space to each of a set of spatially distributed components, called nodes
-or neurons.  The algorithm then trains a model that optimizes the projection of
-the feature space onto the map, by iteratively finding the node whose weight
-vector shows the minimal distance to each feature space vector.  Clusters are
-then defined as groups of objects from the input space that are projected onto
-the same node.
+% Self-organization maps, or \smallcaps{som}, are a group of algorithms inspired
+% by neural networks of the brain.  Their aim is to produce a two-dimensional,
+% discretized representation of a high dimension input space, called a map.  This
+% is achieved by associating a weight vector with the same dimension as the
+% feature space to each of a set of spatially distributed components, called nodes
+% or neurons.  The algorithm then trains a model that optimizes the projection of
+% the feature space onto the map, by iteratively finding the node whose weight
+% vector shows the minimal distance to each feature space vector.  Clusters are
+% then defined as groups of objects from the input space that are projected onto
+% the same node.
 
-However supervised or unsupervised, learning techniques require the selection of
-a measure of distance between, or similarity among, the objects to be classified
-or clustered.  Distances are functions that satisfy at least three properties:
-(\emph{a})~non-negativity, $d(x,y)\ge 0$; (\emph{b})~symmetry, $d(x,y)=d(y,x)$;
-and (\emph{c})~identification mark, $d(x,x)=0$.  Examples of metrics used in the
-computation of distances between the vectors of gene expression between $m$
-expression profiles include the Euclidean distance:
-\begin{equation}
-  \label{eq:euclidean-distance}
-  d_{euc}=\sqrt{\sum_{i=1}^{m}(x_i-y_i)^2},
-\end{equation}
-and the Manhattan distance:
-\begin{equation}
-  \label{eq:manhattan-distance}
-  d_{man}=\sum_{i=1}^{m}\left|x_i-y_i\right|.
-\end{equation}
-% Many options are available in selection of a distance for machine learning
-% tasks.
-Correlation-based distance measures have been widely used in the microarray
-literature.\cite{eisen_cluster_1998} They include one minus the standard Pearson
-correlation coefficient, Spearman’s rank correlation, and Kendall’s~$\tau$.
+% However supervised or unsupervised, learning techniques require the selection of
+% a measure of distance between, or similarity among, the objects to be classified
+% or clustered.  Distances are functions that satisfy at least three properties:
+% (\emph{a})~non-negativity, $d(x,y)\ge 0$; (\emph{b})~symmetry, $d(x,y)=d(y,x)$;
+% and (\emph{c})~identification mark, $d(x,x)=0$.  Examples of metrics used in the
+% computation of distances between the vectors of gene expression between $m$
+% expression profiles include the Euclidean distance:
+% \begin{equation}
+%   \label{eq:euclidean-distance}
+%   d_{euc}=\sqrt{\sum_{i=1}^{m}(x_i-y_i)^2},
+% \end{equation}
+% and the Manhattan distance:
+% \begin{equation}
+%   \label{eq:manhattan-distance}
+%   d_{man}=\sum_{i=1}^{m}\left|x_i-y_i\right|.
+% \end{equation}
+% % Many options are available in selection of a distance for machine learning
+% % tasks.
+% Correlation-based distance measures have been widely used in the microarray
+% literature.\cite{eisen_cluster_1998} They include one minus the standard Pearson
+% correlation coefficient, Spearman’s rank correlation, and Kendall’s~$\tau$.
 
 % In microarray
 % data analysis, it can be used as a feature transformation methodology, through
