@@ -618,11 +618,11 @@ used as a diagnostic test to compute receiver characteristic operating curves.
       visual representations of the trade-off between sensitivity (the
       proportion of actual positives which are correctly identified) and
       specificity (the proportion of true negatives correctly identified) of a
-      diagnostic test, or classifier.  The area under the \smallcaps{roc} curve
-      (\smallcaps{auc}) is equal to the probability that a classifier will
-      classify a sample correctly.  The ability to superimpose different
-      \smallcaps{auc}s on the same plot allows for direct comparison of
-      different classifiers.}
+      diagnostic test, or classifier.  % The area under the \smallcaps{roc} curve
+      % (\smallcaps{auc}) is equal to the probability that a classifier will
+      % classify a sample correctly.
+      The ability to superimpose different \smallcaps{auc}s on the same plot
+      allows for direct comparison of different classifiers.}
     \label{fig:roc}%
 \end{marginfigure}
 
@@ -639,12 +639,15 @@ parameter produced by a classifier model.  Each point on the
 \smallcaps{roc} curve represents a sensitivity/specificity pair, corresponding
 to a particular decision threshold (Figure~\ref{fig:roc}).
 
-The area under the curve, or \smallcaps{auc} (0 < \smallcaps{auc} < 1),
-represents the overall probability that the phenotype being investigated of a
-randomly chosen subject is correctly identified by the
-test.\cite{hanley_meaning_1982}  The \smallcaps{auc} metric allows for direct
-comparison of classifier performance.  A \smallcaps{auc} of 50\% represents a
-chance of correct classification no better than a random classifier.
+The area under the curve, or \smallcaps{auc} (0 < \smallcaps{auc} < 1), can be
+interpreted as the probability that the predictor of choice will rank a randomly
+chosen positive instance higher than a random negative
+one.\cite{hanley_meaning_1982}
+% represents the overall probability that the phenotype being investigated of a
+% randomly chosen subject is correctly identified by the test
+The \smallcaps{auc} metric allows for direct comparison of classifier
+performance.  A \smallcaps{auc} of 50\% represents a chance of correct
+classification no better than a random classifier.
 
 % \subsection{Gene set enrichment analysis}
 % \label{sec:methods-gsea}
@@ -674,7 +677,7 @@ time considered for that patient is the entire duration of the study) or because
 the patient quit or withdrew from the study before its end (in which case the
 follow-up time considered for that patient is the time up to dropping out).
 
-\begin{marginfigure}%
+\begin{marginfigure}[-5cm]%
   \includegraphics{censorship-28Feb2015.pdf}
   \caption[Right-censored survival data]{A schematic representation of
     right-censored survival data.  Survival time is said to be
@@ -699,7 +702,7 @@ later than some specified time $t$:
 \end{equation}
 where $T$ is a random variable for a patient's survival time.
 
-The hazard function, $h(t)$, describes the instantaneous potential per unit time
+The hazard function, $h(t)$, describes the instantaneous potential per time unit
 for the event to occur, given the patient has survived up to time $t$:
 \begin{equation}
   \label{eq:hazard-function}
@@ -721,7 +724,7 @@ semi-parametric methods to make inferences over survival time.  These methods
 can then be used to ascertain the relationship between a variable of interest
 and the time to a clinical outcome.
 
-\begin{marginfigure}%
+\begin{marginfigure}[-5cm]%
   \includegraphics{survival-function-28Feb2015.pdf}
   % \caption[Survival function]{The survival function, \emph{S}\,(\emph{t}),
   \caption[Survival function]{The survival function, $S(t)$ describes the
@@ -751,16 +754,18 @@ intervals.  The Kaplan-Meier, or product limit estimator, is thus formulated as:
 \hat{S}(t)=\prod_{t_i<t}\frac{n_i-d_i}{n_i},
 \end{equation}
 where $n_i$ and $d_i$ are, respectively and for each prior time interval $t_i$,
-the number of patients at risk (right-censored observations are removed), and
-the number of patients experiencing an event.  The Kaplan-Meier estimator can be
+the number of patients at risk (right-censored observations removed), and the
+number of patients experiencing an event.  The Kaplan-Meier estimator can be
 used to obtain univariate descriptive statistics for survival data or to compare
 the survival time for two or more groups of subjects.
 
 The logrank test is a non-parametric hypothesis test to compare the survival
 distribution of two
 samples.\cite{mantel_evaluation_1966,peto_asymptotically_1972} It challenges the
-null hypothesis that there is no difference between the populations in the
-probability of an event at any time point.  To do so, it compares the estimates
+null hypothesis that there is no difference between the survival functions
+underlying each observed population. % the populations in the
+% probability of an event at any time point.
+To do so, it compares the estimates
 of the hazard functions of the two groups at each observed event time.  The
 logrank test is based on the same assumptions as the Kaplan-Meier survival
 curve---namely, that censoring is unrelated to prognosis, the survival
