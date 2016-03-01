@@ -118,7 +118,7 @@ between follicular variants of papillary carcinomas and their classical
 counterpart.  These challenging pathological
 diagnostics\cite{lubitz_molecular_2005} are critical from the prognostic point
 of view.  In each case, while the former types behave in an indolent manner and
-have an good prognosis, the latter are defined as poorly differentiated thyroid
+have a good prognosis, the latter are defined as poorly differentiated thyroid
 carcinomas, and may evolve to develop a malignant phenotype.
 
 Several methods exist to quantitatively measure cell proliferation in biological
@@ -595,20 +595,20 @@ likelihood of finding random associations with outcome is globally
 non-negligible; and that the nature of prognostic signals is not
 marker-specific.
 
-We investigated the possibility of these estimates being the result of biased
-survival time constructs.  To do so, we measured the prognostic content captured
-by single-gene markers in the thirteen breast cancer datasets with overall
-survival data available in our study
-(Figure~\ref{fig:distribution-survival-times}), for \num{100} iterations each of
-the respective randomized survival objects.  In ten out of the thirteen breast
-datasets thusly tested, the actual observed prognostic content was beyond the
-95\textsuperscript{th} quantile of the null distribution generated with
-randomized survival objects (Figure~\ref{fig:null-breast-os}).  Furthermore, in
-all but one of the datasets (\smallcaps{GSE9893}), the median of the null
-distributions did not depart remarkably from the five percent stipulated
-significance level.  This result suggests that the prognostic signals quantified
-in this meta-analysis do capture biological cues related to the prospective
-malignancy of the profiled cancers.
+% We investigated the possibility of these estimates being the result of biased
+% survival time constructs.  To do so, we measured the prognostic content captured
+% by single-gene markers in the thirteen breast cancer datasets with overall
+% survival data available in our study
+% (Figure~\ref{fig:distribution-survival-times}), for \num{100} iterations each of
+% the respective randomized survival objects.  In ten out of the thirteen breast
+% datasets thusly tested, the actual observed prognostic content was beyond the
+% 95\textsuperscript{th} quantile of the null distribution generated with
+% randomized survival objects (Figure~\ref{fig:null-breast-os}).  Furthermore, in
+% all but one of the datasets (\smallcaps{GSE9893}), the median of the null
+% distributions did not depart remarkably from the five percent stipulated
+% significance level.  This result suggests that the prognostic signals quantified
+% in this meta-analysis do capture biological cues related to the prospective
+% malignancy of the profiled cancers.
 
 A compelling result of this analysis is the considerable heterogeneity of
 prognostic fractions observed across surveyed cohorts
@@ -700,22 +700,23 @@ difference: 2\%; maximum difference: 17\%).  In 37 out of the 114 analysed
 datasets, the fraction of prognostic random signatures was higher than the
 fraction of biologically motivated ones.
 
-We have shown that this heterogeneity is not the result of biased survival times
-constructs---the dependent variables of our fitted models.  Our estimate of
-prognostic content is, however, notoriously sensitive to sampling variance, an
-observation consistent with previous reports.\cite{ein-dor_outcome_2005} This
-variance may be accounted for in part by a range of dataset-specific demographic
-factors---such as duration of follow-up times or cohort size---, as well as by
-cancer-specific biological covariates.  Furthermore, in at least one dataset
-(\smallcaps{GSE9893}, single-gene marker prognostic content: 60\%), we have
-identified a critical normalization artifact responsible for an artificial
-over-estimation of the prognostic fraction.  Upon re-normalization of the
-original arrays, we have re-evaluated our estimate of prognostic content down to
-19\%; conversely, a metric of signal-to-noise ratio,\cite{venet_measure_2012}
-surged from 15\% to 34\% (a score now within the inter-quartile range of the 114
-datasets analysed).  This precedent suggests that artefactual spurious
-correlations in expression matrices may account for significant portions of
-prognostic content in our observations.
+% We have shown that this heterogeneity is not the result of biased survival times
+% constructs---the dependent variables of our fitted models.
+Our estimate of prognostic content is notoriously sensitive to sampling
+variance, an observation consistent with previous
+reports.\cite{ein-dor_outcome_2005} This variance may be accounted for in part
+by a range of dataset-specific demographic factors---such as duration of
+follow-up times or cohort size---, as well as by cancer-specific biological
+covariates.  Furthermore, in at least one dataset (\smallcaps{GSE9893},
+single-gene marker prognostic content: 59\%), we have identified a critical
+normalization artifact responsible for an artificial over-estimation of the
+prognostic fraction.  Upon re-normalization of the original arrays, we have
+re-evaluated our estimate of prognostic content down to 19\%; conversely, a
+metric of signal-to-noise ratio,\cite{venet_measure_2012} surged from 15\% to
+34\% (a score now within the inter-quartile range of the 114 datasets analysed).
+This precedent suggests that artefactual spurious correlations in expression
+matrices may account for significant portions of prognostic content in our
+observations.
 
 The scope of this analysis remains strictly epistemological.  While we have
 observed that, in the thirteen breast cancer datasets with \smallcaps{os}
@@ -734,11 +735,12 @@ Taken together, these observations attest for the pan-transcriptomic nature of
 prognostic signals in cancer expression profiles---as quantified by association
 with outcome of single- and multi-gene markers with a Cox proportional hazards
 model, at logrank $p<0.05$.  This conclusion is not cancer- or
-platform-specific.  Therefore, transcriptomic prognostic signals cannot be
-convened to infer specific biological mechanisms driving cancer progression.
-While molecular prognostic signals remain independent, and thus complementary,
-to clinicopathological parameters, their ubiquity is in agreement with the
-multitude of incongruous predictive signatures reported in the
+platform-specific.  Therefore, with current significance thresholds,
+transcriptomic prognostic signals cannot be convened to infer specific
+biological mechanisms driving cancer progression.  While molecular prognostic
+signals remain independent, and thus complementary, to clinicopathological
+parameters, their ubiquity is in agreement with the multitude of incongruous
+predictive signatures reported in the
 literature.\cite{gevaert_prediction_2009,chibon_cancer_2013} In addition, the
 landscape of prognostic signals uncovered by our analysis may account for the
 complexity of some challenges in clinical oncology---including the difficulty in
@@ -933,7 +935,8 @@ transformation is defined by a Chip Description File, or \smallcaps{cdf},
 containing the mappings of which probes are to be aggregated into a single
 probeset.  Alternative custom \smallcaps{cdf} files have been shown to provide
 both better precision and accuracy in probeset estimates when compared to the
-original Affymetrix definitions.\cite{sandberg_improved_2007}
+original Affymetrix
+definitions.\cite{gautier_alternative_2004,carter_redefinition_2005,dai_evolving_2005,sandberg_improved_2007,upton_causes_2009}
 
 Microarray analysis methodologies are notoriously challenged by \emph{the curse
   of dimensionality},\cite{bellman_adaptive_1961} a feature of
