@@ -217,7 +217,7 @@ Finally, dataset-specific processing details may also distort prognostic
 estimates.  Consider, for instance, dataset \smallcaps{gse9893}, which exhibits
 the highest prognostic fractions measured in our study
 (Figure~\ref{fig:prognostic-fraction}).  A thorough reanalysis of this dataset,
-detailed in a vignette following this text, reveals that its normalization was
+detailed in the following section, reveals that its normalization was
 performed in two batches and induced massive spurious correlations between
 global values of expression and survival outcome.  Accordingly, a proper
 single-batch normalization of the raw expression data restores a signal-to-noise
@@ -244,13 +244,166 @@ associations.
 
 \subsection{Re-analysis of dataset \smallcaps{gse9893}}
 \label{sec:reanalysis-gse9893}
-The following vignette details the re-analysis of the extent of prognostic
-signals in a breast cancer dataset and exposes how a normalization artifact
-can distort estimations of prognostic content.
+% The following vignette details the re-analysis of the extent of prognostic
+% signals in a breast cancer dataset and exposes how a normalization artifact
+% can distort estimations of prognostic content.
+To illustrate how procedural biases in the preprocessing of expression profiles
+may impact estimates of association to outcome, we present here a detailed
+re-analysis of dataset \smallcaps{gse}9893 (Table~\ref{tab:datasets}).
+
+\smallcaps{gse}9893 is comprised of 155 samples of tamoxifen-treated primary
+breast cancers.  These samples were hybridized on a homemade \mbox{70-mer} chip
+containing \SI{22680} probes, mapping to \SI{21329} human specific genes.  The
+original experiment was carried out to look for a gene expression signature to
+predict the recurrence of tamoxifen-treated primary breast
+cancer.\cite{chanrion_gene_2008}
+
+The data-set was downloaded from \smallcaps{geo} with the \textsf{Bioconducor
+  GEOquery} package, with original normalization.  The expression matrix was
+then feature collapsed using a \textsf{maxMean} routine and median polished.
+
+Among the 114 studies considered in our analysis, \smallcaps{gse}9893
+shows the highest fraction of genes associated with outcome at
+$p < 0.05$ (59\%).  Interestingly, nearly all \mbox{MSigDB
+  \smallcaps{c2}} signatures appear associated with outcome in this
+dataset (Table~\ref{tab:top-datasets}).
+
+\begin{table}[ht]
+  \begin{center}
+    % \footnotesize%
+    \begin{tabular}{lcc}
+      \toprule
+      Dataset                                  & Fraction of significant tests & Event           \\
+      \midrule
+      \smallcaps{GSE}9893-breast               & 0.958                         & \smallcaps{os}  \\
+      \smallcaps{GSE}10846-lymphoma            & 0.856                         & \smallcaps{os}  \\
+      \smallcaps{GSE}32894-bladder             & 0.847                         & \smallcaps{dss} \\
+      \smallcaps{GSE}31210-lung-adenocarcinoma & 0.838                         & \smallcaps{dfs} \\
+      \smallcaps{KIRC}                         & 0.821                         & \smallcaps{os}  \\
+      \smallcaps{GSE}41258-colon               & 0.814                         & \smallcaps{dss} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \caption[Top six studies with hightest fraction of \mbox{MSigDB
+    \smallcaps{c2}} signatures associated with outcome]{Top six studies with
+    highest fraction of \mbox{MSigDB \smallcaps{c2}} signatures associated with
+    outcome.  Detailed information regarding each dataset can be found on to Table~\ref{tab:datasets}.}
+  \label{tab:top-datasets}
+\end{table}
+
+A closer inspection of the metadata associated with the expression profiles
+reveals that the arrays were scanned in two discrete time intervals during 2005
+and 2006, separated by eight months (Figure~\ref{fig:array-dates}).
+Surprisingly, patients whose tumours were hybridized in 2006 show a poorer
+prognosis than those hybridized in 2005 (Figure~\ref{fig:km-gse9893-prior}).
+
+\begin{marginfigure}%
+  \begin{center}
+    \includegraphics{gse9893-array-dates-23Feb2016.pdf}
+    \caption[Time distribution of hybridization dates of the samples in
+    \smallcaps{gse}9893]{Frequency distribution of hybridization dates of
+      \smallcaps{gse}9893 samples relative to the first hybridization date.
+      Information regarding date of hybridization of each of the 155 arrays was
+      parsed from the original \texttt{gpr} files downloaded from
+      \smallcaps{geo}.  The dataset is composed by a batch of samples hybridized
+      during May to July 2005 and a second batch of samples hybridized during
+      February and March 2006, roughly 200 days apart.}
+    \label{fig:array-dates}
+  \end{center}
+\end{marginfigure}
+
+\begin{marginfigure}%
+  \begin{center}
+    \includegraphics{gse9893-km-prior-23Feb2016.pdf}
+    \caption[Kaplan Meyer of dataset \smallcaps{gse}9893 discretized by time
+    batches]{A Kaplan Meier visualization of differential overall survival,
+      between patients included in \smallcaps{gse}9893 whose samples were
+      hybridized in 2005 (in black) and those whose samples were hybridized in
+      2006 (in red). Logrank test: $p = 1.76^{-10}$.}
+    \label{fig:km-gse9893-prior}
+  \end{center}
+\end{marginfigure}
+
+This observation can be explained by two facts.  First, we discovered a
+normalization artifact in this dataset related to the 2005 and 2006 batches
+of samples, as shown by the distribution of expression values and respective
+batch associations with the first and second principal components of the global
+expression matrix (Figure~\ref{fig:gse9893-prior-post-norm}, left panels).
+Second, there is an enrichment in the 2006 batch of observed death events
+compared with the 2005 batch (Figure~\ref{fig:km-gse9893-density-survival}).
+Because the majority of observed events are linked with a subset of samples
+whose global expression patterns were distorted due to the normalization
+artifact, 59\% of genes in original matrix appear artificially associated with
+overall survival in this dataset.
+
+In order to correct for this bias, we downloaded the original \texttt{gpr} files
+and proceeded to re-normalize them with the \textsf{Bioconductor limma} package.
+As a result, the distribution of values of expression no longer showed a
+correlation between batches of samples
+(Figure~\ref{fig:gse9893-prior-post-norm}, right panels).  In addition, a
+signal-to-noise quality metric based on gene-gene correlations across expression
+profiles\cite{venet_measure_2012} suggests that the re-normalization of the
+raw-data has significantly improved the data quality of \smallcaps{gse}9893
+(Figure~\ref{fig:gse9893-snr}).  As a result, the fraction of genes associated
+with outcome in this study is reduced from 58\% to 19\%, and only 74 out of the
+original 4556 (2\%) \mbox{MSigDB \smallcaps{c2}} remain associated with overall
+survival.
+
+\begin{figure}%
+  \begin{center}
+    \includegraphics{gse9893-prior-post-normalization-28Feb2016.pdf}
+    \caption[Batch effect in \smallcaps{gse}9893 prior and post
+    re-normalization]{\textbf{A}--Gene expression distributions of each of the
+      155 samples in \smallcaps{gse}9893. \mbox{\textbf{B}--\smallcaps{gse}9893}
+      samples projected in the space of the first two principal components of
+      their expression matrix.  \emph{Left,} original normalization;
+      \emph{right,} quantile re-normalization on the original \texttt{gpr}
+      files.  Samples in black are from the 2005 batch and samples in red are
+      from the 2006 batch (See text for details).}
+    \label{fig:gse9893-prior-post-norm}
+  \end{center}
+\end{figure}
+
+\begin{marginfigure}%
+  \begin{center}
+    \includegraphics{gse9893-density-distribution-survival-events.pdf}
+    \caption[Density distribution of overall survival events in
+    \smallcaps{gse}9893]{Density distribution of overall survival
+      events in \smallcaps{gse}9893. Censored observations are denoted
+      in black and observed death events are denoted in red.  Out of
+      the 116 patients in the 2005 batch, only 10 died during the
+      course of the study; whereas out of the 49 patients whose
+      samples where hybridized in 2006, 32 were observed events
+      ($\chi^2$ test: $p = 1.42^{-12}$).}
+    \label{fig:km-gse9893-density-survival}
+  \end{center}
+\end{marginfigure}
+
+\begin{figure}%
+  \begin{center}
+    \includegraphics{gse9893-plot-hist-qual-study-1.pdf}
+    \caption[Distribution of signal-to-noise quality metrics across 114 human
+    cancer datasets]{Distribution of signal-to-noise quality metrics across the
+      114 human cancer datasets included in our study. The
+      signal-to-noise-ratios (\smallcaps{snr}) were computed with the
+      \textsf{Bioconductor SNAGEE} package.  The black vertical line marks the
+      value computed for \smallcaps{gse}9893.  The red vertical line shows the
+      value computed for the re-normalized expression matrix of
+      \smallcaps{gse}9893.  The \smallcaps{SNR} of a study is based on the
+      correlation between its gene-gene correlation matrix and the expected
+      matrix, and is thus a number between $-1$ and $1$.  Practically, numbers
+      near or below 0 are symptomatic of seriously problematic studies
+      (e.g. gene annotation problems, serious normalization issues).  Numbers
+      around 20--30\% are average, depending on the platform.}
+    \label{fig:gse9893-snr}
+  \end{center}
+\end{figure}
+
+\clearpage
 
 % \includepdf[pages=1-9,trim=5cm 3cm 5cm
 % 3cm]{../pdf/include/supplementary-reanalysis-GSE9893.pdf}
-\includepdf[pages=1-17,trim=5cm 3cm 5cm 3cm]{../pdf/include/supplementary-reanalysis-GSE9893.pdf}
+% \includepdf[pages=1-17,trim=5cm 3cm 5cm 3cm]{../pdf/include/supplementary-reanalysis-GSE9893.pdf}
 
 % \subsection{Datasets}
 % \label{sec:results-prognostic-survival-datasets}
@@ -612,10 +765,11 @@ as well as the specific contributions of the author will be presented.
 
 This work sought to clarify which partners of the c\smallcaps{amp} cascade
 regulate the \smallcaps{tsh}-induced gene expression modulation in thyrocytes:
-protein kinase \smallcaps{a} and/or the \smallcaps{epac} proteins.  Contingent
-to this objective was the characterization of the potential role of the
-Epac-Rap-RapGAP pathway in thyroid tumorigenesis.  The author contributed with
-data analysis, figure generation and results discussion.
+protein kinase \smallcaps{a} and/or the \smallcaps{epac}
+proteins.\cite{van_staveren_role_2012} Contingent to this objective was the
+characterization of the potential role of the Epac-Rap-RapGAP pathway in thyroid
+tumorigenesis.  The author contributed with data analysis, figure generation and
+results discussion.
 
 \clearpage
 
@@ -628,9 +782,9 @@ data analysis, figure generation and results discussion.
 
 This work aimed at investigating the extent to which 5-aza-2'-deoxycytidine, a
 \smallcaps{dna} demethylation agent, is able to reactivate the expression of
-differentiation markers potentially repressed by epigenetic
-modifications in thyroid cancer cell lines.  The author contributed with data
-analysis, figure generation and results discussion.
+differentiation markers potentially repressed by epigenetic modifications in
+thyroid cancer cell lines.\cite{dom_5-aza-2-deoxycytidine_2013} The author
+contributed with data analysis, figure generation and results discussion.
 
 \clearpage
 
@@ -642,8 +796,9 @@ analysis, figure generation and results discussion.
 
 This study sought to characterize the intratmoural heterogeneity of a specimen
 of aggressive papillary thyroid carcinoma, and the clonal relationships between
-the primary tumour and their corresponding lymph node and distant metastases.
-The author contributed with experimental design input and results discussion.
+the primary tumour and their corresponding lymph node and distant
+metastases.\cite{pennec_intratumor_2015} The author contributed with
+experimental design input and results discussion.
 
 %%% Local Variables:
 %%% mode: latex
