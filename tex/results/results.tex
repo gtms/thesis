@@ -304,10 +304,10 @@ prognosis than those hybridized in 2005 (Figure~\ref{fig:km-gse9893-prior}).
     \smallcaps{gse}9893]{Frequency distribution of hybridization dates of
       \smallcaps{gse}9893 samples relative to the first hybridization date.
       Information regarding date of hybridization of each of the 155 arrays was
-      parsed from the original \texttt{gpr} files downloaded from
-      \smallcaps{geo}.  The dataset is composed by a batch of samples hybridized
-      during May to July 2005 and a second batch of samples hybridized during
-      February and March 2006, roughly 200 days apart.}
+      parsed from the \texttt{gpr} files downloaded from \smallcaps{geo}.  The
+      dataset is composed by a batch of samples hybridized during May to July
+      2005 and a second batch of samples hybridized during February and March
+      2006, roughly 200 days apart.}
     \label{fig:array-dates}
   \end{center}
 \end{marginfigure}
@@ -336,7 +336,7 @@ whose global expression patterns were distorted due to the normalization
 artifact, 59\% of genes in original matrix appear artificially associated with
 overall survival in this dataset.
 
-In order to correct for this bias, we downloaded the original \texttt{gpr} files
+In order to correct for this bias, we downloaded the raw data \texttt{gpr} files
 and proceeded to re-normalize them with the \textsf{Bioconductor limma} package.
 As a result, the distribution of values of expression no longer showed a
 correlation between batches of samples
